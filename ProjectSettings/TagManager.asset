@@ -11,6 +11,11 @@ TagManager:
   - finish
   - collectible
   - elmas
+  - collect
+  - spend
+  - cube
+  - full
+  - empty
   layers:
   - Default
   - TransparentFX
