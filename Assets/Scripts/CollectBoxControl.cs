@@ -7,7 +7,8 @@ public class CollectBoxControl : MonoBehaviour
     public GameObject egg;
     int eggNumber = 0;
     public List<GameObject> eggStackPlace = new List<GameObject>();
-    float spawnEggTime = 1;
+    float spawnEggTime = 0;
+    public int spawnTime;
     public int spawnEggLimit;
     void Start()
     {
@@ -19,7 +20,7 @@ public class CollectBoxControl : MonoBehaviour
     {
         spawnEggTime += Time.deltaTime;
 
-        if (spawnEggTime >= 2.0f && eggNumber < spawnEggLimit)
+        if (spawnEggTime >= spawnTime && eggNumber < spawnEggLimit)
         {
             SpawnEggs();
             spawnEggTime = 0;
