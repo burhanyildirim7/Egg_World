@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7447812996015357925}
   - component: {fileID: 442991916101455026}
   - component: {fileID: 5577778705405704497}
-  - component: {fileID: 7865386681671989586}
+  - component: {fileID: -5435098788568182390}
   m_Layer: 0
   m_Name: Egg
   m_TagString: egg
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7865386681671989586
+--- !u!54 &-5435098788568182390
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

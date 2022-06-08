@@ -61,11 +61,13 @@ public class CollectControl : MonoBehaviour
 
     public void MoveEggToSepet(GameObject otherObject)
     {
+     
         for (int i = 0; i < eggStackTransform.Count; i++)
         {
             if (eggStackTransform[i].tag == "empty")
             {
                 eggList.Add(otherObject);
+                GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
@@ -82,29 +84,38 @@ public class CollectControl : MonoBehaviour
 
            
         delayTime += Time.deltaTime;
-        if (delayTime >= eggSpawnTime)
+        if (delayTime>1f)
         {
+
+     
             canEggSpawn = true;
+       
 
             for (int i = 0; i < otherObject.transform.childCount; i++)
             {
+           
                 if (otherObject.transform.GetChild(i).tag == "empty")
                 {
-                    eggList[eggList.Count - 1].transform.DOLocalJump(otherObject.transform.GetChild(i).transform.position + Vector3.up, 2, 1, ((Time.deltaTime / eggMoveToPlayerTime) * 100) / 2).OnComplete(() => eggList[eggList.Count - 1].tag = "Untagged");
                     eggList[eggList.Count - 1].transform.parent.tag = "empty";
+                    eggList[eggList.Count - 1].transform.DOMove(otherObject.transform.GetChild(i).transform.position + Vector3.up, ((Time.deltaTime / eggMoveToPlayerTime) * 100)).OnComplete(() => eggList[eggList.Count - 1].tag = "Untagged");
+                    eggList[eggList.Count - 1].transform.parent = null;
                     eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                     otherObject.transform.GetChild(i).transform.tag = "full";
-                    eggList[eggList.Count - 1].transform.parent = null;
+                   
 
                     eggList.Remove(eggList[eggList.Count - 1]);
+           
 
                     delayTime = 0;
                     break;
                 }
+          
             }
-            
+          
 
+          
         }
+
 
 
 

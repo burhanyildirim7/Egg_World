@@ -2179,19 +2179,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4021190313506478745, guid: 9f88ddb45f4230e40842b73a88535cfe, type: 3}
   m_PrefabInstance: {fileID: 4255702195870451833}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &919132147552277218
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147552277216}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1455347960582755020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5300,7 +5287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556036817289678221, guid: ed16cdd900f1e0e45927330eaab198f1, type: 3}
       propertyPath: spawnTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed16cdd900f1e0e45927330eaab198f1, type: 3}

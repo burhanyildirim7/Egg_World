@@ -5,10 +5,10 @@ using DG.Tweening;
 public class CollectBoxControl : MonoBehaviour
 {
     public GameObject egg;
-    int eggNumber = 0;
     public List<GameObject> eggStackPlace = new List<GameObject>();
+    public List<GameObject> eggList2 = new List<GameObject>();
     float spawnEggTime = 0;
-    public int spawnTime;
+    public float spawnTime;
     public int spawnEggLimit;
     void Start()
     {
@@ -20,17 +20,20 @@ public class CollectBoxControl : MonoBehaviour
     {
         spawnEggTime += Time.deltaTime;
 
-        if (spawnEggTime >= spawnTime && eggNumber < spawnEggLimit)
+        if (spawnEggTime >= spawnTime && eggList2.Count <= spawnEggLimit)
         {
             SpawnEggs();
             spawnEggTime = 0;
         }
+
+      
+
     }
 
     void SpawnEggs()
     {
         var spawnedEgg = Instantiate(egg,new Vector3(-10,4,32),Quaternion.identity);
-        eggNumber++;
+        eggList2.Add(spawnedEgg);
         for (int i = 0; i < eggStackPlace.Count; i++)
         {
             if (eggStackPlace[i].tag == "empty")
