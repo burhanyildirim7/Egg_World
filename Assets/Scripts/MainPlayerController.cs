@@ -22,7 +22,7 @@ public class MainPlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         controller = gameObject.AddComponent<CharacterController>();
-        transform.position = new Vector3(0, 0, 0);
+       
         GetComponent<CharacterController>().center = new Vector3(0, 1, 0);
     }
 
@@ -43,7 +43,7 @@ public class MainPlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
-            Debug.Log("Hareket ediyor");
+         
             playerAnim.SetBool("run", true);
         }
         else

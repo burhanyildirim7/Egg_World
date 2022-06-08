@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 442991916101455026}
   - component: {fileID: 5577778705405704497}
   - component: {fileID: 7865386681671989586}
-  - component: {fileID: 2297247227125317291}
   m_Layer: 0
   m_Name: Egg
-  m_TagString: cube
+  m_TagString: egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,15 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &2297247227125317291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9102974816664555763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf4c4920386f39489e81ddc6cef0a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

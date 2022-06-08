@@ -16,6 +16,7 @@ TagManager:
   - cube
   - full
   - empty
+  - egg
   layers:
   - Default
   - TransparentFX

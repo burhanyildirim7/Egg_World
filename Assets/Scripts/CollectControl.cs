@@ -35,22 +35,43 @@ public class CollectControl : MonoBehaviour
         }
 
     }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "collect")
-        {
-            delayTime += Time.deltaTime;
 
+     void OnTriggerEnter(Collider other)
+    {
+       
+        if (other.gameObject.tag == "egg")
+        {
+            /*
+            delayTime += Time.deltaTime;
+           
 
             if (delayTime >= eggSpawnTime)
             {
-              
-                StartCoroutine(MoveEggsToSepet());
+
+              //  StartCoroutine(MoveEggsToSepet());
+            }
+            */
+
+            for (int i = 0; i < eggStackTransform.Count; i++)
+            {
+                if (eggStackTransform[i].tag == "empty")
+                {
+
+                    other.transform.parent.gameObject.tag = "empty";
+                    other.transform.parent = eggStackTransform[i].transform;
+                    other.transform.rotation = eggStackTransform[i].transform.rotation;
+                    other.transform.DOLocalJump(new Vector3(0, 3, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                    eggStackTransform[i].tag = "full";
+                    break;
+                }
             }
 
-           
 
         }
+    }
+    void OnTriggerStay(Collider other)
+    {
+   
 
         if (other.gameObject.tag == "spend")
         {
@@ -60,28 +81,13 @@ public class CollectControl : MonoBehaviour
             {
                 canEggSpawn = true;
 
-                for (int i = 0; i < other.transform.childCount; i++)
-                {
-                    if (other.transform.GetChild(i).tag == "empty")
-                    {
-                        eggList[eggList.Count - 1].transform.DOLocalJump(other.transform.GetChild(i).transform.position+Vector3.up,2,1, ((Time.deltaTime / eggMoveToPlayerTime) * 100) / 2);
-                        eggList[eggList.Count - 1].transform.parent.tag = "empty";
-                        eggList[eggList.Count - 1].transform.rotation = other.transform.GetChild(i).transform.rotation;
-                        other.transform.GetChild(i).transform.tag = "full";
-                        eggList[eggList.Count - 1].transform.parent = null;
-
-                        eggList.Remove(eggList[eggList.Count - 1]);
-
-                        delayTime = 0;
-                        break;
-                    }
-                }
-                //MoveEggsToSpend();
+               MoveEggToSepet(other.gameObject);
               
             }
         }
     }
 
+    /*
     IEnumerator MoveEggsToSepet()
     {
        
@@ -113,6 +119,25 @@ public class CollectControl : MonoBehaviour
  
 
         delayTime = 0;
+    }
+    */
+
+    void MoveEggToSepet(GameObject otherGameobject)
+    {
+        for (int i = 0; i < eggStackTransform.Count; i++)
+        {
+            if (eggStackTransform[i].tag == "empty")
+            {
+
+                otherGameobject.transform.parent.gameObject.tag = "empty";
+                otherGameobject.transform.parent = eggStackTransform[i].transform;
+                otherGameobject.transform.rotation = eggStackTransform[i].transform.rotation;
+                otherGameobject.transform.DOLocalJump(new Vector3(0, 3, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                eggStackTransform[i].tag = "full";
+                break;
+            }
+        }
+
     }
   
     void MoveEggsToSpend()

@@ -34,7 +34,9 @@ public class CollectBoxControl : MonoBehaviour
         {
             if (eggStackPlace[i].tag == "empty")
             {
+                spawnedEgg.transform.parent = eggStackPlace[i].transform;
                 spawnedEgg.transform.DOMove(eggStackPlace[i].transform.position, 1);
+            
                 eggStackPlace[i].tag = "full";
                 break;
             }
