@@ -41,8 +41,8 @@ public class CollectControl : MonoBehaviour
        
         if (other.gameObject.tag == "egg")
         {
-   
 
+            other.gameObject.transform.DOKill();
             MoveEggToSepet(other.gameObject);
 
         }
@@ -61,6 +61,7 @@ public class CollectControl : MonoBehaviour
 
     public void MoveEggToSepet(GameObject otherObject)
     {
+
      
         for (int i = 0; i < eggStackTransform.Count; i++)
         {
@@ -82,43 +83,31 @@ public class CollectControl : MonoBehaviour
     void MoveEggsToSpend(GameObject otherObject)
     {
 
-           
-        delayTime += Time.deltaTime;
-        if (delayTime>1f)
+     
+
+
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
         {
 
-     
-            canEggSpawn = true;
-       
-
-            for (int i = 0; i < otherObject.transform.childCount; i++)
+            if (otherObject.transform.GetChild(i).tag == "empty")
             {
-           
-                if (otherObject.transform.GetChild(i).tag == "empty")
-                {
-                    eggList[eggList.Count - 1].transform.parent.tag = "empty";
-                    eggList[eggList.Count - 1].transform.DOMove(otherObject.transform.GetChild(i).transform.position + Vector3.up, ((Time.deltaTime / eggMoveToPlayerTime) * 100)).OnComplete(() => eggList[eggList.Count - 1].tag = "Untagged");
-                    eggList[eggList.Count - 1].transform.parent = null;
-                    eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
-                    otherObject.transform.GetChild(i).transform.tag = "full";
-                   
+               
+                eggList[eggList.Count - 1].transform.parent.tag = "empty";
+                eggList[eggList.Count - 1].transform.parent = otherObject.transform.GetChild(i).transform;
+                eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up, 1f);
+                eggList[eggList.Count - 1].transform.tag = "Untagged";
+                otherObject.transform.GetChild(i).transform.tag = "full";
+                eggList.Remove(eggList[eggList.Count - 1]);
 
-                    eggList.Remove(eggList[eggList.Count - 1]);
-           
+                break;
+              
 
-                    delayTime = 0;
-                    break;
-                }
-          
+           
             }
-          
 
-          
         }
-
-
-
-
 
     }
 
