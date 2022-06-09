@@ -42,7 +42,11 @@ public class CollectControl : MonoBehaviour
         if (other.gameObject.tag == "egg")
         {
 
-            other.gameObject.transform.DOKill();
+            if (canEggSpawn)
+            {
+                other.gameObject.transform.DOKill();
+            }
+ 
             MoveEggToSepet(other.gameObject);
 
         }
@@ -83,27 +87,29 @@ public class CollectControl : MonoBehaviour
     void MoveEggsToSpend(GameObject otherObject)
     {
 
-     
 
 
+        delayTime += Time.deltaTime;
 
         for (int i = 0; i < otherObject.transform.childCount; i++)
         {
 
             if (otherObject.transform.GetChild(i).tag == "empty")
             {
-               
-                eggList[eggList.Count - 1].transform.parent.tag = "empty";
-                eggList[eggList.Count - 1].transform.parent = otherObject.transform.GetChild(i).transform;
-                eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
-                eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up, 1f);
-                eggList[eggList.Count - 1].transform.tag = "Untagged";
-                otherObject.transform.GetChild(i).transform.tag = "full";
-                eggList.Remove(eggList[eggList.Count - 1]);
+                if (delayTime > 0.05f)
+                {
 
-                break;
-              
+                    eggList[eggList.Count - 1].transform.parent.tag = "empty";
+                    eggList[eggList.Count - 1].transform.parent = otherObject.transform.GetChild(i).transform;
+                    eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                    eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up, 0.7f);
+                    eggList[eggList.Count - 1].transform.tag = "Untagged";
+                    otherObject.transform.GetChild(i).transform.tag = "full";
+                    eggList.Remove(eggList[eggList.Count - 1]);
+                    delayTime = 0;
+                    break;
 
+                }
            
             }
 
