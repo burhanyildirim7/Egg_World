@@ -17,6 +17,8 @@ TagManager:
   - full
   - empty
   - egg
+  - eggForChicken
+  - cashier
   layers:
   - Default
   - TransparentFX

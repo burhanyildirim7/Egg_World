@@ -33,7 +33,7 @@ public class ChickenController : MonoBehaviour
         else
         {
             chickenAnim.SetBool("Run",false);
-            Debug.Log("Durdu");
+         
         }
     }
 }

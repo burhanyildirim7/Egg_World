@@ -5,21 +5,16 @@ using DG.Tweening;
 
 public class SpendBoxControl : MonoBehaviour
 {
-    
-    IEnumerator Trigger()
-    {
-      
-        transform.DOScale(new Vector3(transform.localScale.x+0.2f, transform.localScale.y+0.2f, transform.localScale.z+0.2f), 0.1f);
-        yield return new WaitForSeconds(0.1f);
-        transform.DOScale(new Vector3(transform.localScale.x-0.2f, transform.localScale.y-0.2f, transform.localScale.z-0.2f), 0.1f);
-    }
 
-    private void OnTriggerEnter(Collider other)
+    public List<GameObject> spendEggList = new List<GameObject>();
+
+    private void Update()
     {
-        if (other.gameObject.tag == "cube")
+        for (var i = spendEggList.Count - 1; i > -1; i--)
         {
-            StartCoroutine(Trigger());
+            if (spendEggList[i] == null)
+                spendEggList.RemoveAt(i);
         }
     }
-    
+
 }

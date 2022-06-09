@@ -109,7 +109,8 @@ public class CollectControl : MonoBehaviour
                     eggList[eggList.Count - 1].transform.parent = otherObject.transform.GetChild(i).transform;
                     eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                     eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up*2, 0.7f);
-                    eggList[eggList.Count - 1].transform.tag = "Untagged";
+                    otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[eggList.Count - 1]);
+                   eggList[eggList.Count - 1].transform.tag = "Untagged";
                     otherObject.transform.GetChild(i).transform.tag = "full";
                     eggList.Remove(eggList[eggList.Count - 1]);
                     delayTime = 0;
