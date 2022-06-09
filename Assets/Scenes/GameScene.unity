@@ -1204,6 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spendEggList: []
+  customer: {fileID: 4738564300311822410}
 --- !u!1 &691504990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7480,6 +7481,11 @@ PrefabInstance:
     - {fileID: 8603709598104596159, guid: 9f88ddb45f4230e40842b73a88535cfe, type: 3}
     - {fileID: 5844839086788533152, guid: 9f88ddb45f4230e40842b73a88535cfe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9f88ddb45f4230e40842b73a88535cfe, type: 3}
+--- !u!1 &4738564300311822410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5904969018137277314, guid: 031c4595a91a20a4da858a71b6bff6ef, type: 3}
+  m_PrefabInstance: {fileID: 1166547929220871112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5698147514659654033
 GameObject:
   m_ObjectHideFlags: 0
