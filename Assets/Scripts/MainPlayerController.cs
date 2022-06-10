@@ -46,11 +46,41 @@ public class MainPlayerController : MonoBehaviour
         {
             gameObject.transform.forward = move;
          
-            playerAnim.SetBool("run", true);
+         
+
+            if (GetComponent<CollectControl>().eggList.Count > 0)
+            {
+                playerAnim.SetBool("runWithEgg", true);
+                playerAnim.SetBool("runWithoutEgg", false);
+                playerAnim.SetBool("idleWithEgg", false);
+                playerAnim.SetBool("idleWithoutEgg", false);
+            }
+            else
+            {
+                playerAnim.SetBool("runWithEgg", false);
+                playerAnim.SetBool("runWithoutEgg", true);
+                playerAnim.SetBool("idleWithoutEgg", false);
+                playerAnim.SetBool("idleWithEgg", false);
+            }
         }
         else
         {
-            playerAnim.SetBool("run", false);
+
+            if (GetComponent<CollectControl>().eggList.Count > 0)
+            {
+                playerAnim.SetBool("idleWithEgg", true);
+                playerAnim.SetBool("idleWithoutEgg", false);
+                playerAnim.SetBool("runWithEgg", false);
+                playerAnim.SetBool("runWithoutEgg", false);
+            }
+            else
+            {
+                playerAnim.SetBool("idleWithEgg", false);
+                playerAnim.SetBool("runWithEgg", false);
+                playerAnim.SetBool("runWithoutEgg", false);
+                playerAnim.SetBool("idleWithoutEgg", true);
+            }
+          
         }
 
         // Changes the height position of the player..
