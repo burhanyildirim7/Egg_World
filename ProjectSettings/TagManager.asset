@@ -19,6 +19,8 @@ TagManager:
   - egg
   - eggForChicken
   - cashier
+  - buy
+  - money
   layers:
   - Default
   - TransparentFX

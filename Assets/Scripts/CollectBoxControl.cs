@@ -32,14 +32,14 @@ public class CollectBoxControl : MonoBehaviour
 
     void SpawnEggs()
     {
-        var spawnedEgg = Instantiate(egg,new Vector3(-10,4,32),Quaternion.identity);
+        var spawnedEgg = Instantiate(egg,new Vector3(-10,1,9),Quaternion.identity);
         eggList2.Add(spawnedEgg);
         for (int i = 0; i < eggStackPlace.Count; i++)
         {
             if (eggStackPlace[i].tag == "empty")
             {
                 spawnedEgg.transform.parent = eggStackPlace[i].transform;
-                spawnedEgg.transform.DOMove(eggStackPlace[i].transform.position, 1);
+                spawnedEgg.transform.DOMove(eggStackPlace[i].transform.position + Vector3.down / 2, 1);
             
                 eggStackPlace[i].tag = "full";
                 break;

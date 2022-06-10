@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class CollectControl : MonoBehaviour
 {
+    public int totalMoney = 100;
     public float eggSpawnTime;
     public float eggMoveToPlayerTime;
     float distanceY = 0;
@@ -17,12 +18,15 @@ public class CollectControl : MonoBehaviour
     public List<GameObject> eggSpendTransform = new List<GameObject>();
     void Start()
     {
-
+       
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        UIController.instance.tapToStartScoreText.text = "" + totalMoney;
+        UIController.instance.gamePlayScoreText.text = "" + totalMoney;
         if (eggList.Count == eggStackTransform.Count)
         {
             canEggSpawn = false;
@@ -56,6 +60,13 @@ public class CollectControl : MonoBehaviour
         
             MoveEggToKümes(other.gameObject);
         }
+
+        if (other.gameObject.tag == "money")
+        {
+            totalMoney += 100;
+            Destroy(other.gameObject);
+        }
+       
     }
     void OnTriggerStay(Collider other)
     {
