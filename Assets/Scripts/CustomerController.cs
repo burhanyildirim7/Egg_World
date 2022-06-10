@@ -7,6 +7,7 @@ public class CustomerController : MonoBehaviour
     Animator customerAnim;
     Transform target;
     bool canWalk = true;
+    bool walkToCashier = false;
     float time;
     float distanceY;
     public GameObject customerStackMaterialTransform;
@@ -21,7 +22,17 @@ public class CustomerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToBuyEgg();
+      
+
+        if (walkToCashier)
+        {
+            MoveToCashier();
+        }
+        else
+        {
+            MoveToBuyEgg();
+        }
+     
     }
 
     void MoveToBuyEgg()
@@ -32,17 +43,52 @@ public class CustomerController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x,0, target.transform.position.z), 5 * Time.deltaTime);
             customerAnim.SetBool("run", true);
             transform.LookAt(target);
-            Debug.Log("Yürüyor");
+
+           
         }
         else
         {
             canWalk = false;
             customerAnim.SetBool("run", false);
+
+           
         }
 
     }
 
-     void OnTriggerStay(Collider other)
+    void MoveToCashier()
+    {
+        if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) && canWalk)
+        {
+
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x, 0, target.transform.position.z), 5 * Time.deltaTime);
+            customerAnim.SetBool("run", true);
+            transform.LookAt(target);
+
+
+        }
+        else
+        {
+            canWalk = false;
+            customerAnim.SetBool("run", false);
+
+
+            ShoppingStart();
+
+        }
+
+
+    }
+
+    void ShoppingStart()
+    {
+        for (int i = customerEggList.Count-1; i >= 0; i--)
+        {
+
+        }
+    }
+
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "spend" && canWalk == false)
         {
@@ -67,11 +113,22 @@ public class CustomerController : MonoBehaviour
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1].transform.DOLocalJump
                 (new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
 
-                    target = GameObject.FindGameObjectWithTag("cashier").transform;
+                    for (int i = 0; i < customerEggList.Count; i++)
+                    {
+                        if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag == "empty")
+                        {
+                            target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
+                            
+                            break;
+                        }
+                      
+                    }
+                    
 
                     if (customerEggList.Count >= 5)
                     {
                         canWalk = true;
+                        walkToCashier = true;
                     }
                 });
             customerEggList.Add(SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1]);

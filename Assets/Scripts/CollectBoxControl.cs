@@ -20,7 +20,7 @@ public class CollectBoxControl : MonoBehaviour
     {
         spawnEggTime += Time.deltaTime;
 
-        if (spawnEggTime >= spawnTime && eggList2.Count <= spawnEggLimit)
+        if (spawnEggTime >= spawnTime && eggList2.Count < spawnEggLimit)
         {
             SpawnEggs();
             spawnEggTime = 0;
