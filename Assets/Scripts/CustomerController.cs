@@ -14,6 +14,9 @@ public class CustomerController : MonoBehaviour
     public GameObject box;
     List<GameObject> customerEggList = new List<GameObject>();
 
+    Transform box1Rotation;
+    Transform box2Rotation;
+
     float delayTime = 0;
 
     bool canTakeBox = false;
@@ -89,8 +92,10 @@ public class CustomerController : MonoBehaviour
             canWalk = false;
             customerAnim.SetBool("run", false);
 
+            box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, -90), 1);
+            box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 90), 1).OnComplete(() => ShoppingStart());
+          
 
-            ShoppingStart();
 
         }
 
