@@ -11,8 +11,10 @@ public class CustomerController : MonoBehaviour
     float time;
     float distanceY;
     public GameObject customerStackMaterialTransform;
-
+    public GameObject box;
     List<GameObject> customerEggList = new List<GameObject>();
+
+    float delayTime = 0;
     void Start()
     {
         customerAnim = GetComponent<Animator>();
@@ -80,12 +82,21 @@ public class CustomerController : MonoBehaviour
 
     }
 
+
     void ShoppingStart()
     {
-        for (int i = customerEggList.Count-1; i >= 0; i--)
-        {
+        delayTime += Time.deltaTime;
 
+        if (delayTime >= 1)
+        {
+            customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position, 3, 1, 1).OnComplete(() => customerEggList[customerEggList.Count - 1].transform.parent = box.transform);
+           
+            customerEggList.Remove(customerEggList[customerEggList.Count - 1].gameObject);
+           
+
+            delayTime = 0;
         }
+     
     }
 
     void OnTriggerStay(Collider other)

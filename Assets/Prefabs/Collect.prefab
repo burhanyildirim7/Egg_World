@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a15424c598bee4d9600314d68f283b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  egg: {fileID: 9102974816664555763, guid: 0dc4e51059b98704ba49bfd4d2c1c315, type: 3}
+  egg: {fileID: 8205041150221042374, guid: 013cdcfecb924f44ca0c5fb8cbb622f3, type: 3}
   eggStackPlace:
   - {fileID: 9078229173868246364}
   - {fileID: 8716887697570312515}
@@ -318,6 +318,8 @@ MonoBehaviour:
   - {fileID: 2741315727013681561}
   - {fileID: 2741315727094223875}
   - {fileID: 2741315727837470725}
+  eggList2: []
+  spawnTime: 0
   spawnEggLimit: 10
 --- !u!1 &2741315728349031272
 GameObject:

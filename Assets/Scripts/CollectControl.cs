@@ -60,6 +60,11 @@ public class CollectControl : MonoBehaviour
             totalMoney += 100;
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.tag == "egg")
+        {
+            MoveEggToSepet(other.gameObject);
+        }
        
     }
     void OnTriggerStay(Collider other)
@@ -73,10 +78,51 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "collect")
         {
-            MoveEggToSepet(other.gameObject);
+           //MoveEggToSepet(other.gameObject);
         }
     }
 
+
+    public void MoveEggToSepet(GameObject otherObject)
+    {
+
+
+        for (int i = 0; i < eggStackTransform.Count; i++)
+        {
+            if (eggStackTransform[i].tag == "empty")
+            {
+                eggList.Add(otherObject);
+                GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+                otherObject.transform.parent.gameObject.tag = "empty";
+                otherObject.transform.parent = eggStackTransform[i].transform;
+                otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
+                otherObject.transform.DOLocalJump(new Vector3(0, 0.5f, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                eggStackTransform[i].tag = "full";
+                break;
+            }
+        }
+
+        /*
+        for (int i = 0; i < eggStackTransform.Count; i++)
+        {
+            if (eggStackTransform[i].tag == "empty")
+            {
+
+                eggList.Add(otherObject);
+                GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+                otherObject.transform.parent.gameObject.tag = "empty";
+                otherObject.transform.parent = EggStackTransform.transform;
+                otherObject.transform.rotation = EggStackTransform.transform.rotation;
+                otherObject.transform.DOLocalJump(new Vector3(0, distanceY, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                eggStackTransform[i].tag = "full";
+                distanceY += 0.5f;
+                break;
+            }
+        }
+        */
+    }
+
+    /*
     void MoveEggToSepet(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
@@ -85,7 +131,7 @@ public class CollectControl : MonoBehaviour
         {
             if (otherObject.GetComponent<CollectBoxControl>().eggStackPlace[i].tag == "full")
             {
-                if (delayTime >= 1f)
+                if (delayTime >= 0.5f)
                 {
                     for (int a = 0; a < eggStackTransform.Count; a++)
                     {
@@ -116,7 +162,7 @@ public class CollectControl : MonoBehaviour
         }
     }
 
-  
+  */
 
     void MoveEggsToSpend(GameObject otherObject)
     {
