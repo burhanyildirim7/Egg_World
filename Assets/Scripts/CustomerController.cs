@@ -15,30 +15,44 @@ public class CustomerController : MonoBehaviour
     List<GameObject> customerEggList = new List<GameObject>();
 
     float delayTime = 0;
+
+    bool canTakeBox = false;
     void Start()
     {
         customerAnim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("spend").transform;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
 
-        if (walkToCashier)
+
+        if (!canTakeBox)
         {
-            MoveToCashier();
+            if (walkToCashier)
+            {
+                MoveToCashier();
+
+            }
+            else
+            {
+                MoveToBuyEgg();
+            }
         }
-        else
-        {
-            MoveToBuyEgg();
-        }
+           
+        
      
+
+
+
     }
 
     void MoveToBuyEgg()
     {
+        Debug.Log("MOVETOEGG ÇALIÞIYOR");
         if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) &&canWalk)
         {
             
@@ -60,6 +74,7 @@ public class CustomerController : MonoBehaviour
 
     void MoveToCashier()
     {
+        Debug.Log("MOVETOCASHIER ÇALIÞIYOR");
         if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) && canWalk)
         {
 
@@ -85,24 +100,44 @@ public class CustomerController : MonoBehaviour
 
     void ShoppingStart()
     {
+        Debug.Log("SHOPPUNGSTART ÇALIÞIYOR");
         delayTime += Time.deltaTime;
 
         if (delayTime >= 1)
         {
-            customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position, 3, 1, 1).OnComplete(() => customerEggList[customerEggList.Count - 1].transform.parent = box.transform);
-           
-            customerEggList.Remove(customerEggList[customerEggList.Count - 1].gameObject);
-           
+            if (customerEggList.Count <= 0)
+            {
+                canTakeBox = true;
+                TakeBoxAndLeave();
+            }
+            else
+            {
+                customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position, 3, 1, 1).OnComplete(() =>
 
-            delayTime = 0;
+
+                {
+                    
+
+
+
+
+                });
+                customerEggList[customerEggList.Count - 1].transform.parent = box.transform;
+                customerEggList.Remove(customerEggList[customerEggList.Count - 1].gameObject);
+
+
+                delayTime = 0;
+            }
+          
         }
      
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "spend" && canWalk == false)
+        if (other.gameObject.tag == "spend")
         {
+            canWalk = false;
             CustomerCollectEgg(other.gameObject);
             Debug.Log("Temas var");
         }
@@ -110,7 +145,7 @@ public class CustomerController : MonoBehaviour
 
     void CustomerCollectEgg(GameObject otherObject)
     {
-
+        Debug.Log("CUSTOMERCOLLECTEGG ÇALIÞIYOR");
         time += Time.deltaTime;
 
         if (time >=1)
@@ -151,6 +186,12 @@ public class CustomerController : MonoBehaviour
 
        
        
+    }
+
+    void TakeBoxAndLeave()
+    {
+        box.transform.parent = customerStackMaterialTransform.transform;
+        box.transform.DOLocalJump(new Vector3(0,0,0), 3, 1, 1).OnComplete(()=>Debug.Log("Alýþveriþ Bitti"));
     }
 
 }
