@@ -13,10 +13,10 @@ public class CustomerController : MonoBehaviour
     public GameObject customerStackMaterialTransform;
     public GameObject box;
     List<GameObject> customerEggList = new List<GameObject>();
+    public GameObject money;
+    public GameObject cashier;
 
-    Transform box1Rotation;
-    Transform box2Rotation;
-
+ 
     float delayTime = 0;
 
     bool canTakeBox = false;
@@ -113,7 +113,10 @@ public class CustomerController : MonoBehaviour
             if (customerEggList.Count <= 0)
             {
                 canTakeBox = true;
-                TakeBoxAndLeave();
+                box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
+                box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 0), 1).OnComplete(() => TakeBoxAndLeave());
+
+             
             }
             else
             {
@@ -196,7 +199,25 @@ public class CustomerController : MonoBehaviour
     void TakeBoxAndLeave()
     {
         box.transform.parent = customerStackMaterialTransform.transform;
-        box.transform.DOLocalJump(new Vector3(0,0,0), 3, 1, 1).OnComplete(()=>Debug.Log("Alýþveriþ Bitti"));
+        box.transform.DOLocalJump(new Vector3(0,0,0), 1, 1, 1).OnComplete(()=> PayMoneyForBox());
     }
 
+    void PayMoneyForBox()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+        
+
+            if (cashier.GetComponent<CashierController>().moneyPlaceList[i].tag == "empty")
+            {
+                var spawnedMoney = Instantiate(money, transform.position, Quaternion.identity);
+                spawnedMoney.transform.localScale = new Vector3(200, 200, 200);
+                spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
+                spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
+                spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1);
+                cashier.GetComponent<CashierController>().moneyPlaceList[i].tag = "full";
+                break;
+            }
+        }
+    }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CashierController : MonoBehaviour
 {
     public List<GameObject> lineList = new List<GameObject>();
+    public List<GameObject> moneyPlaceList = new List<GameObject>();
     public GameObject box;
     void Start()
     {
