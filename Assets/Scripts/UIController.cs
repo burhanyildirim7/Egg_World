@@ -75,6 +75,11 @@ public class UIController : MonoBehaviour
         StartCoroutine(StartScreenCoinEffect());
     }
 
+    public void CoinEffect()
+    {
+        StartCoroutine(StartScreenCoinEffect());
+    }
+
 
     /// <summary>
     /// Bu fonksiyon gameplay ekranindaki score textini gunceller.
@@ -155,7 +160,7 @@ public class UIController : MonoBehaviour
         Destroy(effectObj);
     }
 
-    IEnumerator StartScreenCoinEffect()
+    public IEnumerator StartScreenCoinEffect()
     {
         startScreenCoinImage.GetComponent<Image>().sprite = winScreenCoinImage.GetComponent<Image>().sprite;
         startScreenCoinImage.SetActive(true);
@@ -175,7 +180,7 @@ public class UIController : MonoBehaviour
                 StartCoroutine(StartScreenCoinsDissolve(coin));
             }
         }
-        Instantiate(scoreEffect, new Vector3(1.34f, 5.43F, -1.15F), Quaternion.identity);
+        //Instantiate(scoreEffect, new Vector3(1.34f, 5.43F, -1.15F), Quaternion.identity);
         ScoreTextAnim.SetTrigger("score");
         startScreenCoinImage.SetActive(false);
         startScreenCoinImage.transform.localPosition = new Vector3(0, -446, 0);

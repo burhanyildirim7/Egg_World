@@ -26,7 +26,7 @@ public class CollectBoxControl : MonoBehaviour
             spawnEggTime = 0;
         }
 
-      
+    
 
     }
 

@@ -23,8 +23,8 @@ public class CollectControl : MonoBehaviour
     public GameObject EggStackTransform;
     void Start()
     {
-       
-       
+
+   
     }
 
     // Update is called once per frame
@@ -58,11 +58,13 @@ public class CollectControl : MonoBehaviour
         if (other.gameObject.tag == "money")
         {
             totalMoney += 100;
+            UIController.instance.CoinEffect();
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "egg")
         {
+            
             MoveEggToSepet(other.gameObject);
         }
        
@@ -86,17 +88,18 @@ public class CollectControl : MonoBehaviour
     public void MoveEggToSepet(GameObject otherObject)
     {
 
-
+    
         for (int i = 0; i < eggStackTransform.Count; i++)
         {
             if (eggStackTransform[i].tag == "empty")
             {
+               
                 eggList.Add(otherObject);
                 GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
-                otherObject.transform.DOLocalJump(new Vector3(0, 0.5f, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
                 eggStackTransform[i].tag = "full";
                 break;
             }
