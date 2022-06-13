@@ -179,7 +179,7 @@ public class CustomerController : MonoBehaviour
                     }
                     
 
-                    if (customerEggList.Count >= 5)
+                    if (customerEggList.Count == 5)
                     {
                         canWalk = true;
                         walkToCashier = true;

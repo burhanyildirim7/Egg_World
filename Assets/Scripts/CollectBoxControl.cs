@@ -10,6 +10,7 @@ public class CollectBoxControl : MonoBehaviour
     float spawnEggTime = 0;
     public float spawnTime;
     public int spawnEggLimit;
+    public GameObject eggSpawnPlace;
     void Start()
     {
         
@@ -32,7 +33,7 @@ public class CollectBoxControl : MonoBehaviour
 
     void SpawnEggs()
     {
-        var spawnedEgg = Instantiate(egg,new Vector3(-10,1,9),Quaternion.identity);
+        var spawnedEgg = Instantiate(egg, eggSpawnPlace.transform.position, Quaternion.Euler(-90,0,0));
         eggList2.Add(spawnedEgg);
         for (int i = 0; i < eggStackPlace.Count; i++)
         {

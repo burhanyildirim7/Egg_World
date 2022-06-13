@@ -62,7 +62,7 @@ public class CollectControl : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "egg")
+        if (other.gameObject.tag == "egg" || other.gameObject.tag == "timsahEgg" || other.gameObject.tag == "devekusuEgg" || other.gameObject.tag == "ejderhaEgg")
         {
             
             MoveEggToSepet(other.gameObject);
@@ -93,14 +93,14 @@ public class CollectControl : MonoBehaviour
         {
             if (eggStackTransform[i].tag == "empty")
             {
-               
+                eggStackTransform[i].tag = "full";
                 eggList.Add(otherObject);
                 GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
                 otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
-                eggStackTransform[i].tag = "full";
+          
                 break;
             }
         }

@@ -21,6 +21,9 @@ TagManager:
   - cashier
   - buy
   - money
+  - timsahEgg
+  - devekusuEgg
+  - ejderhaEgg
   layers:
   - Default
   - TransparentFX
