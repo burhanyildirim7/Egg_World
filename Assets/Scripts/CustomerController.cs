@@ -15,6 +15,7 @@ public class CustomerController : MonoBehaviour
     List<GameObject> customerEggList = new List<GameObject>();
     public GameObject money;
     public GameObject cashier;
+    int numberOfEggs;
 
  
     float delayTime = 0;
@@ -25,13 +26,13 @@ public class CustomerController : MonoBehaviour
         customerAnim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("spend").transform;
 
-
+        numberOfEggs = Random.Range(0,4);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("Alýnmasý Gereken yumurta sayýsý = " + numberOfEggs);
 
         if (!canTakeBox)
         {
@@ -179,7 +180,7 @@ public class CustomerController : MonoBehaviour
                     }
                     
 
-                    if (customerEggList.Count == 5)
+                    if (customerEggList.Count == numberOfEggs)
                     {
                         canWalk = true;
                         walkToCashier = true;
@@ -204,7 +205,7 @@ public class CustomerController : MonoBehaviour
 
     void PayMoneyForBox()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < numberOfEggs; i++)
         {
         
 

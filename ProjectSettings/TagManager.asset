@@ -24,6 +24,7 @@ TagManager:
   - timsahEgg
   - devekusuEgg
   - ejderhaEgg
+  - spendEjderhaEgg
   layers:
   - Default
   - TransparentFX
