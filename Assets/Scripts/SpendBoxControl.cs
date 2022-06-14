@@ -15,11 +15,12 @@ public class SpendBoxControl : MonoBehaviour
             if (spendEggList[i] == null)
                 spendEggList.RemoveAt(i);
         }
-
+        /*
         if (spendEggList.Count>= 3)
         {
             customer.gameObject.SetActive(true);
         }
+        */
     }
 
 }
