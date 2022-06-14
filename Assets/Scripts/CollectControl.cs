@@ -239,7 +239,7 @@ public class CollectControl : MonoBehaviour
                         {
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
@@ -276,7 +276,7 @@ public class CollectControl : MonoBehaviour
                         {
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
@@ -314,7 +314,7 @@ public class CollectControl : MonoBehaviour
                         {
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                           // eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
@@ -352,7 +352,7 @@ public class CollectControl : MonoBehaviour
                         {
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                           // eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
