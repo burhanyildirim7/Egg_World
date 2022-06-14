@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4778732678304400293}
   m_Layer: 0
   m_Name: ejder_yumurtasi
-  m_TagString: ejderhaEgg
+  m_TagString: ejderEgg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

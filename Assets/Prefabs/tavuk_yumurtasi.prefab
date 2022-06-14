@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9015996059963260817}
   m_Layer: 0
   m_Name: tavuk_yumurtasi
-  m_TagString: egg
+  m_TagString: tavukEgg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

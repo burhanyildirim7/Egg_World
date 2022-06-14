@@ -12,7 +12,7 @@ public class CollectControl : MonoBehaviour
     float delayTime = 0;
     public GameObject egg;
     bool canEggSpawn = true;
-    bool canEggSpend = true;   
+    bool canEggSpend = true;
     public List<GameObject> eggList = new List<GameObject>();
     public List<GameObject> eggStackTransform = new List<GameObject>();
     public List<GameObject> eggSpendTransform = new List<GameObject>();
@@ -24,7 +24,7 @@ public class CollectControl : MonoBehaviour
     void Start()
     {
 
-   
+
     }
 
     // Update is called once per frame
@@ -45,13 +45,13 @@ public class CollectControl : MonoBehaviour
 
     }
 
-     public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-     
+
 
         if (other.gameObject.tag == "empty")
         {
-        
+
             MoveEggToKümes(other.gameObject);
         }
 
@@ -62,25 +62,44 @@ public class CollectControl : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "egg" || other.gameObject.tag == "timsahEgg" || other.gameObject.tag == "devekusuEgg" || other.gameObject.tag == "ejderhaEgg")
+        if (other.gameObject.tag == "tavukEgg" || other.gameObject.tag == "timsahEgg" || other.gameObject.tag == "devekusuEgg" || other.gameObject.tag == "ejderEgg")
         {
-            
+
             MoveEggToSepet(other.gameObject);
         }
-       
+
     }
     void OnTriggerStay(Collider other)
     {
-   
 
-        if (other.gameObject.tag == "spend")
+
+        if (other.gameObject.tag == "spendTimsahEgg")
         {
-            MoveEggsToSpend(other.gameObject);
+            MoveTimsahEggsToSpend(other.gameObject);
+       
+        }
+
+        if (other.gameObject.tag == "spendEjderEgg")
+        {
+            MoveEjderEggsToSpend(other.gameObject);
+           
+        }
+
+        if (other.gameObject.tag == "spendDevekusuEgg")
+        {
+            MoveDeveKusuEggsToSpend(other.gameObject);
+         
+        }
+
+        if (other.gameObject.tag == "spendTavukEgg")
+        {
+            MoveTavukEggsToSpend(other.gameObject);
+            Debug.Log("Temas Var");
         }
 
         if (other.gameObject.tag == "collect")
         {
-           //MoveEggToSepet(other.gameObject);
+            //MoveEggToSepet(other.gameObject);
         }
     }
 
@@ -88,7 +107,7 @@ public class CollectControl : MonoBehaviour
     public void MoveEggToSepet(GameObject otherObject)
     {
 
-    
+
         for (int i = 0; i < eggStackTransform.Count; i++)
         {
             if (eggStackTransform[i].tag == "empty")
@@ -100,7 +119,7 @@ public class CollectControl : MonoBehaviour
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
                 otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
-          
+
                 break;
             }
         }
@@ -185,21 +204,176 @@ public class CollectControl : MonoBehaviour
                     eggList[eggList.Count - 1].transform.parent.tag = "empty";
                     eggList[eggList.Count - 1].transform.parent = otherObject.transform.GetChild(i).transform;
                     eggList[eggList.Count - 1].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
-                    eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up*2, 0.7f);
+                    eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                     otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[eggList.Count - 1]);
-                   eggList[eggList.Count - 1].transform.tag = "Untagged";
+                    eggList[eggList.Count - 1].transform.tag = "Untagged";
                     otherObject.transform.GetChild(i).transform.tag = "full";
                     eggList.Remove(eggList[eggList.Count - 1]);
                     delayTime = 0;
                     break;
 
                 }
-           
+
             }
 
         }
 
     }
+
+
+    void MoveTavukEggsToSpend(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
+        {
+
+            if (otherObject.transform.GetChild(i).tag == "empty")
+            {
+
+                if (delayTime > 0.05f)
+                {
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "tavukEgg")
+                        {
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
+                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
+                            eggList[a].transform.tag = "Untagged";
+                            otherObject.transform.GetChild(i).transform.tag = "full";
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    void MoveTimsahEggsToSpend(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
+        {
+
+            if (otherObject.transform.GetChild(i).tag == "empty")
+            {
+              
+                if (delayTime > 0.05f)
+                {
+                      for (int a = eggList.Count-1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "timsahEgg")
+                        {
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
+                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
+                            eggList[a].transform.tag = "Untagged";
+                            otherObject.transform.GetChild(i).transform.tag = "full";
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+                       
+                    }
+                                
+                }
+
+            }
+
+        }
+
+    }
+
+    void MoveEjderEggsToSpend(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
+        {
+
+            if (otherObject.transform.GetChild(i).tag == "empty")
+            {
+
+                if (delayTime > 0.05f)
+                {
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "ejderEgg")
+                        {
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
+                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
+                            eggList[a].transform.tag = "Untagged";
+                            otherObject.transform.GetChild(i).transform.tag = "full";
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    void MoveDeveKusuEggsToSpend(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
+        {
+
+            if (otherObject.transform.GetChild(i).tag == "empty")
+            {
+
+                if (delayTime > 0.05f)
+                {
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "devekusuEgg")
+                        {
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
+                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
+                            eggList[a].transform.tag = "Untagged";
+                            otherObject.transform.GetChild(i).transform.tag = "full";
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
 
     void MoveEggToKümes(GameObject otherObject)
     {
@@ -209,14 +383,20 @@ public class CollectControl : MonoBehaviour
             eggList[eggList.Count - 1].transform.parent = otherObject.transform;
             eggList[eggList.Count - 1].transform.rotation = otherObject.transform.rotation;
             //eggList[eggList.Count - 1].transform.DOLocalMove(Vector3.zero + Vector3.up*2, 0.7f);
-            eggList[eggList.Count - 1].transform.DOLocalJump(Vector3.zero + Vector3.up * 2,15,1,1);
+            eggList[eggList.Count - 1].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 15, 1, 1);
             eggList[eggList.Count - 1].transform.tag = "Untagged";
-            
+
             otherObject.tag = "full";
             otherObject.gameObject.GetComponent<EggEvolution>().eggForChicken = eggList[eggList.Count - 1].gameObject;
             eggList.Remove(eggList[eggList.Count - 1]);
-       
+
         }
     }
 
 }
+
+
+
+
+
+

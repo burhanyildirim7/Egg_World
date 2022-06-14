@@ -23,8 +23,12 @@ TagManager:
   - money
   - timsahEgg
   - devekusuEgg
-  - ejderhaEgg
-  - spendEjderhaEgg
+  - spendTimsahEgg
+  - spendEjderEgg
+  - ejderEgg
+  - spendDevekusuEgg
+  - spendTavukEgg
+  - tavukEgg
   layers:
   - Default
   - TransparentFX

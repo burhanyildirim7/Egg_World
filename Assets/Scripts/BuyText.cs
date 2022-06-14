@@ -29,7 +29,7 @@ public class BuyText : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<CollectControl>().totalMoney> 0)
         {
             other.gameObject.GetComponent<CollectControl>().totalMoney--;
             buyPrice--;
