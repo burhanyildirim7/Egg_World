@@ -118,7 +118,7 @@ public class CollectControl : MonoBehaviour
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
-                otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
+                otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
 
                 break;
             }

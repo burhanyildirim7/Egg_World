@@ -8,6 +8,7 @@ public class SpendBoxControl : MonoBehaviour
 
     public List<GameObject> spendEggList = new List<GameObject>();
     public GameObject customer;
+    bool canCustomerSpawn = true;
     private void Update()
     {
         for (var i = spendEggList.Count - 1; i > -1; i--)
@@ -15,12 +16,11 @@ public class SpendBoxControl : MonoBehaviour
             if (spendEggList[i] == null)
                 spendEggList.RemoveAt(i);
         }
-        /*
-        if (spendEggList.Count>= 3)
-        {
-            customer.gameObject.SetActive(true);
-        }
-        */
+      
+    
+
+     
+        
     }
 
 }

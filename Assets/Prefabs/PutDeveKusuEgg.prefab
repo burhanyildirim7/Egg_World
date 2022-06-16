@@ -325,8 +325,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3404297, y: 5, z: 0.9656724}
-  m_Center: {x: 0.02831014, y: 1.9999999, z: -0.017163834}
+  m_Size: {x: 1.5157309, y: 5, z: 0.9656724}
+  m_Center: {x: 0.030071259, y: 1.9999999, z: -0.017163834}
 --- !u!114 &3456895078508583868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spendEggList: []
-  customer: {fileID: 0}
+  customer: {fileID: 1688108786472468895, guid: 031c4595a91a20a4da858a71b6bff6ef, type: 3}
 --- !u!1 &3456895078737440086
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,9 +661,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5049032948309972686, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 281855664364225751, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
       propertyPath: m_Name
       value: ejder-devekusu_tezgah_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 921391927218321214, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
@@ -685,8 +701,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735686420999318536}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04116935, y: 0.011678556, z: 0.01799214}
-  m_Center: {x: -0.0012823528, y: 0.00008191006, z: 0.006212794}
+  m_Size: {x: 0.03963002, y: 0.015379985, z: 0.01799214}
+  m_Center: {x: -0.0005126931, y: -0.00011241533, z: 0.006212744}

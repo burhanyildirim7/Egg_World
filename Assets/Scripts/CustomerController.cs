@@ -5,7 +5,7 @@ using DG.Tweening;
 public class CustomerController : MonoBehaviour
 {
     Animator customerAnim;
-    Transform target;
+    public Transform target;
     bool canWalk = true;
     bool walkToCashier = false;
     float time;
@@ -24,9 +24,9 @@ public class CustomerController : MonoBehaviour
     void Start()
     {
         customerAnim = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("spend").transform;
-
-        numberOfEggs = Random.Range(0,4);
+        //target = GameObject.FindGameObjectWithTag("spend").transform;
+        target = GameObject.FindGameObjectWithTag("spendEjderEgg").gameObject.transform;
+        numberOfEggs = Random.Range(0,3);
     }
 
     // Update is called once per frame
@@ -144,9 +144,11 @@ public class CustomerController : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "spend")
+ 
+        if (other.gameObject.tag == "spendEjderEgg"|| other.gameObject.tag == "spendTimsahEgg"|| other.gameObject.tag == "spendTavukEgg" || other.gameObject.tag == "spendDevekusuEgg" )
         {
             canWalk = false;
+          
             CustomerCollectEgg(other.gameObject);
             Debug.Log("Temas var");
         }
@@ -157,7 +159,7 @@ public class CustomerController : MonoBehaviour
         Debug.Log("CUSTOMERCOLLECTEGG ÇALIÞIYOR");
         time += Time.deltaTime;
 
-        if (time >=1)
+        if (time >=1 &&canWalk==false)
         {
             GameObject SpendBoxControl = otherObject.gameObject;
 
@@ -168,6 +170,13 @@ public class CustomerController : MonoBehaviour
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1].transform.DOLocalJump
                 (new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
 
+                    if (customerEggList.Count == numberOfEggs)
+                    {
+                        Debug.Log("Eþitlenme tamam");
+                        canWalk = true;
+                        walkToCashier = true;
+                        
+                    }
                     for (int i = 0; i < customerEggList.Count; i++)
                     {
                         if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag == "empty")
@@ -180,11 +189,7 @@ public class CustomerController : MonoBehaviour
                     }
                     
 
-                    if (customerEggList.Count == numberOfEggs)
-                    {
-                        canWalk = true;
-                        walkToCashier = true;
-                    }
+                  
                 });
             customerEggList.Add(SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1]);
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.RemoveAt(SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1);

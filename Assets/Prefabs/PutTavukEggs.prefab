@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spendEggList: []
-  customer: {fileID: 0}
+  customer: {fileID: 1688108786472468895, guid: 031c4595a91a20a4da858a71b6bff6ef, type: 3}
 --- !u!1 &3400731374703380804
 GameObject:
   m_ObjectHideFlags: 0
