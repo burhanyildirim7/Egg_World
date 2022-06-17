@@ -5,10 +5,11 @@ using UnityEngine;
 public class CustomerSpawn : MonoBehaviour
 {
     public GameObject customer;
+    Vector3 randomPlaceToSpawn;
     float delayTime;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,14 +17,16 @@ public class CustomerSpawn : MonoBehaviour
     {
         SpawnCustomer();
     }
-    
+
     void SpawnCustomer()
     {
+       
         delayTime += Time.deltaTime;
 
-        if (delayTime>= 10)
+        if (delayTime >= 10)
         {
-            Instantiate(customer,new Vector3(12,1,17),Quaternion.identity);
+            randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
+            Instantiate(customer, randomPlaceToSpawn, Quaternion.identity);
             delayTime = 0;
         }
     }

@@ -22,7 +22,8 @@ public class CustomerNavMesh : MonoBehaviour
     int toplanmasiGerekenEgg;
     int totalEggNumber = 0;
 
-    bool startShopping = true;
+    bool startShopping = false;
+    bool moveToCashier = false;
     public GameObject box;
     private void Awake()
     {
@@ -42,6 +43,30 @@ public class CustomerNavMesh : MonoBehaviour
 
         }
 
+        if (moveToCashier)
+        {
+            if (!navMeshAgent.pathPending)
+            {
+                if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+                {
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                    {
+
+                        if (target.name=="1.Line")
+                        {
+                            Debug.Log("alýþveriþ Yapabilir");
+                            startShopping = true;
+                        }
+
+                        else
+                        {
+                            BirinciSiradaOlmayanCustomer();
+                        }
+
+                    }
+                }
+            }
+        }
        
 
     }
@@ -122,17 +147,14 @@ public class CustomerNavMesh : MonoBehaviour
                      
                         // otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalMove(new Vector3(0, 0, 0),1);
                         otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
-
+                               otherObject.GetComponent<SpendBoxControl>().spendEggList.Remove(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
                             if (toplanmasiGerekenEgg >= numberOfEjderEgg )
                             {
                                 Debug.Log("Gitti aslýnda");
                                 
                                 StartCoroutine(MoveAnotherEggCollectPlace());
                             }
-                            else
-                            {
-                                otherObject.GetComponent<SpendBoxControl>().spendEggList.Remove(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
-                            }
+                           
                         });
 
                       
@@ -222,7 +244,10 @@ public class CustomerNavMesh : MonoBehaviour
                 break;
             }
         }
-        
+
+        moveToCashier = true;
+
+       
        
 
     }
@@ -255,10 +280,11 @@ public class CustomerNavMesh : MonoBehaviour
             if (customerEggList.Count <= 0)
             {
                 //canTakeBox = true;
+       
                 box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
                 box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 0), 1).OnComplete(() => {
 
-                    startShopping = false;
+                   
                     TakeBoxAndLeave();
 
 
@@ -293,14 +319,24 @@ public class CustomerNavMesh : MonoBehaviour
 
     void TakeBoxAndLeave()
     {
+     
+        startShopping = false;
         box.transform.parent = customerStackPosition.transform;
-        box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => PayMoneyForBox());
+        box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => {
+
+            
+            StartCoroutine(PayMoneyForBox());
+
+        
+        });
     }
 
 
 
-    void PayMoneyForBox()
+    IEnumerator PayMoneyForBox()
     {
+   
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < totalEggNumber; i++)
         {
             GameObject cashier = GameObject.FindGameObjectWithTag("cashier");
@@ -311,7 +347,11 @@ public class CustomerNavMesh : MonoBehaviour
                 spawnedMoney.transform.localScale = new Vector3(200, 200, 200);
                 spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
                 spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
-                spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(()=> MoveToExit());
+                spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(()=> {
+                    
+                    MoveToExit();
+                
+                });
                 cashier.GetComponent<CashierController>().moneyPlaceList[i].tag = "full";
                 break;
             }
@@ -320,8 +360,21 @@ public class CustomerNavMesh : MonoBehaviour
 
     void MoveToExit()
     {
+        target.transform.tag = "empty";
         target = exit.transform;
 
        
+    }
+
+    void BirinciSiradaOlmayanCustomer()
+    {
+        for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
+        {
+            if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag=="empty")
+            {
+                target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
+                startShopping = true;
+            }
+        }
     }
 }
