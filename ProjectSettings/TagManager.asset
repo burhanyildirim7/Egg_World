@@ -30,6 +30,7 @@ TagManager:
   - spendTavukEgg
   - tavukEgg
   - Exit
+  - box
   layers:
   - Default
   - TransparentFX

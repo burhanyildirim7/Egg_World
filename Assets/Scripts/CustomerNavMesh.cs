@@ -28,6 +28,8 @@ public class CustomerNavMesh : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("spendEjderEgg").gameObject.transform;
+        exit = GameObject.FindGameObjectWithTag("Exit");
+        box = GameObject.FindGameObjectWithTag("box");
     }
 
     private void Update()
@@ -54,14 +56,20 @@ public class CustomerNavMesh : MonoBehaviour
                 CustomerCollectEgg(other.gameObject);
             }
         }
-      
 
-        if (other.gameObject.tag == "spendDevekusuEgg")
+        if (toplanmasiGerekenEgg < numberOfEjderEgg)
         {
-            Debug.Log("Temas var");
-   
-            CustomerCollectEgg(other.gameObject);
+            if (other.gameObject.tag == "spendDevekusuEgg")
+            {
+                Debug.Log("Temas var");
+
+                CustomerCollectEgg(other.gameObject);
+            }
         }
+
+
+
+    
 
         if (other.gameObject.tag=="Exit")
         {
@@ -72,7 +80,14 @@ public class CustomerNavMesh : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        
-        if (other.gameObject.tag == "spendEjderEgg" || other.gameObject.tag == "spendDevekusuEgg")
+        if (other.gameObject.tag == "spendEjderEgg" )
+        {
+            
+            navMeshAgent.speed = 0;
+            toplanmasiGerekenEgg = 0;
+        }
+
+        else if (other.gameObject.tag == "spendDevekusuEgg")
         {
             navMeshAgent.speed = 0;
             toplanmasiGerekenEgg = 0;
@@ -95,13 +110,16 @@ public class CustomerNavMesh : MonoBehaviour
         {
             if (toplanmasiGerekenEgg <numberOfEjderEgg)
             {
-                for (int i = 0; i < numberOfEjderEgg; i++)
+                for (int i = 0; i < otherObject.GetComponent<SpendBoxControl>().spendEggList.Count; i++)
                 {
                     if (otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent.tag == "full")
                     {
                         toplanmasiGerekenEgg++;
+                       
                         otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent.tag = "empty";
                         otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent = customerStackPosition.transform;
+                        customerEggList.Add(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
+                     
                         // otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalMove(new Vector3(0, 0, 0),1);
                         otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
 
@@ -111,9 +129,15 @@ public class CustomerNavMesh : MonoBehaviour
                                 
                                 StartCoroutine(MoveAnotherEggCollectPlace());
                             }
-
+                            else
+                            {
+                                otherObject.GetComponent<SpendBoxControl>().spendEggList.Remove(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
+                            }
                         });
-                        customerEggList.Add(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
+
+                      
+
+
                         delayTime = 0;
                         distanceY += 1.0f;
                         break;
