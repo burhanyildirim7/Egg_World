@@ -29,6 +29,7 @@ TagManager:
   - spendDevekusuEgg
   - spendTavukEgg
   - tavukEgg
+  - Exit
   layers:
   - Default
   - TransparentFX
