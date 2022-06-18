@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class CustomerNavMesh : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-   private Transform target;
+   public Transform target;
 
     public GameObject customerStackPosition;
     public GameObject money;
@@ -24,17 +24,21 @@ public class CustomerNavMesh : MonoBehaviour
 
     bool startShopping = false;
     public bool moveToCashier = false;
+    bool moveToExit = false;
     public GameObject box;
+
+    int moneyPlaceEmptyNumber;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("spendEjderEgg").gameObject.transform;
         exit = GameObject.FindGameObjectWithTag("Exit");
-       
+
     }
 
     private void Update()
     {
+
         MoveTarget();
 
         if (startShopping)
@@ -70,10 +74,15 @@ public class CustomerNavMesh : MonoBehaviour
 
             else
             {
-                BirinciSiradaOlmayanCustomer();
+                StartCoroutine(BirinciSiradaOlmayanCustomer());
             }
 
            
+        }
+
+        if (moveToExit)
+        {
+            target = exit.transform;
         }
        
 
@@ -104,7 +113,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     
 
-        if (other.gameObject.tag=="Exit")
+        if (other.gameObject.name == "Exit")
         {
             Destroy(gameObject);
         }
@@ -328,6 +337,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     IEnumerator TakeBoxAndLeave()
     {
+        Debug.Log("TakeBoxAndLeave Çalýþýyo");
         yield return new WaitForSeconds(1);
         box.gameObject.tag = "Untagged";
         startShopping = false;
@@ -335,56 +345,84 @@ public class CustomerNavMesh : MonoBehaviour
         box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => {
 
            
-            StartCoroutine(PayMoneyForBox());
+          
 
         
         });
+        yield return new WaitForSeconds(1);
+        StartCoroutine(PayMoneyForBox());
     }
 
 
 
     IEnumerator PayMoneyForBox()
     {
-   
+        moneyPlaceEmptyNumber = 0;
+        Debug.Log("PayMoneyForBox Çalýþýyo");
+        GetComponent<NavMeshAgent>().enabled = true;
         yield return new WaitForSeconds(1);
-        for (int i = 0; i < totalEggNumber; i++)
+
+
+        for (int i = moneyPlaceEmptyNumber; i < totalEggNumber; i++)
         {
+           
             GameObject cashier = GameObject.FindGameObjectWithTag("cashier");
+
+            for (int a = 0; a < cashier.GetComponent<CashierController>().moneyPlaceList.Count; a++)
+            {
+                if (cashier.GetComponent<CashierController>().moneyPlaceList[a].tag == "empty")
+                {
+                    moneyPlaceEmptyNumber++;
+                }
+            }
+
+
 
             if (cashier.GetComponent<CashierController>().moneyPlaceList[i].tag == "empty")
             {
+          
                 var spawnedMoney = Instantiate(money, transform.position, Quaternion.identity);
                 spawnedMoney.transform.localScale = new Vector3(200, 200, 200);
                 spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
                 spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
                 spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(()=> {
-                    GetComponent<NavMeshAgent>().enabled = true;
+                 
           
-                   StartCoroutine(MoveToExit());
+                  
                 
                 });
                 cashier.GetComponent<CashierController>().moneyPlaceList[i].tag = "full";
                 break;
             }
+
+          
         }
+        yield return new WaitForSeconds(0.1f);
+      MoveToExit();
+
     }
 
-    IEnumerator MoveToExit()
+    void MoveToExit()
     {
+        moveToExit = true;
+        Debug.Log("MoveToEXÝT Çalýþýyo");
         target.transform.tag = "empty";
-        yield return new WaitForSeconds(0.5f);
-        target = exit.transform;
-
        
+       
+
+
+
+
     }
 
-    void BirinciSiradaOlmayanCustomer()
+    IEnumerator BirinciSiradaOlmayanCustomer()
     {
         for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
         {
             if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag=="empty")
             {
                 target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
+                yield return new WaitForSeconds(1);
                moveToCashier = true;
             }
         }
