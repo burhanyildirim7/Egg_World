@@ -23,14 +23,14 @@ public class CustomerNavMesh : MonoBehaviour
     int totalEggNumber = 0;
 
     bool startShopping = false;
-    bool moveToCashier = false;
+    public bool moveToCashier = false;
     public GameObject box;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("spendEjderEgg").gameObject.transform;
         exit = GameObject.FindGameObjectWithTag("Exit");
-        box = GameObject.FindGameObjectWithTag("box");
+       
     }
 
     private void Update()
@@ -42,30 +42,38 @@ public class CustomerNavMesh : MonoBehaviour
             SendEggToBox();
 
         }
-
+        
         if (moveToCashier)
         {
-            if (!navMeshAgent.pathPending)
+            if (target.name == "1.Line")
             {
-                if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+                if (!navMeshAgent.pathPending)
                 {
-                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                    if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                     {
-
-                        if (target.name=="1.Line")
+                        if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
                         {
+
+
+                            box = GameObject.FindGameObjectWithTag("box");
                             Debug.Log("alýþveriþ Yapabilir");
+
                             startShopping = true;
-                        }
+                            moveToCashier = false;
 
-                        else
-                        {
-                            BirinciSiradaOlmayanCustomer();
                         }
-
                     }
                 }
+
+              
             }
+
+            else
+            {
+                BirinciSiradaOlmayanCustomer();
+            }
+
+           
         }
        
 
@@ -214,6 +222,7 @@ public class CustomerNavMesh : MonoBehaviour
 
         if (target == GameObject.FindGameObjectWithTag("spendDevekusuEgg").gameObject.transform)
         {
+
             MoveToCashier();
 
 
@@ -273,6 +282,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     void ShoppingStart()
     {
+
         delayTime += Time.deltaTime;
 
         if (delayTime >= 1)
@@ -280,12 +290,12 @@ public class CustomerNavMesh : MonoBehaviour
             if (customerEggList.Count <= 0)
             {
                 //canTakeBox = true;
-       
+                GetComponent<NavMeshAgent>().enabled = false;
                 box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
                 box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 0), 1).OnComplete(() => {
 
                    
-                    TakeBoxAndLeave();
+                    StartCoroutine(TakeBoxAndLeave());
 
 
                 });
@@ -299,9 +309,8 @@ public class CustomerNavMesh : MonoBehaviour
 
 
                 {
-                  
 
-
+                
 
 
                 });
@@ -317,14 +326,15 @@ public class CustomerNavMesh : MonoBehaviour
     
 }
 
-    void TakeBoxAndLeave()
+    IEnumerator TakeBoxAndLeave()
     {
-     
+        yield return new WaitForSeconds(1);
+        box.gameObject.tag = "Untagged";
         startShopping = false;
         box.transform.parent = customerStackPosition.transform;
         box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => {
 
-            
+           
             StartCoroutine(PayMoneyForBox());
 
         
@@ -348,8 +358,9 @@ public class CustomerNavMesh : MonoBehaviour
                 spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
                 spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
                 spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(()=> {
-                    
-                    MoveToExit();
+                    GetComponent<NavMeshAgent>().enabled = true;
+          
+                   StartCoroutine(MoveToExit());
                 
                 });
                 cashier.GetComponent<CashierController>().moneyPlaceList[i].tag = "full";
@@ -358,9 +369,10 @@ public class CustomerNavMesh : MonoBehaviour
         }
     }
 
-    void MoveToExit()
+    IEnumerator MoveToExit()
     {
         target.transform.tag = "empty";
+        yield return new WaitForSeconds(0.5f);
         target = exit.transform;
 
        
@@ -373,7 +385,7 @@ public class CustomerNavMesh : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag=="empty")
             {
                 target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
-                startShopping = true;
+               moveToCashier = true;
             }
         }
     }
