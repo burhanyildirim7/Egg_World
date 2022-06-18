@@ -111,6 +111,8 @@ public class CustomerNavMesh : MonoBehaviour
 
 
 
+
+
     
 
         if (other.gameObject.name == "Exit")

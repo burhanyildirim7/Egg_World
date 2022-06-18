@@ -62,16 +62,12 @@ public class CustomerController : MonoBehaviour
             
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x,0, target.transform.position.z), 5 * Time.deltaTime);
             customerAnim.SetBool("run", true);
-            transform.LookAt(target);
-
-           
+            transform.LookAt(target);       
         }
         else
         {
             canWalk = false;
             customerAnim.SetBool("run", false);
-
-           
         }
 
     }
