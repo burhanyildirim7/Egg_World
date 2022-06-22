@@ -94,7 +94,6 @@ public class CollectControl : MonoBehaviour
         if (other.gameObject.tag == "spendTavukEgg")
         {
             MoveTavukEggsToSpend(other.gameObject);
-            Debug.Log("Temas Var");
         }
 
         if (other.gameObject.tag == "collect")

@@ -327,10 +327,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45009234ea4538a45a3d2e5f3542793e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   customerStackPosition: {fileID: 935324523469429643}
   money: {fileID: 919132149155446097, guid: 4790b158956b99e48ab2d0b2d1fbbbad, type: 3}
-  exit: {fileID: 0}
   box: {fileID: 0}
+  exit: {fileID: 0}
+  spendEggList: []
+  moveToCashier: 0
 --- !u!195 &4531447941716957473
 NavMeshAgent:
   m_ObjectHideFlags: 0
