@@ -24,16 +24,20 @@ public class CashierController : MonoBehaviour
         else
         {
             time += Time.deltaTime;
-            if (time >= 2)
+            if (time >= 3)
             {
                 var spawnedBox = Instantiate(box, new Vector3(-1.4f, 0.66f, 0), Quaternion.identity);
                 spawnedBox.transform.parent = transform;
                 spawnedBox.transform.tag = "box";
-                spawnedBox.transform.localScale = new Vector3(0.4f, 0.2f, 0.4f);
+                spawnedBox.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 spawnedBox.transform.localPosition = new Vector3(-1.4f, 0.66f, 0);
                 time = 0;
             }
            
         }
+
+
+
+   
     }
 }

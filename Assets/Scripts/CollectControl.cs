@@ -36,6 +36,9 @@ public class CollectControl : MonoBehaviour
     void Update()
     {
         IsPlayerMove();
+
+      
+
         UIController.instance.tapToStartScoreText.text = "" + totalMoney;
         UIController.instance.gamePlayScoreText.text = "" + totalMoney;
         if (eggList.Count == eggStackTransform.Count)
@@ -63,6 +66,12 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "money")
         {
+          
+            if (other.gameObject.transform.parent != null)
+            {
+                other.gameObject.transform.parent.tag = "empty";
+            }
+           
             totalMoney += 100;
             UIController.instance.CoinEffect();
             Destroy(other.gameObject);

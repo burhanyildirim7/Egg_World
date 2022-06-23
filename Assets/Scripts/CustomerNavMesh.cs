@@ -400,8 +400,7 @@ public class CustomerNavMesh : MonoBehaviour
                 {
 
 
-                    box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, -90), 1);
-                    box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 90), 1).OnComplete(() => ShoppingStart());
+                    ShoppingStart();
 
                 }
             }
@@ -420,6 +419,10 @@ public class CustomerNavMesh : MonoBehaviour
             {
                 //canTakeBox = true;
                 GetComponent<NavMeshAgent>().enabled = false;
+                Debug.Log("Animasyon oynadý");
+                StartCoroutine(TakeBoxAndLeave());
+
+                /*
                 box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
                 box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 0), 1).OnComplete(() => {
 
@@ -428,6 +431,7 @@ public class CustomerNavMesh : MonoBehaviour
 
 
                 });
+                */
 
 
             }
@@ -463,6 +467,8 @@ public class CustomerNavMesh : MonoBehaviour
         box.gameObject.tag = "Untagged";
         startShopping = false;
         box.transform.parent = customerStackPosition.transform;
+        box.GetComponent<Animator>().enabled = true;
+        yield return new WaitForSeconds(2);
         box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => {
 
            
