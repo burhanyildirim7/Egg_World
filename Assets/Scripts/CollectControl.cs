@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class CollectControl : MonoBehaviour
 {
+
+    Vector3 lastPos;
+    public bool isPlayerMove;
     public int totalMoney = 100;
     public float eggSpawnTime;
     public float eggMoveToPlayerTime;
@@ -32,6 +35,7 @@ public class CollectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsPlayerMove();
         UIController.instance.tapToStartScoreText.text = "" + totalMoney;
         UIController.instance.gamePlayScoreText.text = "" + totalMoney;
         if (eggList.Count == eggStackTransform.Count)
@@ -121,10 +125,6 @@ public class CollectControl : MonoBehaviour
             MoveTavukEggsToSpend(other.gameObject);
         }
 
-        if (other.gameObject.tag == "collect")
-        {
-            //MoveEggToSepet(other.gameObject);
-        }
     }
 
 
@@ -416,6 +416,23 @@ public class CollectControl : MonoBehaviour
             eggList.Remove(eggList[eggList.Count - 1]);
 
         }
+    }
+
+    void IsPlayerMove()
+    {
+
+     
+            if (transform.position != lastPos)
+            {
+            isPlayerMove = true;
+            }
+            else
+            {
+            isPlayerMove = false;
+            }
+
+            lastPos = transform.position;
+      
     }
 
 }
