@@ -17,6 +17,8 @@ public class CollectControl : MonoBehaviour
     public List<GameObject> eggStackTransform = new List<GameObject>();
     public List<GameObject> eggSpendTransform = new List<GameObject>();
 
+    string nameOfEggSpawnPlace;
+
 
     int number = 0;
 
@@ -62,13 +64,36 @@ public class CollectControl : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "tavukEgg" || other.gameObject.tag == "timsahEgg" || other.gameObject.tag == "devekusuEgg" || other.gameObject.tag == "ejderEgg")
+        if (other.gameObject.tag == "tavukEgg")
         {
-
+            nameOfEggSpawnPlace = "tavukEggSpawn";
             MoveEggToSepet(other.gameObject);
         }
 
+        if (other.gameObject.tag == "timsahEgg")
+        {
+            nameOfEggSpawnPlace = "timsahEggSpawn";
+            MoveEggToSepet(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "devekusuEgg")
+        {
+            nameOfEggSpawnPlace = "devekusuEggSpawn";
+            MoveEggToSepet(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "ejderEgg")
+        {
+            nameOfEggSpawnPlace = "ejderEggSpawn";
+            MoveEggToSepet(other.gameObject);
+        }
+
+
+      
+
     }
+
+
     void OnTriggerStay(Collider other)
     {
 
@@ -113,7 +138,8 @@ public class CollectControl : MonoBehaviour
             {
                 eggStackTransform[i].tag = "full";
                 eggList.Add(otherObject);
-                GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+              
+                GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;

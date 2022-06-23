@@ -84,10 +84,10 @@ public class CustomerNavMesh : MonoBehaviour
 
             if (chooseRandomSpendEgg == i)
             {
-                Debug.Log("Çalýþýyor");
+               
                 if (spendEggList[i] != null)
                 {
-                    Debug.Log("Doðru");
+                   
                     target = spendEggList[i].transform;
                     //canMove = true;
 
@@ -130,7 +130,7 @@ public class CustomerNavMesh : MonoBehaviour
 
 
                                 box = GameObject.FindGameObjectWithTag("box");
-                                Debug.Log("alýþveriþ Yapabilir");
+                        
 
                                 startShopping = true;
                                 moveToCashier = false;
@@ -167,7 +167,7 @@ public class CustomerNavMesh : MonoBehaviour
         {
             if (customerlineList[i].name == target.name)
             {
-                Debug.Log("Sýra Numarasý = " + i);
+              
 
                 if (i != 0)
                 {
@@ -198,7 +198,7 @@ public class CustomerNavMesh : MonoBehaviour
         {
             if (other.gameObject.tag == "spendDevekusuEgg")
             {
-                Debug.Log("Temas var");
+            
 
                 CustomerCollectEgg(other.gameObject);
             }
@@ -208,7 +208,7 @@ public class CustomerNavMesh : MonoBehaviour
         {
             if (other.gameObject.tag == "spendTavukEgg")
             {
-                Debug.Log("Temas var");
+           
 
                 CustomerCollectEgg(other.gameObject);
             }
@@ -218,7 +218,7 @@ public class CustomerNavMesh : MonoBehaviour
         {
             if (other.gameObject.tag == "spendTimsahEgg")
             {
-                Debug.Log("Temas var");
+          
 
                 CustomerCollectEgg(other.gameObject);
             }
@@ -297,7 +297,7 @@ public class CustomerNavMesh : MonoBehaviour
                                otherObject.GetComponent<SpendBoxControl>().spendEggList.Remove(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
                             if (toplanmasiGerekenEgg >= toplanacakEgg)
                             {
-                                Debug.Log("Gitti aslýnda");
+                               
                                 
                                 StartCoroutine(MoveAnotherEggCollectPlace());
                             }
@@ -458,7 +458,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     IEnumerator TakeBoxAndLeave()
     {
-        Debug.Log("TakeBoxAndLeave Çalýþýyo");
+       
         yield return new WaitForSeconds(1);
         box.gameObject.tag = "Untagged";
         startShopping = false;
@@ -479,7 +479,7 @@ public class CustomerNavMesh : MonoBehaviour
     IEnumerator PayMoneyForBox()
     {
         moneyPlaceEmptyNumber = 0;
-        Debug.Log("PayMoneyForBox Çalýþýyo");
+    
         GetComponent<NavMeshAgent>().enabled = true;
         yield return new WaitForSeconds(1);
 
@@ -526,7 +526,7 @@ public class CustomerNavMesh : MonoBehaviour
     void MoveToExit()
     {
         moveToExit = true;
-        Debug.Log("MoveToEXÝT Çalýþýyo");
+       
         target.transform.tag = "empty";
        
        

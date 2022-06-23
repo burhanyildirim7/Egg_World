@@ -31,6 +31,10 @@ TagManager:
   - tavukEgg
   - Exit
   - box
+  - devekusuEggSpawn
+  - ejderEggSpawn
+  - tavukEggSpawn
+  - timsahEggSpawn
   layers:
   - Default
   - TransparentFX
