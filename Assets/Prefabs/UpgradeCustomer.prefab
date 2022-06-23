@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   customerStackPosition: {fileID: 935324523469429643}
-  money: {fileID: 919132149155446097, guid: 4790b158956b99e48ab2d0b2d1fbbbad, type: 3}
+  money: {fileID: 1570451880508860631, guid: 6b402b292a72e464ab2c63522e2c645e, type: 3}
   box: {fileID: 0}
   exit: {fileID: 0}
   customerlineList: []

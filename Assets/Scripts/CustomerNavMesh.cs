@@ -439,7 +439,7 @@ public class CustomerNavMesh : MonoBehaviour
             {
                 totalEggNumber++;
              
-                customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position, 3, 1, 1).OnComplete(() =>
+                customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position+Vector3.up/4, 3, 1, 1).OnComplete(() =>
 
 
                 {
@@ -510,6 +510,7 @@ public class CustomerNavMesh : MonoBehaviour
           
                 var spawnedMoney = Instantiate(money, transform.position, Quaternion.identity);
                 spawnedMoney.transform.localScale = new Vector3(200, 200, 200);
+                spawnedMoney.GetComponent<BoxCollider>().size = new Vector3(0.02f, 0.002f, 0.0008f);
                 spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
                 spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
                 spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(()=> {
