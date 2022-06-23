@@ -332,6 +332,7 @@ MonoBehaviour:
   money: {fileID: 919132149155446097, guid: 4790b158956b99e48ab2d0b2d1fbbbad, type: 3}
   box: {fileID: 0}
   exit: {fileID: 0}
+  customerlineList: []
   spendEggList: []
   moveToCashier: 0
 --- !u!195 &4531447941716957473

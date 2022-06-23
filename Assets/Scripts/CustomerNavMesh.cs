@@ -14,7 +14,7 @@ public class CustomerNavMesh : MonoBehaviour
     public GameObject box;
     public GameObject exit;
 
-
+    int lineNumber;
    
     List<GameObject> customerEggList = new List<GameObject>();
 
@@ -37,6 +37,10 @@ public class CustomerNavMesh : MonoBehaviour
      GameObject spendTavukEgg;
      GameObject spendTimsahEgg;
 
+     GameObject cashier;
+
+    public List<GameObject> customerlineList = new List<GameObject>();
+
     public List<GameObject> spendEggList = new List<GameObject>();
 
     bool startShopping = false;
@@ -54,7 +58,12 @@ public class CustomerNavMesh : MonoBehaviour
 
     private void Start()
     {
-  
+        cashier = GameObject.FindGameObjectWithTag("cashier");
+
+        for (int i = 0; i < cashier.GetComponent<CashierController>().lineList.Count; i++)
+        {
+            customerlineList.Add(cashier.GetComponent<CashierController>().lineList[i].gameObject);
+        }
 
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendEjderEgg"));
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendDevekusuEgg"));
@@ -133,10 +142,12 @@ public class CustomerNavMesh : MonoBehaviour
 
                 }
 
-                else
-                {
-                    StartCoroutine(BirinciSiradaOlmayanCustomer());
-                }
+            else
+            {
+                BirSiraIleriKay();
+            }
+
+             
 
 
             }
@@ -147,6 +158,29 @@ public class CustomerNavMesh : MonoBehaviour
             }
 
         
+    }
+
+    public void BirSiraIleriKay()
+    {
+
+        for (int i = 0; i < customerlineList.Count; i++)
+        {
+            if (customerlineList[i].name == target.name)
+            {
+                Debug.Log("Sýra Numarasý = " + i);
+
+                if (i != 0)
+                {
+                    if (customerlineList[i - 1 ].tag == "empty")
+                    {
+                        customerlineList[i].transform.tag = "empty";
+                        target = customerlineList[i - 1].transform;
+                        customerlineList[i - 1].tag = "full";
+                        moveToCashier = true;
+                    }
+                }
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -450,7 +484,7 @@ public class CustomerNavMesh : MonoBehaviour
         yield return new WaitForSeconds(1);
 
 
-        for (int i = moneyPlaceEmptyNumber; i < totalEggNumber; i++)
+        for (int i = moneyPlaceEmptyNumber; i < cashier.GetComponent<CashierController>().moneyPlaceList.Count; i++)
         {
            
             GameObject cashier = GameObject.FindGameObjectWithTag("cashier");
@@ -502,26 +536,6 @@ public class CustomerNavMesh : MonoBehaviour
 
     }
 
-    IEnumerator BirinciSiradaOlmayanCustomer()
-    {
-        
-        for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
-        {
-            if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag=="empty")
-            {
-                GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag = "full";
-                target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
-                yield return new WaitForSeconds(0.5f);
-                break;
-               moveToCashier = true;
-            }
-      
-            
-          
-        }
-        
-
-    }
 
     void MoveToCashier()
     {
