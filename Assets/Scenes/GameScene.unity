@@ -12209,6 +12209,18 @@ PrefabInstance:
       propertyPath: "ejderK\xFCmes"
       value: 
       objectReference: {fileID: 1849992435}
+    - target: {fileID: 8705427499762665961, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
+      propertyPath: "tavukK\xFCmes"
+      value: 
+      objectReference: {fileID: 181663950}
+    - target: {fileID: 8705427499762665961, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
+      propertyPath: "timsahK\xFCmes"
+      value: 
+      objectReference: {fileID: 1263016478}
+    - target: {fileID: 8705427499762665961, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
+      propertyPath: "devekusuK\xFCmes"
+      value: 
+      objectReference: {fileID: 119325142}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
 --- !u!1 &7538796939374738963

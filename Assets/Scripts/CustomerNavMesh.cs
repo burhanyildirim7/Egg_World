@@ -354,25 +354,7 @@ public class CustomerNavMesh : MonoBehaviour
 
 
 
-    void MoveToCashier()
-    {
-        for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
-        {
-            if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag == "empty")
-            {
-                GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag = "full";
-                target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
-             
-                break;
-            }
-        }
-
-        moveToCashier = true;
-
-       
-       
-
-    }
+   
 
     void SendEggToBox()
     {
@@ -522,14 +504,42 @@ public class CustomerNavMesh : MonoBehaviour
 
     IEnumerator BirinciSiradaOlmayanCustomer()
     {
+        
         for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
         {
             if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag=="empty")
             {
+                GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag = "full";
                 target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
+                break;
                moveToCashier = true;
             }
+      
+            
+          
         }
+        
+
+    }
+
+    void MoveToCashier()
+    {
+        for (int i = 0; i < GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList.Count; i++)
+        {
+            if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag == "empty")
+            {
+                GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag = "full";
+                target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
+
+                break;
+            }
+        }
+
+          moveToCashier = true;
+     
+
+
+
     }
 }

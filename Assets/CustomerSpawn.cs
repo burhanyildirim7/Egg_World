@@ -10,6 +10,8 @@ public class CustomerSpawn : MonoBehaviour
 
     public GameObject ejderKümes;
     public GameObject devekusuKümes;
+    public GameObject timsahKümes;
+    public GameObject tavukKümes;
 
     bool canCustomerSpawn = false;
     void Start()
@@ -20,7 +22,7 @@ public class CustomerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ejderKümes.activeSelf)
+        if (ejderKümes.activeSelf || devekusuKümes.activeSelf || timsahKümes.activeSelf || tavukKümes.activeSelf)
         {
             canCustomerSpawn = true;
         }
