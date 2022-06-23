@@ -144,7 +144,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 2, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3456895078319981244
 GameObject:
@@ -222,7 +222,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 2, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3456895078508583811
 GameObject:
@@ -322,11 +322,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3456895078508583811}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5157309, y: 5, z: 0.9656724}
-  m_Center: {x: 0.030071259, y: 1.9999999, z: -0.017163834}
+  m_Size: {x: 1.5607452, y: 20.853167, z: 0.9656724}
+  m_Center: {x: 0.007564068, y: 9.926584, z: -0.017163834}
 --- !u!114 &3456895078508583868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 2, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3456895079511410708
 GameObject:
@@ -662,8 +662,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5049032948309972686, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5049032948309972686, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 281855664364225751, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 281855664364225751, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -674,8 +682,16 @@ PrefabInstance:
       value: ejder-devekusu_tezgah_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 921391927218321214, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 921391927218321214, guid: 8c3f3a4aefc4c22439166c6237d8e8ef, type: 3}
       propertyPath: m_StaticEditorFlags
