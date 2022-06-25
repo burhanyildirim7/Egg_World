@@ -250,6 +250,7 @@ public class CustomerNavMesh : MonoBehaviour
         {
             navMeshAgent.speed = 0;
             toplanmasiGerekenEgg = 0;
+            Debug.Log("Temas Var");
         }
 
         else if (other.gameObject.tag == "spendTavukEgg" && target == GameObject.FindGameObjectWithTag("spendTavukEgg"))
