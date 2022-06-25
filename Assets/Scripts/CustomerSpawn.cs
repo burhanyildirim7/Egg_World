@@ -22,7 +22,7 @@ public class CustomerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ejderKümes.activeSelf || devekusuKümes.activeSelf || timsahKümes.activeSelf || tavukKümes.activeSelf)
+        if (ejderKümes.transform.GetChild(0).gameObject.activeSelf || devekusuKümes.transform.GetChild(0).gameObject.activeSelf || timsahKümes.transform.GetChild(0).gameObject.activeSelf || tavukKümes.transform.GetChild(0).gameObject.activeSelf)
         {
             canCustomerSpawn = true;
         }

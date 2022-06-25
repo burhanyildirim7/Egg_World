@@ -7,7 +7,10 @@ public class BuyText : MonoBehaviour
 {
     Text buyText;
     int buyPrice = 100;
-    public GameObject openSpendBox;
+    public GameObject openNextLevelTezgah1;
+    public GameObject openNextLevelTezgah2;
+    public GameObject openNextLevelTezgah3;
+    public GameObject openNextLevelTezgah4;
     
     void Start()
     {
@@ -23,8 +26,29 @@ public class BuyText : MonoBehaviour
 
         if (buyPrice <= 0)
         {
-            openSpendBox.SetActive(true);
-            Destroy(gameObject);
+            if (gameObject.name == "ToLevel1")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                Destroy(gameObject);
+            }
+            else if (gameObject.name == "ToLevel2")
+            {
+                openNextLevelTezgah2.SetActive(true);
+                Destroy(openNextLevelTezgah1);
+                Destroy(gameObject);
+            }
+            else if (gameObject.name == "ToLevel3")
+            {
+                openNextLevelTezgah3.SetActive(true);
+                Destroy(openNextLevelTezgah2);
+                Destroy(gameObject);
+            }
+            else if (gameObject.name == "ToLevel4")
+            {
+                openNextLevelTezgah4.SetActive(true);
+                Destroy(openNextLevelTezgah3);
+                Destroy(gameObject);
+            }
         }
     }
 
