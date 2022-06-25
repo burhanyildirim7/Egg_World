@@ -49,6 +49,16 @@ public class BuyText : MonoBehaviour
                 Destroy(openNextLevelTezgah3);
                 Destroy(gameObject);
             }
+
+            else if (gameObject.name == "OpenToResarchPlace")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(true);
+                Destroy(gameObject);
+
+            }
+
+           
         }
     }
 

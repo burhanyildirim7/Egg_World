@@ -29,7 +29,7 @@ public class AnimalsController : MonoBehaviour
         if (canPickNumberForAnim)
         {
 
-            randomNumbersForAnim = Random.Range(0, 2);
+            randomNumbersForAnim = 1;
             canPickNumberForAnim = false;
         }
       
@@ -44,15 +44,10 @@ public class AnimalsController : MonoBehaviour
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, target,5*Time.deltaTime);
             timsahAnim.SetBool("canWalk", true);
 
-            Vector3 relativePos = transform.localPosition - target;
-
-            // the second argument, upwards, defaults to Vector3.up
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up*180);
-          
-            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y+180, 0);
+            //TurnToTarget();
 
 
-            if (transform.localPosition == target)
+            if (delayTime >= 10)
             {
                 Debug.Log("Geldi");
                 timsahAnim.SetBool("canWalk", false);
@@ -96,8 +91,47 @@ public class AnimalsController : MonoBehaviour
             target = new Vector3(Random.Range(-36, 8.5f), transform.localPosition.y, Random.Range(12, 20.5f));
         }
 
+        else if (gameObject.name == "tavukPref")
+        {
+            GetComponent<TavukController>().target.localPosition = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+        }
+
     }
+    /*
+    public void TurnToTarget()
+    {
 
+        if (gameObject.name == "timsahPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
 
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
 
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.name == "kazPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.name == "tavukPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation;
+            
+        }
+
+    }
+    */
 }

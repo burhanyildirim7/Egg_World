@@ -35,6 +35,12 @@ TagManager:
   - ejderEggSpawn
   - tavukEggSpawn
   - timsahEggSpawn
+  - "waitTavukK\xFCmes"
+  - "k\xFCmesDoor"
+  - "tavukK\xFCmes"
+  - kaydirakBas
+  - kaydirakOrta
+  - kaydirakSon
   layers:
   - Default
   - TransparentFX
@@ -42,9 +48,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - door
+  - Player
+  - chicken
   - 
   - 
   - 
