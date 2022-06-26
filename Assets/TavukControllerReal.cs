@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class KazController : MonoBehaviour
+public class TavukControllerReal : MonoBehaviour
 {
-    Animator kazAnim;
-    GameObject devekusuEggSpawn;
+    Animator timsahAnim;
+    GameObject tavukEggSpawn;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -18,20 +18,19 @@ public class KazController : MonoBehaviour
     public GameObject IsKumesEmpty;
     float randomTime;
 
-
+    [SerializeField] bool walk, idle;
     void Start()
     {
-        kazAnim = GetComponent<Animator>();
+        timsahAnim = GetComponent<Animator>();
 
-         randomTime = Random.Range(5, 17);
-        
-         kazAnim.SetBool("canIdle", true);
-        
+        randomTime = Random.Range(5, 17);
+        walk = false;
+        idle = true;
         ChooseRandomTarget();
 
-        devekusuEggSpawn = GameObject.FindGameObjectWithTag("devekusuEggSpawn");
+        tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
 
-        target = new Vector3(Random.Range(-1.6f, -1f), transform.localPosition.y, Random.Range(-4f, -2.5f));
+        target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
 
     }
 
@@ -55,7 +54,7 @@ public class KazController : MonoBehaviour
             {
                 IsKumesEmpty.tag = "full";
                 goToKumes = true;
-                target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = new Vector3(0, -3.7f, 11);
                 timeToKumes = 0;
                 canDo = false;
             }
@@ -63,7 +62,18 @@ public class KazController : MonoBehaviour
         }
 
 
-   
+        if (idle)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+            idle = false;
+        }
+        else if (walk)
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+            walk = false;
+        }
 
 
     }
@@ -85,11 +95,10 @@ public class KazController : MonoBehaviour
 
 
 
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 1 * Time.deltaTime);
-
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
             //timsahAnim.SetBool("canWalk", true);
-             kazAnim.SetBool("canIdle", false);
-             kazAnim.SetBool("canWalk", true);
+            walk = true;
+            idle = false;
 
 
             TurnToTarget();
@@ -97,9 +106,9 @@ public class KazController : MonoBehaviour
 
             if (delayTime >= 5)
             {
-
-                kazAnim.SetBool("canIdle", true);
-                kazAnim.SetBool("canWalk", false);
+                Debug.Log("Geldi");
+                walk = false;
+                idle = true;
 
 
                 ChooseRandomTarget();
@@ -110,8 +119,8 @@ public class KazController : MonoBehaviour
 
         else if (delayTime >= 4 && randomNumbersForAnim == 1)
         {
-            kazAnim.SetBool("canIdle", true);
-            kazAnim.SetBool("canWalk", false);
+            walk = false;
+            idle = true;
 
 
 
@@ -140,9 +149,9 @@ public class KazController : MonoBehaviour
             target = new Vector3(Random.Range(-22, 20), transform.localPosition.y, Random.Range(-25, 15));
         }
 
-        else if (gameObject.tag == "kazPref")
+        else if (gameObject.name == "kazPref")
         {
-            target = new Vector3(Random.Range(-1.7f, 1f), transform.localPosition.y, Random.Range(-4f, -2.5f));
+            target = new Vector3(Random.Range(-36, 8.5f), transform.localPosition.y, Random.Range(12, 20.5f));
         }
 
         else if (gameObject.tag == "tavukPref")
@@ -165,7 +174,7 @@ public class KazController : MonoBehaviour
             transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
         }
 
-        else if (gameObject.tag == "kazPref")
+        else if (gameObject.name == "kazPref")
         {
             Vector3 relativePos = transform.localPosition - target;
 
@@ -192,60 +201,53 @@ public class KazController : MonoBehaviour
     {
         //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
 
-        kazAnim.SetBool("canIdle", false);
-        kazAnim.SetBool("canWalk", true);
-
-
-
-
-
+        idle = false;
+        walk = true;
         TurnToTarget();
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 1 * Time.deltaTime);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
 
-        if (transform.localPosition == new Vector3(-0.5f, -0.6f, -2.3f))
+        if (transform.localPosition == new Vector3(0, -3.7f, 11))
         {
 
-            target = new Vector3(-0.5f, 0.2f, -0.67f);
+            target = new Vector3(0, 0.7f, 3);
 
 
         }
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, -0.67f))
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3))
         {
-            target = new Vector3(-0.5f, 0.2f, 0.287f);
-            devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
-            devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
-            devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            target = new Vector3(0, 0.7f, -1);
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, 0.287f))
+        else if (transform.localPosition == new Vector3(0, 0.7f, -1f))
         {
 
             delayTime += Time.deltaTime;
 
             if (delayTime >= 8)
             {
-                target = new Vector3(-0.5f, 0.2f, -0.72f);
+                target = new Vector3(0, 0.7f, 3.2f);
 
 
 
             }
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, -0.72f))
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3.2f))
         {
-            target = new Vector3(-0.5f, -0.6f, -2.5f);
-            Debug.Log("Ulasti");
+            target = new Vector3(0, -3.7f, 11.2f);
+            Debug.Log("Ulaþtý");
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, -0.6f, -2.5f))
+        else if (transform.localPosition == new Vector3(0, -3.7f, 11.2f))
         {
             IsKumesEmpty.tag = "empty";
-            devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             goToKumes = false;
             canDo = true;
 
         }
-
-        
     }
 }

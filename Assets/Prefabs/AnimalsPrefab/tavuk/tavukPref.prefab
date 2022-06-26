@@ -64,15 +64,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116201612201111650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69998e51b3d598d4a913c68dafda8f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  "k\xFCmesDoor": {fileID: 0}
-  tavukEgg: {fileID: 8205041150221042374, guid: 013cdcfecb924f44ca0c5fb8cbb622f3, type: 3}
-  tavukEggSpawn: {fileID: 0}
+  IsKumesEmpty: {fileID: 0}
   walk: 0
   idle: 0
 --- !u!1001 &2117631268362992858

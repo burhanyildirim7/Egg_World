@@ -1,48 +1,65 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using DG.Tweening;
-
-public class TavukController : MonoBehaviour
+public class AnimalsController : MonoBehaviour
 {
-    public Transform target;
-    private NavMeshAgent tavukNavMeshAgent;
-    public GameObject kümesDoor;
-    public GameObject tavukEgg;
+    Animator timsahAnim;
+    GameObject tavukEggSpawn;
+    int randomNumbersForAnim;
+    float delayTime;
+    Vector3 target;
+    bool canPickNumberForAnim;
+    bool goToKumes = false;
+    float timeToKumes;
     bool canDo = true;
-    bool startTime = false;
-    bool kuluckaTime = false;
-    float timeToGoKümes = 0;
-    float delayTime = 0;
-    public GameObject tavukEggSpawn;
+    public GameObject IsKumesEmpty;
+    float randomTime;
 
     [SerializeField] bool walk, idle;
     void Start()
     {
+        timsahAnim = GetComponent<Animator>();
+
+        randomTime = Random.Range(5, 17);
         walk = false;
-        idle = false;
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
+        idle = true;
+        ChooseRandomTarget();
+
         tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
-        tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
 
+        target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
 
-        tavukNavMeshAgent = GetComponent<NavMeshAgent>();
-        kümesDoor = GameObject.FindGameObjectWithTag("kümesDoor");
-        target = GameObject.FindGameObjectWithTag("waitTavukKümes").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!goToKumes)
+        {
+            ChooseRandomAnimFunction();
+            timeToKumes += Time.deltaTime;
+        }
+        else
+        {
 
-       // Vector3 relativePos = transform.position - target.position;
+            KumesCheck();
+        }
 
-        // the second argument, upwards, defaults to Vector3.up
-        Quaternion rotation = Quaternion.LookRotation(target.position, Vector3.up * 180);
+        if (canDo && timeToKumes >= randomTime)
+        {
+            if (IsKumesEmpty.tag == "empty")
+            {
+                IsKumesEmpty.tag = "full";
+                goToKumes = true;
+                target = new Vector3(0, -3.7f, 11);
+                timeToKumes = 0;
+                canDo = false;
+            }
+            timeToKumes = 0;
+        }
 
-        transform.rotation = rotation;
+
         if (idle)
         {
             transform.GetChild(0).gameObject.SetActive(true);
@@ -57,149 +74,181 @@ public class TavukController : MonoBehaviour
         }
 
 
-
-        if (startTime)
-        {
-            StartTime();
-        }
-
-        if (kuluckaTime)
-        {
-            KuluckaFunction();
-        }
-        else
-        {
-       
-            tavukNavMeshAgent.destination = target.position;
-
-      
-        }
-
-
-
-        if (target.name == "GameObject")
-        {
-            if (!tavukNavMeshAgent.pathPending)
-            {
-                if (tavukNavMeshAgent.remainingDistance <= tavukNavMeshAgent.stoppingDistance)
-                {
-                    if (!tavukNavMeshAgent.hasPath || tavukNavMeshAgent.velocity.sqrMagnitude == 0f)
-                    {
-                        Debug.Log("Vardý");
-                        OpenKümesDoorFunction();
-                        transform.parent = GameObject.FindGameObjectWithTag("tavukKümes").transform;
-
-                    }
-                   
-                }
-            }
-            else
-            {
-                walk = true;
-            }
-
-
-
-        }
-     
     }
 
-    void OpenKümesDoorFunction()
+    void ChooseRandomAnimFunction()
     {
-        kümesDoor.transform.DOLocalRotate(new Vector3(0,0,179),1).OnComplete(()=> StartCoroutine(EnterKümesFunction()));
-    }
-    
-    IEnumerator EnterKümesFunction()
-    {
-      
-        if (canDo)
+        if (canPickNumberForAnim)
         {
-            
-            target.localPosition = new Vector3(Random.Range(-5, 5), 0, Random.Range(11, 20));
-            tavukNavMeshAgent.speed = 3;
 
-            if (!tavukNavMeshAgent.pathPending)
-            {
-                if (tavukNavMeshAgent.remainingDistance <= tavukNavMeshAgent.stoppingDistance)
-                {
-                    if (!tavukNavMeshAgent.hasPath || tavukNavMeshAgent.velocity.sqrMagnitude == 0f)
-                    {
-                      
-                  
-                        yield return new WaitForSeconds(2);
-
-
-                        idle = true;
-                        startTime = true;
-
-                    }
-                  
-                }
-            }
-            else
-            {
-                walk = true;
-            }
-            canDo = false;
+            randomNumbersForAnim = Random.Range(0, 2);
+            canPickNumberForAnim = false;
         }
-    }
 
-    void TurnAI()
-    {
-        /*
+
         delayTime += Time.deltaTime;
-        if (delayTime >= 4)
+        if (delayTime >= 4 && randomNumbersForAnim == 0)
         {
-            target.localPosition = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
-            delayTime = 0;
-        }
-        */
-    }
 
 
-    void StartTime()
-    {
 
 
-        tavukNavMeshAgent.enabled = false;
-        kümesDoor.transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
-
-        timeToGoKümes += Time.deltaTime;
-
-        if (timeToGoKümes >= 10)
-        {
-            gameObject.AddComponent<CurveMovement>();
-            gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0, -1.8f, 10), new Vector3(0, -0.93f, 8.18f), new Vector3(0, 0.72f, 5.68f), new Vector3(0, 1.67f, 4.41f), new Vector3(0, 1.67f, 1.54f));
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
+            //timsahAnim.SetBool("canWalk", true);
             walk = true;
-            //tavukNavMeshAgent.enabled = true;
-            // transform.DOLocalMove(new Vector3(-1.4f,0,0),2);
-          
-    
-            startTime = false;
-            kuluckaTime = true;
-        }
-    }
+            idle = false;
 
-    void KuluckaFunction()
-    {
-        delayTime += Time.deltaTime;
- 
-        GetComponent<NavMeshAgent>().enabled = false;
-        if (delayTime >= 4)
-        {
-            // gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0,0,0), new Vector3(0, 0, 1), new Vector3(0, 0, 2), new Vector3(0, 0, 3), new Vector3(0, 0, 4));
 
-            //yukarýdaki Curve Moment kodunu burada tavuðu kümese geri göndermek için kullan
-            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+            TurnToTarget();
 
-            if (tavukEggSpawn.GetComponent<CollectBoxControl>().eggList2.Count >= 3)
+
+            if (delayTime >= 5)
             {
-                tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-                gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0, 1.67f, 1.54f), new Vector3(0, 1.67f, 4.41f), new Vector3(0, 0.72f, 5.68f), new Vector3(0, -0.93f, 8.18f), new Vector3(0, -1.8f, 10));
-              
+                Debug.Log("Geldi");
+                walk = false;
+                idle = true;
+
+
+                ChooseRandomTarget();
+                canPickNumberForAnim = true;
+                delayTime = 0;
             }
-            //Araya süre girip yumurta spawn süresini ayarla.
-            //tavukEggSpawn.SetActive(false);
         }
+
+        else if (delayTime >= 4 && randomNumbersForAnim == 1)
+        {
+            walk = false;
+            idle = true;
+
+
+
+
+            if (delayTime >= 7)
+            {
+
+
+                canPickNumberForAnim = true;
+                delayTime = 0;
+            }
+
+
+
+
+        }
+
+
     }
+
+    public void ChooseRandomTarget()
+    {
+
+        if (gameObject.name == "timsahPref")
+        {
+            target = new Vector3(Random.Range(-22, 20), transform.localPosition.y, Random.Range(-25, 15));
+        }
+
+        else if (gameObject.name == "kazPref")
+        {
+            target = new Vector3(Random.Range(-36, 8.5f), transform.localPosition.y, Random.Range(12, 20.5f));
+        }
+
+        else if (gameObject.tag == "tavukPref")
+        {
+            target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+        }
+
+    }
+
+    public void TurnToTarget()
+    {
+
+        if (gameObject.name == "timsahPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.name == "kazPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.tag == "tavukPref")
+        {
+            Vector3 relativePos = transform.localPosition - target;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation;
+
+        }
+
+    }
+
+    public void KumesCheck()
+    {
+        //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
+
+        idle = false;
+        walk = true;
+        TurnToTarget();
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
+
+        if (transform.localPosition == new Vector3(0, -3.7f, 11))
+        {
+
+            target = new Vector3(0, 0.7f, 3);
+
+
+        }
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3))
+        {
+            target = new Vector3(0, 0.7f, -1);
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+        }
+
+        else if (transform.localPosition == new Vector3(0, 0.7f, -1f))
+        {
+
+            delayTime += Time.deltaTime;
+
+            if (delayTime >= 8)
+            {
+                target = new Vector3(0, 0.7f, 3.2f);
+
+
+
+            }
+        }
+
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3.2f))
+        {
+            target = new Vector3(0, -3.7f, 11.2f);
+            Debug.Log("UlaÃ¾tÃ½");
+        }
+
+        else if (transform.localPosition == new Vector3(0, -3.7f, 11.2f))
+        {
+            IsKumesEmpty.tag = "empty";
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+            goToKumes = false;
+            canDo = true;
+
+        }
+
+
+    }
+
 }

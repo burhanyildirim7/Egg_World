@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class AnimalsController : MonoBehaviour
+public class TavukController : MonoBehaviour
 {
     Animator timsahAnim;
     GameObject tavukEggSpawn;

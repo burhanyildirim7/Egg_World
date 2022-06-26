@@ -46,6 +46,8 @@ TagManager:
   - KazKumesDoor
   - KazKumes
   - tavukPref
+  - Missile
+  - kazPref
   layers:
   - Default
   - TransparentFX
