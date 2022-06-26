@@ -202,7 +202,7 @@ public class AnimalsController : MonoBehaviour
         idle = false;
         walk = true;
         TurnToTarget();
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
 
         if (transform.localPosition == new Vector3(0, -3.7f, 11))
         {
@@ -224,7 +224,7 @@ public class AnimalsController : MonoBehaviour
           
             delayTime += Time.deltaTime;
 
-            if ( delayTime >= 10)
+            if ( delayTime >= 8)
             {
                 target = new Vector3(0, 0.7f, 3.2f);
 
@@ -244,6 +244,7 @@ public class AnimalsController : MonoBehaviour
             IsKumesEmpty.tag = "empty";
             tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             goToKumes = false;
+            canDo = true;
 
         }
 

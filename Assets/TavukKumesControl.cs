@@ -9,8 +9,10 @@ public class TavukKumesControl : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
+            /*
            var spawnedTavuk =  Instantiate(tavukPref, new Vector3(Random.Range(-6, 6), 0, Random.Range(10, 20)),Quaternion.identity);
             spawnedTavuk.transform.parent = transform;
+            */
         }
     }
 

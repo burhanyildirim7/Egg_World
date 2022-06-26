@@ -8,6 +8,8 @@ public class ResearchTableController : MonoBehaviour
     public int neededEgg = 5;
     public GameObject kazKumes;
     float delayTime = 0;
+
+    public bool canOpenKazKumes = false;
     void Start()
     {
        
@@ -18,16 +20,8 @@ public class ResearchTableController : MonoBehaviour
     {
         if (transform.childCount >= neededEgg )
         {
-            delayTime += Time.deltaTime;
+            canOpenKazKumes = true;
 
-            if (delayTime>=2 && canDo)
-            {
-                kazKumes.SetActive(true);
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = kazKumes;
-                canDo = false;
-
-            }
-           
         }
     }
 
