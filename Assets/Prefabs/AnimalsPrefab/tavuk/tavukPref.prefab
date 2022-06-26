@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3188103727295092845}
   m_Layer: 0
   m_Name: tavukPref
-  m_TagString: Untagged
+  m_TagString: tavukPref
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116201612201111650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69998e51b3d598d4a913c68dafda8f4b, type: 3}
   m_Name: 
@@ -72,6 +72,7 @@ MonoBehaviour:
   target: {fileID: 0}
   "k\xFCmesDoor": {fileID: 0}
   tavukEgg: {fileID: 8205041150221042374, guid: 013cdcfecb924f44ca0c5fb8cbb622f3, type: 3}
+  tavukEggSpawn: {fileID: 0}
   walk: 0
   idle: 0
 --- !u!1001 &2117631268362992858

@@ -22,7 +22,7 @@ public class BuyText : MonoBehaviour
     
     void Update()
     {
-        buyText.text = "$" + buyPrice;
+        buyText.text = "$" + buyPrice + "" +openNextLevelTezgah1.gameObject.name;
 
         if (buyPrice <= 0)
         {

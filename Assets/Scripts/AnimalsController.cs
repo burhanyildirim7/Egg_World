@@ -1,27 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class AnimalsController : MonoBehaviour
 {
     Animator timsahAnim;
-
+    GameObject tavukEggSpawn;
     int randomNumbersForAnim;
     float delayTime;
      Vector3 target;
     bool canPickNumberForAnim;
+    bool goToKumes = false;
+    float timeToKumes;
+    bool canDo = true;
+    public GameObject IsKumesEmpty;
+    float randomTime;
+
+    [SerializeField] bool walk, idle;
     void Start()
     {
         timsahAnim = GetComponent<Animator>();
 
-        randomNumbersForAnim = 1;
+        randomTime = Random.Range(5,17);
+        walk = false;
+        idle = true;
         ChooseRandomTarget();
+
+        tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
+    
+       target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChooseRandomAnimFunction();
+        if (!goToKumes)
+        {
+            ChooseRandomAnimFunction();
+            timeToKumes += Time.deltaTime;
+        }
+        else
+        {
+
+            KumesCheck();
+        }
+
+        if (canDo && timeToKumes >= randomTime)
+        {
+            if (IsKumesEmpty.tag =="empty")
+            {
+                IsKumesEmpty.tag = "full";
+                goToKumes = true;
+                target = new Vector3(0, -3.7f, 11);
+                timeToKumes = 0;
+                canDo = false;
+            }
+            timeToKumes = 0;
+        }
+      
+   
+        if (idle)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+            idle = false;
+        }
+        else if (walk)
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+            walk = false;
+        }
+
+       
     }
 
     void ChooseRandomAnimFunction()
@@ -29,7 +81,7 @@ public class AnimalsController : MonoBehaviour
         if (canPickNumberForAnim)
         {
 
-            randomNumbersForAnim = 1;
+            randomNumbersForAnim = Random.Range(0,2);
             canPickNumberForAnim = false;
         }
       
@@ -42,15 +94,21 @@ public class AnimalsController : MonoBehaviour
      
           
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, target,5*Time.deltaTime);
-            timsahAnim.SetBool("canWalk", true);
+            //timsahAnim.SetBool("canWalk", true);
+            walk = true;
+            idle = false;
 
-            //TurnToTarget();
+
+            TurnToTarget();
 
 
-            if (delayTime >= 10)
+            if (delayTime >= 5)
             {
                 Debug.Log("Geldi");
-                timsahAnim.SetBool("canWalk", false);
+                walk = false;
+                idle = true;
+
+
                 ChooseRandomTarget();
                 canPickNumberForAnim = true;
                 delayTime = 0;
@@ -59,18 +117,21 @@ public class AnimalsController : MonoBehaviour
 
         else if (delayTime >= 4 && randomNumbersForAnim == 1)
         {
-            timsahAnim.SetBool("canIdle", true);
-            
-            if (timsahAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !timsahAnim.IsInTransition(0))
-            {
+            walk = false;
+            idle = true;
+
+
+
+           
                 if (delayTime >= 7)
                 {
-                    timsahAnim.SetBool("canIdle", false);
+                   
+
                     canPickNumberForAnim = true;
                     delayTime = 0;
                 }
             
-            }
+           
           
                 
         }
@@ -91,13 +152,13 @@ public class AnimalsController : MonoBehaviour
             target = new Vector3(Random.Range(-36, 8.5f), transform.localPosition.y, Random.Range(12, 20.5f));
         }
 
-        else if (gameObject.name == "tavukPref")
+        else if (gameObject.tag == "tavukPref")
         {
-            GetComponent<TavukController>().target.localPosition = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+            target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
         }
 
     }
-    /*
+   
     public void TurnToTarget()
     {
 
@@ -121,7 +182,7 @@ public class AnimalsController : MonoBehaviour
             transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
         }
 
-        else if (gameObject.name == "tavukPref")
+        else if (gameObject.tag == "tavukPref")
         {
             Vector3 relativePos = transform.localPosition - target;
 
@@ -133,5 +194,60 @@ public class AnimalsController : MonoBehaviour
         }
 
     }
-    */
+
+    public void KumesCheck()
+    {
+        //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
+
+        idle = false;
+        walk = true;
+        TurnToTarget();
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
+
+        if (transform.localPosition == new Vector3(0, -3.7f, 11))
+        {
+
+            target = new Vector3(0,0.7f,3);
+
+            
+        }
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3))
+        {
+            target = new Vector3(0, 0.7f, -1);
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            tavukEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+        }
+
+        else if (transform.localPosition == new Vector3(0,0.7f,-1f))
+        {
+          
+            delayTime += Time.deltaTime;
+
+            if ( delayTime >= 10)
+            {
+                target = new Vector3(0, 0.7f, 3.2f);
+
+
+
+            }
+        }
+
+        else if (transform.localPosition == new Vector3(0, 0.7f, 3.2f))
+        {
+            target = new Vector3(0, -3.7f, 11.2f);
+            Debug.Log("Ulaþtý");
+        }
+
+        else if (transform.localPosition == new Vector3(0, -3.7f, 11.2f))
+        {
+            IsKumesEmpty.tag = "empty";
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+            goToKumes = false;
+
+        }
+
+
+    }
+    
 }

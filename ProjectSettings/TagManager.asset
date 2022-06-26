@@ -41,6 +41,11 @@ TagManager:
   - kaydirakBas
   - kaydirakOrta
   - kaydirakSon
+  - researchTable
+  - waitKazKumes
+  - KazKumesDoor
+  - KazKumes
+  - tavukPref
   layers:
   - Default
   - TransparentFX

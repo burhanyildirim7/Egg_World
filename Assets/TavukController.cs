@@ -15,6 +15,7 @@ public class TavukController : MonoBehaviour
     bool kuluckaTime = false;
     float timeToGoKümes = 0;
     float delayTime = 0;
+    public GameObject tavukEggSpawn;
 
     [SerializeField] bool walk, idle;
     void Start()
@@ -23,6 +24,8 @@ public class TavukController : MonoBehaviour
         idle = false;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
+        tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
+        tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
 
 
         tavukNavMeshAgent = GetComponent<NavMeshAgent>();
@@ -108,7 +111,7 @@ public class TavukController : MonoBehaviour
     
     IEnumerator EnterKümesFunction()
     {
-     
+      
         if (canDo)
         {
             
@@ -166,6 +169,7 @@ public class TavukController : MonoBehaviour
         if (timeToGoKümes >= 10)
         {
             gameObject.AddComponent<CurveMovement>();
+            gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0, -1.8f, 10), new Vector3(0, -0.93f, 8.18f), new Vector3(0, 0.72f, 5.68f), new Vector3(0, 1.67f, 4.41f), new Vector3(0, 1.67f, 1.54f));
             walk = true;
             //tavukNavMeshAgent.enabled = true;
             // transform.DOLocalMove(new Vector3(-1.4f,0,0),2);
@@ -179,14 +183,23 @@ public class TavukController : MonoBehaviour
     void KuluckaFunction()
     {
         delayTime += Time.deltaTime;
+ 
         GetComponent<NavMeshAgent>().enabled = false;
         if (delayTime >= 4)
         {
+            // gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0,0,0), new Vector3(0, 0, 1), new Vector3(0, 0, 2), new Vector3(0, 0, 3), new Vector3(0, 0, 4));
 
-            var spawnEgg = Instantiate(tavukEgg, transform.position, Quaternion.identity);
-            spawnEgg.transform.parent = GameObject.FindGameObjectWithTag("tavukKümes").transform;
-            spawnEgg.AddComponent<CurveMovement>();
-            delayTime = 0;
+            //yukarýdaki Curve Moment kodunu burada tavuðu kümese geri göndermek için kullan
+            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+
+            if (tavukEggSpawn.GetComponent<CollectBoxControl>().eggList2.Count >= 3)
+            {
+                tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                gameObject.GetComponent<CurveMovement>().CurveMovementStart(new Vector3(0, 1.67f, 1.54f), new Vector3(0, 1.67f, 4.41f), new Vector3(0, 0.72f, 5.68f), new Vector3(0, -0.93f, 8.18f), new Vector3(0, -1.8f, 10));
+              
+            }
+            //Araya süre girip yumurta spawn süresini ayarla.
+            //tavukEggSpawn.SetActive(false);
         }
     }
 }

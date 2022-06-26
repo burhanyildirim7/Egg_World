@@ -6,6 +6,8 @@ using DG.Tweening;
 public class PutEggControl : MonoBehaviour
 {
     public List<GameObject> eggTransform = new List<GameObject>();
+    public List<GameObject> eggList = new List<GameObject>();
+     
     void Start()
     {
         
@@ -23,10 +25,30 @@ public class PutEggControl : MonoBehaviour
         {
 
             DOTween.Kill(other.gameObject);
-            for (int i = 0; i < eggTransform.Count; i++)
+            for (int i = 0; i < 3 /*eggTransform.Count*/; i++)
             {
                 if (eggTransform[i].tag == "empty")
                 {
+                    eggList.Add(other.gameObject);
+                    other.gameObject.transform.DOMove(eggTransform[i].transform.position, 2).OnComplete(()=>other.transform.parent = eggTransform[i].transform);
+                    
+                    
+
+                    eggTransform[i].tag = "full";
+                    break;
+                }
+            }
+        }
+
+        if (other.gameObject.tag == "devekusuEgg")
+        {
+
+            DOTween.Kill(other.gameObject);
+            for (int i = 0; i < 3 /*eggTransform.Count*/; i++)
+            {
+                if (eggTransform[i].tag == "empty")
+                {
+
                     other.gameObject.transform.DOMove(eggTransform[i].transform.position, 2);
 
 
@@ -35,7 +57,7 @@ public class PutEggControl : MonoBehaviour
                 }
             }
         }
-       
-  
+
+
     }
 }
