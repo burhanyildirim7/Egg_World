@@ -7,9 +7,9 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject tavukKümes;
     public GameObject tavukTezgah;
     public GameObject researchPlace;
-    GameObject researchTable;
     public GameObject kazKumes;
     public GameObject kazTezgah;
+    GameObject researchTable;
     bool canOpenResearchPlace = true;
     bool canOpenKazKumes = true;
     
@@ -28,7 +28,7 @@ public class ManagementPlaces : MonoBehaviour
             canOpenResearchPlace = false;
         }
 
-        else if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes)
         {
             kazKumes.SetActive(true);
             kazTezgah.SetActive(true);

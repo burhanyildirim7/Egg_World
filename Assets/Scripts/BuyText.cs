@@ -53,7 +53,7 @@ public class BuyText : MonoBehaviour
             else if (gameObject.name == "OpenToResarchPlace")
             {
                 openNextLevelTezgah1.SetActive(true);
-                openNextLevelTezgah2.SetActive(true);
+          
                 Destroy(gameObject);
 
             }

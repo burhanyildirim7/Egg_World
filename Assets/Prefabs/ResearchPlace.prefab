@@ -223,6 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c754388901827ef4c830a0d267df27d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neededEgg: 5
+  kazKumes: {fileID: 0}
+  canOpenKazKumes: 0
 --- !u!1 &5963612772595512666
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openNextLevelTezgah1: {fileID: 5324887058249886881}
-  openNextLevelTezgah2: {fileID: 2491644381664756402}
+  openNextLevelTezgah2: {fileID: 0}
   openNextLevelTezgah3: {fileID: 0}
   openNextLevelTezgah4: {fileID: 0}
 --- !u!65 &5813432966183923457

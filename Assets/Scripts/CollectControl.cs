@@ -162,7 +162,7 @@ public class CollectControl : MonoBehaviour
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero, 10, 1, 2);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 2);
                             
                             eggList[a].transform.tag = "Untagged";
                            

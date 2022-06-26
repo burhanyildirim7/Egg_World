@@ -28,6 +28,7 @@ public class CameraMovement : MonoBehaviour
             else
             {
                 target = GameObject.FindGameObjectWithTag("Player").gameObject;
+                delayTime = 0;
             }
            
         }
