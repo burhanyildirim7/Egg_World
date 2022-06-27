@@ -35,9 +35,9 @@ TagManager:
   - ejderEggSpawn
   - tavukEggSpawn
   - timsahEggSpawn
-  - "waitTavukK\xFCmes"
-  - "k\xFCmesDoor"
-  - "tavukK\xFCmes"
+  - waitTavukKumes
+  - kumesDoor
+  - tavukKumes
   - kaydirakBas
   - kaydirakOrta
   - kaydirakSon
@@ -50,6 +50,8 @@ TagManager:
   - kazPref
   - spendTavukEgg1
   - customer
+  - tavukKulucka
+  - "waitTavukK\xFCmes"
   layers:
   - Default
   - TransparentFX

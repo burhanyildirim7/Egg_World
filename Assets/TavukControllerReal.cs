@@ -27,7 +27,7 @@ public class TavukControllerReal : MonoBehaviour
         walk = false;
         idle = true;
         ChooseRandomTarget();
-
+        IsKumesEmpty = GameObject.Find("IsKumesEmpty");
         tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
 
         target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));

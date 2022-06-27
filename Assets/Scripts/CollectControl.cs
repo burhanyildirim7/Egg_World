@@ -150,6 +150,16 @@ public class CollectControl : MonoBehaviour
             }
        
         }
+
+      
+            if (other.gameObject.name == "TavukKuluckaMakinesi")
+            {
+            
+            MoveToTavukKuluckaMakine(other.gameObject);
+        
+        }
+           
+       
     }
 
     void MoveToResearchPlace(GameObject otherObject)
@@ -192,6 +202,45 @@ public class CollectControl : MonoBehaviour
             canDo = false;
         }
        
+
+
+    }
+
+    void MoveToTavukKuluckaMakine(GameObject otherObject)
+    {
+       
+                for (int a = eggList.Count - 1; a >= 0; a--)
+                {
+                    if (eggList[a].tag == "tavukEgg")
+                    {
+                otherObject.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull = true;
+                eggList[a].transform.parent.tag = "empty";
+                        eggList[a].transform.parent = otherObject.transform;
+                        eggList[a].transform.rotation = otherObject.transform.rotation;
+                        //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                        eggList[a].transform.DOLocalJump(Vector3.zero , 3f, 1, 1);
+
+                        eggList[a].transform.tag = "Untagged";
+
+                        eggList.Remove(eggList[a]);
+                        delayTime = 0;
+                        break;
+                    }
+          
+        }
+    
+
+        
+
+
+
+      
+
+        if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+        {
+            canDo = false;
+        }
+
 
 
     }

@@ -6,6 +6,7 @@ public class ManagementPlaces : MonoBehaviour
 {
     public GameObject tavukKümes;
     public GameObject tavukKümesLevel2;
+    public GameObject tavukKuluckaMakinesi;
     public GameObject tavukTezgah;
     public GameObject tavukTezgah2;
     public GameObject researchPlace;
@@ -45,6 +46,7 @@ public class ManagementPlaces : MonoBehaviour
         {
             tavukKümesLevel2.SetActive(true);
             tavukTezgah2.SetActive(true);
+            tavukKuluckaMakinesi.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = tavukTezgah2.transform.GetChild(0).gameObject;
             canOpenTavukTezgah2 = false;
 
