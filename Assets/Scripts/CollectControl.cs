@@ -142,10 +142,11 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "researchTable")
         {
+            Debug.Log("tEMAS VAR");
             if (canDo)
             {
                 MoveToResearchPlace(other.gameObject);
-                canDo = false;
+             
             }
        
         }
@@ -181,10 +182,17 @@ public class CollectControl : MonoBehaviour
                     }
 
                 }
+           
 
-            
 
         }
+
+        if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+        {
+            canDo = false;
+        }
+       
+
 
     }
 

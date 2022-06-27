@@ -321,6 +321,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0013737932, y: 0.0021121954, z: 0.00087548024}
   m_Center: {x: -0.00000013771931, y: 0.0000003681634, z: -0.00038986022}
+--- !u!1 &304478544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4510907317629259312, guid: 028a4e27bddc7024fabb5e376fdd4899, type: 3}
+  m_PrefabInstance: {fileID: 4181521670751185283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &326513068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "tavukK\xFCmes": {fileID: 424253582057912855}
+  "tavukK\xFCmesLevel2": {fileID: 304478544}
   tavukTezgah: {fileID: 181663950}
   tavukTezgah2: {fileID: 62239899}
   researchPlace: {fileID: 1643628174}
