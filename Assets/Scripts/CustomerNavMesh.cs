@@ -22,6 +22,9 @@ public class CustomerNavMesh : MonoBehaviour
     float delayTime;
     float distanceY;
 
+    public bool canShoopingStart = false;
+    bool canDo = true;
+
     int numberOfEjderEgg ;
     int numberOfDevekusuEgg;
     int numberOfTavukEgg;
@@ -68,6 +71,7 @@ public class CustomerNavMesh : MonoBehaviour
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendEjderEgg"));
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendDevekusuEgg"));
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendTavukEgg"));
+       
         spendEggList.Add(GameObject.FindGameObjectWithTag("spendTimsahEgg"));
 
 
@@ -400,7 +404,7 @@ public class CustomerNavMesh : MonoBehaviour
                 if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
                 {
 
-
+                 
                     ShoppingStart();
 
                 }
@@ -411,8 +415,14 @@ public class CustomerNavMesh : MonoBehaviour
 
     void ShoppingStart()
     {
+        if (canDo)
+        {
+            transform.LookAt(cashier.transform);
+            canDo = false;
+        }
 
         delayTime += Time.deltaTime;
+      
 
         if (delayTime >= 0.5f)
         {
@@ -438,22 +448,30 @@ public class CustomerNavMesh : MonoBehaviour
             }
             else
             {
-                totalEggNumber++;
-             
-                customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position+Vector3.up/4, 3, 1, 1).OnComplete(() =>
-
-
+                gameObject.tag = "customer";
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(1,2,6);
+                gameObject.GetComponent<BoxCollider>().center = new Vector3(0,0,6);
+                if (canShoopingStart)
                 {
+                    totalEggNumber++;
 
+                    customerEggList[customerEggList.Count - 1].transform.DOJump(box.transform.position + Vector3.up / 4, 3, 1, 1).OnComplete(() =>
+
+
+                    {
+
+
+
+
+                    });
+                    customerEggList[customerEggList.Count - 1].transform.parent = box.transform;
+                    customerEggList.Remove(customerEggList[customerEggList.Count - 1].gameObject);
+
+
+                    delayTime = 0;
+                }
+               
                 
-
-
-                });
-                customerEggList[customerEggList.Count - 1].transform.parent = box.transform;
-                customerEggList.Remove(customerEggList[customerEggList.Count - 1].gameObject);
-
-
-                delayTime = 0;
             }
 
         }

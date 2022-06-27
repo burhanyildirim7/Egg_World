@@ -5,7 +5,9 @@ using UnityEngine;
 public class ResearchTableController : MonoBehaviour
 {
     bool canDo = true;
-    public int neededEgg = 5;
+    public bool researchTableFull = false;
+    public int neededEgg = 1;
+    public int currentEggNumber = 0;
     public GameObject kazKumes;
     float delayTime = 0;
 
@@ -18,14 +20,30 @@ public class ResearchTableController : MonoBehaviour
  
     void Update()
     {
-        if (transform.childCount >= neededEgg )
+        if (currentEggNumber == neededEgg )
         {
-            canOpenKazKumes = true;
+            researchTableFull = true;
+            delayTime += Time.deltaTime;
+
+            if (delayTime >= 1)
+            {
+                canOpenKazKumes = true;
+            }
+     
 
         }
     }
 
-  
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Untagged")
+        {
+            currentEggNumber++;
+            Destroy(other.gameObject);
+        }
+    }
+
+
 
 
 }

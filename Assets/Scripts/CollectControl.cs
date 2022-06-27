@@ -20,6 +20,8 @@ public class CollectControl : MonoBehaviour
     public List<GameObject> eggStackTransform = new List<GameObject>();
     public List<GameObject> eggSpendTransform = new List<GameObject>();
 
+    bool canDo = true;
+
     string nameOfEggSpawnPlace;
 
 
@@ -101,6 +103,10 @@ public class CollectControl : MonoBehaviour
             MoveEggToSepet(other.gameObject);
         }
 
+        if (other.gameObject.tag == "customer")
+        {
+            other.gameObject.GetComponent<CustomerNavMesh>().canShoopingStart = true;
+        }
       
       
 
@@ -136,9 +142,10 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "researchTable")
         {
-            if (other.gameObject.transform.childCount <5)
+            if (canDo)
             {
                 MoveToResearchPlace(other.gameObject);
+                canDo = false;
             }
        
         }
@@ -162,7 +169,7 @@ public class CollectControl : MonoBehaviour
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 2);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1);
                             
                             eggList[a].transform.tag = "Untagged";
                            

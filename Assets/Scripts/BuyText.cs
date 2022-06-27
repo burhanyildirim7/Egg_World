@@ -33,8 +33,8 @@ public class BuyText : MonoBehaviour
             }
             else if (gameObject.name == "ToLevel2")
             {
-                openNextLevelTezgah2.SetActive(true);
-                Destroy(openNextLevelTezgah1);
+                openNextLevelTezgah1.SetActive(true);
+        
                 Destroy(gameObject);
             }
             else if (gameObject.name == "ToLevel3")

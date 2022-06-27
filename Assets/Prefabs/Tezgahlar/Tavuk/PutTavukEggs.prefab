@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 402581375173125828}
   - component: {fileID: 2829751255381960863}
   m_Layer: 0
-  m_Name: TavukLevel1(2)
+  m_Name: TavukLevel1
   m_TagString: spendTavukEgg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,9 +1218,8 @@ Transform:
   - {fileID: 5260824385547768383}
   - {fileID: 8051265479222919239}
   - {fileID: 9024636169913284200}
-  - {fileID: 6450410165867457272}
-  m_Father: {fileID: 3400731373942238841}
-  m_RootOrder: 1
+  m_Father: {fileID: 6117279745689767032}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4745059005473966503
 MeshFilter:
@@ -1879,7 +1878,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3400731374156101503}
-  - {fileID: 2566172816565589170}
+  - {fileID: 6117279745689767032}
   - {fileID: 103674838600962967}
   - {fileID: 4089490504080345894}
   - {fileID: 3387461582034072594}
@@ -3642,7 +3641,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6418511061622691050}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 3.342}
+  m_LocalPosition: {x: 0, y: 0, z: 1.54}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3721,7 +3720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5f3b59736fe224caa339ca855c2099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openNextLevelTezgah1: {fileID: 0}
+  openNextLevelTezgah1: {fileID: 2472227109607786357}
   openNextLevelTezgah2: {fileID: 0}
   openNextLevelTezgah3: {fileID: 0}
   openNextLevelTezgah4: {fileID: 0}
@@ -4006,6 +4005,39 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &7114372097833738064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6117279745689767032}
+  m_Layer: 0
+  m_Name: TavukLevel1(2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6117279745689767032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114372097833738064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2566172816565589170}
+  - {fileID: 6450410165867457272}
+  m_Father: {fileID: 3400731373942238841}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7215855752632382483
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,17 +4337,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7798492961406166179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.6748047}
-  m_LocalScale: {x: 0.33333334, y: 10, z: 0.33333334}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7144141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8560837078000151961}
-  m_Father: {fileID: 2566172816565589170}
-  m_RootOrder: 10
+  m_Father: {fileID: 6117279745689767032}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 138.49219, y: 8960.001}
+  m_AnchoredPosition: {x: 8.716583, y: 0}
   m_SizeDelta: {x: 828, y: 1792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7062316103835191627

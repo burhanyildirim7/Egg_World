@@ -31,7 +31,7 @@ public class KazController : MonoBehaviour
 
         devekusuEggSpawn = GameObject.FindGameObjectWithTag("devekusuEggSpawn");
 
-        target = new Vector3(Random.Range(-1.6f, -1f), transform.localPosition.y, Random.Range(-4f, -2.5f));
+        target = new Vector3(Random.Range(-4f, 9f), transform.localPosition.y, Random.Range(12, 22));
 
     }
 
@@ -55,7 +55,8 @@ public class KazController : MonoBehaviour
             {
                 IsKumesEmpty.tag = "full";
                 goToKumes = true;
-                target = new Vector3(-0.5f, -0.6f, -2.3f);
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = new Vector3(2.43f, -3.2f, 11.65f);
                 timeToKumes = 0;
                 canDo = false;
             }
@@ -85,7 +86,7 @@ public class KazController : MonoBehaviour
 
 
 
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 1 * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
 
             //timsahAnim.SetBool("canWalk", true);
              kazAnim.SetBool("canIdle", false);
@@ -142,7 +143,7 @@ public class KazController : MonoBehaviour
 
         else if (gameObject.tag == "kazPref")
         {
-            target = new Vector3(Random.Range(-1.7f, 1f), transform.localPosition.y, Random.Range(-4f, -2.5f));
+            target = new Vector3(Random.Range(-4f, 9f), transform.localPosition.y, Random.Range(12, 22));
         }
 
         else if (gameObject.tag == "tavukPref")
@@ -200,52 +201,52 @@ public class KazController : MonoBehaviour
 
 
         TurnToTarget();
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 1 * Time.deltaTime);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
 
-        if (transform.localPosition == new Vector3(-0.5f, -0.6f, -2.3f))
+        if (transform.localPosition == new Vector3(2.43f, -3.2f, 11.65f))
         {
 
-            target = new Vector3(-0.5f, 0.2f, -0.67f);
+            //target = new Vector3(-0.5f, 0.2f, -0.67f);
+            target = new Vector3(2.43f, 0.6f, 3.24f);
 
 
         }
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, -0.67f))
+        else if (transform.localPosition == new Vector3(2.43f, 0.6f, 3.24f))
         {
-            target = new Vector3(-0.5f, 0.2f, 0.287f);
+            //target = new Vector3(-0.5f, 0.2f, 0.287f);
+            target = new Vector3(2.43f, 0.6f, -2.49f);
             devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
             devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
             devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, 0.287f))
+        else if (transform.localPosition == new Vector3(2.43f, 0.6f, -2.49f))
         {
 
             delayTime += Time.deltaTime;
 
             if (delayTime >= 8)
             {
-                target = new Vector3(-0.5f, 0.2f, -0.72f);
+                target = new Vector3(2.43f, 0.6f, 3.27f);
 
 
 
             }
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, 0.2f, -0.72f))
+        else if (transform.localPosition == new Vector3(2.43f, 0.6f, 3.27f))
         {
-            target = new Vector3(-0.5f, -0.6f, -2.5f);
+            target = new Vector3(2.43f, -3.4f, 11.80f);
             Debug.Log("Ulasti");
         }
 
-        else if (transform.localPosition == new Vector3(-0.5f, -0.6f, -2.5f))
+        else if (transform.localPosition == new Vector3(2.43f, -3.4f, 11.80f))
         {
-            IsKumesEmpty.tag = "empty";
-            devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-            goToKumes = false;
-            canDo = true;
-
+         IsKumesEmpty.tag = "empty";
+        devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+        goToKumes = false;
+        canDo = true;
         }
-
-        
     }
+   
 }

@@ -6,12 +6,15 @@ public class ManagementPlaces : MonoBehaviour
 {
     public GameObject tavukKümes;
     public GameObject tavukTezgah;
+    public GameObject tavukTezgah2;
     public GameObject researchPlace;
     public GameObject kazKumes;
     public GameObject kazTezgah;
+
     GameObject researchTable;
     bool canOpenResearchPlace = true;
     bool canOpenKazKumes = true;
+    bool canOpenTavukTezgah2 = true;
     
     void Start()
     {
@@ -34,6 +37,14 @@ public class ManagementPlaces : MonoBehaviour
             kazTezgah.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = kazKumes;
             canOpenKazKumes = false;
+        }
+
+        if (kazKumes.transform.GetChild(0).gameObject.activeSelf && canOpenTavukTezgah2)
+        {
+            tavukTezgah2.SetActive(true);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = tavukTezgah2.transform.GetChild(0).gameObject;
+            canOpenTavukTezgah2 = false;
+
         }
     }
 }

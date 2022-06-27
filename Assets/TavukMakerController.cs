@@ -9,7 +9,7 @@ public class TavukMakerController : MonoBehaviour
     void Start()
     {
        
-        Instantiate(animal, transform.position, Quaternion.identity);
+        //Instantiate(animal, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
