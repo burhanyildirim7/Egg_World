@@ -29,7 +29,7 @@ public class TavukGoKumesController : MonoBehaviour
     void Update()
     {
 
-        
+ 
 
         if (goToKumesDoor)
         {
@@ -72,6 +72,7 @@ public class TavukGoKumesController : MonoBehaviour
     void GoToKumesFunction()
     {
         target = goToKumesDoorPosition.transform;
+        TurnToTarget();
         transform.position = Vector3.MoveTowards(transform.position, target.position, 5 * Time.deltaTime);
 
         if (transform.position == target.position)
@@ -80,6 +81,42 @@ public class TavukGoKumesController : MonoBehaviour
             StartCoroutine(OpenTheKumesDoor());
             goToKumesDoor = false;
         }
+    }
+
+    public void TurnToTarget()
+    {
+
+        if (gameObject.name == "timsahPref")
+        {
+            Vector3 relativePos = transform.localPosition - target.position;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.name == "kazPref")
+        {
+            Vector3 relativePos = transform.localPosition - target.position;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation * Quaternion.Euler(0, transform.localRotation.y + 180, 0);
+        }
+
+        else if (gameObject.tag == "tavukPref")
+        {
+            Vector3 relativePos = transform.localPosition - target.position;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
+
+            transform.localRotation = rotation;
+
+        }
+
     }
 
     void EnterTheKumesFunction()
@@ -97,4 +134,6 @@ public class TavukGoKumesController : MonoBehaviour
 
        
     }
+
+
 }

@@ -11,11 +11,7 @@ public class TavukMakerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var spawnTavuk = Instantiate(tavuk, new Vector3(transform.position.x,0,transform.position.z), Quaternion.identity);
-
-        spawnTavuk.GetComponent<TavukGoKumesController>().enabled = true;
-        spawnTavuk.GetComponent<TavukControllerReal>().enabled = false;
-        //Instantiate(animal, transform.position, Quaternion.identity);
+  
 
     }
 
