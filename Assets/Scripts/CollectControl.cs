@@ -152,7 +152,7 @@ public class CollectControl : MonoBehaviour
         }
 
       
-            if (other.gameObject.name == "TavukKuluckaMakinesi")
+            if (other.gameObject.name == "TavukKuluckaMakinesi" && other.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull==false)
             {
             
             MoveToTavukKuluckaMakine(other.gameObject);
@@ -208,26 +208,33 @@ public class CollectControl : MonoBehaviour
 
     void MoveToTavukKuluckaMakine(GameObject otherObject)
     {
-       
-                for (int a = eggList.Count - 1; a >= 0; a--)
+        for (int i = 0; i < 1; i++)
+        {
+            for (int a = eggList.Count - 1; a >= 0; a--)
+            {
+                if (eggList[a].tag == "tavukEgg")
                 {
-                    if (eggList[a].tag == "tavukEgg")
-                    {
-                otherObject.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull = true;
-                eggList[a].transform.parent.tag = "empty";
-                        eggList[a].transform.parent = otherObject.transform;
-                        eggList[a].transform.rotation = otherObject.transform.rotation;
-                        //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                        eggList[a].transform.DOLocalJump(Vector3.zero , 3f, 1, 1);
+                
+                    eggList[a].transform.parent.tag = "empty";
+                    eggList[a].transform.parent = otherObject.transform;
+                    eggList[a].transform.rotation = otherObject.transform.rotation;
+                    //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                    eggList[a].transform.DOLocalJump(Vector3.zero, 3f, 1, 1);
 
-                        eggList[a].transform.tag = "Untagged";
+                    eggList[a].transform.tag = "Untagged";
 
-                        eggList.Remove(eggList[a]);
-                        delayTime = 0;
-                        break;
-                    }
-          
+                    eggList.Remove(eggList[a]);
+                    delayTime = 0;
+                    otherObject.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull = true;
+                    break;
+                }
+
+            }
+
+
         }
+
+       
     
 
         

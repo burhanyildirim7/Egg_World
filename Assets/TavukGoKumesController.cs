@@ -121,14 +121,19 @@ public class TavukGoKumesController : MonoBehaviour
 
     void EnterTheKumesFunction()
     {
+     
+
+
         target.localPosition = new Vector3(0, -2.8f, 15);
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target.localPosition, 5 * Time.deltaTime);
 
         if (transform.localPosition == target.localPosition)
         {
             Debug.Log("Hedefe Ulaþtý");
-            GetComponent<TavukControllerReal>().enabled = true;
+            target.localPosition = new Vector3(9.3f, -2f, 12);
+            GetComponent<TavukController>().enabled = true;
             GetComponent<TavukGoKumesController>().enabled = false;
+
 
         }
 

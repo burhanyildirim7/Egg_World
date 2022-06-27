@@ -9,6 +9,8 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject tavukKuluckaMakinesi;
     public GameObject tavukTezgah;
     public GameObject tavukTezgah2;
+
+
     public GameObject researchPlace;
     public GameObject kazKumes;
     public GameObject kazTezgah;

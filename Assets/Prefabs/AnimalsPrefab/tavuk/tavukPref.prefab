@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4186370380694486491}
   - component: {fileID: 3188103727295092845}
   - component: {fileID: 5497993635751909906}
+  - component: {fileID: -6013700278893315176}
   m_Layer: 0
   m_Name: tavukPref
   m_TagString: tavukPref
@@ -42,7 +43,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116201612201111650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69998e51b3d598d4a913c68dafda8f4b, type: 3}
   m_Name: 
@@ -57,11 +58,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116201612201111650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 161014d9ce0559e4187312577443c0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walk: 0
+  idle: 0
+--- !u!114 &-6013700278893315176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116201612201111650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9465e5ba4d27f49459f1ac9e81f8115a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsKumesEmpty: {fileID: 0}
+  IsKumesEmpty2: {fileID: 0}
+  walk: 0
+  idle: 0
 --- !u!1001 &2117631268362992858
 PrefabInstance:
   m_ObjectHideFlags: 0
