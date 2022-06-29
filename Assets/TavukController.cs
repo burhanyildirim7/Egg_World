@@ -104,7 +104,7 @@ public class AnimalsController : MonoBehaviour
 
             if (delayTime >= 5)
             {
-                Debug.Log("Geldi");
+           
                 walk = false;
                 idle = true;
 
@@ -236,7 +236,7 @@ public class AnimalsController : MonoBehaviour
         else if (transform.localPosition == new Vector3(0, 0.2f, 3.2f))
         {
             target = new Vector3(0, -3f, 11.2f);
-            Debug.Log("Ulaþtý");
+            
         }
 
         else if (transform.localPosition == new Vector3(0, -3f, 11.2f))

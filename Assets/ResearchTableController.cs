@@ -9,6 +9,8 @@ public class ResearchTableController : MonoBehaviour
     public int neededEgg = 1;
     public int currentEggNumber = 0;
     public GameObject kazKumes;
+    public GameObject tavukEggNeededText;
+    public GameObject kazEggNeededText;
     float delayTime = 0;
 
     public bool canOpenKazKumes = false;
@@ -32,14 +34,23 @@ public class ResearchTableController : MonoBehaviour
      
 
         }
+        else
+        {
+            researchTableFull = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Untagged")
+        if (other.gameObject.name == "tavuk_yumurtasi(Clone)" && tavukEggNeededText.activeSelf)
         {
-            currentEggNumber++;
-            Destroy(other.gameObject);
+           
+        }
+
+        else if (other.gameObject.name == "devekusu_yumurtasi(Clone)" && kazEggNeededText.activeSelf)
+        {
+          
+
         }
     }
 

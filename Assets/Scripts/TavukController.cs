@@ -18,6 +18,7 @@ public class TavukController : MonoBehaviour
     public GameObject IsKumesEmpty;
     public GameObject IsKumesEmpty2;
     float randomTime;
+    float level2Distance = 0;
 
     [SerializeField] bool walk, idle;
     void Start()
@@ -39,6 +40,8 @@ public class TavukController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       
         if (tavukEggSpawn2 == null || IsKumesEmpty2 ==null)
         {
             tavukEggSpawn2 = GameObject.Find("TavukEgg2");
@@ -72,6 +75,7 @@ public class TavukController : MonoBehaviour
             {
                 IsKumesEmpty.tag = "full";
                 goToKumes = true;
+                goToSecondKumes = false;
                 target = new Vector3(0, -3f, 11);
                 timeToKumes = 0;
                 canDo = false;
@@ -79,6 +83,7 @@ public class TavukController : MonoBehaviour
 
             else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
             {
+                level2Distance = 10;
                 goToSecondKumes = true;
                 IsKumesEmpty2.tag = "full";
                 goToKumes = true;
@@ -184,7 +189,7 @@ public class TavukController : MonoBehaviour
 
         else if (gameObject.tag == "tavukPref")
         {
-            target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+            target = new Vector3(Random.Range((-5+level2Distance), 5), transform.localPosition.y, Random.Range(11, 19));
         }
 
     }
@@ -227,6 +232,7 @@ public class TavukController : MonoBehaviour
 
     public void FirstKumesCheck()
     {
+        goToSecondKumes = false;
         //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
 
         idle = false;

@@ -9,13 +9,16 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject tavukKuluckaMakinesi;
     public GameObject tavukTezgah;
     public GameObject tavukTezgah2;
+    public GameObject tavukKümesModul2;
 
 
     public GameObject researchPlace;
     public GameObject kazKumes;
     public GameObject kazTezgah;
 
-    GameObject researchTable;
+    public GameObject researchTable;
+    public GameObject researchTableNeededTavukEgg;
+    public GameObject researchTableNeededKazEgg;
     bool canOpenResearchPlace = true;
     bool canOpenKazKumes = true;
     bool canOpenTavukTezgah2 = true;
@@ -53,5 +56,12 @@ public class ManagementPlaces : MonoBehaviour
             canOpenTavukTezgah2 = false;
 
         }
+
+        if (tavukKümesModul2.activeSelf)
+        {
+            researchTableNeededTavukEgg.SetActive(false);
+            researchTableNeededKazEgg.SetActive(true);
+        }
+        
     }
 }

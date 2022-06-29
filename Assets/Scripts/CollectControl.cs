@@ -39,9 +39,9 @@ public class CollectControl : MonoBehaviour
     {
         IsPlayerMove();
 
-      
+       
 
-        UIController.instance.tapToStartScoreText.text = "" + totalMoney;
+            UIController.instance.tapToStartScoreText.text = "" + totalMoney;
         UIController.instance.gamePlayScoreText.text = "" + totalMoney;
         if (eggList.Count == eggStackTransform.Count)
         {
@@ -142,7 +142,18 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "researchTable")
         {
-            Debug.Log("tEMAS VAR");
+            if (other.GetComponent<ResearchTableController>().tavukEggNeededText.activeSelf)
+            {
+                Debug.Log("Tavuk Kümesi Etkin");
+            }
+
+            else if (other.GetComponent<ResearchTableController>().kazEggNeededText.activeSelf)
+            {
+                Debug.Log("Kaz kümesi etkin");
+            }
+
+       
+
             if (canDo)
             {
                 MoveToResearchPlace(other.gameObject);
@@ -166,9 +177,11 @@ public class CollectControl : MonoBehaviour
     {
         delayTime += Time.deltaTime;
 
-        
-        for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+        if (otherObject.GetComponent<ResearchTableController>().tavukEggNeededText.activeSelf)
         {
+            Debug.Log("Tavuk Kümesi Aktif");
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            {
 
                 if (delayTime > 0.05f)
                 {
@@ -176,14 +189,15 @@ public class CollectControl : MonoBehaviour
                     {
                         if (eggList[a].tag == "tavukEgg")
                         {
+                            Debug.Log("Tavuk yumurtasý fýrlatýldý");
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1);
-                            
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1).OnComplete(() => otherObject.GetComponent<ResearchTableController>().currentEggNumber++);
+
                             eggList[a].transform.tag = "Untagged";
-                           
+
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             break;
@@ -192,15 +206,58 @@ public class CollectControl : MonoBehaviour
                     }
 
                 }
-           
 
 
+
+            }
+
+            if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+            {
+                canDo = false;
+            }
         }
 
-        if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+        if (otherObject.GetComponent<ResearchTableController>().tavukEggNeededText.activeSelf == false)
         {
-            canDo = false;
+            Debug.Log("Kaz Kümesi Aktif");
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            {
+
+                if (delayTime > 0.05f)
+                {
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "devekusuEgg")
+                        {
+                         
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform;
+                            eggList[a].transform.rotation = otherObject.transform.rotation;
+                            //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1).OnComplete(()=> otherObject.GetComponent<ResearchTableController>().currentEggNumber ++);
+
+                            eggList[a].transform.tag = "Untagged";
+
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+
+                    }
+
+                }
+
+
+
+            }
+
+            if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+            {
+                canDo = false;
+            }
+
         }
+
        
 
 
