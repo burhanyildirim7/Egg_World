@@ -9287,7 +9287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7340742486768262702
 Transform:
   m_ObjectHideFlags: 0
@@ -10952,7 +10952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b3eec7950e6314c965d4b7a4ce34b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animal: {fileID: 4121888832487203489, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+  tavuk: {fileID: 0}
+  kuluckaMakinesiFull: 0
 --- !u!1 &8560302732085801759
 GameObject:
   m_ObjectHideFlags: 0
