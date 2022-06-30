@@ -1478,7 +1478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8819334538145593889}
   - component: {fileID: 6005953228612949784}
-  - component: {fileID: 3567257909126693402}
+  - component: {fileID: 3835525881485459014}
   m_Layer: 0
   m_Name: timsahPref
   m_TagString: Untagged
@@ -1527,7 +1527,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3567257909126693402
+--- !u!114 &3835525881485459014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1536,9 +1536,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8155810728896372891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9465e5ba4d27f49459f1ac9e81f8115a, type: 3}
+  m_Script: {fileID: 11500000, guid: 42dd64289bb256342b50f0cbfcfddd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsKumesEmpty: {fileID: 0}
 --- !u!1 &8553427901565541132
 GameObject:
   m_ObjectHideFlags: 0
