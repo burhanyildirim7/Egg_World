@@ -87,7 +87,7 @@ public class TavukController : MonoBehaviour
                 goToSecondKumes = true;
                 IsKumesEmpty2.tag = "full";
                 goToKumes = true;
-                target = new Vector3(-12.63f, -2.8f, 10.5f);
+                target = new Vector3(-9.3f, -2.8f, 10.5f);
                 timeToKumes = 0;
                 canDo = false;
             }
@@ -296,17 +296,17 @@ public class TavukController : MonoBehaviour
         TurnToTarget();
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
 
-        if (transform.localPosition == new Vector3(-12.63f, -2.8f, 10.5f))
+        if (transform.localPosition == new Vector3(-9.3f, -2.8f, 10.5f))
         {
 
-            target = new Vector3(-12.5f, 1f, 4f);
+            target = new Vector3(-9.5f, 1f, 4f);
 
 
         }
-        else if (transform.localPosition == new Vector3(-12.5f, 1f, 4f))
+        else if (transform.localPosition == new Vector3(-9.5f, 1f, 4f))
         {
             Debug.Log("Vardý");
-            target = new Vector3(-12.5f, 1f, 0);
+            target = new Vector3(-9.5f, 1f, 0);
             
             tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
             tavukEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
@@ -315,27 +315,27 @@ public class TavukController : MonoBehaviour
         }
   
 
-        else if (transform.localPosition == new Vector3(-12.5f, 1f, 0))
+        else if (transform.localPosition == new Vector3(-9.5f, 1f, 0))
         {
 
             delayTime += Time.deltaTime;
 
             if (delayTime >= 8)
             {
-                target = new Vector3(-12.5f, 1f, 4.2f);
+                target = new Vector3(-9.5f, 1f, 4.2f);
 
 
 
             }
         }
 
-        else if (transform.localPosition == new Vector3(-12.5f, 1f, 4.2f))
+        else if (transform.localPosition == new Vector3(-9.5f, 1f, 4.2f))
         {
-            target = new Vector3(-12.63f, -2.8f, 10.7f);
+            target = new Vector3(-9.63f, -2.8f, 10.7f);
             Debug.Log("Ulaþtý");
         }
 
-        else if (transform.localPosition == new Vector3(-12.63f, -2.8f, 10.7f))
+        else if (transform.localPosition == new Vector3(-9.63f, -2.8f, 10.7f))
         {
             IsKumesEmpty2.tag = "empty";
             tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;

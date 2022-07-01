@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ManagementPlaces : MonoBehaviour
 {
-    public GameObject tavukKümes;
-    public GameObject tavukKümesLevel2;
+    public GameObject tavukKumes;
+    public GameObject tavukKumesLevel2;
     public GameObject tavukKuluckaMakinesi;
     public GameObject tavukTezgah;
     public GameObject tavukTezgah2;
@@ -14,6 +14,7 @@ public class ManagementPlaces : MonoBehaviour
 
     public GameObject researchPlace;
     public GameObject kazKumes;
+    public GameObject kazKumesLevel2;
     public GameObject kazTezgah;
 
     public GameObject researchTable;
@@ -26,12 +27,14 @@ public class ManagementPlaces : MonoBehaviour
     void Start()
     {
         researchTable = researchPlace.transform.GetChild(0).gameObject;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (tavukKümes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf)
+        
+        if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf)
         {
             researchPlace.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = researchPlace;
@@ -49,7 +52,7 @@ public class ManagementPlaces : MonoBehaviour
 
         if (kazKumes.transform.GetChild(0).gameObject.activeSelf && canOpenTavukTezgah2)
         {
-            tavukKümesLevel2.SetActive(true);
+            tavukKumesLevel2.SetActive(true);
             tavukTezgah2.SetActive(true);
             tavukKuluckaMakinesi.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = tavukTezgah2.transform.GetChild(0).gameObject;
@@ -61,6 +64,11 @@ public class ManagementPlaces : MonoBehaviour
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(true);
+        }
+
+        if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumesLevel2)
+        {
+            kazKumesLevel2.SetActive(true);
         }
         
     }

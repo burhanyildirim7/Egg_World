@@ -66,7 +66,17 @@ public class BuyText : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            else if (gameObject.name == "UpgradeKazLevel2")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(true);
+                openNextLevelTezgah3.SetActive(false);
            
+
+                Destroy(gameObject);
+            }
+
+
         }
     }
 

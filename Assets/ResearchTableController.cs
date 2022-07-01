@@ -12,8 +12,10 @@ public class ResearchTableController : MonoBehaviour
     public GameObject tavukEggNeededText;
     public GameObject kazEggNeededText;
     float delayTime = 0;
+    
 
     public bool canOpenKazKumes = false;
+    public bool canOpenKazKumesLevel2 = false;
     void Start()
     {
        
@@ -31,6 +33,8 @@ public class ResearchTableController : MonoBehaviour
             {
                 canOpenKazKumes = true;
             }
+
+
      
 
         }
@@ -42,14 +46,11 @@ public class ResearchTableController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "tavuk_yumurtasi(Clone)" && tavukEggNeededText.activeSelf)
-        {
-           
-        }
+      
 
-        else if (other.gameObject.name == "devekusu_yumurtasi(Clone)" && kazEggNeededText.activeSelf)
+        if (other.gameObject.name == "devekusu_yumurtasi(Clone)" && currentEggNumber == neededEgg)
         {
-          
+            canOpenKazKumesLevel2 = true;
 
         }
     }
