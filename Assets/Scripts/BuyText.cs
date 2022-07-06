@@ -16,24 +16,49 @@ public class BuyText : MonoBehaviour
     {
         buyText = GetComponent<Text>();
 
-  
+        if (gameObject.name == "UpgradeLevel2")
+        {
+            
+            openNextLevelTezgah3.SetActive(true);
+
+         
+        }
+
+        else if (gameObject.name == "UpgradeKazLevel2")
+        {
+         
+            openNextLevelTezgah4.SetActive(true);
+
+        }
+
+        else if (gameObject.name == "ToLevel2")
+        {
+          
+            openNextLevelTezgah2.SetActive(true);
+
+        }
+
+
     }
 
     
     void Update()
     {
-        buyText.text = "$" + buyPrice + "" +openNextLevelTezgah1.gameObject.name;
+        buyText.text = "$" + buyPrice ;
 
         if (buyPrice <= 0)
         {
             if (gameObject.name == "ToLevel1")
             {
                 openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+                
                 Destroy(gameObject);
             }
             else if (gameObject.name == "ToLevel2")
             {
                 openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
         
                 Destroy(gameObject);
             }
@@ -53,6 +78,7 @@ public class BuyText : MonoBehaviour
             else if (gameObject.name == "OpenToResarchPlace")
             {
                 openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
           
                 Destroy(gameObject);
 
@@ -62,6 +88,7 @@ public class BuyText : MonoBehaviour
             {
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(false);
+                openNextLevelTezgah3.SetActive(false);
 
                 Destroy(gameObject);
             }
@@ -71,6 +98,7 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
+                openNextLevelTezgah4.SetActive(false);
            
 
                 Destroy(gameObject);

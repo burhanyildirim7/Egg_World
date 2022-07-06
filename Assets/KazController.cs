@@ -279,7 +279,16 @@ public class KazController : MonoBehaviour
 
         else if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, -3.4f, 11.80f))
         {
-         IsKumesEmpty.tag = "empty";
+            if (distanceForSecondKumes == 0)
+            {
+                IsKumesEmpty.tag = "empty";
+            }
+
+            else
+            {
+                IsKumesEmpty2.tag = "empty";
+            }
+  
 
             if (distanceForSecondKumes<0)
             {
