@@ -53,6 +53,7 @@ TagManager:
   - tavukKulucka
   - "waitTavukK\xFCmes"
   - kazEggSpawn
+  - kazEgg
   layers:
   - Default
   - TransparentFX

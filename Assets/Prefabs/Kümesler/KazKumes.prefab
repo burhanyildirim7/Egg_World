@@ -12702,6 +12702,10 @@ PrefabInstance:
       value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 6370804480986617351, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
+      propertyPath: egg
+      value: 
+      objectReference: {fileID: 3707820328289063987, guid: dfa13134cc5946d42a7e04bcec15647a, type: 3}
+    - target: {fileID: 6370804480986617351, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -12763,7 +12767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7579611288555054990, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Name
-      value: DeveKusuEgg
+      value: KazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 7579611288555054990, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_IsActive
@@ -12968,6 +12972,10 @@ PrefabInstance:
       value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 6370804480986617351, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
+      propertyPath: egg
+      value: 
+      objectReference: {fileID: 3707820328289063987, guid: dfa13134cc5946d42a7e04bcec15647a, type: 3}
+    - target: {fileID: 6370804480986617351, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -13029,7 +13037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7579611288555054990, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Name
-      value: DeveKusuEgg
+      value: KazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 7579611288555054990, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_IsActive

@@ -116,6 +116,12 @@ public class CollectControl : MonoBehaviour
             MoveEggToSepet(other.gameObject);
         }
 
+        if (other.gameObject.tag == "kazEgg")
+        {
+            nameOfEggSpawnPlace = "kazEggSpawn";
+            MoveEggToSepet(other.gameObject);
+        }
+
         if (other.gameObject.tag == "customer")
         {
             other.gameObject.GetComponent<CustomerNavMesh>().canShoopingStart = true;
@@ -152,6 +158,9 @@ public class CollectControl : MonoBehaviour
         {
             MoveTavukEggsToSpend(other.gameObject);
         }
+
+   
+
 
         if (other.gameObject.tag == "researchTable")
         {
@@ -253,9 +262,9 @@ public class CollectControl : MonoBehaviour
                     for (int a = eggList.Count - 1; a >= 0; a--)
                     {
                         //Buraya girmedi
-                        if (eggList[a].tag == "devekusuEgg")
+                        if (eggList[a].tag == "kazEgg")
                         {
-                            Debug.Log("Kaz Kümesi Aktif 4");
+                            
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
@@ -340,14 +349,9 @@ public class CollectControl : MonoBehaviour
 
 
 
-                if (otherObject.name == "Kaz")
-                {
-                    GameObject.FindGameObjectWithTag("kazEggSpawn").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
-                }
-                else
-                {
+               
                     GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
-                }
+              
               
                
              
