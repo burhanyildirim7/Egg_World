@@ -54,6 +54,7 @@ TagManager:
   - "waitTavukK\xFCmes"
   - kazEggSpawn
   - kazEgg
+  - spendKazEgg
   layers:
   - Default
   - TransparentFX

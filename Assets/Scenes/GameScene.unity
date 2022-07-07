@@ -10955,6 +10955,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3702071923554109911, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
+      propertyPath: m_TagString
+      value: spendKazEgg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702071923554109911, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11028,7 +11032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4255580556697916166, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_Name
-      value: PutDeveKusuEgg
+      value: PutKazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 4255580556697916166, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_IsActive
@@ -11041,6 +11045,10 @@ PrefabInstance:
     - target: {fileID: 4255580556886673977, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255580556886673977, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
+      propertyPath: m_TagString
+      value: spendKazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 4255580556886673977, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11053,6 +11061,10 @@ PrefabInstance:
     - target: {fileID: 4255580557889771950, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439908890954768017, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
+      propertyPath: m_TagString
+      value: spendKazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 4439908890954768017, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11169,6 +11181,10 @@ PrefabInstance:
     - target: {fileID: 8232235589617839429, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650609138387601833, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
+      propertyPath: m_TagString
+      value: spendKazEgg
       objectReference: {fileID: 0}
     - target: {fileID: 8650609138387601833, guid: 29cff252b4c3af34688ac45c9ca34303, type: 3}
       propertyPath: m_StaticEditorFlags
