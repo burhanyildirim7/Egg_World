@@ -37,6 +37,7 @@ public class CollectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MakeGameFaster();
         IsPlayerMove();
 
        
@@ -53,6 +54,19 @@ public class CollectControl : MonoBehaviour
                 eggList.RemoveAt(i);
         }
 
+    }
+
+    void MakeGameFaster()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("Oyun Hýzlandý");
+            Time.timeScale = 5;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -324,8 +338,17 @@ public class CollectControl : MonoBehaviour
                 eggStackTransform[i].tag = "full";
                 eggList.Add(otherObject);
 
-               
-               GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+
+
+                if (otherObject.name == "devekusu_yumurtasi(Clone)")
+                {
+                    GameObject.FindGameObjectWithTag("kazEggSpawn").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+                }
+                else
+                {
+                    GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+                }
+              
                
              
                 otherObject.transform.parent.gameObject.tag = "empty";

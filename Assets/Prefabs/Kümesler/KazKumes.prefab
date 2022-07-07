@@ -12337,7 +12337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Name
-      value: DeveKusu
+      value: Kaz
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
+      propertyPath: m_TagString
+      value: kazEggSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12599,7 +12603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_Name
-      value: DeveKusu2
+      value: Kaz2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
+      propertyPath: m_TagString
+      value: kazEggSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.x

@@ -2078,15 +2078,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2849165711512939874, guid: c5717ef7af190284bb8ed14735568919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.92
+      value: 5.37
       objectReference: {fileID: 0}
     - target: {fileID: 2849165711512939874, guid: c5717ef7af190284bb8ed14735568919, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.56
+      value: -12.49
       objectReference: {fileID: 0}
     - target: {fileID: 5873327689231040371, guid: c5717ef7af190284bb8ed14735568919, type: 3}
       propertyPath: m_Name
       value: devekusu_kumesPref
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873327689231040371, guid: c5717ef7af190284bb8ed14735568919, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6541919117512058313, guid: c5717ef7af190284bb8ed14735568919, type: 3}
       propertyPath: m_RootOrder
@@ -2131,6 +2135,10 @@ PrefabInstance:
     - target: {fileID: 6541919117512058313, guid: c5717ef7af190284bb8ed14735568919, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373739013278677557, guid: c5717ef7af190284bb8ed14735568919, type: 3}
+      propertyPath: m_TagString
+      value: empty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5717ef7af190284bb8ed14735568919, type: 3}
@@ -9132,6 +9140,10 @@ PrefabInstance:
     - target: {fileID: 7581687702076934576, guid: c681c5d7411a97b4d82d9cb29152ca72, type: 3}
       propertyPath: m_Name
       value: KazKumes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581687702076934576, guid: c681c5d7411a97b4d82d9cb29152ca72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c681c5d7411a97b4d82d9cb29152ca72, type: 3}

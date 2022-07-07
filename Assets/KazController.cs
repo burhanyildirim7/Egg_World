@@ -7,8 +7,8 @@ using DG.Tweening;
 public class KazController : MonoBehaviour
 {
     Animator kazAnim;
-    GameObject devekusuEggSpawn;
-    GameObject devekusuEggSpawn2;
+    GameObject kazEggSpawn;
+    GameObject kazEggSpawn2;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -34,7 +34,7 @@ public class KazController : MonoBehaviour
         
         ChooseRandomTarget();
 
-        devekusuEggSpawn = GameObject.FindGameObjectWithTag("devekusuEggSpawn");
+        kazEggSpawn = GameObject.FindGameObjectWithTag("kazEggSpawn");
        
 
         target = new Vector3(Random.Range(-4f, 9f), transform.localPosition.y, Random.Range(12, 22));
@@ -45,10 +45,10 @@ public class KazController : MonoBehaviour
     void Update()
     {
 
-        if (devekusuEggSpawn2  == null|| IsKumesEmpty2 == null)
+        if (kazEggSpawn2 == null|| IsKumesEmpty2 == null)
         {
 
-            devekusuEggSpawn2 = GameObject.Find("DeveKusu2");
+            kazEggSpawn2 = GameObject.Find("Kaz2");
             IsKumesEmpty2 = GameObject.Find("IsKazKumesEmpty2");
 
         }
@@ -244,15 +244,15 @@ public class KazController : MonoBehaviour
 
             if (distanceForSecondKumes < 0)
             {
-                devekusuEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
-                devekusuEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
-                devekusuEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
             }
             else
             {
-                devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
-                devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
-                devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                kazEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+                kazEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+                kazEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
             }
            
         }
@@ -292,11 +292,11 @@ public class KazController : MonoBehaviour
 
             if (distanceForSecondKumes<0)
             {
-                devekusuEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
             }
             else
             {
-                devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                kazEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             }
   
         goToKumes = false;
