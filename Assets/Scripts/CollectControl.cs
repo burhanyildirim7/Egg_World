@@ -340,7 +340,7 @@ public class CollectControl : MonoBehaviour
 
 
 
-                if (otherObject.name == "devekusu_yumurtasi(Clone)")
+                if (otherObject.name == "Kaz")
                 {
                     GameObject.FindGameObjectWithTag("kazEggSpawn").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
                 }

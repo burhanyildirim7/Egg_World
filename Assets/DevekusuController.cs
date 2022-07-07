@@ -172,18 +172,8 @@ public class DevekusuController : MonoBehaviour
     {
         //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
 
-
-
-
-
-
-
         TurnToTarget();
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
-
-
-
-
 
         if (transform.localPosition == target)
         {
@@ -203,9 +193,6 @@ public class DevekusuController : MonoBehaviour
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
                 target = new Vector3(0, transform.localPosition.y, 0);
-
-
-
             }
 
         }

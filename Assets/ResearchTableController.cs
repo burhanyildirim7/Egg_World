@@ -15,7 +15,7 @@ public class ResearchTableController : MonoBehaviour
     
 
     public bool canOpenKazKumes = false;
-    public bool canOpenKazKumesLevel2 = false;
+    public bool canOpenDevekusuKumes = false;
     void Start()
     {
        
@@ -48,9 +48,9 @@ public class ResearchTableController : MonoBehaviour
     {
       
 
-        if (other.gameObject.name == "devekusu_yumurtasi(Clone)" && currentEggNumber == neededEgg)
+        if (other.gameObject.name == "Kaz" && currentEggNumber == neededEgg)
         {
-            canOpenKazKumesLevel2 = true;
+            canOpenDevekusuKumes = true;
 
         }
     }
