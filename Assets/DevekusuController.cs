@@ -5,7 +5,7 @@ using UnityEngine;
 public class DevekusuController : MonoBehaviour
 {
     Animator devekusuAnim;
-    GameObject timsahEggSpawn;
+    GameObject devekusuEggSpawn;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -32,8 +32,8 @@ public class DevekusuController : MonoBehaviour
         {
             IsDevekusuKumesEmpty = GameObject.Find("IsDevekusuKumesEmpty");
         }
- 
-        // timsahEggSpawn = GameObject.FindGameObjectWithTag("timsahEggSpawn");
+
+        devekusuEggSpawn = GameObject.FindGameObjectWithTag("devekusuEggSpawn");
 
         target = new Vector3(Random.Range(-15, 15), transform.localPosition.y, Random.Range(-18.7f, 11));
 
@@ -57,6 +57,7 @@ public class DevekusuController : MonoBehaviour
 
         if (canDo && timeToKumes >= randomTime)
         {
+ 
             if (IsDevekusuKumesEmpty.tag == "empty")
             {
                 IsDevekusuKumesEmpty.tag = "full";
@@ -173,10 +174,6 @@ public class DevekusuController : MonoBehaviour
 
 
 
-        
-        devekusuAnim.SetBool("canIdle", false);
-        devekusuAnim.SetBool("canWalk", true);
-
 
 
 
@@ -190,18 +187,21 @@ public class DevekusuController : MonoBehaviour
 
         if (transform.localPosition == target)
         {
+
             devekusuAnim.SetBool("canIdle", false);
             devekusuAnim.SetBool("canWalk", false);
+            devekusuAnim.SetBool("canSit", true);
 
-            timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
-            timsahEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+            devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
 
 
             delayTime += Time.deltaTime;
             if (delayTime >= 5.3f)
             {
-                timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-                timsahEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+              
+                devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
                 target = new Vector3(0, transform.localPosition.y, 0);
 
 
@@ -214,7 +214,7 @@ public class DevekusuController : MonoBehaviour
         {
             devekusuAnim.SetBool("canIdle", false);
             devekusuAnim.SetBool("canWalk", true);
-
+            devekusuAnim.SetBool("canSit", false);
 
         }
 
@@ -224,7 +224,9 @@ public class DevekusuController : MonoBehaviour
             {
                 randomNumbersForAnim = 0;
                 IsDevekusuKumesEmpty.tag = "empty";
+                canDo = true;
                 goToKumes = false;
+              
             }
         }
         

@@ -38,6 +38,7 @@ public class CollectBoxControl : MonoBehaviour
     void SpawnEggs()
     {
         var spawnedEgg = Instantiate(egg, eggSpawnPlace.transform.position, Quaternion.Euler(-90,0,0));
+        spawnedEgg.name = gameObject.name;
         eggList2.Add(spawnedEgg);
         for (int i = 0; i < eggStackPlace.Count; i++)
         {
