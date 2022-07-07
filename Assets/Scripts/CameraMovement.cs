@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
             {
               
                 // transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x + 2, transform.position.y, target.transform.position.z - (distance + 5)), 1 * Time.deltaTime);
-                transform.DOMove(new Vector3(target.transform.position.x + 2, transform.position.y, target.transform.position.z - (distance + 5)), 2);
+                transform.DOMove(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z - (distance + 5)), 2);
             }
             else
             {

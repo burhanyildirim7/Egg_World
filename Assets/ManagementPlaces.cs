@@ -59,7 +59,7 @@ public class ManagementPlaces : MonoBehaviour
             tavukKumesLevel2.SetActive(true);
             tavukTezgah2.SetActive(true);
             tavukKuluckaMakinesi.SetActive(true);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = tavukTezgah2.transform.GetChild(0).gameObject;
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = tavukTezgah2.transform.GetChild(0).gameObject;
             canOpenTavukTezgah2 = false;
 
         }

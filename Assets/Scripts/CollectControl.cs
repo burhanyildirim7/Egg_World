@@ -154,6 +154,13 @@ public class CollectControl : MonoBehaviour
          
         }
 
+        if (other.gameObject.tag == "spendKazEgg")
+        {
+            MoveKazEggsToSpend(other.gameObject);
+
+        }
+
+
         if (other.gameObject.tag == "spendTavukEgg")
         {
             MoveTavukEggsToSpend(other.gameObject);
@@ -552,6 +559,45 @@ public class CollectControl : MonoBehaviour
                     for (int a = eggList.Count - 1; a >= 0; a--)
                     {
                         if (eggList[a].tag == "devekusuEgg")
+                        {
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
+                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            // eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
+                            eggList[a].transform.tag = "Untagged";
+                            otherObject.transform.GetChild(i).transform.tag = "full";
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    void MoveKazEggsToSpend(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+
+        for (int i = 0; i < otherObject.transform.childCount; i++)
+        {
+
+            if (otherObject.transform.GetChild(i).tag == "empty")
+            {
+
+                if (delayTime > 0.05f)
+                {
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        if (eggList[a].tag == "kazEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
