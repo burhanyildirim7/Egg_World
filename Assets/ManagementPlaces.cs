@@ -29,6 +29,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject timsahKumes;
+    public GameObject timsahTezgah;
 
 
 
@@ -112,7 +113,7 @@ public class ManagementPlaces : MonoBehaviour
         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes)
         {
             timsahKumes.SetActive(true);
-
+            timsahTezgah.SetActive(true);
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = timsahKumes.transform.GetChild(0).gameObject;
             canOpenTimsahKumes = false;
