@@ -15,6 +15,7 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject researchPlace;
     public GameObject kazKumes;
     public GameObject kazKumesLevel2;
+    public GameObject kazKumesModul2;
     public GameObject kazTezgah;
 
     public GameObject researchTable;
@@ -23,6 +24,8 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject devekusuKumes;
+    public GameObject devekusuTezgah;
+
     bool canOpenResearchPlace = true;
     bool canOpenKazKumes = true;
     bool canOpenTavukTezgah2 = true;
@@ -76,7 +79,9 @@ public class ManagementPlaces : MonoBehaviour
         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes)
         {
             devekusuKumes.SetActive(true);
-           
+            devekusuTezgah.SetActive(true);
+
+
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = devekusuKumes.transform.GetChild(0).gameObject;
             canOpenDevekusuKumes = false;
         }
@@ -85,7 +90,11 @@ public class ManagementPlaces : MonoBehaviour
         {
             kazKumesLevel2.SetActive(true);
         }
-        
+
+        if (kazKumesModul2.activeSelf)
+        {
+            Debug.Log("Research table artýk devekusu istemeli");
+        }
         
     }
 }
