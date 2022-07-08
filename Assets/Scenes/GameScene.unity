@@ -2183,8 +2183,10 @@ MonoBehaviour:
   researchTable: {fileID: 5324887059447606546}
   researchTableNeededTavukEgg: {fileID: 3484926067147855947}
   researchTableNeededKazEgg: {fileID: 1830529395}
+  researchTableNeededDevekusuEgg: {fileID: 1853701249}
   devekusuKumes: {fileID: 1127963728}
   devekusuTezgah: {fileID: 253549500}
+  timsahKumes: {fileID: 1732011782}
 --- !u!4 &1616607031
 Transform:
   m_ObjectHideFlags: 0
@@ -2200,6 +2202,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1732011782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3402898613589170403, guid: 7e11174c958370e4287f2889cf191412, type: 3}
+  m_PrefabInstance: {fileID: 6071773252138456732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1814926416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2472227109607786357, guid: 7514193316180e7498e072eb49771207, type: 3}
@@ -2231,6 +2238,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1853701249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4858128618801480086, guid: 4002472263126af44bce3e1b0236957b, type: 3}
+  m_PrefabInstance: {fileID: 2467537860110763114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1977268496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7342,6 +7354,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4858128618801480086, guid: 4002472263126af44bce3e1b0236957b, type: 3}
+      propertyPath: m_Name
+      value: DevekusuEggNeeded
+      objectReference: {fileID: 0}
     - target: {fileID: 5097139392270124313, guid: 4002472263126af44bce3e1b0236957b, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -7398,6 +7414,10 @@ PrefabInstance:
       propertyPath: kazKumes
       value: 
       objectReference: {fileID: 6315489535345580776}
+    - target: {fileID: 8792763908425533556, guid: 4002472263126af44bce3e1b0236957b, type: 3}
+      propertyPath: devekusuEggNeededText
+      value: 
+      objectReference: {fileID: 1853701249}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4002472263126af44bce3e1b0236957b, type: 3}
 --- !u!1 &2479270400657072254

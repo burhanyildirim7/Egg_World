@@ -188,8 +188,14 @@ public class CollectControl : MonoBehaviour
                     MoveToResearchPlaceKaz(other.gameObject);
                 }
 
+                else if (other.GetComponent<ResearchTableController>().devekusuEggNeededText.activeSelf)
+                {
+ 
+                MoveToResearchPlaceDevekusu(other.gameObject);
+                }
 
-          
+
+
 
         }
 
@@ -297,6 +303,51 @@ public class CollectControl : MonoBehaviour
 
         }
     }
+
+
+    void MoveToResearchPlaceDevekusu(GameObject otherObject)
+    {
+        if (otherObject.GetComponent<ResearchTableController>().devekusuEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+        {
+            //Buraya girdi
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            {
+                //Buraya girdi
+
+                if (delayTime > 0.05f)
+                {
+                    //Buraya girdi
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        //Buraya girmedi
+                        if (eggList[a].tag == "devekusuEgg")
+                        {
+
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform;
+                            eggList[a].transform.rotation = otherObject.transform.rotation;
+                            //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1);
+
+                            eggList[a].transform.tag = "Untagged";
+
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            break;
+                        }
+
+                    }
+
+                }
+                //Buraya girdi
+
+
+            }
+
+
+        }
+    }
     void MoveToTavukKuluckaMakine(GameObject otherObject)
     {
         for (int i = 0; i < 1; i++)
@@ -325,14 +376,7 @@ public class CollectControl : MonoBehaviour
 
         }
 
-       
-    
-
-        
-
-
-
-      
+            
 
         if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
         {
@@ -371,24 +415,7 @@ public class CollectControl : MonoBehaviour
             }
         }
 
-        /*
-        for (int i = 0; i < eggStackTransform.Count; i++)
-        {
-            if (eggStackTransform[i].tag == "empty")
-            {
-
-                eggList.Add(otherObject);
-                GameObject.FindGameObjectWithTag("collect").GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
-                otherObject.transform.parent.gameObject.tag = "empty";
-                otherObject.transform.parent = EggStackTransform.transform;
-                otherObject.transform.rotation = EggStackTransform.transform.rotation;
-                otherObject.transform.DOLocalJump(new Vector3(0, distanceY, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
-                eggStackTransform[i].tag = "full";
-                distanceY += 0.5f;
-                break;
-            }
-        }
-        */
+       
     }
 
 

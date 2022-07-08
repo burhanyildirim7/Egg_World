@@ -11,11 +11,13 @@ public class ResearchTableController : MonoBehaviour
     public GameObject kazKumes;
     public GameObject tavukEggNeededText;
     public GameObject kazEggNeededText;
+    public GameObject devekusuEggNeededText;
     float delayTime = 0;
     
 
     public bool canOpenKazKumes = false;
     public bool canOpenDevekusuKumes = false;
+    public bool canOpenTimsahKumes = false;
     void Start()
     {
        
@@ -51,6 +53,12 @@ public class ResearchTableController : MonoBehaviour
         if (other.gameObject.name == "Kaz" && currentEggNumber == neededEgg)
         {
             canOpenDevekusuKumes = true;
+
+        }
+
+        if (other.gameObject.name == "DeveKusu" && currentEggNumber == neededEgg)
+        {
+            canOpenTimsahKumes = true;
 
         }
     }
