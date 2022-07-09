@@ -39,6 +39,8 @@ public class ManagementPlaces : MonoBehaviour
     bool canOpenTavukTezgah2 = true;
     bool canOpenDevekusuKumes = true;
     bool canOpenTimsahKumes = true;
+    bool canOpenNeededKaz = true;
+    bool canOpenNeededDevekusu = true;
     
     void Start()
     {
@@ -78,10 +80,12 @@ public class ManagementPlaces : MonoBehaviour
 
         
 
-        if (tavukKümesModul2.activeSelf)
+        if (tavukKümesModul2.activeSelf && canOpenNeededKaz)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(true);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = researchPlace;
+            canOpenNeededKaz = false;
         }
 
         
@@ -100,11 +104,13 @@ public class ManagementPlaces : MonoBehaviour
             kazKumesLevel2.SetActive(true);
         }
 
-        if (kazKumesModul2.activeSelf)
+        if (kazKumesModul2.activeSelf && canOpenNeededDevekusu)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(false);
             researchTableNeededDevekusuEgg.SetActive(true);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = researchPlace;
+            canOpenNeededDevekusu = false;
 
         }
 
