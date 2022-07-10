@@ -104,6 +104,15 @@ public class BuyText : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            else if (gameObject.name == "UpgradeDevekusuLevel2")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+
+
+                Destroy(gameObject);
+            }
+
 
         }
     }

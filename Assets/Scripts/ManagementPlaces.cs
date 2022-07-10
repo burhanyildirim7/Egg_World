@@ -25,6 +25,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject devekusuKumes;
+    public GameObject devekusuKumesLevel2;
     public GameObject devekusuTezgah;
 
 
@@ -124,9 +125,15 @@ public class ManagementPlaces : MonoBehaviour
         {
             timsahKumes.SetActive(true);
             timsahTezgah.SetActive(true);
+          
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = timsahKumes.transform.GetChild(0).gameObject;
             canOpenTimsahKumes = false;
+        }
+
+        if (timsahKumes.transform.GetChild(0).gameObject.activeSelf)
+        {
+            devekusuKumesLevel2.SetActive(true);
         }
 
     }
