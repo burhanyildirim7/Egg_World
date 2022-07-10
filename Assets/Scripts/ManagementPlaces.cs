@@ -32,6 +32,10 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject timsahTezgah;
 
 
+    public GameObject ejderKumes;
+    public GameObject ejderTezgah;
+
+
 
 
     bool canOpenResearchPlace = true;
