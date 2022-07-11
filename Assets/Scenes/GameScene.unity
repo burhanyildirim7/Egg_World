@@ -2333,6 +2333,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2421676766849168189, guid: dfd03a779a9cd5842be5574cecd87a3a, type: 3}
   m_PrefabInstance: {fileID: 964084165590580311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591268462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1927491680743074820, guid: 4002472263126af44bce3e1b0236957b, type: 3}
+  m_PrefabInstance: {fileID: 2467537860110763114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1597885464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2513,8 +2518,10 @@ MonoBehaviour:
   researchTableNeededTavukEgg: {fileID: 3484926067147855947}
   researchTableNeededKazEgg: {fileID: 1830529395}
   researchTableNeededDevekusuEgg: {fileID: 1853701249}
+  researchTableNeededTimsahEgg: {fileID: 1591268462}
   devekusuKumes: {fileID: 1127963728}
-  devekusuKumesLevel2: {fileID: 1582116649}
+  devekusuKumesLevel2Canvas: {fileID: 1582116649}
+  devekusuKumesLevel2: {fileID: 1129403735}
   devekusuTezgah: {fileID: 253549500}
   timsahKumes: {fileID: 1732011782}
   timsahTezgah: {fileID: 52853256}
@@ -8020,6 +8027,10 @@ PrefabInstance:
       propertyPath: kazKumes
       value: 
       objectReference: {fileID: 6315489535345580776}
+    - target: {fileID: 8792763908425533556, guid: 4002472263126af44bce3e1b0236957b, type: 3}
+      propertyPath: timsahEggNeededText
+      value: 
+      objectReference: {fileID: 1591268462}
     - target: {fileID: 8792763908425533556, guid: 4002472263126af44bce3e1b0236957b, type: 3}
       propertyPath: devekusuEggNeededText
       value: 

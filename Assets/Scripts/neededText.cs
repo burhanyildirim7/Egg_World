@@ -50,5 +50,19 @@ public class neededText : MonoBehaviour
             _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;
         }
 
+        if (gameObject.name == "TimsahEggNeeded")
+        {
+
+            if (canDo)
+            {
+                researchTable.GetComponent<ResearchTableController>().neededEgg = 1;
+                researchTable.GetComponent<ResearchTableController>().currentEggNumber = 0;
+                canDo = false;
+            }
+
+            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;
+        }
+
+        
     }
 }

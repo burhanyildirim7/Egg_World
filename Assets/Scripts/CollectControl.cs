@@ -194,6 +194,12 @@ public class CollectControl : MonoBehaviour
                 MoveToResearchPlaceDevekusu(other.gameObject);
                 }
 
+            else if (other.GetComponent<ResearchTableController>().timsahEggNeededText.activeSelf)
+            {
+
+                MoveToResearchPlaceTimsah(other.gameObject);
+            }
+
 
 
 
@@ -321,6 +327,50 @@ public class CollectControl : MonoBehaviour
                     {
                         //Buraya girmedi
                         if (eggList[a].tag == "devekusuEgg")
+                        {
+
+                            eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.parent = otherObject.transform;
+                            eggList[a].transform.rotation = otherObject.transform.rotation;
+                            //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1);
+
+                            eggList[a].transform.tag = "Untagged";
+
+                            eggList.Remove(eggList[a]);
+                            delayTime = 0;
+                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            break;
+                        }
+
+                    }
+
+                }
+                //Buraya girdi
+
+
+            }
+
+
+        }
+    }
+
+    void MoveToResearchPlaceTimsah(GameObject otherObject)
+    {
+        if (otherObject.GetComponent<ResearchTableController>().timsahEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+        {
+            //Buraya girdi
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            {
+                //Buraya girdi
+
+                if (delayTime > 0.05f)
+                {
+                    //Buraya girdi
+                    for (int a = eggList.Count - 1; a >= 0; a--)
+                    {
+                        //Buraya girmedi
+                        if (eggList[a].tag == "timsahEgg")
                         {
 
                             eggList[a].transform.parent.tag = "empty";
