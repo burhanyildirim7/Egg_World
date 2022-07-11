@@ -6,6 +6,7 @@ public class TimsahController : MonoBehaviour
 {
     Animator timsahAnim;
     GameObject timsahEggSpawn;
+    GameObject timsahEggSpawn2;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -14,7 +15,8 @@ public class TimsahController : MonoBehaviour
     bool backToMiddleKumes = false;
     float timeToKumes;
     bool canDo = true;
-    public GameObject IsKumesEmpty;
+    public GameObject IsTimsahKumesEmpty;
+    public GameObject IsTimsahKumesEmpty2;
     float randomTime;
 
 
@@ -28,7 +30,13 @@ public class TimsahController : MonoBehaviour
 
         ChooseRandomTarget();
 
+        if (IsTimsahKumesEmpty == null)
+        {
+            IsTimsahKumesEmpty = GameObject.Find("IsTimsahKumesEmpty");
+        }
+
         timsahEggSpawn = GameObject.FindGameObjectWithTag("timsahEggSpawn");
+        timsahEggSpawn2 = GameObject.Find("TimsahEgg2");
 
         target = new Vector3(Random.Range(-22, 30f), transform.localPosition.y, Random.Range(-26.5f, 25));
 
@@ -37,6 +45,13 @@ public class TimsahController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (IsTimsahKumesEmpty2 == null)
+        {
+            IsTimsahKumesEmpty2 = GameObject.Find("IsTimsahKumesEmpty2");
+        }
+
+
         if (!goToKumes)
         {
             ChooseRandomAnimFunction();
@@ -55,16 +70,28 @@ public class TimsahController : MonoBehaviour
 
         if (canDo && timeToKumes >= randomTime)
         {
-            if (IsKumesEmpty.tag == "empty")
+            if (IsTimsahKumesEmpty.tag == "empty")
             {
-                IsKumesEmpty.tag = "full";
+                IsTimsahKumesEmpty.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
-                target = IsKumesEmpty.transform.localPosition;
+                target = IsTimsahKumesEmpty.transform.localPosition;
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
             }
+
+            else if (IsTimsahKumesEmpty2.tag == "empty" && IsTimsahKumesEmpty2.activeSelf)
+            {
+                IsTimsahKumesEmpty2.tag = "full";
+                goToKumes = true;
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = IsTimsahKumesEmpty2.transform.localPosition;
+                timeToKumes = 0;
+                delayTime = 0;
+                canDo = false;
+            }
+
             timeToKumes = 0;
         }
         
@@ -189,15 +216,36 @@ public class TimsahController : MonoBehaviour
             timsahAnim.SetBool("canIdle", false);
             timsahAnim.SetBool("canWalk", false);
 
-            timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
-            timsahEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            if (target == IsTimsahKumesEmpty2.transform.localPosition)
+            {
+                timsahEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
+                timsahEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
+            }
 
-           
+            else if (target == IsTimsahKumesEmpty.transform.localPosition)
+            {
+                timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+                timsahEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            }
+
+
+
             delayTime += Time.deltaTime;
             if (delayTime >= 5.3f)
             {
-                timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-                timsahEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                if (target == IsTimsahKumesEmpty2.transform.localPosition)
+                {
+                    IsTimsahKumesEmpty2.tag = "empty";
+                    timsahEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+                    timsahEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                }
+
+                else if (target == IsTimsahKumesEmpty.transform.localPosition)
+                {
+                    IsTimsahKumesEmpty.tag = "empty";
+                    timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                    timsahEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                }
                 target = new Vector3(0, transform.localPosition.y, 0);
 
                
@@ -219,7 +267,8 @@ public class TimsahController : MonoBehaviour
             if (transform.localPosition == target)
             {
                 randomNumbersForAnim = 0;
-                IsKumesEmpty.tag = "empty";
+          
+                canDo = true;
                 goToKumes = false;
             }
         }

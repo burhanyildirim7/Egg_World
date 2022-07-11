@@ -32,6 +32,8 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject timsahKumes;
+    public GameObject timsahKumesLevel2Canvas;
+    public GameObject timsahKumesLevel2;
     public GameObject timsahTezgah;
 
 
@@ -156,6 +158,12 @@ public class ManagementPlaces : MonoBehaviour
             ejderTezgah.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().target = ejderKumes;
             canOpenEjderKumes = false;
+        }
+
+        if (ejderKumes.transform.GetChild(0).gameObject.activeSelf)
+        {
+            timsahKumesLevel2Canvas.SetActive(true);
+            
         }
 
     }
