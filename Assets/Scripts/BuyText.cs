@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BuyText : MonoBehaviour
 {
     Text buyText;
-    int buyPrice = 100;
+    public int buyPrice = 100;
     public GameObject openNextLevelTezgah1;
     public GameObject openNextLevelTezgah2;
     public GameObject openNextLevelTezgah3;
@@ -126,13 +126,18 @@ public class BuyText : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    
+
+     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<CollectControl>().totalMoney> 0 && other.gameObject.GetComponent<CollectControl>().isPlayerMove == false)
+        if (other.gameObject.tag == "BedelOdemeMoney")
         {
-            other.gameObject.GetComponent<CollectControl>().totalMoney--;
-            buyPrice--;
-           
-        }
+            Debug.Log("Temas Var");
+       
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CollectControl>().totalMoney-=10;
+            buyPrice-=10;
+
+            Destroy(other.gameObject);
+        }   
     }
 }

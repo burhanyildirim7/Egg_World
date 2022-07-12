@@ -88,7 +88,7 @@ public class CollectControl : MonoBehaviour
             }
            
             totalMoney += 100;
-            UIController.instance.CoinEffect();
+           // UIController.instance.CoinEffect();
             Destroy(other.gameObject);
         }
 
@@ -727,10 +727,12 @@ public class CollectControl : MonoBehaviour
             if (transform.position != lastPos)
             {
             isPlayerMove = true;
+        
             }
             else
             {
             isPlayerMove = false;
+    
             }
 
             lastPos = transform.position;

@@ -14,9 +14,11 @@ public class ManagementPlaces : MonoBehaviour
 
     public GameObject researchPlace;
     public GameObject kazKumes;
+    public GameObject kazKumesObject;
     public GameObject kazKumesLevel2;
     public GameObject kazKumesModul2;
     public GameObject kazTezgah;
+
 
     public GameObject researchTable;
     public GameObject researchTableNeededTavukEgg;
@@ -26,18 +28,21 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject devekusuKumes;
+    public GameObject devekusuKumesObject;
     public GameObject devekusuKumesLevel2Canvas;
     public GameObject devekusuKumesLevel2;
     public GameObject devekusuTezgah;
 
 
     public GameObject timsahKumes;
+    public GameObject timsahKumesObject;
     public GameObject timsahKumesLevel2Canvas;
     public GameObject timsahKumesLevel2;
     public GameObject timsahTezgah;
 
 
     public GameObject ejderKumes;
+    public GameObject ejderKumesObject;
     public GameObject ejderTezgah;
 
 
@@ -55,7 +60,8 @@ public class ManagementPlaces : MonoBehaviour
     
     void Start()
     {
-        researchTable = researchPlace.transform.GetChild(0).gameObject;
+ 
+
 
     }
 
@@ -66,6 +72,7 @@ public class ManagementPlaces : MonoBehaviour
         if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf)
         {
             researchPlace.SetActive(true);
+      
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(researchPlace);
             canOpenResearchPlace = false;
         }
@@ -78,8 +85,9 @@ public class ManagementPlaces : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(kazKumes);
             canOpenKazKumes = false;
         }
-
-        if (kazKumes.transform.GetChild(0).gameObject.activeSelf && canOpenTavukTezgah2)
+        
+        
+         if(kazKumesObject.activeSelf && canOpenTavukTezgah2)
         {
             tavukKumesLevel2.SetActive(true);
             tavukTezgah2.SetActive(true);
@@ -88,10 +96,10 @@ public class ManagementPlaces : MonoBehaviour
             canOpenTavukTezgah2 = false;
 
         }
-
         
 
-        if (tavukKümesModul2.activeSelf && canOpenNeededKaz)
+
+         if(tavukKümesModul2.activeSelf && canOpenNeededKaz)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(true);
@@ -99,24 +107,26 @@ public class ManagementPlaces : MonoBehaviour
             canOpenNeededKaz = false;
         }
 
-        
-        if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes)
+
+         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes)
         {
             devekusuKumes.SetActive(true);
             devekusuTezgah.SetActive(true);
 
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(devekusuKumes.transform.GetChild(0).gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(devekusuKumes);
             canOpenDevekusuKumes = false;
         }
 
-        if (devekusuKumes.transform.GetChild(0).gameObject.activeSelf)
+         if (devekusuKumesObject.activeSelf)
         {
+            Debug.Log("Burasý Çalýþtý");
             kazKumesLevel2.SetActive(true);
         }
 
-        if (kazKumesModul2.activeSelf && canOpenNeededDevekusu)
+         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu)
         {
+            Debug.Log("Burasý Çalýþtý 2"); 
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(false);
             researchTableNeededDevekusuEgg.SetActive(true);
@@ -127,22 +137,22 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-        if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes)
         {
             timsahKumes.SetActive(true);
             timsahTezgah.SetActive(true);
           
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(timsahKumes.transform.GetChild(0).gameObject);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(timsahKumesObject);
             canOpenTimsahKumes = false;
         }
 
-        if (timsahKumes.transform.GetChild(0).gameObject.activeSelf)
+         if (timsahKumesObject.activeSelf)
         {
             devekusuKumesLevel2Canvas.SetActive(true);
         }
 
-        if (devekusuKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2)
+         if (devekusuKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(false);
@@ -152,19 +162,19 @@ public class ManagementPlaces : MonoBehaviour
             canOpenDevekusuKumesLevel2 = false;
         }
 
-        if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes)
         {
             ejderKumes.SetActive(true);
             ejderTezgah.SetActive(true);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(ejderKumes);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(ejderKumesObject);
             canOpenEjderKumes = false;
         }
 
-        if (ejderKumes.transform.GetChild(0).gameObject.activeSelf)
+         if (ejderKumesObject.activeSelf)
         {
             timsahKumesLevel2Canvas.SetActive(true);
             
         }
-
+     
     }
 }
