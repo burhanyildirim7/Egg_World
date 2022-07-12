@@ -11,6 +11,7 @@ public class BuyText : MonoBehaviour
     public GameObject openNextLevelTezgah2;
     public GameObject openNextLevelTezgah3;
     public GameObject openNextLevelTezgah4;
+    public GameObject openNextLevelTezgah5;
     
     void Start()
     {
@@ -89,6 +90,7 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(false);
                 openNextLevelTezgah3.SetActive(false);
+           
 
                 Destroy(gameObject);
             }
@@ -99,7 +101,7 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
                 openNextLevelTezgah4.SetActive(false);
-           
+                Debug.Log("Þu an yok olmasý lazým");
 
                 Destroy(gameObject);
             }
