@@ -6,34 +6,39 @@ using DG.Tweening;
 public class CameraMovement : MonoBehaviour
 {
 
-    public GameObject target;
-    public int distance;
-    float delayTime = 0;
-    // Update is called once per frame
-    void Update()
+    private GameObject Player;
+
+    Vector3 aradakiFark;
+
+
+    void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        aradakiFark = transform.position - Player.transform.position;
+    }
+
+
+    void FixedUpdate()
     {
 
-        if (target.name =="Player")
-        {
-            transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z - distance);
-        }
-        else
-        {
-            delayTime += Time.deltaTime;
-            if (delayTime <=3)
-            {
-              
-                // transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x + 2, transform.position.y, target.transform.position.z - (distance + 5)), 1 * Time.deltaTime);
-                transform.DOMove(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z - (distance + 5)), 2);
-            }
-            else
-            {
-                target = GameObject.FindGameObjectWithTag("Player").gameObject;
-                delayTime = 0;
-            }
-           
-        }
-        
+        transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x, Player.transform.position.y + aradakiFark.y, Player.transform.position.z + aradakiFark.z), Time.deltaTime * 5f);
+
+    }
+
+
+    public void KamerayiYonlendir(GameObject odakNoktasi)
+    {
+        //transform.position = Vector3.Lerp(transform.position, new Vector3(odakNoktasi.transform.position.x, odakNoktasi.transform.position.y + aradakiFark.y, odakNoktasi.transform.position.z + aradakiFark.z), Time.deltaTime * 5f);
+        Player = odakNoktasi;
+        //GameController.instance._kameraHareketli = true;
+
+        Invoke("KamerayiResetle", 3f);
+    }
+
+    public void KamerayiResetle()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        //GameController.instance._kameraHareketli = false;
     }
 
 }
