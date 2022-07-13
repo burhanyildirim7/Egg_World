@@ -41,8 +41,8 @@ public class CustomerSpawn : MonoBehaviour
 
         if (delayTime >= 30 )
         {
-            randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
-            Instantiate(customer, randomPlaceToSpawn, Quaternion.identity);
+            //randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
+            Instantiate(customer, transform.position, Quaternion.identity);
             delayTime = 0;
         }
     }
