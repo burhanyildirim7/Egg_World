@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CustomerNavMesh : MonoBehaviour
+public class CustomerNeededControl : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     public Transform target;
@@ -33,12 +33,11 @@ public class CustomerNavMesh : MonoBehaviour
     int numberOfTimsahEgg;
     int toplanmasiGerekenEgg;
 
-    int gezilecekTezgahSayisi;
-    int randonEggNumber;
     int toplanacakEgg = 2;
     int totalEggNumber = 0;
     int chooseRandomSpendEgg;
     int siraliEggPosition = 0;
+    int gezilecekTezgahSayisi;
 
     GameObject spendEjderEgg;
     GameObject spendDevekusuEgg;
@@ -66,8 +65,8 @@ public class CustomerNavMesh : MonoBehaviour
 
     private void Start()
     {
-        gezilecekTezgahSayisi = Random.Range(1, 3);
-        randonEggNumber = Random.Range(1, 5);
+        gezilecekTezgahSayisi = Random.Range(1,spendEggList.Count);
+
         cashier = GameObject.FindGameObjectWithTag("cashier");
 
         for (int i = 0; i < cashier.GetComponent<CashierController>().lineList.Count; i++)
@@ -199,18 +198,8 @@ public class CustomerNavMesh : MonoBehaviour
     {
         if (toplanmasiGerekenEgg < toplanacakEgg)
         {
-            if (target == other.gameObject.transform)
+            if (other.gameObject.tag == "spendEjderEgg")
             {
-
-                StartCoroutine(CustomerCollectEgg(other.gameObject));
-            }
-        }
-        /*
-        if (toplanmasiGerekenEgg < toplanacakEgg)
-        {
-            if (other.gameObject.tag == "spendDevekusuEgg" && target == GameObject.FindGameObjectWithTag("spendDevekusuEgg"))
-            {
-
 
                 StartCoroutine(CustomerCollectEgg(other.gameObject));
             }
@@ -218,7 +207,7 @@ public class CustomerNavMesh : MonoBehaviour
 
         if (toplanmasiGerekenEgg < toplanacakEgg)
         {
-            if (other.gameObject.tag == "spendTavukEgg" && target == GameObject.FindGameObjectWithTag("spendTavukEgg"))
+            if (other.gameObject.tag == "spendDevekusuEgg")
             {
 
 
@@ -228,7 +217,7 @@ public class CustomerNavMesh : MonoBehaviour
 
         if (toplanmasiGerekenEgg < toplanacakEgg)
         {
-            if (other.gameObject.tag == "spendTimsahEgg" && target == GameObject.FindGameObjectWithTag("spendTimsahEgg"))
+            if (other.gameObject.tag == "spendTavukEgg")
             {
 
 
@@ -238,7 +227,7 @@ public class CustomerNavMesh : MonoBehaviour
 
         if (toplanmasiGerekenEgg < toplanacakEgg)
         {
-            if (other.gameObject.tag == "spendKazEgg" && target == GameObject.FindGameObjectWithTag("spendKazEgg"))
+            if (other.gameObject.tag == "spendTimsahEgg")
             {
 
 
@@ -246,7 +235,17 @@ public class CustomerNavMesh : MonoBehaviour
             }
         }
 
-        */
+        if (toplanmasiGerekenEgg < toplanacakEgg)
+        {
+            if (other.gameObject.tag == "spendKazEgg")
+            {
+
+
+                StartCoroutine(CustomerCollectEgg(other.gameObject));
+            }
+        }
+
+
 
 
 
@@ -305,12 +304,12 @@ public class CustomerNavMesh : MonoBehaviour
     IEnumerator CustomerCollectEgg(GameObject otherObject)
     {
         canDo2 = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         delayTime += Time.deltaTime;
-     
+
         if (delayTime >= 1)
         {
-            if (toplanmasiGerekenEgg < randonEggNumber)
+            if (toplanmasiGerekenEgg < toplanacakEgg)
             {
                 for (int i = 0; i < otherObject.GetComponent<SpendBoxControl>().spendEggList.Count; i++)
                 {
@@ -332,7 +331,7 @@ public class CustomerNavMesh : MonoBehaviour
                             otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent = customerEggPosition[siraliEggPosition].transform;
                             otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, 1).OnComplete(() => {
 
-                                if (toplanmasiGerekenEgg == randonEggNumber && canDo2)
+                                if (toplanmasiGerekenEgg == toplanacakEgg && canDo2)
                                 {
                                     Debug.Log("Burasý Çalýþýyor.");
 
@@ -353,7 +352,7 @@ public class CustomerNavMesh : MonoBehaviour
 
                             customerEggPosition[siraliEggPosition].tag = "full";
                             siraliEggPosition++;
-                          
+                            gezilecekTezgahSayisi--;
                             break;
 
                         }
@@ -366,8 +365,6 @@ public class CustomerNavMesh : MonoBehaviour
 
                 }
 
-                
-
 
             }
 
@@ -376,23 +373,48 @@ public class CustomerNavMesh : MonoBehaviour
 
 
     }
-    
+    /*
+    void CustomerCollectEgg2(GameObject otherObject)
+    {
+        delayTime += Time.deltaTime;
+        if (delayTime >= 2)
+        {
+            for (int i = 0; i < numberOfEjderEgg; i++)
+            {
+                if (otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent.tag == "full")
+                {
+                    otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent.tag = "empty";
+                    otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent = customerStackPosition.transform;
+                    // otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalMove(new Vector3(0, 0, 0),1);
+                    otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
+                    
+                    });
+                    customerEggList.Add(otherObject.GetComponent<SpendBoxControl>().spendEggList[i]);
+                    delayTime = 0;
+                    distanceY += 1.0f;
+                    break;
+                }
+            }
+        }
+    }*/
     IEnumerator MoveAnotherEggCollectPlace()
     {
-        gezilecekTezgahSayisi--;
-       
-        yield return new WaitForSeconds(0.5f);
         if (gezilecekTezgahSayisi == 0)
         {
-          
+            MoveToCashier();
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        if (toplanmasiGerekenEgg > 2)
+        {
+            Debug.Log("kASAYA GÝTMESÝ LAZIM ÞU AN");
             MoveToCashier();
 
             navMeshAgent.speed = 5;
         }
         else
         {
-            randonEggNumber = Random.Range(1, 5);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
             chooseRandomSpendEgg = Random.Range(0, spendEggList.Count);
             if (chooseRandomSpendEgg == 1)
@@ -419,17 +441,22 @@ public class CustomerNavMesh : MonoBehaviour
                     }
 
 
+
+
+
                 }
             }
             navMeshAgent.speed = 5;
 
-            yield return new WaitForSeconds(2);
-            toplanmasiGerekenEgg = 0;
-
+            yield return new WaitForSeconds(1);
+            toplanacakEgg += 2;
         }
 
 
     }
+
+
+
 
 
     void SendEggToBox()

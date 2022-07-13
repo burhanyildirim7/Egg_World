@@ -39,7 +39,7 @@ public class CustomerSpawn : MonoBehaviour
        
         delayTime += Time.deltaTime;
 
-        if (delayTime >= 20 )
+        if (delayTime >= 30 )
         {
             randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
             Instantiate(customer, randomPlaceToSpawn, Quaternion.identity);
