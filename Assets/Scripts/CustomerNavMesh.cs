@@ -35,6 +35,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     int gezilecekTezgahSayisi;
     int randonEggNumber;
+    int randonEggNumber2;
     int toplanacakEgg = 2;
     int totalEggNumber = 0;
     int chooseRandomSpendEgg;
@@ -66,8 +67,9 @@ public class CustomerNavMesh : MonoBehaviour
 
     private void Start()
     {
-        gezilecekTezgahSayisi = Random.Range(1, 3);
+        gezilecekTezgahSayisi = 2;
         randonEggNumber = Random.Range(1, 4);
+        randonEggNumber2 = Random.Range(1, 4);
         cashier = GameObject.FindGameObjectWithTag("cashier");
 
         for (int i = 0; i < cashier.GetComponent<CashierController>().lineList.Count; i++)
@@ -391,10 +393,10 @@ public class CustomerNavMesh : MonoBehaviour
         }
         else
         {
-            randonEggNumber = Random.Range(1, 4);
+        
             yield return new WaitForSeconds(0.5f);
 
-            chooseRandomSpendEgg = Random.Range(0, spendEggList.Count);
+            //chooseRandomSpendEgg = Random.Range(0, spendEggList.Count);
             if (chooseRandomSpendEgg == 1)
             {
                 chooseRandomSpendEgg = 0;
@@ -425,6 +427,8 @@ public class CustomerNavMesh : MonoBehaviour
 
             yield return new WaitForSeconds(2);
             toplanmasiGerekenEgg = 0;
+            randonEggNumber = randonEggNumber2;
+    
 
         }
 

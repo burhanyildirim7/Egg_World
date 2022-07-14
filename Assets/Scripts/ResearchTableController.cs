@@ -37,14 +37,13 @@ public class ResearchTableController : MonoBehaviour
     {
         if (currentEggNumber == neededEgg )
         {
+            researchTableFull = true;
 
-           
             delayTime += Time.deltaTime;
 
-            if (delayTime>=1)
-            {
-                researchTableFull = true;
-            }
+        
+             
+          
 
             if (canTavukMoneyPaid)
             {
