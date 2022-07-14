@@ -118,27 +118,32 @@ public class ResearchTableController : MonoBehaviour
         {
             kazNeededFull = true;
 
-            delayTime += Time.deltaTime;
-            if (canKazMoneyPaid)
-            {
+           
+        }
+
+        if (tavukNeededFull && kazNeededFull && canKazMoneyPaid)
+        {
+         
                 canOpenDevekusuKumes = true;
                 canKazMoneyPaid = false;
-               
-            }
+
+        
         }
         
         if (currentDevekusuEgg == neededDevekusuEgg)
         {
             devekusuNeededFull = true;
 
-            delayTime += Time.deltaTime;
-            if (canDevekusuMoneyPaid)
-            {
-                canOpenTimsahKumes = true;
-                canDevekusuMoneyPaid = false;
-               
-            }
-        }  
+           
+         
+        }
+
+
+        if (tavukNeededFull && kazNeededFull && devekusuNeededFull && canDevekusuMoneyPaid)
+        {
+            canOpenTimsahKumes = true;
+            canDevekusuMoneyPaid = false;
+        }
 
  
         
@@ -147,13 +152,14 @@ public class ResearchTableController : MonoBehaviour
         {
             timsahNeededFull = true;
 
-            delayTime += Time.deltaTime;
-            if (canTimsahMoneyPaid)
-            {
-                canOpenEjderKumes = true;
-                canTimsahMoneyPaid = false;
-               
-            }
+        
+        }
+
+
+        if (tavukNeededFull && kazNeededFull && devekusuNeededFull && timsahNeededFull && canTimsahMoneyPaid)
+        {
+            canOpenEjderKumes = true;
+            canTimsahMoneyPaid = false;
         }
         
 
