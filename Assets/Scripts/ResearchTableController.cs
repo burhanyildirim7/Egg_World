@@ -6,7 +6,24 @@ public class ResearchTableController : MonoBehaviour
 {
     bool canDo = true;
     public bool researchTableFull = false;
+
+    public bool tavukNeededFull = false;
+    public bool kazNeededFull = false;
+    public bool devekusuNeededFull = false;
+    public bool timsahNeededFull = false;
+
     public int neededEgg = 2;
+
+    public int neededTavukEgg;
+    public int neededKazEgg;
+    public int neededDevekusuEgg;
+    public int neededTimsahEgg;
+
+    public int currentTavukEgg = 0;
+    public int currentKazEgg = 0;
+    public int currentDevekusuEgg = 0;
+    public int currentTimsahEgg = 0;
+
     public int currentEggNumber = 0;
     public GameObject kazKumes;
     public GameObject tavukEggNeededText;
@@ -27,6 +44,8 @@ public class ResearchTableController : MonoBehaviour
     public bool canOpenDevekusuKumes = false;
     public bool canOpenTimsahKumes = false;
     public bool canOpenEjderKumes = false;
+
+    public bool eggsAreReady = false;
     void Start()
     {
        
@@ -35,6 +54,7 @@ public class ResearchTableController : MonoBehaviour
  
     void Update()
     {
+        /*
         if (currentEggNumber == neededEgg )
         {
             researchTableFull = true;
@@ -45,51 +65,101 @@ public class ResearchTableController : MonoBehaviour
              
           
 
-            if (canTavukMoneyPaid)
+            if (canTavukMoneyPaid && eggsAreReady)
             {
                canOpenKazKumes = true;
                 canTavukMoneyPaid = false;
+                eggsAreReady = false;
             }
 
-            if (canKazMoneyPaid)
+            if (canKazMoneyPaid && eggsAreReady)
             {
                 canOpenDevekusuKumes = true;
                 canKazMoneyPaid = false;
-
+                eggsAreReady = false;
             } 
             
-            if (canDevekusuMoneyPaid)
+            if (canDevekusuMoneyPaid && eggsAreReady)
             {
                 canOpenTimsahKumes = true;
                 canDevekusuMoneyPaid = false;
-
+                eggsAreReady = false;
             }
             
-            if (canTimsahMoneyPaid)
+            if (canTimsahMoneyPaid && eggsAreReady)
             {
                 canOpenEjderKumes = true;
                 canTimsahMoneyPaid = false;
-
+                eggsAreReady = false;
             }
 
 
      
 
         }
-        else
+        */
+        if (currentTavukEgg == neededTavukEgg)
         {
-            researchTableFull = false;
+            tavukNeededFull = true;
+
+
+            delayTime += Time.deltaTime;
+            if (canTavukMoneyPaid)
+            {
+                canOpenKazKumes = true;
+                canTavukMoneyPaid = false;
+     
+            }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
+
       
+        if (currentKazEgg == neededKazEgg)
+        {
+            kazNeededFull = true;
 
-       
+            delayTime += Time.deltaTime;
+            if (canKazMoneyPaid)
+            {
+                canOpenDevekusuKumes = true;
+                canKazMoneyPaid = false;
+               
+            }
+        }
+        
+        if (currentDevekusuEgg == neededDevekusuEgg)
+        {
+            devekusuNeededFull = true;
+
+            delayTime += Time.deltaTime;
+            if (canDevekusuMoneyPaid)
+            {
+                canOpenTimsahKumes = true;
+                canDevekusuMoneyPaid = false;
+               
+            }
+        }  
+
+ 
+        
+        
+        if (currentTimsahEgg == neededTimsahEgg)
+        {
+            timsahNeededFull = true;
+
+            delayTime += Time.deltaTime;
+            if (canTimsahMoneyPaid)
+            {
+                canOpenEjderKumes = true;
+                canTimsahMoneyPaid = false;
+               
+            }
+        }
+        
+
+      
+        
     }
-
-
 
 
 }

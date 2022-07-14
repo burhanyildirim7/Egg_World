@@ -9,11 +9,14 @@ public class neededText : MonoBehaviour
     GameObject moneyForNewResearch;
     Text _neededText;
     bool canDo = true;
+
+
     void Start()
     {
         _neededText = GetComponent<Text>();
         moneyForNewResearch = transform.GetChild(0).gameObject;
-      
+ 
+
     }
 
     // Update is called once per frame
@@ -22,14 +25,15 @@ public class neededText : MonoBehaviour
         if (gameObject.name == "TavukEggNeeded")
         {
            
-            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;
+            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentTavukEgg + " / " + researchTable.GetComponent<ResearchTableController>().neededTavukEgg;
             if (canDo)
             {
-                researchTable.GetComponent<ResearchTableController>().neededEgg = 2;
-                researchTable.GetComponent<ResearchTableController>().currentEggNumber = 0;
+                researchTable.GetComponent<ResearchTableController>().tavukNeededFull = false;
+                researchTable.GetComponent<ResearchTableController>().neededTavukEgg = 2;
+                researchTable.GetComponent<ResearchTableController>().currentTavukEgg = 0;
                 canDo = false;
             }
-            if (researchTable.GetComponent<ResearchTableController>().researchTableFull)
+            if (researchTable.GetComponent<ResearchTableController>().currentTavukEgg == researchTable.GetComponent<ResearchTableController>().neededTavukEgg)
             {
                 gameObject.SetActive(false);
             }
@@ -40,17 +44,18 @@ public class neededText : MonoBehaviour
 
             if (canDo)
             {
-                researchTable.GetComponent<ResearchTableController>().neededEgg = 2;
-                researchTable.GetComponent<ResearchTableController>().currentEggNumber = 0;
+                researchTable.GetComponent<ResearchTableController>().kazNeededFull = false;
+                researchTable.GetComponent<ResearchTableController>().neededKazEgg = 2;
+                researchTable.GetComponent<ResearchTableController>().currentKazEgg = 0;
                 canDo = false;
             }
             
-            if (researchTable.GetComponent<ResearchTableController>().currentEggNumber == researchTable.GetComponent<ResearchTableController>().neededEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentKazEgg == researchTable.GetComponent<ResearchTableController>().neededKazEgg)
             {
                 gameObject.SetActive(false);
             }
             
-            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;
+            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentKazEgg + " / " + researchTable.GetComponent<ResearchTableController>().neededKazEgg;
         }
 
         if (gameObject.name == "DevekusuEggNeeded")
@@ -58,17 +63,18 @@ public class neededText : MonoBehaviour
 
             if (canDo)
             {
-                researchTable.GetComponent<ResearchTableController>().neededEgg = 3;
-                researchTable.GetComponent<ResearchTableController>().currentEggNumber = 0;
+                researchTable.GetComponent<ResearchTableController>().devekusuNeededFull = false;
+                researchTable.GetComponent<ResearchTableController>().neededDevekusuEgg = 2;
+                researchTable.GetComponent<ResearchTableController>().currentDevekusuEgg = 0;
                 canDo = false;
             }
 
-            if (researchTable.GetComponent<ResearchTableController>().currentEggNumber == researchTable.GetComponent<ResearchTableController>().neededEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentDevekusuEgg == researchTable.GetComponent<ResearchTableController>().neededDevekusuEgg)
             {
                 gameObject.SetActive(false);
             }
 
-            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;
+            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentDevekusuEgg + " / " + researchTable.GetComponent<ResearchTableController>().neededDevekusuEgg;
         }
 
         if (gameObject.name == "TimsahEggNeeded")
@@ -76,9 +82,34 @@ public class neededText : MonoBehaviour
 
             if (canDo)
             {
-                researchTable.GetComponent<ResearchTableController>().neededEgg = 1;
+                researchTable.GetComponent<ResearchTableController>().timsahNeededFull = false;
+                researchTable.GetComponent<ResearchTableController>().neededTimsahEgg = 2;
+                researchTable.GetComponent<ResearchTableController>().currentTimsahEgg = 0;
+                canDo = false;
+            }
+
+            if (researchTable.GetComponent<ResearchTableController>().currentTimsahEgg == researchTable.GetComponent<ResearchTableController>().neededTimsahEgg)
+            {
+                gameObject.SetActive(false);
+            }
+
+            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentTimsahEgg + " / " + researchTable.GetComponent<ResearchTableController>().neededTimsahEgg;
+        } 
+        
+        if (gameObject.name == "TavukEggNeededForKaz")
+        {
+
+            if (canDo)
+            {
+                researchTable.GetComponent<ResearchTableController>().researchTableFull = false;
+                researchTable.GetComponent<ResearchTableController>().neededEgg = 2;
                 researchTable.GetComponent<ResearchTableController>().currentEggNumber = 0;
                 canDo = false;
+            }
+
+            if (researchTable.GetComponent<ResearchTableController>().currentEggNumber == researchTable.GetComponent<ResearchTableController>().neededEgg)
+            {
+                gameObject.SetActive(false);
             }
 
             _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentEggNumber + " / " + researchTable.GetComponent<ResearchTableController>().neededEgg;

@@ -177,24 +177,24 @@ public class CollectControl : MonoBehaviour
        
 
             
-                if (other.GetComponent<ResearchTableController>().tavukEggNeededText.activeSelf)
+                if (other.GetComponent<ResearchTableController>().neededTavukEgg > 0)
                 {
                     MoveToResearchPlaceTavuk(other.gameObject);
                 }
 
-                else if (other.GetComponent<ResearchTableController>().kazEggNeededText.activeSelf)
+                if (other.GetComponent<ResearchTableController>().neededKazEgg > 0)
                 {
-                    
-                    MoveToResearchPlaceKaz(other.gameObject);
+                
+                MoveToResearchPlaceKaz(other.gameObject);
                 }
 
-                else if (other.GetComponent<ResearchTableController>().devekusuEggNeededText.activeSelf)
+                 if (other.GetComponent<ResearchTableController>().neededDevekusuEgg > 0)
                 {
  
                 MoveToResearchPlaceDevekusu(other.gameObject);
                 }
 
-            else if (other.GetComponent<ResearchTableController>().timsahEggNeededText.activeSelf)
+             if (other.GetComponent<ResearchTableController>().neededTimsahEgg > 0)
             {
 
                 MoveToResearchPlaceTimsah(other.gameObject);
@@ -220,10 +220,10 @@ public class CollectControl : MonoBehaviour
     {
         delayTime += Time.deltaTime;
 
-        if (otherObject.GetComponent<ResearchTableController>().tavukEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+        if (otherObject.GetComponent<ResearchTableController>().neededTavukEgg > 0 && otherObject.GetComponent<ResearchTableController>().tavukNeededFull == false)
         {
 
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTavukEgg; i++)
             {
                 
                 if (delayTime > 0.05f)
@@ -244,7 +244,7 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            otherObject.GetComponent<ResearchTableController>().currentTavukEgg++;
                             break;
                         }
 
@@ -269,10 +269,12 @@ public class CollectControl : MonoBehaviour
     void MoveToResearchPlaceKaz(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-        if (otherObject.GetComponent<ResearchTableController>().kazEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+       
+        if (otherObject.GetComponent<ResearchTableController>().neededKazEgg>0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
         {
             //Buraya girdi
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+           
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededKazEgg; i++)
             {
                 //Buraya girdi
 
@@ -295,7 +297,7 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            otherObject.GetComponent<ResearchTableController>().currentKazEgg++;
                             break;
                         }
                      
@@ -315,10 +317,10 @@ public class CollectControl : MonoBehaviour
     void MoveToResearchPlaceDevekusu(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-        if (otherObject.GetComponent<ResearchTableController>().devekusuEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+        if (otherObject.GetComponent<ResearchTableController>().neededDevekusuEgg > 0 && otherObject.GetComponent<ResearchTableController>().devekusuNeededFull == false)
         {
             //Buraya girdi
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededDevekusuEgg; i++)
             {
                 //Buraya girdi
 
@@ -341,7 +343,7 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            otherObject.GetComponent<ResearchTableController>().currentDevekusuEgg++;
                             break;
                         }
 
@@ -360,10 +362,10 @@ public class CollectControl : MonoBehaviour
     void MoveToResearchPlaceTimsah(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-        if (otherObject.GetComponent<ResearchTableController>().timsahEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
+        if (otherObject.GetComponent<ResearchTableController>().neededTimsahEgg > 0 && otherObject.GetComponent<ResearchTableController>().timsahNeededFull == false)
         {
             //Buraya girdi
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededEgg; i++)
+            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTimsahEgg; i++)
             {
                 //Buraya girdi
 
@@ -386,7 +388,7 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentEggNumber++;
+                            otherObject.GetComponent<ResearchTableController>().currentTimsahEgg++;
                             break;
                         }
 
