@@ -268,6 +268,7 @@ public class CollectControl : MonoBehaviour
 
     void MoveToResearchPlaceKaz(GameObject otherObject)
     {
+        delayTime += Time.deltaTime;
         if (otherObject.GetComponent<ResearchTableController>().kazEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
         {
             //Buraya girdi
@@ -313,6 +314,7 @@ public class CollectControl : MonoBehaviour
 
     void MoveToResearchPlaceDevekusu(GameObject otherObject)
     {
+        delayTime += Time.deltaTime;
         if (otherObject.GetComponent<ResearchTableController>().devekusuEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
         {
             //Buraya girdi
@@ -357,6 +359,7 @@ public class CollectControl : MonoBehaviour
 
     void MoveToResearchPlaceTimsah(GameObject otherObject)
     {
+        delayTime += Time.deltaTime;
         if (otherObject.GetComponent<ResearchTableController>().timsahEggNeededText.activeSelf && otherObject.GetComponent<ResearchTableController>().researchTableFull == false)
         {
             //Buraya girdi

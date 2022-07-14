@@ -124,6 +124,33 @@ public class BuyText : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            else if (gameObject.name == "TavukEggNeededMoneyText")
+            {
+        
+
+                Destroy(gameObject);
+            }
+            else if (gameObject.name == "KazEggNeededMoneyText")
+            {
+        
+
+                Destroy(gameObject);
+            }
+
+              else if (gameObject.name == "DevekusuEggNeededMoneyText")
+            {
+        
+
+                Destroy(gameObject);
+            }  
+            
+            else if (gameObject.name == "TimsahEggNeededMoneyText")
+            {
+        
+
+                Destroy(gameObject);
+            }
+
 
         }
     }
