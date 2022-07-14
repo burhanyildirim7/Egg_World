@@ -29,6 +29,8 @@ public class CameraMovement : MonoBehaviour
     public void KamerayiYonlendir(GameObject odakNoktasi)
     {
         //transform.position = Vector3.Lerp(transform.position, new Vector3(odakNoktasi.transform.position.x, odakNoktasi.transform.position.y + aradakiFark.y, odakNoktasi.transform.position.z + aradakiFark.z), Time.deltaTime * 5f);
+
+        aradakiFark.z -= 8;
         Player = odakNoktasi;
         //GameController.instance._kameraHareketli = true;
 
@@ -37,6 +39,7 @@ public class CameraMovement : MonoBehaviour
 
     public void KamerayiResetle()
     {
+        aradakiFark.z += 8;
         Player = GameObject.FindGameObjectWithTag("Player");
         //GameController.instance._kameraHareketli = false;
     }

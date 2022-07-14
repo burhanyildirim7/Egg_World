@@ -32,6 +32,7 @@ public class MainPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         controller.stepOffset = 0;
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
