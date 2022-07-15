@@ -10765,6 +10765,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349594536}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1350751635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6434509626288581767, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
+  m_PrefabInstance: {fileID: 1922360910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358330749
 GameObject:
   m_ObjectHideFlags: 0
@@ -49799,6 +49804,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 290934602}
     - target: {fileID: 423096894824317522, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
+      propertyPath: ejderEggSpawn2
+      value: 
+      objectReference: {fileID: 1350751635}
+    - target: {fileID: 423096894824317522, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: ejderMoveSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -49866,6 +49875,10 @@ PrefabInstance:
       propertyPath: IsKumesEmpty2
       value: 
       objectReference: {fileID: 290934602}
+    - target: {fileID: 2024200524058487706, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
+      propertyPath: ejderEggSpawn2
+      value: 
+      objectReference: {fileID: 1350751635}
     - target: {fileID: 2160747921705412964, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: m_Name
       value: ejder_kumesPref

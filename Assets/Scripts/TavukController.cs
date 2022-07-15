@@ -400,7 +400,7 @@ public class TavukController : MonoBehaviour
         }
         else if (transform.localPosition == new Vector3(-17.5f, 1f, 4f))
         {
-          
+            Debug.Log("Vardý");
             target = new Vector3(-17.5f, 1f, 0);
 
             tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;

@@ -58,6 +58,7 @@ public class KazController : MonoBehaviour
         }
         if (!goToKumes)
         {
+            
             ChooseRandomAnimFunction();
             timeToKumes += Time.deltaTime;
         }
@@ -312,18 +313,21 @@ public class KazController : MonoBehaviour
             if (distanceForKumes == 0)
             {
                 IsKumesEmpty.tag = "empty";
+                goToKumes = false;
                 kazEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             }
 
             else if (distanceForKumes == -15)
             {
                 IsKumesEmpty2.tag = "empty";
+                goToKumes = false;
                 kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
             }
 
             else if (distanceForKumes == -20)
             {
                 IsKumesEmpty3.tag = "empty";
+                goToKumes = false;
                 kazEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
             }
 
