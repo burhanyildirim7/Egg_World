@@ -6,6 +6,7 @@ public class EjderController : MonoBehaviour
 {
     Animator ejderAnim;
     GameObject ejderEggSpawn;
+    public GameObject ejderEggSpawn2;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -15,6 +16,7 @@ public class EjderController : MonoBehaviour
     float timeToKumes;
     bool canDo = true;
     public GameObject IsKumesEmpty;
+    public GameObject IsKumesEmpty2;
     float randomTime;
     public int ejderMoveSpeed;
 
@@ -65,8 +67,21 @@ public class EjderController : MonoBehaviour
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
+            } 
+            else if (IsKumesEmpty2.tag == "empty")
+            {
+                IsKumesEmpty2.tag = "full";
+                goToKumes = true;
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = IsKumesEmpty2.transform.localPosition;
+                timeToKumes = 0;
+                delayTime = 0;
+                canDo = false;
             }
-            timeToKumes = 0;
+            if (timeToKumes >= randomTime)
+            {
+                timeToKumes = 0;
+            }
         }
 
 
@@ -190,15 +205,38 @@ public class EjderController : MonoBehaviour
             ejderAnim.SetBool("canIdle", false);
             ejderAnim.SetBool("canWalk", false);
 
-            ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
-            ejderEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+            if (target == IsKumesEmpty.transform.localPosition)
+            {
+                IsKumesEmpty.tag = "empty";
+                ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            }
+
+            else if (target == IsKumesEmpty2.transform.localPosition)
+            {
+                IsKumesEmpty2.tag = "empty";
+                ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+                ejderEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            }
+          
 
 
             delayTime += Time.deltaTime;
             if (delayTime >= 5.3f)
             {
-                ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-                ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+
+                if (target == IsKumesEmpty.transform.localPosition)
+                {
+                    ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+                    ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                }
+
+                else if (target == IsKumesEmpty2.transform.localPosition)
+                {
+                    ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+                    ejderEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                }
+               
                 target = new Vector3(0, transform.localPosition.y, 0);
 
 
@@ -220,7 +258,19 @@ public class EjderController : MonoBehaviour
             if (transform.localPosition == target)
             {
                 randomNumbersForAnim = 0;
-                IsKumesEmpty.tag = "empty";
+
+
+
+                if (target == IsKumesEmpty.transform.localPosition)
+                {
+                    IsKumesEmpty.tag = "empty";
+                }
+
+                else if (target == IsKumesEmpty2.transform.localPosition)
+                {
+                    IsKumesEmpty2.tag = "empty";
+                }
+           
                 canDo = true;
                 goToKumes = false;
             }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ManagementPlaces : MonoBehaviour
 {
+    public GameObject locationArrow;
+
     public GameObject tavukKumes;
     public GameObject tavukKumesLevel2;
     public GameObject tavukKumesLevel3;
@@ -54,7 +56,9 @@ public class ManagementPlaces : MonoBehaviour
 
 
     public GameObject ejderKumes;
+    public GameObject ejderKumesLevel2;
     public GameObject ejderKumesCanvas;
+    public GameObject ejderKumesLevel2Canvas;
     public GameObject ejderKumesObject;
     public GameObject ejderTezgah;
 
@@ -85,7 +89,9 @@ public class ManagementPlaces : MonoBehaviour
         if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf)
         {
             researchPlace.SetActive(true);
-      
+
+            locationArrow.SetActive(true);
+            locationArrow.transform.position = researchPlace.transform.position + (Vector3.up * 3);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(researchPlace);
             canOpenResearchPlace = false;
         }
@@ -229,7 +235,7 @@ public class ManagementPlaces : MonoBehaviour
 
         if (devekusuKumesLevel3.activeSelf)
         {
-            Debug.Log("Ejder Level 2 Açýlacak");
+            ejderKumesLevel2Canvas.SetActive(true);
         }
      
     }

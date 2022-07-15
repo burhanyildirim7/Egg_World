@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
 
     private GameObject Player;
+    public GameObject ManagementPlace;
 
     Vector3 aradakiFark;
 
@@ -39,7 +40,7 @@ public class CameraMovement : MonoBehaviour
 
     public void KamerayiResetle()
     {
-
+        ManagementPlace.GetComponent<ManagementPlaces>().locationArrow.SetActive(false);
         Player = GameObject.FindGameObjectWithTag("Player");
         //GameController.instance._kameraHareketli = false;
     }

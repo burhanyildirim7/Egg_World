@@ -142,6 +142,16 @@ public class BuyText : MonoBehaviour
 
 
                 Destroy(gameObject);
+            }  
+            else if (gameObject.name == "EjderKumesLevel2")
+            {
+    
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+       
+
+
+                Destroy(gameObject);
             }
 
             else if (gameObject.name == "UpgradeTimsahLevel2")
