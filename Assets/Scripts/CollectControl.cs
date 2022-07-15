@@ -58,15 +58,7 @@ public class CollectControl : MonoBehaviour
 
     void MakeGameFaster()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("Oyun Hýzlandý");
-            Time.timeScale = 5;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+      
     }
 
     public void OnTriggerEnter(Collider other)
@@ -233,7 +225,7 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "tavukEgg")
                         {
                          
-                            Debug.Log("Tavuk yumurtasý fýrlatýldý");
+              
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;

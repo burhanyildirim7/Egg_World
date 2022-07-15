@@ -336,7 +336,7 @@ public class CustomerNavMesh : MonoBehaviour
 
                                 if (toplanmasiGerekenEgg == randonEggNumber && canDo2)
                                 {
-                                    Debug.Log("Burasý Çalýþýyor.");
+                        
 
                                     StartCoroutine(MoveAnotherEggCollectPlace());
                                     canDo2 = false;
@@ -471,7 +471,7 @@ public class CustomerNavMesh : MonoBehaviour
             {
                 //canTakeBox = true;
                 GetComponent<NavMeshAgent>().enabled = false;
-                Debug.Log("Animasyon oynadý");
+     
                 StartCoroutine(TakeBoxAndLeave());
 
                 /*

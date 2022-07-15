@@ -5,8 +5,9 @@ using UnityEngine;
 public class TimsahController : MonoBehaviour
 {
     Animator timsahAnim;
-    GameObject timsahEggSpawn;
-    GameObject timsahEggSpawn2;
+     GameObject timsahEggSpawn;
+     GameObject timsahEggSpawn2;
+    public GameObject timsahEggSpawn3;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -17,6 +18,7 @@ public class TimsahController : MonoBehaviour
     bool canDo = true;
     public GameObject IsTimsahKumesEmpty;
     public GameObject IsTimsahKumesEmpty2;
+    public GameObject IsTimsahKumesEmpty3;
     float randomTime;
 
 
@@ -87,6 +89,16 @@ public class TimsahController : MonoBehaviour
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
                 target = IsTimsahKumesEmpty2.transform.localPosition;
+                timeToKumes = 0;
+                delayTime = 0;
+                canDo = false;
+            }  
+            else if (IsTimsahKumesEmpty3.tag == "empty" && IsTimsahKumesEmpty3.activeSelf)
+            {
+                IsTimsahKumesEmpty3.tag = "full";
+                goToKumes = true;
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = IsTimsahKumesEmpty3.transform.localPosition;
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
@@ -228,6 +240,13 @@ public class TimsahController : MonoBehaviour
                 timsahEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
             }
 
+                else if (target == IsTimsahKumesEmpty3.transform.localPosition)
+            {
+                timsahEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
+                timsahEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
+            }
+            
+
 
 
             delayTime += Time.deltaTime;
@@ -245,6 +264,13 @@ public class TimsahController : MonoBehaviour
                     IsTimsahKumesEmpty.tag = "empty";
                     timsahEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                     timsahEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                }  
+                
+                else if (target == IsTimsahKumesEmpty3.transform.localPosition)
+                {
+                    IsTimsahKumesEmpty3.tag = "empty";
+                    timsahEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
+                    timsahEggSpawn3.GetComponent<CollectBoxControl>().spawnEggTime = 0;
                 }
                 target = new Vector3(0, transform.localPosition.y, 0);
 

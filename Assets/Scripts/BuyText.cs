@@ -101,7 +101,7 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
                 openNextLevelTezgah4.SetActive(false);
-                Debug.Log("Þu an yok olmasý lazým");
+       
 
                 Destroy(gameObject);
             }
@@ -114,6 +114,16 @@ public class BuyText : MonoBehaviour
 
                 Destroy(gameObject);
             } 
+            
+            else if (gameObject.name == "DevekusuKumesLevel3")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+
+
+                Destroy(gameObject);
+            } 
+
             else if (gameObject.name == "UpgradeLevel3")
             {
                 openNextLevelTezgah1.SetActive(true);
@@ -125,7 +135,7 @@ public class BuyText : MonoBehaviour
             } 
             else if (gameObject.name == "UpgradeKazLevel3")
             {
-                Debug.Log("Çalýþýyor");
+    
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
@@ -135,6 +145,14 @@ public class BuyText : MonoBehaviour
             }
 
             else if (gameObject.name == "UpgradeTimsahLevel2")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+
+
+                Destroy(gameObject);
+            }
+            else if (gameObject.name == "UpgradeTimsahLevel3")
             {
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(false);
@@ -180,7 +198,7 @@ public class BuyText : MonoBehaviour
     {
         if (other.gameObject.tag == "BedelOdemeMoney")
         {
-            Debug.Log("Temas Var");
+         
        
             GameObject.FindGameObjectWithTag("Player").GetComponent<CollectControl>().totalMoney-=10;
             buyPrice-=10;

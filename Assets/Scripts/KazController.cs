@@ -101,7 +101,10 @@ public class KazController : MonoBehaviour
                 timeToKumes = 0;
                 canDo = false;
             }
-            timeToKumes = 0;
+            if (timeToKumes >= randomTime)
+            {
+                timeToKumes = 0;
+            }
         }
 
 
@@ -298,7 +301,7 @@ public class KazController : MonoBehaviour
         else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, 0.6f, 3.27f))
         {
             target = new Vector3(2.43f + distanceForKumes, -3.4f, 11.80f);
-            Debug.Log("Ulasti");
+
         }
 
         else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, -3.4f, 11.80f))

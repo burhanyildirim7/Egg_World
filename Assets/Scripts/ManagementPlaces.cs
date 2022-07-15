@@ -36,7 +36,9 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject devekusuKumesCanvas;
     public GameObject devekusuKumesObject;
     public GameObject devekusuKumesLevel2Canvas;
+    public GameObject devekusuKumesLevel3Canvas;
     public GameObject devekusuKumesLevel2;
+    public GameObject devekusuKumesLevel3;
     public GameObject devekusuTezgah;
 
 
@@ -44,7 +46,9 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject timsahKumesCanvas;
     public GameObject timsahKumesObject;
     public GameObject timsahKumesLevel2Canvas;
+    public GameObject timsahKumesLevel3Canvas;
     public GameObject timsahKumesLevel2;
+    public GameObject timsahKumesLevel3;
    
     public GameObject timsahTezgah;
 
@@ -129,13 +133,13 @@ public class ManagementPlaces : MonoBehaviour
 
          if (devekusuKumesObject.activeSelf)
         {
-            Debug.Log("Burasý Çalýþtý");
+
             kazKumesLevel2.SetActive(true);
         }
 
          if (kazKumesModul2.activeSelf && canOpenNeededDevekusu)
         {
-            Debug.Log("Burasý Çalýþtý 2"); 
+
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(false);
             researchTableNeededDevekusuEgg.SetActive(true);
@@ -214,8 +218,18 @@ public class ManagementPlaces : MonoBehaviour
 
         if (ejderKumesObject.activeSelf)
         {
-            timsahKumesLevel2Canvas.SetActive(true);
+            timsahKumesLevel3Canvas.SetActive(true);
             
+        }
+
+        if (timsahKumesLevel3.activeSelf)
+        {
+            devekusuKumesLevel3Canvas.SetActive(true);
+        }
+
+        if (devekusuKumesLevel3.activeSelf)
+        {
+            Debug.Log("Ejder Level 2 Açýlacak");
         }
      
     }

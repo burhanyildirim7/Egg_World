@@ -83,7 +83,7 @@ public class TavukController : MonoBehaviour
 
         if (canDo && timeToKumes >= randomTime)
         {
-            Debug.Log("1. kümes aktif");
+            
             if (IsKumesEmpty.tag =="empty")
             {
                 IsKumesEmpty.tag = "full";
@@ -96,7 +96,8 @@ public class TavukController : MonoBehaviour
 
             else if (IsKumesEmpty2.activeSelf)
             {
-                Debug.Log("2. kümes aktif");
+         
+
        
                 if (IsKumesEmpty2.tag == "empty")
                 {
@@ -112,7 +113,7 @@ public class TavukController : MonoBehaviour
             }
             else if (IsKumesEmpty3.activeSelf)
             {
-                Debug.Log("3. kümes aktif");
+         
                 if (IsKumesEmpty3.tag == "empty")
                 {
                     level2Distance = 20;
@@ -178,7 +179,7 @@ public class TavukController : MonoBehaviour
 
             if (delayTime >= 5)
             {
-                Debug.Log("Geldi");
+            
                 walk = false;
                 idle = true;
 
@@ -308,7 +309,7 @@ public class TavukController : MonoBehaviour
         else if (transform.localPosition == new Vector3(0, 0.8f, 3.2f))
         {
             target = new Vector3(0, -3f, 11.2f);
-            Debug.Log("Ulaþtý");
+            
         }
 
         else if (transform.localPosition == new Vector3(0, -3f, 11.2f))
@@ -341,7 +342,6 @@ public class TavukController : MonoBehaviour
         }
         else if (transform.localPosition == new Vector3(-9.5f, 1f, 4f))
         {
-            Debug.Log("Vardý");
             target = new Vector3(-9.5f, 1f, 0);
             
             tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
@@ -400,7 +400,7 @@ public class TavukController : MonoBehaviour
         }
         else if (transform.localPosition == new Vector3(-17.5f, 1f, 4f))
         {
-            Debug.Log("Vardý");
+          
             target = new Vector3(-17.5f, 1f, 0);
 
             tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
@@ -427,7 +427,7 @@ public class TavukController : MonoBehaviour
         else if (transform.localPosition == new Vector3(-17.5f, 1f, 4.2f))
         {
             target = new Vector3(-17.63f, -2.8f, 10.7f);
-            Debug.Log("Ulaþtý");
+    
         }
 
         else if (transform.localPosition == new Vector3(-17.63f, -2.8f, 10.7f))

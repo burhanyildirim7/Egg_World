@@ -7,6 +7,7 @@ public class DevekusuController : MonoBehaviour
     Animator devekusuAnim;
     GameObject devekusuEggSpawn;
     GameObject devekusuEggSpawn2;
+    public GameObject devekusuEggSpawn3;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -17,6 +18,7 @@ public class DevekusuController : MonoBehaviour
     bool canDo = true;
     public GameObject IsDevekusuKumesEmpty;
     public GameObject IsDevekusuKumesEmpty2;
+    public GameObject IsDevekusuKumesEmpty3;
     float randomTime;
 
 
@@ -85,6 +87,16 @@ public class DevekusuController : MonoBehaviour
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
                 target = IsDevekusuKumesEmpty2.transform.localPosition;
+                timeToKumes = 0;
+                delayTime = 0;
+                canDo = false;
+            } 
+            else if (IsDevekusuKumesEmpty3.tag == "empty" && IsDevekusuKumesEmpty3.activeSelf) 
+            {
+                IsDevekusuKumesEmpty3.tag = "full";
+                goToKumes = true;
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = IsDevekusuKumesEmpty3.transform.localPosition;
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
@@ -215,6 +227,11 @@ public class DevekusuController : MonoBehaviour
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
             }
+             else if (target == IsDevekusuKumesEmpty3.transform.localPosition)
+            {
+                devekusuEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
+                devekusuEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
+            }
           
 
 
@@ -237,6 +254,13 @@ public class DevekusuController : MonoBehaviour
                     IsDevekusuKumesEmpty.tag = "empty";
                     devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                     devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                } 
+                
+                else if (target == IsDevekusuKumesEmpty3.transform.localPosition)
+                {
+                    IsDevekusuKumesEmpty3.tag = "empty";
+                    devekusuEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
+                    devekusuEggSpawn3.GetComponent<CollectBoxControl>().spawnEggTime = 0;
                 }
                 target = new Vector3(0, transform.localPosition.y, 0);
             }
