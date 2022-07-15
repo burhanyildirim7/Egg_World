@@ -9,6 +9,7 @@ public class KazController : MonoBehaviour
     Animator kazAnim;
     GameObject kazEggSpawn;
     GameObject kazEggSpawn2;
+    GameObject kazEggSpawn3;
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -18,10 +19,11 @@ public class KazController : MonoBehaviour
     bool canDo = true;
     public GameObject IsKumesEmpty;
     public GameObject IsKumesEmpty2;
+    public GameObject IsKumesEmpty3;
 
     float randomTime;
 
-    int distanceForSecondKumes = 0;
+    int distanceForKumes = 0;
 
 
     void Start()
@@ -45,11 +47,13 @@ public class KazController : MonoBehaviour
     void Update()
     {
 
-        if (kazEggSpawn2 == null|| IsKumesEmpty2 == null)
+        if (kazEggSpawn2 == null|| IsKumesEmpty2 == null || IsKumesEmpty3 == null || kazEggSpawn3 == null)
         {
 
-            kazEggSpawn2 = GameObject.Find("Kaz2");
+            kazEggSpawn2 = GameObject.FindGameObjectWithTag("kazEggSpawn2");
+            kazEggSpawn3 = GameObject.FindGameObjectWithTag("kazEggSpawn3");
             IsKumesEmpty2 = GameObject.Find("IsKazKumesEmpty2");
+            IsKumesEmpty3 = GameObject.Find("IsKazKumesEmpty3");
 
         }
         if (!goToKumes)
@@ -67,22 +71,33 @@ public class KazController : MonoBehaviour
         {
             if (IsKumesEmpty.tag == "empty")
             {
-                distanceForSecondKumes = 0;
+                distanceForKumes = 0;
                 IsKumesEmpty.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
-                target = new Vector3(2.43f + distanceForSecondKumes, -3.2f, 11.65f);
+                target = new Vector3(2.43f + distanceForKumes, -3.2f, 11.65f);
                 timeToKumes = 0;
                 canDo = false;
             }
 
-            if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
+            else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
             {
-                distanceForSecondKumes = -15;
+                distanceForKumes = -15;
                 IsKumesEmpty2.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
-                target = new Vector3(2.43f + distanceForSecondKumes, -3.2f, 11.65f);
+                target = new Vector3(2.43f + distanceForKumes, -3.2f, 11.65f);
+                timeToKumes = 0;
+                canDo = false;
+            } 
+            
+            else if (IsKumesEmpty3.tag == "empty" && IsKumesEmpty3.activeSelf)
+            {
+                distanceForKumes = -20;
+                IsKumesEmpty3.tag = "full";
+                goToKumes = true;
+                //target = new Vector3(-0.5f, -0.6f, -2.3f);
+                target = new Vector3(2.43f + distanceForKumes, -3.2f, 11.65f);
                 timeToKumes = 0;
                 canDo = false;
             }
@@ -229,75 +244,87 @@ public class KazController : MonoBehaviour
         TurnToTarget();
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
 
-        if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, -3.2f, 11.65f))
+        if (transform.localPosition == new Vector3(2.43f + distanceForKumes, -3.2f, 11.65f))
         {
 
             //target = new Vector3(-0.5f, 0.2f, -0.67f);
-            target = new Vector3(2.43f + distanceForSecondKumes, 0.6f, 3.24f);
+            target = new Vector3(2.43f + distanceForKumes, 0.6f, 3.24f);
 
 
         }
-        else if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, 0.6f, 3.24f))
+        else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, 0.6f, 3.24f))
         {
             //target = new Vector3(-0.5f, 0.2f, 0.287f);
-            target = new Vector3(2.43f + distanceForSecondKumes, 0.6f, -2.49f);
+            target = new Vector3(2.43f + distanceForKumes, 0.6f, -2.49f);
 
-            if (distanceForSecondKumes < 0)
-            {
-                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
-                kazEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
-                kazEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
-            }
-            else
+         
+
+            if (distanceForKumes == 0)
             {
                 kazEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
                 kazEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
                 kazEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
             }
-           
+
+            else if (distanceForKumes == -15)
+            {
+                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
+                kazEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            }
+
+            else if (distanceForKumes == -20)
+            {
+                kazEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
+                kazEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
+                kazEggSpawn3.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            }
         }
 
-        else if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, 0.6f, -2.49f))
+        else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, 0.6f, -2.49f))
         {
 
             delayTime += Time.deltaTime;
 
             if (delayTime >= 8)
             {
-                target = new Vector3(2.43f + distanceForSecondKumes, 0.6f, 3.27f);
+                target = new Vector3(2.43f + distanceForKumes, 0.6f, 3.27f);
 
 
 
             }
         }
 
-        else if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, 0.6f, 3.27f))
+        else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, 0.6f, 3.27f))
         {
-            target = new Vector3(2.43f + distanceForSecondKumes, -3.4f, 11.80f);
+            target = new Vector3(2.43f + distanceForKumes, -3.4f, 11.80f);
             Debug.Log("Ulasti");
         }
 
-        else if (transform.localPosition == new Vector3(2.43f + distanceForSecondKumes, -3.4f, 11.80f))
+        else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, -3.4f, 11.80f))
         {
-            if (distanceForSecondKumes == 0)
+
+
+
+            if (distanceForKumes == 0)
             {
                 IsKumesEmpty.tag = "empty";
-            }
-
-            else
-            {
-                IsKumesEmpty2.tag = "empty";
-            }
-  
-
-            if (distanceForSecondKumes<0)
-            {
-                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
-            }
-            else
-            {
                 kazEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             }
+
+            else if (distanceForKumes == -15)
+            {
+                IsKumesEmpty2.tag = "empty";
+                kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+            }
+
+            else if (distanceForKumes == -20)
+            {
+                IsKumesEmpty3.tag = "empty";
+                kazEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
+            }
+
+           
   
         goToKumes = false;
         canDo = true;

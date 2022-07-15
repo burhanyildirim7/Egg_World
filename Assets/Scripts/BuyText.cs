@@ -113,6 +113,25 @@ public class BuyText : MonoBehaviour
 
 
                 Destroy(gameObject);
+            } 
+            else if (gameObject.name == "UpgradeLevel3")
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(true);
+                openNextLevelTezgah3.SetActive(false);
+
+
+                Destroy(gameObject);
+            } 
+            else if (gameObject.name == "UpgradeKazLevel3")
+            {
+                Debug.Log("Çalýþýyor");
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(true);
+                openNextLevelTezgah3.SetActive(false);
+
+
+                Destroy(gameObject);
             }
 
             else if (gameObject.name == "UpgradeTimsahLevel2")

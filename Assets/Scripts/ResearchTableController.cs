@@ -98,7 +98,7 @@ public class ResearchTableController : MonoBehaviour
 
         }
         */
-        if (currentTavukEgg == neededTavukEgg)
+        if (currentTavukEgg >= neededTavukEgg)
         {
             tavukNeededFull = true;
 
@@ -114,7 +114,7 @@ public class ResearchTableController : MonoBehaviour
 
 
       
-        if (currentKazEgg == neededKazEgg)
+        if (currentKazEgg >= neededKazEgg)
         {
             kazNeededFull = true;
 
@@ -130,7 +130,7 @@ public class ResearchTableController : MonoBehaviour
         
         }
         
-        if (currentDevekusuEgg == neededDevekusuEgg)
+        if (currentDevekusuEgg >= neededDevekusuEgg)
         {
             devekusuNeededFull = true;
 
@@ -148,7 +148,7 @@ public class ResearchTableController : MonoBehaviour
  
         
         
-        if (currentTimsahEgg == neededTimsahEgg)
+        if (currentTimsahEgg >= neededTimsahEgg)
         {
             timsahNeededFull = true;
 

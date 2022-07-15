@@ -55,6 +55,11 @@ TagManager:
   - kazEggSpawn
   - kazEgg
   - spendKazEgg
+  - BedelOdemeMoney
+  - tavukEggSpawn2
+  - tavukEggSpawn3
+  - kazEggSpawn2
+  - kazEggSpawn3
   layers:
   - Default
   - TransparentFX

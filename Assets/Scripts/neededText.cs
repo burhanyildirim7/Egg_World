@@ -33,7 +33,7 @@ public class neededText : MonoBehaviour
                 researchTable.GetComponent<ResearchTableController>().currentTavukEgg = 0;
                 canDo = false;
             }
-            if (researchTable.GetComponent<ResearchTableController>().currentTavukEgg == researchTable.GetComponent<ResearchTableController>().neededTavukEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentTavukEgg >= researchTable.GetComponent<ResearchTableController>().neededTavukEgg)
             {
                 gameObject.SetActive(false);
             }
@@ -50,7 +50,7 @@ public class neededText : MonoBehaviour
                 canDo = false;
             }
             
-            if (researchTable.GetComponent<ResearchTableController>().currentKazEgg == researchTable.GetComponent<ResearchTableController>().neededKazEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentKazEgg >= researchTable.GetComponent<ResearchTableController>().neededKazEgg)
             {
                 gameObject.SetActive(false);
             }
@@ -69,7 +69,7 @@ public class neededText : MonoBehaviour
                 canDo = false;
             }
 
-            if (researchTable.GetComponent<ResearchTableController>().currentDevekusuEgg == researchTable.GetComponent<ResearchTableController>().neededDevekusuEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentDevekusuEgg >= researchTable.GetComponent<ResearchTableController>().neededDevekusuEgg)
             {
                 gameObject.SetActive(false);
             }
@@ -88,7 +88,7 @@ public class neededText : MonoBehaviour
                 canDo = false;
             }
 
-            if (researchTable.GetComponent<ResearchTableController>().currentTimsahEgg == researchTable.GetComponent<ResearchTableController>().neededTimsahEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentTimsahEgg >= researchTable.GetComponent<ResearchTableController>().neededTimsahEgg)
             {
                 gameObject.SetActive(false);
             }
@@ -107,7 +107,7 @@ public class neededText : MonoBehaviour
                 canDo = false;
             }
 
-            if (researchTable.GetComponent<ResearchTableController>().currentEggNumber == researchTable.GetComponent<ResearchTableController>().neededEgg)
+            if (researchTable.GetComponent<ResearchTableController>().currentEggNumber >= researchTable.GetComponent<ResearchTableController>().neededEgg)
             {
                 gameObject.SetActive(false);
             }

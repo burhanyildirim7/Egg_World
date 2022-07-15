@@ -7,16 +7,19 @@ public class TavukController : MonoBehaviour
     Animator timsahAnim;
     GameObject tavukEggSpawn;
     GameObject tavukEggSpawn2;
+    GameObject tavukEggSpawn3;
     int randomNumbersForAnim;
     float delayTime;
      Vector3 target;
     bool canPickNumberForAnim;
     bool goToKumes = false;
     bool goToSecondKumes = false;
+    bool goToThirdKumes = false;
     float timeToKumes;
     bool canDo = true;
     public GameObject IsKumesEmpty;
     public GameObject IsKumesEmpty2;
+    public GameObject IsKumesEmpty3;
     float randomTime;
     float level2Distance = 0;
 
@@ -42,11 +45,14 @@ public class TavukController : MonoBehaviour
     {
 
        
-        if (tavukEggSpawn2 == null || IsKumesEmpty2 ==null)
+        if (tavukEggSpawn2 == null || IsKumesEmpty2 ==null || IsKumesEmpty3 == null || tavukEggSpawn3 == null)
         {
-            tavukEggSpawn2 = GameObject.Find("TavukEgg2");
+
+            tavukEggSpawn2 = GameObject.FindGameObjectWithTag("tavukEggSpawn2");
+            tavukEggSpawn3 = GameObject.FindGameObjectWithTag("tavukEggSpawn3");
 
             IsKumesEmpty2 = GameObject.Find("IsKumesEmpty2");
+            IsKumesEmpty3 = GameObject.Find("IsKumesEmpty3");
 
         }
      
@@ -62,15 +68,22 @@ public class TavukController : MonoBehaviour
             {
                 SecondKumesCheck();
             }
-            else
+       
+            if (!goToSecondKumes && !goToThirdKumes)
             {
                 FirstKumesCheck();
+
+            }
+            if (goToThirdKumes)
+            {
+                ThirdKumesCheck();
             }
          
         }
 
         if (canDo && timeToKumes >= randomTime)
         {
+            Debug.Log("1. kümes aktif");
             if (IsKumesEmpty.tag =="empty")
             {
                 IsKumesEmpty.tag = "full";
@@ -81,17 +94,43 @@ public class TavukController : MonoBehaviour
                 canDo = false;
             }
 
-            else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
+            else if (IsKumesEmpty2.activeSelf)
             {
-                level2Distance = 10;
-                goToSecondKumes = true;
-                IsKumesEmpty2.tag = "full";
-                goToKumes = true;
-                target = new Vector3(-9.3f, -2.8f, 10.5f);
-                timeToKumes = 0;
-                canDo = false;
+                Debug.Log("2. kümes aktif");
+       
+                if (IsKumesEmpty2.tag == "empty")
+                {
+                    level2Distance = 10;
+                    goToSecondKumes = true;
+                    IsKumesEmpty2.tag = "full";
+                    goToKumes = true;
+                    target = new Vector3(-9.3f, -2.8f, 10.5f);
+                    timeToKumes = 0;
+                    canDo = false;
+                }
+              
             }
-            timeToKumes = 0;
+            else if (IsKumesEmpty3.activeSelf)
+            {
+                Debug.Log("3. kümes aktif");
+                if (IsKumesEmpty3.tag == "empty")
+                {
+                    level2Distance = 20;
+                    goToSecondKumes = false;
+                    goToThirdKumes = true;
+                    IsKumesEmpty3.tag = "full";
+                    goToKumes = true;
+                    target = new Vector3(-17.3f, -2.8f, 10.5f);
+                    timeToKumes = 0;
+                    canDo = false;
+                }
+                
+            }
+            if (timeToKumes>=randomTime)
+            {
+                timeToKumes = 0;
+            }
+        
         }
       
    
@@ -154,10 +193,7 @@ public class TavukController : MonoBehaviour
         {
             walk = false;
             idle = true;
-
-
-
-           
+   
                 if (delayTime >= 7)
                 {
                    
@@ -324,22 +360,83 @@ public class TavukController : MonoBehaviour
             {
                 target = new Vector3(-9.5f, 1f, 4.2f);
 
-
-
             }
         }
 
         else if (transform.localPosition == new Vector3(-9.5f, 1f, 4.2f))
         {
             target = new Vector3(-9.63f, -2.8f, 10.7f);
-            Debug.Log("Ulaþtý");
         }
 
         else if (transform.localPosition == new Vector3(-9.63f, -2.8f, 10.7f))
         {
+         
+            tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
             IsKumesEmpty2.tag = "empty";
-            tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
+            goToSecondKumes = false;
             goToKumes = false;
+            canDo = true;
+
+        }
+
+
+    }
+
+    public void ThirdKumesCheck()
+    {
+        //transform.DOLocalMove(new Vector3(0, -3.7f, 11),1).OnComplete(()=> transform.DOLocalMove(new Vector3(0, 0.8f, -0.45f), 1));
+
+        idle = false;
+        walk = true;
+        TurnToTarget();
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 4 * Time.deltaTime);
+
+        if (transform.localPosition == new Vector3(-17.3f, -2.8f, 10.5f))
+        {
+
+            target = new Vector3(-17.5f, 1f, 4f);
+
+
+        }
+        else if (transform.localPosition == new Vector3(-17.5f, 1f, 4f))
+        {
+            Debug.Log("Vardý");
+            target = new Vector3(-17.5f, 1f, 0);
+
+            tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
+            tavukEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
+            tavukEggSpawn3.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+
+        }
+
+
+        else if (transform.localPosition == new Vector3(-17.5f, 1f, 0))
+        {
+
+            delayTime += Time.deltaTime;
+
+            if (delayTime >= 8)
+            {
+                target = new Vector3(-17.5f, 1f, 4.2f);
+
+
+
+            }
+        }
+
+        else if (transform.localPosition == new Vector3(-17.5f, 1f, 4.2f))
+        {
+            target = new Vector3(-17.63f, -2.8f, 10.7f);
+            Debug.Log("Ulaþtý");
+        }
+
+        else if (transform.localPosition == new Vector3(-17.63f, -2.8f, 10.7f))
+        {
+            IsKumesEmpty3.tag = "empty";
+            tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
+            goToKumes = false;
+            goToSecondKumes = false;
+            goToThirdKumes = false;
             canDo = true;
 
         }
