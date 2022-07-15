@@ -28,6 +28,11 @@ public class moneyGrubuKontrolu : MonoBehaviour
             }
 
         }
+
+        if (transform.childCount == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

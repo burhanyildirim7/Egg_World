@@ -41,8 +41,8 @@ public class CollectControl : MonoBehaviour
         IsPlayerMove();
 
        
-        UIController.instance.tapToStartScoreText.text = "" + totalMoney;
-        UIController.instance.gamePlayScoreText.text = "" + totalMoney;
+        UIController.instance.tapToStartScoreText.text = "" + PlayerPrefs.GetInt("Money");
+        UIController.instance.gamePlayScoreText.text = "" + PlayerPrefs.GetInt("Money");
         if (eggList.Count == eggStackTransform.Count)
         {
             canEggSpawn = false;
@@ -78,8 +78,8 @@ public class CollectControl : MonoBehaviour
             {
                 other.gameObject.transform.parent.tag = "empty";
             }
-           
-            totalMoney += 100;
+         
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 100);
            // UIController.instance.CoinEffect();
             Destroy(other.gameObject);
         }

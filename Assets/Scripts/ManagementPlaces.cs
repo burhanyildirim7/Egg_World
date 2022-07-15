@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ManagementPlaces : MonoBehaviour
 {
+    int deleteStartingMoney = 0;
+    
+
+    public GameObject Startingmoney;
     public GameObject locationArrow;
 
     public GameObject tavukKumes;
@@ -62,10 +66,21 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject ejderKumesObject;
     public GameObject ejderTezgah;
 
+    public GameObject Table;
+
+    bool tavukKumesAlreadyOpen = false;
+    bool tavukTezgahAlreadyOpen = false;
+    bool researchTableAlreadyOpen = false;
+    bool kazKumesCanvasAlreadyOpen = false;
+    bool kazKumesAlreadyOpen = false;
+    bool kazTezgahAlreadyOpen = false;
+    bool tavukKumesModul2AlreadyOpen = false;
+
+    bool lockCameraToResearchPlaceFirst = true;
+    bool lockCameraToResearchPlaceSecond = true;
 
 
-
-    bool canOpenResearchPlace = true;
+    bool canOpenResearchPlace = false;
     bool canOpenKazKumes = true;
     bool canOpenTavukTezgah2 = true;
     bool canOpenDevekusuKumes = true;
@@ -77,26 +92,138 @@ public class ManagementPlaces : MonoBehaviour
     
     void Start()
     {
- 
 
+        if (PlayerPrefs.GetInt("gameStart")>0 && PlayerPrefs.GetInt("deleteStartingMoney") == 1)
+        {
+            Startingmoney.SetActive(false);
+        }
 
+        if (PlayerPrefs.GetInt("tavukKumesOpen") == 1)
+        {
+            tavukKumes.SetActive(true);
+            tavukKumesAlreadyOpen = true;
+            Destroy(GameObject.Find("OpenTavukKumes"));
+            canOpenResearchPlace = true;
+        }
+        
+        if (PlayerPrefs.GetInt("tavukTezgahOpen") == 1)
+        {
+            tavukTezgah.SetActive(true);
+            tavukTezgahAlreadyOpen = true;
+            Destroy(GameObject.Find("PutTavukEggsCanvas"));
+            canOpenResearchPlace = true;
+
+        } 
+        
+        if (PlayerPrefs.GetInt("researchTableOpen") == 1)
+        {
+            researchPlace.SetActive(true);
+            researchTable.transform.parent.gameObject.SetActive(true);
+            researchTableAlreadyOpen = true;
+            Destroy(GameObject.Find("ResearchPlaceCanvas"));
+
+        }
+        
+        if (PlayerPrefs.GetInt("kazKumesCanvasOpen") == 1)
+        {
+           
+
+            researchTable.GetComponent<ResearchTableController>().canOpenKazKumes = true;
+            researchTableNeededTavukEgg.SetActive(false);
+        }  
+        
+        if (PlayerPrefs.GetInt("kazKumesOpen") == 1)
+        {
+            kazKumesObject.SetActive(true);
+            kazKumesObject.transform.parent.gameObject.SetActive(true);
+        
+            kazKumesAlreadyOpen = true;
+            kazTezgah.SetActive(true);
+            Destroy(GameObject.Find("OpenKazKumes"));
+        }
+        
+        if (PlayerPrefs.GetInt("kazTezgahOpen") == 1)
+        {
+            kazTezgah.SetActive(true);
+            kazTezgah.transform.GetChild(0).gameObject.SetActive(true);
+            kazTezgahAlreadyOpen = true;
+            Destroy(GameObject.Find("OpenPutKazEgg"));
+        } 
+          
+        if (PlayerPrefs.GetInt("tavukKumesModul2Open") == 1)
+        {
+            tavukKumesModul2.SetActive(true);
+            canOpenNeededKaz = true;
+            GameObject.Find("UpgradeLevel2").GetComponent<BuyText>().buyPrice = 0;
+            tavukKumesModul2AlreadyOpen = true;
+        } 
+
+        
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
-        
-        if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf)
+        if (Startingmoney == null)
         {
+            PlayerPrefs.SetInt("deleteStartingMoney", 1);
+        }
+
+        if (tavukKumes.activeSelf && !tavukKumesAlreadyOpen)
+        {
+            canOpenResearchPlace = true;
+            PlayerPrefs.SetInt("tavukKumesOpen", 1);
+         
+           
+        }
+
+        if (tavukTezgah.activeSelf && !tavukTezgahAlreadyOpen)
+        {
+            canOpenResearchPlace = true;
+            PlayerPrefs.SetInt("tavukTezgahOpen", 1);
+        }
+
+        if (Table.activeSelf && !researchTableAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("researchTableOpen", 1);
+        }
+
+        if (kazKumes.activeSelf && !kazKumesCanvasAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("kazKumesCanvasOpen", 1);
+        }
+
+        if (kazKumesObject.activeSelf && !kazKumesAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("kazKumesOpen", 1);
+        }
+
+        if (kazTezgah.transform.GetChild(0).gameObject.activeSelf && !kazTezgahAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("kazTezgahOpen", 1);
+        }
+
+        if (tavukKumesModul2.activeSelf && !tavukKumesModul2AlreadyOpen)
+        {
+            PlayerPrefs.SetInt("tavukKumesModul2Open", 1);
+        }
+
+
+
+
+
+        if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf && lockCameraToResearchPlaceFirst && !researchTableAlreadyOpen)
+        {    
             researchPlace.SetActive(true);
 
             locationArrow.SetActive(true);
             locationArrow.transform.position = researchPlace.transform.position + (Vector3.up * 3);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(researchPlace);
             canOpenResearchPlace = false;
+            lockCameraToResearchPlaceFirst = false;
         }
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes && !kazKumesAlreadyOpen)
         {
             kazKumes.SetActive(true);
             kazTezgah.SetActive(true);
@@ -120,7 +247,7 @@ public class ManagementPlaces : MonoBehaviour
         
 
 
-         if(tavukKumesModul2.activeSelf && canOpenNeededKaz)
+         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(true);
@@ -128,7 +255,7 @@ public class ManagementPlaces : MonoBehaviour
             locationArrow.SetActive(true);
             locationArrow.transform.position = researchPlace.transform.position + (Vector3.up * 3);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(researchPlace);
-
+            lockCameraToResearchPlaceSecond = false;
             canOpenNeededKaz = false;
         }
 

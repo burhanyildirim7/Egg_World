@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _moneySpawnPoint;
 
 
+    int gameStart = 0;
+
 
     private float _efektTimer;
 
@@ -45,12 +47,15 @@ public class PlayerController : MonoBehaviour
     {
         if (instance == null) instance = this;
         //else Destroy(this);
+
+      
     }
 
     void Start()
     {
         StartingEvents();
 
+ 
 
     }
 
@@ -94,6 +99,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        Debug.Log(PlayerPrefs.GetInt("gameStart"));
+
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "buy")
@@ -221,7 +232,9 @@ public class PlayerController : MonoBehaviour
 
     public void StartingEvents()
     {
+        //PlayerPrefs.SetInt("Money", 0);
 
+        PlayerPrefs.SetInt("gameStart", PlayerPrefs.GetInt("gameStart")+1);
         transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.parent.transform.position = Vector3.zero;
         GameController.instance.isContinue = false;
@@ -238,7 +251,7 @@ public class PlayerController : MonoBehaviour
 
         Elephant.LevelStarted(1);
 
-        PlayerPrefs.SetInt("Money", 99999);
+       // PlayerPrefs.SetInt("Money", 99999);
         UIController.instance.SetGamePlayScoreText();
 
     }
