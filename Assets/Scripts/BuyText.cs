@@ -46,7 +46,7 @@ public class BuyText : MonoBehaviour
     void Update()
     {
         buyText.text = "$" + buyPrice ;
-        if (gameObject.name == "ToLevel1" || gameObject.name == "UpgradeKazLevel2")
+        if (gameObject.name == "ToLevel1" || gameObject.name == "UpgradeKazLevel2" || gameObject.name == "UpgradeDevekusuLevel2")
         {
           
 

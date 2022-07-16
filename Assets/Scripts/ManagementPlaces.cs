@@ -85,6 +85,9 @@ public class ManagementPlaces : MonoBehaviour
     bool devekusuTezgahAlreadyOpen = false;
     bool kazKumesiModul2AlreadyOpen = false;
     bool timsahKumesCanvasAlreadyOpen = false;
+    bool timsahKumesAlreadyOpen = false;
+    bool timsahTezgahAlreadyOpen = false;
+    bool devekusuLevel2AlreadyOpen = false;
 
     bool lockCameraToResearchPlaceFirst = true;
     bool lockCameraToResearchPlaceSecond = true;
@@ -208,7 +211,6 @@ public class ManagementPlaces : MonoBehaviour
            
         if (PlayerPrefs.GetInt("timsahKumesCanvasOpen") == 1)
         {
-
             timsahKumes.SetActive(true);
             timsahTezgah.SetActive(true);
             researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes = true;
@@ -216,7 +218,30 @@ public class ManagementPlaces : MonoBehaviour
             researchTableNeededDevekusuEgg.SetActive(false);
         } 
         
-  
+        if (PlayerPrefs.GetInt("timsahKumesOpen") == 1)
+        {
+            timsahKumesObject.transform.parent.gameObject.SetActive(true);
+            timsahKumesObject.SetActive(true);
+            timsahKumesAlreadyOpen = true;
+            timsahKumesCanvas.SetActive(false);
+
+        }  
+
+        if (PlayerPrefs.GetInt("timsahTezgahOpen") == 1)
+        {
+            timsahTezgah.SetActive(true);
+            timsahTezgah.transform.GetChild(0).gameObject.SetActive(true);
+            timsahTezgahAlreadyOpen = true;
+
+        } 
+            if (PlayerPrefs.GetInt("devekusuLevel2Open") == 1)
+        {
+            devekusuKumesLevel2.SetActive(true);
+            devekusuLevel2AlreadyOpen = true;
+
+        } 
+        
+        
 
         
     }
@@ -292,7 +317,23 @@ public class ManagementPlaces : MonoBehaviour
         if (timsahKumes.activeSelf && !timsahKumesCanvasAlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahKumesCanvasOpen", 1);
+        } 
+        
+        if (timsahKumesObject.activeSelf && !timsahKumesAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("timsahKumesOpen", 1);
         }
+        
+        if (timsahTezgah.activeSelf && !timsahTezgahAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("timsahTezgahOpen", 1);
+        }
+        
+        if (devekusuKumesLevel2.activeSelf&& !devekusuLevel2AlreadyOpen)
+        {
+            PlayerPrefs.SetInt("devekusuLevel2Open", 1);
+        } 
+
 
 
 
@@ -383,7 +424,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen)
         {
             timsahKumes.SetActive(true);
             timsahTezgah.SetActive(true);
