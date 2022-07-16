@@ -46,10 +46,15 @@ public class BuyText : MonoBehaviour
     void Update()
     {
         buyText.text = "$" + buyPrice ;
-        if (gameObject.name == "ToLevel1" || gameObject.name == "UpgradeKazLevel2" || gameObject.name == "UpgradeDevekusuLevel2")
+        if (gameObject.name == "ToLevel1"
+            || gameObject.name == "UpgradeKazLevel2" 
+            || gameObject.name == "UpgradeDevekusuLevel2" 
+            || gameObject.name == "UpgradeLevel3" 
+            || gameObject.name == "UpgradeKazLevel3" 
+            || gameObject.name == "UpgradeTimsahLevel2" 
+            || gameObject.name == "EjderKumesLevel2"
+            || gameObject.name == "UpgradeTimsahLevel3")
         {
-          
-
             if (openNextLevelTezgah1.gameObject.activeSelf)
             {
                gameObject.SetActive(false);

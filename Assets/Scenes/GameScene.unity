@@ -13097,6 +13097,8 @@ MonoBehaviour:
   tavukKumesModul2: {fileID: 8238835988054351645}
   tavukKumesModul3: {fileID: 1708558155703228447}
   tavukLevel2OrtaCitler: {fileID: 3252236647011428084}
+  tavukLevel3SilinecekCitler: {fileID: 1132081639}
+  tavukLevel3AcilacakCitler: {fileID: 4540403849102904035}
   researchPlace: {fileID: 2024951719850690121}
   kazKumes: {fileID: 6315489535345580776}
   kazKumesCanvas: {fileID: 367550027}
@@ -13108,6 +13110,8 @@ MonoBehaviour:
   kazTezgah: {fileID: 3400731373771476506}
   kazLevel2SilinecekCitler: {fileID: 5834297975848347102}
   kazLevel2Citler: {fileID: 2102311961025158723}
+  kazLevel3SilinecekCitler: {fileID: 2102311961025158723}
+  kazLevel3AcilacakCitler: {fileID: 2774481844677425858}
   researchTable: {fileID: 5324887059447606546}
   researchTableNeededTavukEgg: {fileID: 1922342069}
   researchTableNeededKazEgg: {fileID: 1746656943}
@@ -38263,7 +38267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -453.2, y: -895.31}
+  m_AnchoredPosition: {x: -453.2, y: -895.4}
   m_SizeDelta: {x: 1798.7, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &2640379454118528832
