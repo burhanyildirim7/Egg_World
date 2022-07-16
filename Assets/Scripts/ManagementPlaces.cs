@@ -48,6 +48,7 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject devekusuKumesLevel2;
     public GameObject devekusuKumesLevel3;
     public GameObject devekusuTezgah;
+    public GameObject devekusuTezgahCanvas;
 
 
 
@@ -78,7 +79,9 @@ public class ManagementPlaces : MonoBehaviour
     bool kazKumesAlreadyOpen = false;
     bool kazTezgahAlreadyOpen = false;
     bool tavukKumesModul2AlreadyOpen = false;
-    bool devekusuKumesAlreadyOpen = false;
+    bool devekusuKumesCanvasAlreadyOpen = false;
+    bool devekusuKumesObjectAlreadyOpen = false;
+    bool devekusuTezgahAlreadyOpen = false;
 
     bool lockCameraToResearchPlaceFirst = true;
     bool lockCameraToResearchPlaceSecond = true;
@@ -165,10 +168,29 @@ public class ManagementPlaces : MonoBehaviour
         
         if (PlayerPrefs.GetInt("devekusuKumesOpen") == 1)
         {
+            tavukKumesLevel2.SetActive(false);
             researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes = true;
-            devekusuKumesAlreadyOpen = true;
+            devekusuKumesCanvasAlreadyOpen = true;
             canOpenDevekusuKumes = true;
             researchTableNeededKazEgg.SetActive(false);
+
+        }   
+        
+        if (PlayerPrefs.GetInt("devekusuKumesObjectOpen") == 1)
+        {
+            devekusuKumesObject.transform.parent.gameObject.SetActive(true);
+            devekusuKumesObject.SetActive(true);
+            devekusuTezgah.SetActive(true);
+            devekusuKumesObjectAlreadyOpen = true;
+            devekusuKumesCanvas.SetActive(false);
+
+        }  
+        
+        if (PlayerPrefs.GetInt("devekusuTezgahOpen") == 1)
+        {
+            devekusuTezgah.transform.GetChild(0).gameObject.SetActive(true);
+            devekusuTezgahAlreadyOpen = true;
+           // devekusuTezgahCanvas.SetActive(false);
 
         } 
         
@@ -225,9 +247,19 @@ public class ManagementPlaces : MonoBehaviour
             PlayerPrefs.SetInt("tavukKumesModul2Open", 1);
         }
 
-        if (devekusuKumes.activeSelf && !devekusuKumesAlreadyOpen)
+        if (devekusuKumes.activeSelf && !devekusuKumesCanvasAlreadyOpen)
         {
             PlayerPrefs.SetInt("devekusuKumesOpen", 1);
+        }
+
+        if (devekusuKumesObject.activeSelf && !devekusuKumesObjectAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("devekusuKumesObjectOpen", 1);
+        }
+        
+        if (devekusuTezgah.transform.GetChild(0).gameObject.activeSelf && !devekusuTezgahAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("devekusuTezgahOpen", 1);
         }
 
 
@@ -257,7 +289,7 @@ public class ManagementPlaces : MonoBehaviour
         }
         
         
-         if(kazKumesObject.activeSelf && canOpenTavukTezgah2)
+         if(kazKumesObject.activeSelf && canOpenTavukTezgah2 && !devekusuKumesCanvasAlreadyOpen)
         {
             tavukKumesLevel2.SetActive(true);
             //tavukTezgah2.SetActive(true);
@@ -270,11 +302,11 @@ public class ManagementPlaces : MonoBehaviour
         
 
 
-         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond)
+         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond &&!devekusuKumesCanvasAlreadyOpen)
         {
             tavukKumesLevel2.SetActive(false);
             researchTableNeededTavukEgg.SetActive(false);
-            researchTableNeededKazEgg.SetActive(true);
+           researchTableNeededKazEgg.SetActive(true);
 
             locationArrow.SetActive(true);
             locationArrow.transform.position = researchPlace.transform.position + (Vector3.up * 3);
@@ -284,7 +316,7 @@ public class ManagementPlaces : MonoBehaviour
         }
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesAlreadyOpen)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesObjectAlreadyOpen)
         {
             devekusuKumes.SetActive(true);
             devekusuTezgah.SetActive(true);

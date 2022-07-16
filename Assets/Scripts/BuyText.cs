@@ -46,6 +46,16 @@ public class BuyText : MonoBehaviour
     void Update()
     {
         buyText.text = "$" + buyPrice ;
+        if (gameObject.name == "ToLevel1")
+        {
+          
+
+            if (openNextLevelTezgah1.gameObject.activeSelf)
+            {
+               gameObject.SetActive(false);
+            }
+        }
+
 
         if (buyPrice <= 0)
         {
@@ -55,6 +65,11 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah2.SetActive(false);
                 
                 Destroy(gameObject);
+
+                if (openNextLevelTezgah1.gameObject.activeSelf)
+                {
+                    Destroy(gameObject);
+                }
             }
             else if (gameObject.name == "ToLevel2")
             {
