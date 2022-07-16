@@ -30,7 +30,8 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject kazKumesModul2;
     public GameObject kazKumesModul3;
     public GameObject kazTezgah;
-
+    public GameObject kazLevel2SilinecekCitler;
+    public GameObject kazLevel2Citler;
 
 
     public GameObject researchTable;
@@ -82,6 +83,8 @@ public class ManagementPlaces : MonoBehaviour
     bool devekusuKumesCanvasAlreadyOpen = false;
     bool devekusuKumesObjectAlreadyOpen = false;
     bool devekusuTezgahAlreadyOpen = false;
+    bool kazKumesiModul2AlreadyOpen = false;
+    bool timsahKumesCanvasAlreadyOpen = false;
 
     bool lockCameraToResearchPlaceFirst = true;
     bool lockCameraToResearchPlaceSecond = true;
@@ -194,6 +197,25 @@ public class ManagementPlaces : MonoBehaviour
 
         } 
         
+        if (PlayerPrefs.GetInt("kazKumesiModul2Open") == 1)
+        {
+            kazKumesModul2.SetActive(true);
+            kazKumesiModul2AlreadyOpen = true;
+            kazLevel2SilinecekCitler.SetActive(false);
+            kazLevel2Citler.SetActive(true);
+
+        } 
+           
+        if (PlayerPrefs.GetInt("timsahKumesCanvasOpen") == 1)
+        {
+
+            timsahKumes.SetActive(true);
+            timsahTezgah.SetActive(true);
+            researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes = true;
+            timsahKumesCanvasAlreadyOpen = true;
+            researchTableNeededDevekusuEgg.SetActive(false);
+        } 
+        
   
 
         
@@ -260,6 +282,16 @@ public class ManagementPlaces : MonoBehaviour
         if (devekusuTezgah.transform.GetChild(0).gameObject.activeSelf && !devekusuTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("devekusuTezgahOpen", 1);
+        }
+
+        if (kazKumesModul2.activeSelf && !kazKumesiModul2AlreadyOpen)
+        {
+            PlayerPrefs.SetInt("kazKumesiModul2Open", 1);
+        }
+
+        if (timsahKumes.activeSelf && !timsahKumesCanvasAlreadyOpen)
+        {
+            PlayerPrefs.SetInt("timsahKumesCanvasOpen", 1);
         }
 
 
@@ -334,7 +366,7 @@ public class ManagementPlaces : MonoBehaviour
             kazKumesLevel2.SetActive(true);
         }
 
-         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu)
+         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu && !timsahKumesCanvasAlreadyOpen)
         {
 
             researchTableNeededTavukEgg.SetActive(false);

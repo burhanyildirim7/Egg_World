@@ -46,7 +46,7 @@ public class BuyText : MonoBehaviour
     void Update()
     {
         buyText.text = "$" + buyPrice ;
-        if (gameObject.name == "ToLevel1")
+        if (gameObject.name == "ToLevel1" || gameObject.name == "UpgradeKazLevel2")
         {
           
 
@@ -55,6 +55,8 @@ public class BuyText : MonoBehaviour
                gameObject.SetActive(false);
             }
         }
+
+
 
 
         if (buyPrice <= 0)

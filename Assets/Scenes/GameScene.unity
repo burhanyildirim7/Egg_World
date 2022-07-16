@@ -821,13 +821,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143472576}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 60}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.020000005}
+  m_LocalScale: {x: 50, y: 49.999985, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1285355227}
-  m_RootOrder: 1
+  m_Father: {fileID: 216187068}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &143472578
 MeshCollider:
@@ -1339,7 +1339,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 143472577}
   m_Father: {fileID: 1285355227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -9415,7 +9416,7 @@ GameObject:
   - component: {fileID: 1285355229}
   - component: {fileID: 1285355228}
   m_Layer: 5
-  m_Name: Canvas (2)
+  m_Name: OpenPutDevekusu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9434,7 +9435,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 216187068}
-  - {fileID: 143472577}
   m_Father: {fileID: 4255580556849645754}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13106,6 +13106,8 @@ MonoBehaviour:
   kazKumesModul2: {fileID: 4624731552172776498}
   kazKumesModul3: {fileID: 10862314728403260}
   kazTezgah: {fileID: 3400731373771476506}
+  kazLevel2SilinecekCitler: {fileID: 5834297975848347102}
+  kazLevel2Citler: {fileID: 2102311961025158723}
   researchTable: {fileID: 5324887059447606546}
   researchTableNeededTavukEgg: {fileID: 1922342069}
   researchTableNeededKazEgg: {fileID: 1746656943}
@@ -13119,6 +13121,7 @@ MonoBehaviour:
   devekusuKumesLevel2: {fileID: 5528383483222713684}
   devekusuKumesLevel3: {fileID: 250108639}
   devekusuTezgah: {fileID: 4255580556849645757}
+  devekusuTezgahCanvas: {fileID: 0}
   timsahKumes: {fileID: 8897639346703208063}
   timsahKumesCanvas: {fileID: 1564016964}
   timsahKumesObject: {fileID: 837979313}
@@ -13978,7 +13981,7 @@ Transform:
   m_Children:
   - {fileID: 4255580556669407676}
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1692662971
 MonoBehaviour:
@@ -31030,7 +31033,7 @@ Transform:
   - {fileID: 87158483}
   - {fileID: 6781076792467366574}
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2019650769786168500
 MeshFilter:
@@ -34803,7 +34806,7 @@ Transform:
   - {fileID: 1572251009}
   - {fileID: 8123215388664219865}
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2160782932588881131
 Transform:
@@ -50314,7 +50317,7 @@ RectTransform:
   m_Children:
   - {fileID: 4255580557805142546}
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -50562,12 +50565,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1692662970}
   - {fileID: 2018094096632247960}
   - {fileID: 2153273708658707144}
   - {fileID: 6938077965571404704}
   - {fileID: 4255580556372133788}
   - {fileID: 9177230269987141695}
-  - {fileID: 1692662970}
   - {fileID: 1285355227}
   m_Father: {fileID: 279570129}
   m_RootOrder: 7
@@ -69445,7 +69448,7 @@ Transform:
   - {fileID: 1060134767}
   - {fileID: 2995514624291980812}
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &6938697389389060057
 CanvasRenderer:
@@ -75781,7 +75784,7 @@ GameObject:
   - component: {fileID: 6992494289887596786}
   - component: {fileID: 9007494643891077755}
   m_Layer: 5
-  m_Name: Canvas (2)
+  m_Name: KazKumesLevel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83902,7 +83905,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4255580556849645754}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9177302837766635762
 GameObject:
