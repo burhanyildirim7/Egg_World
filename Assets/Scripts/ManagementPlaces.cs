@@ -153,8 +153,6 @@ public class ManagementPlaces : MonoBehaviour
         
         if (PlayerPrefs.GetInt("kazKumesCanvasOpen") == 1)
         {
-           
-
             researchTable.GetComponent<ResearchTableController>().canOpenKazKumes = true;
             researchTableNeededTavukEgg.SetActive(false);
         }  
@@ -227,7 +225,7 @@ public class ManagementPlaces : MonoBehaviour
         {
             timsahKumes.SetActive(true);
             timsahTezgah.SetActive(true);
-            researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes = true;
+            //researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes = true;
             timsahKumesCanvasAlreadyOpen = true;
             researchTableNeededDevekusuEgg.SetActive(false);
         } 
@@ -283,8 +281,7 @@ public class ManagementPlaces : MonoBehaviour
             researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes = true;
             ejderKumesCanvasAlreadyOpen = true;
             researchTableNeededTimsahEgg.SetActive(false);
-            ejderKumes.SetActive(true);
-            ejderTezgah.SetActive(true);
+     
         } 
         
         if (PlayerPrefs.GetInt("ejderKumesOpen") == 1)
@@ -292,11 +289,11 @@ public class ManagementPlaces : MonoBehaviour
             ejderKumesObject.transform.parent.gameObject.SetActive(true);
             ejderKumesObject.SetActive(true);
             ejderKumesAlreadyOpen = true;
-
         }  
         
         if (PlayerPrefs.GetInt("ejderTezgahOpen") == 1)
         {
+            ejderTezgah.SetActive(true);
             ejderTezgah.transform.GetChild(0).gameObject.SetActive(true);
             ejderTezgahAlreadyOpen = true;
 
@@ -331,7 +328,8 @@ public class ManagementPlaces : MonoBehaviour
  
     void Update()
     {
- 
+      
+
         if (Startingmoney == null)
         {
             PlayerPrefs.SetInt("deleteStartingMoney", 1);
@@ -431,7 +429,7 @@ public class ManagementPlaces : MonoBehaviour
             PlayerPrefs.SetInt("timsahKumesLevel2Open", 1);
         }  
         
-        if (ejderKumesCanvas.activeSelf && !ejderKumesCanvasAlreadyOpen)
+        if (ejderKumes.activeSelf && !ejderKumesCanvasAlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderKumesCanvasOpen", 1);
         }
@@ -556,10 +554,9 @@ public class ManagementPlaces : MonoBehaviour
          if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen)
         {
             timsahKumes.SetActive(true);
-            if (!timsahTezgahAlreadyOpen)
-            {
+          
                 timsahTezgah.SetActive(true);
-            }
+       
           
 
             locationArrow.SetActive(true);

@@ -7513,7 +7513,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1232999727}
   m_Father: {fileID: 1232491885}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -7961,7 +7962,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1523708188}
   m_Father: {fileID: 1632107397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -8679,7 +8681,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1144554718}
-  - {fileID: 1232999727}
   m_Father: {fileID: 2921720280350563432}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8775,13 +8776,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232999726}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 60}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.000115897914, y: 0.00022252649, z: 0.020000007}
+  m_LocalScale: {x: 50, y: 49.999985, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1232491885}
-  m_RootOrder: 1
+  m_Father: {fileID: 1144554718}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1232999728
 MeshCollider:
@@ -12009,13 +12010,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523708187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 60}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.020000005}
+  m_LocalScale: {x: 50, y: 49.999985, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1632107397}
-  m_RootOrder: 1
+  m_Father: {fileID: 1184050423}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1523708189
 MeshCollider:
@@ -13169,7 +13170,7 @@ GameObject:
   - component: {fileID: 1632107399}
   - component: {fileID: 1632107398}
   m_Layer: 5
-  m_Name: Canvas (2)
+  m_Name: OpenEjderTezgah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13188,7 +13189,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1184050423}
-  - {fileID: 1523708188}
   m_Father: {fileID: 7274241568402004926}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14478,7 +14478,7 @@ Transform:
   m_Children:
   - {fileID: 7274241568481510072}
   m_Father: {fileID: 7274241568402004926}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1791098320
 GameObject:
@@ -70781,7 +70781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7274241568402004926}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7160938972589725474
 GameObject:
@@ -71917,7 +71917,7 @@ RectTransform:
   m_Children:
   - {fileID: 7274241567477895446}
   m_Father: {fileID: 7274241568402004926}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -72096,9 +72096,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1767089530}
   - {fileID: 7274241567839261848}
   - {fileID: 7157912822170359904}
-  - {fileID: 1767089530}
   - {fileID: 1632107397}
   m_Father: {fileID: 279570129}
   m_RootOrder: 9
