@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 87998959}
   - component: {fileID: 87998958}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: OpenPutTimsah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6393,7 +6393,7 @@ GameObject:
   - component: {fileID: 951640255}
   - component: {fileID: 951640254}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OpenDevekusuLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8662,7 +8662,7 @@ GameObject:
   - component: {fileID: 1232491887}
   - component: {fileID: 1232491886}
   m_Layer: 5
-  m_Name: Canvas (4)
+  m_Name: OpenEjderKumes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13589,7 +13589,7 @@ GameObject:
   - component: {fileID: 1667796879}
   - component: {fileID: 1667796878}
   m_Layer: 5
-  m_Name: Canvas (4)
+  m_Name: OpenDevekusuKumes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14229,7 +14229,7 @@ GameObject:
   - component: {fileID: 1756554147}
   - component: {fileID: 1756554146}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OpenTimsahLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49417,7 +49417,7 @@ GameObject:
   - component: {fileID: 2436179180760102263}
   - component: {fileID: 151993649691939190}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OpenDevekusuKumesLevel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66529,7 +66529,7 @@ GameObject:
   - component: {fileID: 7000368859580554162}
   - component: {fileID: 7558851125743984637}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OpenTimsahLevel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
