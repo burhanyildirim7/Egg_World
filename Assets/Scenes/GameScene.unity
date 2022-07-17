@@ -987,7 +987,7 @@ RectTransform:
   - {fileID: 1650483276}
   - {fileID: 8258125353170503143}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2201,7 +2201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &352864707
 Transform:
   m_ObjectHideFlags: 0
@@ -2216,7 +2216,7 @@ Transform:
   m_Children:
   - {fileID: 641627106}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &352864708
 MonoBehaviour:
@@ -2242,9 +2242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b38f3ad74c374fa923822f39791bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tezgahEggList: {fileID: 641627100}
   _makineAdi: tavukLevel1Tezgah1
-  _adetText: {fileID: 0}
-  _adetYazilacak: 0
   _girisSirasi1:
   - {fileID: 864175369}
   - {fileID: 368764452}
@@ -2256,8 +2255,7 @@ MonoBehaviour:
   - {fileID: 986029758}
   - {fileID: 2010347575}
   _stackObjesi:
-  - {fileID: 3038932525906236498, guid: f7dae8dfb8334a54bb11a3532937f1ed, type: 3}
-  _stacklenecekObjeNumarasi: 0
+  - {fileID: 8205041150221042374, guid: 013cdcfecb924f44ca0c5fb8cbb622f3, type: 3}
 --- !u!1 &363295451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,12 +5537,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 352864707}
   - {fileID: 150365634}
   - {fileID: 8923076367468202213}
   - {fileID: 3333086615287568138}
   - {fileID: 1725189650817814459}
   - {fileID: 14493173402022031}
-  - {fileID: 352864707}
   m_Father: {fileID: 279570129}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13993,13 +13991,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1692662970}
   - component: {fileID: 1692662971}
+  - component: {fileID: 1692662972}
   m_Layer: 0
   m_Name: PutDeveKusuEggGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1692662970
 Transform:
   m_ObjectHideFlags: 0
@@ -14028,6 +14027,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1692662972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692662969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b38f3ad74c374fa923822f39791bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tezgahEggList: {fileID: 4255580556669407618}
+  _makineAdi: deveLevel1Tezgah1
+  _girisSirasi1:
+  - {fileID: 4255580556997879639}
+  - {fileID: 4255580556421645434}
+  - {fileID: 4255580556888057088}
+  _stackObjesi:
+  - {fileID: 6712470760013942525, guid: e73a9e57b8d3b9a47b5a6542e593e6ed, type: 3}
 --- !u!1 &1710348472
 GameObject:
   m_ObjectHideFlags: 0
@@ -15367,6 +15386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965050456}
   - component: {fileID: 1965050457}
+  - component: {fileID: 1965050458}
   m_Layer: 0
   m_Name: PutKazEggGameObject
   m_TagString: Untagged
@@ -15402,6 +15422,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1965050458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965050455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b38f3ad74c374fa923822f39791bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tezgahEggList: {fileID: 3400731373859706661}
+  _makineAdi: kazLevel1Tezgah1
+  _girisSirasi1:
+  - {fileID: 3400731374185030128}
+  - {fileID: 3400731373544899293}
+  - {fileID: 3400731373741728679}
+  - {fileID: 3400731373954574472}
+  - {fileID: 3400731373796909828}
+  - {fileID: 3400731374402808096}
+  - {fileID: 3400731375118892535}
+  - {fileID: 3400731374063516231}
+  - {fileID: 3400731375186353358}
+  _stackObjesi:
+  - {fileID: 3707820328289063987, guid: dfa13134cc5946d42a7e04bcec15647a, type: 3}
 --- !u!137 &1966223288
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -18002,7 +18048,7 @@ Transform:
   - {fileID: 2618482840838308139}
   - {fileID: 1530434429}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &15591060047762779
 Transform:
@@ -28870,7 +28916,7 @@ Transform:
   - {fileID: 2068891024}
   - {fileID: 6860148414234374566}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1725640670559435987
 BoxCollider:
@@ -42933,7 +42979,7 @@ Transform:
   - {fileID: 28536599}
   - {fileID: 2063802101141612523}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3333976502715756206
 MeshRenderer:
@@ -82880,7 +82926,7 @@ Transform:
   - {fileID: 913443190571274287}
   - {fileID: 8553926635693207141}
   m_Father: {fileID: 729656036}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8930656066727497931
 BoxCollider:

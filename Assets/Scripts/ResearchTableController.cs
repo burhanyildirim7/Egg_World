@@ -101,7 +101,7 @@ public class ResearchTableController : MonoBehaviour
         */
 
    
-        if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg") && canTavukMoneyPaid)
+        if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg"))
         {
             tavukNeededFull = true;
 

@@ -35,7 +35,16 @@ public class PlayerPrefsController : MonoBehaviour
                 GameObject _GeciciObje =
                 Instantiate(_stackObjesi[0], _girisSirasi1[i].transform);
                 _GeciciObje.transform.localPosition = Vector3.zero;
-                _GeciciObje.transform.localScale = new Vector3(33,33,1000);
+
+                if (_makineAdi == "deveLevel1Tezgah1")
+                {
+                    _GeciciObje.transform.localScale = new Vector3(33, 1000, 33);
+                }
+                else
+                {
+                    _GeciciObje.transform.localScale = new Vector3(33, 33, 1000);
+                }
+             
                 _GeciciObje.transform.parent.gameObject.tag = "full";
                 tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
 
