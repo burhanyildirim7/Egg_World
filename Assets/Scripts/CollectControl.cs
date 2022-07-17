@@ -28,6 +28,7 @@ public class CollectControl : MonoBehaviour
     int number = 0;
 
     public GameObject EggStackTransform;
+    public GameObject researchTable;
     void Start()
     {
 
@@ -202,6 +203,13 @@ public class CollectControl : MonoBehaviour
         {
 
             MoveToTavukKuluckaMakine(other.gameObject);
+
+        }  
+        
+        if (other.gameObject.name == "KazMaker" && other.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull == false)
+        {
+
+            MoveToKazKuluckaMakine(other.gameObject);
 
         }
 
@@ -424,7 +432,7 @@ public class CollectControl : MonoBehaviour
         }
 
 
-
+        
         if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
         {
             canDo = false;
@@ -434,6 +442,47 @@ public class CollectControl : MonoBehaviour
 
     }
 
+    void MoveToKazKuluckaMakine(GameObject otherObject)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            for (int a = eggList.Count - 1; a >= 0; a--)
+            {
+                if (eggList[a].tag == "kazEgg")
+                {
+
+                    eggList[a].transform.parent.tag = "empty";
+                    eggList[a].transform.parent = otherObject.transform;
+                    eggList[a].transform.rotation = otherObject.transform.rotation;
+                    //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
+                    eggList[a].transform.DOLocalJump(Vector3.zero, 3f, 1, 1);
+
+                    eggList[a].transform.tag = "Untagged";
+
+                    eggList.Remove(eggList[a]);
+                    delayTime = 0;
+                    otherObject.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull = true;
+                    break;
+                }
+
+            }
+
+
+        }
+
+
+        if (researchTable.gameObject.activeSelf)
+        {
+
+       
+        if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
+        {
+            canDo = false;
+        }
+        }
+
+
+    }
     public void MoveEggToSepet(GameObject otherObject)
     {
 

@@ -3618,7 +3618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971350828624991271, guid: 82d695040b4074b4c8e3d24321d9e4fb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2971350828624991274, guid: 82d695040b4074b4c8e3d24321d9e4fb, type: 3}
       propertyPath: m_RootOrder
@@ -4075,7 +4075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &549297347
 Transform:
   m_ObjectHideFlags: 0
@@ -6296,6 +6296,11 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038932525906236509, guid: f7dae8dfb8334a54bb11a3532937f1ed, type: 3}
   m_PrefabInstance: {fileID: 3038932526828357829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &928455535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4121888832487203489, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+  m_PrefabInstance: {fileID: 392942326263255852}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &934937957
 GameObject:
@@ -9596,7 +9601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1296398988
 Transform:
   m_ObjectHideFlags: 0
@@ -65101,7 +65106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &6318455181719968600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70575,10 +70580,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5578638811486997079}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7110684337588345419
 GameObject:
@@ -80617,6 +80622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tavuk: {fileID: 0}
+  kaz: {fileID: 928455535}
   kuluckaMakinesiFull: 0
 --- !u!23 &8565150537578051395
 MeshRenderer:

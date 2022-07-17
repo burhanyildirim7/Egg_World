@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 3636714566986823707}
   - component: {fileID: 1964516965271013639}
   - component: {fileID: 8779888801186991054}
+  - component: {fileID: 2000923484092595769}
   m_Layer: 0
   m_Name: kazPref
   m_TagString: kazPref
@@ -552,8 +553,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsKumesEmpty: {fileID: 0}
-  walk: 0
-  idle: 0
+  IsKumesEmpty2: {fileID: 0}
+  IsKumesEmpty3: {fileID: 0}
+--- !u!114 &2000923484092595769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121888832487203489}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d116fa0c5fed0943bcf9bd0ce51e619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4129443440682192239
 GameObject:
   m_ObjectHideFlags: 0
