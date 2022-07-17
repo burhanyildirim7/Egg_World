@@ -29,6 +29,8 @@ public class CollectControl : MonoBehaviour
 
     public GameObject EggStackTransform;
     public GameObject researchTable;
+
+    int researchTableYumurtaVermeSaniye = 1;
     void Start()
     {
 
@@ -226,7 +228,7 @@ public class CollectControl : MonoBehaviour
             for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTavukEgg; i++)
             {
 
-                if (delayTime > 0.05f)
+                if (delayTime > researchTableYumurtaVermeSaniye)
                 {
                     for (int a = eggList.Count - 1; a >= 0; a--)
                     {
@@ -278,7 +280,7 @@ public class CollectControl : MonoBehaviour
             {
                 //Buraya girdi
 
-                if (delayTime > 0.05f)
+                if (delayTime > researchTableYumurtaVermeSaniye)
                 {
                     //Buraya girdi
                     for (int a = eggList.Count - 1; a >= 0; a--)
@@ -324,7 +326,7 @@ public class CollectControl : MonoBehaviour
             {
                 //Buraya girdi
 
-                if (delayTime > 0.05f)
+                if (delayTime > researchTableYumurtaVermeSaniye)
                 {
                     //Buraya girdi
                     for (int a = eggList.Count - 1; a >= 0; a--)
@@ -369,7 +371,7 @@ public class CollectControl : MonoBehaviour
             {
                 //Buraya girdi
 
-                if (delayTime > 0.05f)
+                if (delayTime > researchTableYumurtaVermeSaniye)
                 {
                     //Buraya girdi
                     for (int a = eggList.Count - 1; a >= 0; a--)
