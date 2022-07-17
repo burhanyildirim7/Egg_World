@@ -46,6 +46,7 @@ public class ResearchTableController : MonoBehaviour
     public bool canOpenEjderKumes = false;
 
     public bool eggsAreReady = false;
+    public float ResearchTableBeklemeSuresi = 1f;
     void Start()
     {
        
@@ -100,19 +101,20 @@ public class ResearchTableController : MonoBehaviour
         */
 
    
-        if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg"))
+        if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg") && canTavukMoneyPaid)
         {
             tavukNeededFull = true;
 
+            delayTime += Time.deltaTime;
 
-          
-
-            if (canTavukMoneyPaid)
+            if (delayTime > ResearchTableBeklemeSuresi)
             {
                 canOpenKazKumes = true;
                 canTavukMoneyPaid = false;
-     
+                delayTime = 0;
             }
+
+
         }
 
 
@@ -128,10 +130,11 @@ public class ResearchTableController : MonoBehaviour
         {
             delayTime += Time.deltaTime;
 
-            if (delayTime>1)
+            if (delayTime> ResearchTableBeklemeSuresi)
             {
                 canOpenDevekusuKumes = true;
                 canKazMoneyPaid = false;
+                delayTime = 0;
 
             }
             
@@ -153,7 +156,7 @@ public class ResearchTableController : MonoBehaviour
 
             delayTime += Time.deltaTime;
 
-            if (delayTime > 1)
+            if (delayTime > ResearchTableBeklemeSuresi)
             {
                 canOpenTimsahKumes = true;
                 canDevekusuMoneyPaid = false;
@@ -177,7 +180,7 @@ public class ResearchTableController : MonoBehaviour
         {
             delayTime += Time.deltaTime;
 
-            if (delayTime > 1)
+            if (delayTime > ResearchTableBeklemeSuresi)
             {
                 canOpenEjderKumes = true;
                 canTimsahMoneyPaid = false;
