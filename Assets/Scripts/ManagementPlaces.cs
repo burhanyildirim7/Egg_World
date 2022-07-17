@@ -404,7 +404,7 @@ public class ManagementPlaces : MonoBehaviour
             PlayerPrefs.SetInt("timsahKumesOpen", 1);
         }
         
-        if (timsahTezgah.activeSelf && !timsahTezgahAlreadyOpen)
+        if (timsahTezgah.transform.GetChild(0).gameObject.activeSelf && !timsahTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahTezgahOpen", 1);
         }
@@ -439,7 +439,7 @@ public class ManagementPlaces : MonoBehaviour
             PlayerPrefs.SetInt("ejderKumesOpen", 1);
         }  
         
-        if (ejderTezgah.activeSelf && !ejderTezgahAlreadyOpen)
+        if (ejderTezgah.transform.GetChild(0).gameObject.activeSelf && !ejderTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderTezgahOpen", 1);
         } 
