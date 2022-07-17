@@ -18,32 +18,59 @@ public class MainPlayerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
+    public float _speed;
+    public float _velocityX;
+    public float _velocityZ;
+    public FloatingJoystick _floatingJoystick;
+    public Rigidbody _rigidbody;
+
 
     void Start()
     {
  
         playerAnim = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
-        controller = gameObject.AddComponent<CharacterController>();
+
        
-        GetComponent<CharacterController>().center = new Vector3(0, 1, 0);
+
     }
 
     // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
+        _velocityX = _rigidbody.velocity.x;
+        _velocityZ = _rigidbody.velocity.z;
+        Vector3 direction = Vector3.forward * _floatingJoystick.Vertical + Vector3.right * _floatingJoystick.Horizontal;
+        // transform.Translate(direction * Time.deltaTime * _speed);
+        _rigidbody.velocity = new Vector3(_floatingJoystick.Horizontal * _speed, _rigidbody.velocity.y, _floatingJoystick.Vertical * _speed);
 
+        if (_floatingJoystick.Horizontal != 0 || _floatingJoystick.Vertical != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+        }
+
+        if (_rigidbody.velocity.x != 0 || _rigidbody.velocity.z != 0)
+        {
+            Debug.Log("Hareket Ediyor");
+        }
+        else
+        {
+            Debug.Log("Hareket Etmiyor");
+        }
+
+        /*
         controller.stepOffset = 0;
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
-        Vector3 input = playerInput.actions["Move"].ReadValue<Vector2>();
+
+        Vector3 input = playerInput.actions["Move"].ReadValue<Vector2>();     
         Vector3 move = new Vector3(input.x, 0, input.y);
         controller.Move(move * Time.deltaTime * playerSpeed);
 
-
+    
 
         if (move != Vector3.zero)
         {
@@ -95,7 +122,7 @@ public class MainPlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-
+        */
 
 
 

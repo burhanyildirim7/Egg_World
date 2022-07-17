@@ -10,7 +10,7 @@ public class neededText : MonoBehaviour
     Text _neededText;
     bool canDo = true;
 
-    bool currentTavukEggArttýmý = false;
+
 
 
     void Start()
