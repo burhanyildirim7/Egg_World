@@ -139,7 +139,7 @@ public class ResearchTableController : MonoBehaviour
         
         }
         
-        if (currentDevekusuEgg >= neededDevekusuEgg)
+        if (PlayerPrefs.GetInt("currentDevekusuEgg") >= PlayerPrefs.GetInt("neededDevekusuEgg"))
         {
             devekusuNeededFull = true;
 

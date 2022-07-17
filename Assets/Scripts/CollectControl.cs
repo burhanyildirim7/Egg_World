@@ -183,7 +183,7 @@ public class CollectControl : MonoBehaviour
                 MoveToResearchPlaceKaz(other.gameObject);
             }
 
-            if (other.GetComponent<ResearchTableController>().neededDevekusuEgg > 0)
+            if (PlayerPrefs.GetInt("neededDevekusuEgg") > 0)
             {
 
                 MoveToResearchPlaceDevekusu(other.gameObject);
@@ -276,56 +276,37 @@ public class CollectControl : MonoBehaviour
 
         if (PlayerPrefs.GetInt("neededKazEgg") > 0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
         {
-            //Buraya girdi
-
             for (int i = 0; i < PlayerPrefs.GetInt("neededKazEgg"); i++)
             {
-                //Buraya girdi
-
                 if (delayTime > researchTableYumurtaVermeSaniye)
                 {
-                    //Buraya girdi
                     for (int a = eggList.Count - 1; a >= 0; a--)
                     {
-                        //Buraya girmedi
                         if (eggList[a].tag == "kazEgg")
                         {
-
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
-                            //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
                             eggList[a].transform.DOLocalJump(Vector3.zero, 3, 1, 1);
-
                             eggList[a].transform.tag = "Untagged";
-
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentKazEgg", PlayerPrefs.GetInt("currentKazEgg") + 1);
                             PlayerPrefs.SetInt("currentKazEggArttýmý", 1);
                             break;
                         }
-
                     }
-
                 }
-                //Buraya girdi
-
-
             }
-
-
         }
     }
-
-
     void MoveToResearchPlaceDevekusu(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-        if (otherObject.GetComponent<ResearchTableController>().neededDevekusuEgg > 0 && otherObject.GetComponent<ResearchTableController>().devekusuNeededFull == false)
+        if (PlayerPrefs.GetInt("neededDevekusuEgg") > 0 && otherObject.GetComponent<ResearchTableController>().devekusuNeededFull == false)
         {
             //Buraya girdi
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededDevekusuEgg; i++)
+            for (int i = 0; i < PlayerPrefs.GetInt("neededDevekusuEgg"); i++)
             {
                 //Buraya girdi
 
@@ -348,7 +329,8 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentDevekusuEgg++;
+                            PlayerPrefs.SetInt("currentDevekusuEgg", PlayerPrefs.GetInt("currentDevekusuEgg") + 1);
+                            PlayerPrefs.SetInt("currentDevekusuEggArttýmý", 1);
                             break;
                         }
 

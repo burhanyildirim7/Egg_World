@@ -128,6 +128,11 @@ public class BuyText : MonoBehaviour
         {
             buyPrice = PlayerPrefs.GetInt("KazEggNeededMoneyBuyPrice");
         }
+        
+        if (gameObject.transform.parent.name == "DevekusuEggNeededMoney" && PlayerPrefs.GetInt("DevekusuEggNeededMoneyAzaldi") == 1)
+        {
+            buyPrice = PlayerPrefs.GetInt("DevekusuEggNeededMoneyBuyPrice");
+        }
   
 
      
@@ -480,6 +485,12 @@ public class BuyText : MonoBehaviour
             {
                 PlayerPrefs.SetInt("KazEggNeededMoneyAzaldi", 1);
                 PlayerPrefs.SetInt("KazEggNeededMoneyBuyPrice", buyPrice);
+            }
+               
+            if (gameObject.transform.parent.name == "DevekusuEggNeededMoney")
+            {
+                PlayerPrefs.SetInt("DevekusuEggNeededMoneyAzaldi", 1);
+                PlayerPrefs.SetInt("DevekusuEggNeededMoneyBuyPrice", buyPrice);
             }
 
 
