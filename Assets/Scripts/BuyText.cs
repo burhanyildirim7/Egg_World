@@ -118,6 +118,16 @@ public class BuyText : MonoBehaviour
         {
             buyPrice = PlayerPrefs.GetInt("EjderKumesLevel2CanvasBuyPrice");
         }
+        
+        if (gameObject.transform.parent.name == "TavukEggNeededMoney" && PlayerPrefs.GetInt("TavukEggNeededMoneyAzaldi") == 1)
+        {
+            buyPrice = PlayerPrefs.GetInt("TavukEggNeededMoneyBuyPrice");
+        }  
+        
+        if (gameObject.transform.parent.name == "KazEggNeededMoney" && PlayerPrefs.GetInt("KazEggNeededMoneyAzaldi") == 1)
+        {
+            buyPrice = PlayerPrefs.GetInt("KazEggNeededMoneyBuyPrice");
+        }
   
 
      
@@ -457,6 +467,19 @@ public class BuyText : MonoBehaviour
             {
                 PlayerPrefs.SetInt("EjderKumesLevel2CanvasAzaldi", 1);
                 PlayerPrefs.SetInt("EjderKumesLevel2CanvasBuyPrice", buyPrice);
+            } 
+            
+            if (gameObject.transform.parent.name == "TavukEggNeededMoney")
+            {
+                PlayerPrefs.SetInt("TavukEggNeededMoneyAzaldi", 1);
+                PlayerPrefs.SetInt("TavukEggNeededMoneyBuyPrice", buyPrice);
+            } 
+            
+            
+            if (gameObject.transform.parent.name == "KazEggNeededMoney")
+            {
+                PlayerPrefs.SetInt("KazEggNeededMoneyAzaldi", 1);
+                PlayerPrefs.SetInt("KazEggNeededMoneyBuyPrice", buyPrice);
             }
 
 

@@ -98,7 +98,9 @@ public class ResearchTableController : MonoBehaviour
 
         }
         */
-        if (currentTavukEgg >= neededTavukEgg)
+
+   
+        if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg"))
         {
             tavukNeededFull = true;
 
@@ -115,7 +117,7 @@ public class ResearchTableController : MonoBehaviour
 
 
       
-        if (currentKazEgg >= neededKazEgg)
+        if (PlayerPrefs.GetInt("currentKazEgg") >= PlayerPrefs.GetInt("neededKazEgg"))
         {
             kazNeededFull = true;
 
@@ -155,7 +157,7 @@ public class ResearchTableController : MonoBehaviour
             {
                 canOpenTimsahKumes = true;
                 canDevekusuMoneyPaid = false;
-
+                delayTime = 0;
             }
           
         }
@@ -179,6 +181,7 @@ public class ResearchTableController : MonoBehaviour
             {
                 canOpenEjderKumes = true;
                 canTimsahMoneyPaid = false;
+                delayTime = 0;
 
             }
 

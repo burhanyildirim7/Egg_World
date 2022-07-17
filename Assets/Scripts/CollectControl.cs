@@ -172,12 +172,12 @@ public class CollectControl : MonoBehaviour
 
 
 
-            if (other.GetComponent<ResearchTableController>().neededTavukEgg > 0)
+            if (PlayerPrefs.GetInt("neededTavukEgg") > 0)
             {
                 MoveToResearchPlaceTavuk(other.gameObject);
             }
 
-            if (other.GetComponent<ResearchTableController>().neededKazEgg > 0)
+            if (PlayerPrefs.GetInt("neededKazEgg") > 0)
             {
 
                 MoveToResearchPlaceKaz(other.gameObject);
@@ -222,10 +222,10 @@ public class CollectControl : MonoBehaviour
     {
         delayTime += Time.deltaTime;
 
-        if (otherObject.GetComponent<ResearchTableController>().neededTavukEgg > 0 && otherObject.GetComponent<ResearchTableController>().tavukNeededFull == false)
+        if (PlayerPrefs.GetInt("neededTavukEgg") > 0 && otherObject.GetComponent<ResearchTableController>().tavukNeededFull == false)
         {
 
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTavukEgg; i++)
+            for (int i = 0; i < PlayerPrefs.GetInt("neededTavukEgg"); i++)
             {
 
                 if (delayTime > researchTableYumurtaVermeSaniye)
@@ -246,7 +246,9 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentTavukEgg++;
+                           
+                            PlayerPrefs.SetInt("currentTavukEgg", PlayerPrefs.GetInt("currentTavukEgg") + 1);
+                            PlayerPrefs.SetInt("currentTavukEggArttýmý", 1);
                             break;
                         }
 
@@ -272,11 +274,11 @@ public class CollectControl : MonoBehaviour
     {
         delayTime += Time.deltaTime;
 
-        if (otherObject.GetComponent<ResearchTableController>().neededKazEgg > 0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
+        if (PlayerPrefs.GetInt("neededKazEgg") > 0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
         {
             //Buraya girdi
 
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededKazEgg; i++)
+            for (int i = 0; i < PlayerPrefs.GetInt("neededKazEgg"); i++)
             {
                 //Buraya girdi
 
@@ -299,7 +301,8 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentKazEgg++;
+                            PlayerPrefs.SetInt("currentKazEgg", PlayerPrefs.GetInt("currentKazEgg") + 1);
+                            PlayerPrefs.SetInt("currentKazEggArttýmý", 1);
                             break;
                         }
 
