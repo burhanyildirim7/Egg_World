@@ -9446,6 +9446,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1277735426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9169579843009787103, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
+  m_PrefabInstance: {fileID: 1922360910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285355226
 GameObject:
   m_ObjectHideFlags: 0
@@ -10330,11 +10335,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349594536}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1350751635 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6434509626288581767, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
-  m_PrefabInstance: {fileID: 1922360910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358330749
 GameObject:
   m_ObjectHideFlags: 0
@@ -14025,7 +14025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1692662970
 Transform:
   m_ObjectHideFlags: 0
@@ -14589,6 +14589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1772965558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2228331821928224960, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
+  m_PrefabInstance: {fileID: 4100390972822014388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791098320
 GameObject:
   m_ObjectHideFlags: 0
@@ -15341,6 +15346,14 @@ PrefabInstance:
     - target: {fileID: 9169579843009787101, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169579843009787103, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
+      propertyPath: m_Name
+      value: EjderhaEgg2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169579843009787103, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
+      propertyPath: m_TagString
+      value: ejderEggSpawn2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e39414f7801fd4f8cfc3b264200bf8, type: 3}
@@ -17208,6 +17221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 0
+  isMove: 0
   _speed: 10
   _velocityX: 0
   _velocityZ: 0
@@ -49205,9 +49219,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 290934602}
     - target: {fileID: 423096894824317522, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
+      propertyPath: ejderEggSpawn
+      value: 
+      objectReference: {fileID: 1772965558}
+    - target: {fileID: 423096894824317522, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: ejderEggSpawn2
       value: 
-      objectReference: {fileID: 1350751635}
+      objectReference: {fileID: 1277735426}
     - target: {fileID: 423096894824317522, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: ejderMoveSpeed
       value: 10
@@ -49277,9 +49295,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 290934602}
     - target: {fileID: 2024200524058487706, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
+      propertyPath: ejderEggSpawn
+      value: 
+      objectReference: {fileID: 1772965558}
+    - target: {fileID: 2024200524058487706, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: ejderEggSpawn2
       value: 
-      objectReference: {fileID: 1350751635}
+      objectReference: {fileID: 1277735426}
     - target: {fileID: 2160747921705412964, guid: 227fb6a0ab26da847a5d24bd8ea68ea1, type: 3}
       propertyPath: m_Name
       value: ejder_kumesPref
@@ -50709,7 +50731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4255580556888057088
 GameObject:
   m_ObjectHideFlags: 0
