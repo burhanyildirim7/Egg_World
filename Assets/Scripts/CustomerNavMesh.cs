@@ -67,7 +67,7 @@ public class CustomerNavMesh : MonoBehaviour
 
     private void Start()
     {
-        gezilecekTezgahSayisi = 2;
+        gezilecekTezgahSayisi = Random.Range(1, 3);
         randonEggNumber = Random.Range(1, 4);
         randonEggNumber2 = Random.Range(1, 4);
         cashier = GameObject.FindGameObjectWithTag("cashier");
@@ -405,6 +405,20 @@ public class CustomerNavMesh : MonoBehaviour
             else if (chooseRandomSpendEgg == 0)
             {
                 chooseRandomSpendEgg = 1;
+            }
+            
+            else if (chooseRandomSpendEgg == 2)
+            {
+                chooseRandomSpendEgg = 1;
+            } 
+            
+            else if (chooseRandomSpendEgg == 3)
+            {
+                chooseRandomSpendEgg = 2;
+            } 
+            else if (chooseRandomSpendEgg == 4)
+            {
+                chooseRandomSpendEgg = 3;
             }
             for (int i = 0; i < spendEggList.Count; i++)
             {
