@@ -311,11 +311,19 @@ public class TavukController : MonoBehaviour
 
         else if (transform.localPosition == new Vector3(0, -3f, 11.2f))
         {
+
+            target = new Vector3(0, -3f, 16);
+
+         
+
+        }
+
+        else if (transform.localPosition == new Vector3(0, -3f, 16))
+        {
             IsKumesEmpty.tag = "empty";
             tavukEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
             goToKumes = false;
             canDo = true;
-
         }
 
 
@@ -367,17 +375,24 @@ public class TavukController : MonoBehaviour
 
         else if (transform.localPosition == new Vector3(-9.63f, -2.8f, 10.7f))
         {
-         
-            tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
-            IsKumesEmpty2.tag = "empty";
-            goToSecondKumes = false;
-            goToKumes = false;
-            canDo = true;
 
+
+            target = new Vector3(-9.63f, -2.8f, 16f);
+           
         }
 
+        else if (transform.localPosition == new Vector3(-9.63f, -2.8f, 16f))
+        {
+        tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+        IsKumesEmpty2.tag = "empty";
+        goToSecondKumes = false;
+        goToKumes = false;
+        canDo = true;
 
     }
+
+
+}
 
     public void ThirdKumesCheck()
     {
@@ -390,7 +405,7 @@ public class TavukController : MonoBehaviour
 
         if (transform.localPosition == new Vector3(-17.3f, -2.8f, 10.5f))
         {
-
+      
             target = new Vector3(-17.5f, 1f, 4f);
 
 
@@ -429,13 +444,18 @@ public class TavukController : MonoBehaviour
 
         else if (transform.localPosition == new Vector3(-17.63f, -2.8f, 10.7f))
         {
+            target = new Vector3(-17.63f, -2.8f, 16f);
+
+        }
+
+        else if (transform.localPosition == new Vector3(-17.63f, -2.8f, 16f))
+        {
             IsKumesEmpty3.tag = "empty";
             tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = false;
             goToKumes = false;
             goToSecondKumes = false;
             goToThirdKumes = false;
             canDo = true;
-
         }
 
 
