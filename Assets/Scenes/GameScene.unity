@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4770398, g: 0.79908794, b: 0.8987446, a: 1}
+  m_IndirectSpecularColor: {r: 0.47884, g: 0.8001845, b: 0.90072787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7460,7 +7460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1132081640
 Transform:
   m_ObjectHideFlags: 0
@@ -8098,7 +8098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 875784277406227225, guid: f7dae8dfb8334a54bb11a3532937f1ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.21
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 875784277406227225, guid: f7dae8dfb8334a54bb11a3532937f1ed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12190,11 +12190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_TagString
-      value: tavukEggSpawn3
+      value: kazEggSpawn3
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.89
+      value: -8.19
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20664,7 +20664,11 @@ PrefabInstance:
     - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
       propertyPath: IsKumesEmpty2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3358975513587522714}
+    - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+      propertyPath: IsKumesEmpty3
+      value: 
+      objectReference: {fileID: 1004924246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
 --- !u!23 &395318259633032111
@@ -36757,7 +36761,11 @@ PrefabInstance:
     - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
       propertyPath: IsKumesEmpty2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3358975513587522714}
+    - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+      propertyPath: IsKumesEmpty3
+      value: 
+      objectReference: {fileID: 1004924246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
 --- !u!33 &2439460810608798724
@@ -59038,11 +59046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068266, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_TagString
-      value: tavukEggSpawn2
+      value: kazEggSpawn2
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.16
+      value: -4.13
       objectReference: {fileID: 0}
     - target: {fileID: 5709205810415068270, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61684,7 +61692,11 @@ PrefabInstance:
     - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
       propertyPath: IsKumesEmpty2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3358975513587522714}
+    - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+      propertyPath: IsKumesEmpty3
+      value: 
+      objectReference: {fileID: 1004924246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
 --- !u!1001 &5765836173322192663
@@ -65294,7 +65306,11 @@ PrefabInstance:
     - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
       propertyPath: IsKumesEmpty2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3358975513587522714}
+    - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+      propertyPath: IsKumesEmpty3
+      value: 
+      objectReference: {fileID: 1004924246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
 --- !u!4 &6334254429163830656
@@ -80243,7 +80259,11 @@ PrefabInstance:
     - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
       propertyPath: IsKumesEmpty2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3358975513587522714}
+    - target: {fileID: 8779888801186991054, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
+      propertyPath: IsKumesEmpty3
+      value: 
+      objectReference: {fileID: 1004924246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d109ebe4cbdd249bb840f7b70b6601, type: 3}
 --- !u!4 &8506500732220715336

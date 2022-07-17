@@ -94,7 +94,7 @@ public class KazController : MonoBehaviour
             
             else if (IsKumesEmpty3.tag == "empty" && IsKumesEmpty3.activeSelf)
             {
-                distanceForKumes = -20;
+                distanceForKumes = -30;
                 IsKumesEmpty3.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
@@ -277,7 +277,7 @@ public class KazController : MonoBehaviour
                 kazEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
             }
 
-            else if (distanceForKumes == -20)
+            else if (distanceForKumes == -30)
             {
                 kazEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
                 kazEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
@@ -324,7 +324,7 @@ public class KazController : MonoBehaviour
                 kazEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
             }
 
-            else if (distanceForKumes == -20)
+            else if (distanceForKumes == -30)
             {
                 IsKumesEmpty3.tag = "empty";
                 goToKumes = false;

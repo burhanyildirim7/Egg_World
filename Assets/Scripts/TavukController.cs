@@ -94,13 +94,11 @@ public class TavukController : MonoBehaviour
                 canDo = false;
             }
 
-            else if (IsKumesEmpty2.activeSelf)
+            else if (IsKumesEmpty2.activeSelf && IsKumesEmpty2.tag == "empty")
             {
          
 
        
-                if (IsKumesEmpty2.tag == "empty")
-                {
                     level2Distance = 10;
                     goToSecondKumes = true;
                     IsKumesEmpty2.tag = "full";
@@ -108,14 +106,14 @@ public class TavukController : MonoBehaviour
                     target = new Vector3(-9.3f, -2.8f, 10.5f);
                     timeToKumes = 0;
                     canDo = false;
-                }
+              
               
             }
-            else if (IsKumesEmpty3.activeSelf)
+            else if (IsKumesEmpty3.activeSelf && IsKumesEmpty3.tag == "empty")
             {
          
-                if (IsKumesEmpty3.tag == "empty")
-                {
+               
+         
                     level2Distance = 20;
                     goToSecondKumes = false;
                     goToThirdKumes = true;
@@ -124,8 +122,7 @@ public class TavukController : MonoBehaviour
                     target = new Vector3(-17.3f, -2.8f, 10.5f);
                     timeToKumes = 0;
                     canDo = false;
-                }
-                
+                  
             }
             if (timeToKumes>=randomTime)
             {
