@@ -116,7 +116,9 @@ public class ManagementPlaces : MonoBehaviour
     bool canOpenNeededDevekusu = true;
     bool canOpenDevekusuKumesLevel2 = true;
     bool canOpenEjderKumes = true;
-    
+
+    public GameObject TapToStart;
+    bool gameStart = false;
     void Start()
     {
 
@@ -328,7 +330,11 @@ public class ManagementPlaces : MonoBehaviour
  
     void Update()
     {
-      
+
+        if (!TapToStart.activeSelf)
+        {
+            gameStart = true;
+        }
 
         if (Startingmoney == null)
         {
@@ -466,7 +472,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-        if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf && lockCameraToResearchPlaceFirst && !researchTableAlreadyOpen)
+        if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf && lockCameraToResearchPlaceFirst && !researchTableAlreadyOpen && gameStart)
         {    
             researchPlace.SetActive(true);
 
@@ -477,7 +483,7 @@ public class ManagementPlaces : MonoBehaviour
             lockCameraToResearchPlaceFirst = false;
         }
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes && !kazKumesAlreadyOpen)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes && !kazKumesAlreadyOpen && gameStart)
         {
             kazKumes.SetActive(true);
             kazTezgah.SetActive(true);
@@ -502,7 +508,7 @@ public class ManagementPlaces : MonoBehaviour
         
 
 
-         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond &&!devekusuKumesCanvasAlreadyOpen)
+         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond &&!devekusuKumesCanvasAlreadyOpen && gameStart)
         {
             tavukKumesLevel2.SetActive(false);
             researchTableNeededTavukEgg.SetActive(false);
@@ -516,7 +522,7 @@ public class ManagementPlaces : MonoBehaviour
         }
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesObjectAlreadyOpen)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesObjectAlreadyOpen && gameStart)
         {
             devekusuKumes.SetActive(true);
             devekusuTezgah.SetActive(true);
@@ -534,7 +540,7 @@ public class ManagementPlaces : MonoBehaviour
             kazKumesLevel2.SetActive(true);
         }
 
-         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu && !timsahKumesCanvasAlreadyOpen)
+         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu && !timsahKumesCanvasAlreadyOpen && gameStart)
         {
 
             researchTableNeededTavukEgg.SetActive(false);
@@ -551,7 +557,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen)
+         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen && gameStart)
         {
             timsahKumes.SetActive(true);
           
@@ -600,7 +606,7 @@ public class ManagementPlaces : MonoBehaviour
             timsahKumesLevel2Canvas.SetActive(true);
         }
 
-        if (timsahKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2 && !ejderKumesCanvasAlreadyOpen)
+        if (timsahKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2 && !ejderKumesCanvasAlreadyOpen && gameStart)
         {
             researchTableNeededTavukEgg.SetActive(false);
             researchTableNeededKazEgg.SetActive(false);
@@ -617,8 +623,9 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-      if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes && !ejderKumesAlreadyOpen)
+      if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes && !ejderKumesAlreadyOpen && gameStart)
      {
+       
          ejderKumes.SetActive(true);
          ejderTezgah.SetActive(true);
 
