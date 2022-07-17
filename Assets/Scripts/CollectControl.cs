@@ -40,7 +40,7 @@ public class CollectControl : MonoBehaviour
         MakeGameFaster();
         IsPlayerMove();
 
-       
+
         UIController.instance.tapToStartScoreText.text = "" + PlayerPrefs.GetInt("Money");
         UIController.instance.gamePlayScoreText.text = "" + PlayerPrefs.GetInt("Money");
         if (eggList.Count == eggStackTransform.Count)
@@ -58,7 +58,7 @@ public class CollectControl : MonoBehaviour
 
     void MakeGameFaster()
     {
-      
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -68,19 +68,19 @@ public class CollectControl : MonoBehaviour
         if (other.gameObject.tag == "empty")
         {
 
-            MoveEggToKümes(other.gameObject);
+            MoveEggToKumes(other.gameObject);
         }
 
         if (other.gameObject.tag == "money")
         {
-          
+
             if (other.gameObject.transform.parent != null)
             {
                 other.gameObject.transform.parent.tag = "empty";
             }
-         
+
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 100);
-           // UIController.instance.CoinEffect();
+            // UIController.instance.CoinEffect();
             Destroy(other.gameObject);
         }
 
@@ -118,8 +118,8 @@ public class CollectControl : MonoBehaviour
         {
             other.gameObject.GetComponent<CustomerNavMesh>().canShoopingStart = true;
         }
-      
-      
+
+
 
     }
 
@@ -131,19 +131,19 @@ public class CollectControl : MonoBehaviour
         if (other.gameObject.tag == "spendTimsahEgg")
         {
             MoveTimsahEggsToSpend(other.gameObject);
-       
+
         }
 
         if (other.gameObject.tag == "spendEjderEgg")
         {
             MoveEjderEggsToSpend(other.gameObject);
-           
+
         }
 
         if (other.gameObject.tag == "spendDevekusuEgg")
         {
             MoveDeveKusuEggsToSpend(other.gameObject);
-         
+
         }
 
         if (other.gameObject.tag == "spendKazEgg")
@@ -158,35 +158,35 @@ public class CollectControl : MonoBehaviour
             MoveTavukEggsToSpend(other.gameObject);
         }
 
-   
+
 
 
         if (other.gameObject.tag == "researchTable")
         {
-            
-      
 
-       
 
-            
-                if (other.GetComponent<ResearchTableController>().neededTavukEgg > 0)
-                {
-                    MoveToResearchPlaceTavuk(other.gameObject);
-                }
 
-                if (other.GetComponent<ResearchTableController>().neededKazEgg > 0)
-                {
-                
+
+
+
+            if (other.GetComponent<ResearchTableController>().neededTavukEgg > 0)
+            {
+                MoveToResearchPlaceTavuk(other.gameObject);
+            }
+
+            if (other.GetComponent<ResearchTableController>().neededKazEgg > 0)
+            {
+
                 MoveToResearchPlaceKaz(other.gameObject);
-                }
+            }
 
-                 if (other.GetComponent<ResearchTableController>().neededDevekusuEgg > 0)
-                {
- 
+            if (other.GetComponent<ResearchTableController>().neededDevekusuEgg > 0)
+            {
+
                 MoveToResearchPlaceDevekusu(other.gameObject);
-                }
+            }
 
-             if (other.GetComponent<ResearchTableController>().neededTimsahEgg > 0)
+            if (other.GetComponent<ResearchTableController>().neededTimsahEgg > 0)
             {
 
                 MoveToResearchPlaceTimsah(other.gameObject);
@@ -197,15 +197,15 @@ public class CollectControl : MonoBehaviour
 
         }
 
-      
-            if (other.gameObject.name == "TavukKuluckaMakinesi" && other.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull==false)
-            {
-            
+
+        if (other.gameObject.name == "TavukKuluckaMakinesi" && other.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull == false)
+        {
+
             MoveToTavukKuluckaMakine(other.gameObject);
-        
+
         }
-           
-       
+
+
     }
 
     void MoveToResearchPlaceTavuk(GameObject otherObject)
@@ -217,15 +217,15 @@ public class CollectControl : MonoBehaviour
 
             for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTavukEgg; i++)
             {
-                
+
                 if (delayTime > 0.05f)
                 {
                     for (int a = eggList.Count - 1; a >= 0; a--)
                     {
                         if (eggList[a].tag == "tavukEgg")
                         {
-                         
-              
+
+
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
@@ -248,12 +248,12 @@ public class CollectControl : MonoBehaviour
 
             }
 
-           
+
         }
 
-      
 
-       
+
+
 
 
     }
@@ -261,11 +261,11 @@ public class CollectControl : MonoBehaviour
     void MoveToResearchPlaceKaz(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-       
-        if (otherObject.GetComponent<ResearchTableController>().neededKazEgg>0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
+
+        if (otherObject.GetComponent<ResearchTableController>().neededKazEgg > 0 && otherObject.GetComponent<ResearchTableController>().kazNeededFull == false)
         {
             //Buraya girdi
-           
+
             for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededKazEgg; i++)
             {
                 //Buraya girdi
@@ -278,7 +278,7 @@ public class CollectControl : MonoBehaviour
                         //Buraya girmedi
                         if (eggList[a].tag == "kazEgg")
                         {
-                            
+
                             eggList[a].transform.parent.tag = "empty";
                             eggList[a].transform.parent = otherObject.transform;
                             eggList[a].transform.rotation = otherObject.transform.rotation;
@@ -292,7 +292,7 @@ public class CollectControl : MonoBehaviour
                             otherObject.GetComponent<ResearchTableController>().currentKazEgg++;
                             break;
                         }
-                     
+
                     }
 
                 }
@@ -403,7 +403,7 @@ public class CollectControl : MonoBehaviour
             {
                 if (eggList[a].tag == "tavukEgg")
                 {
-                
+
                     eggList[a].transform.parent.tag = "empty";
                     eggList[a].transform.parent = otherObject.transform;
                     eggList[a].transform.rotation = otherObject.transform.rotation;
@@ -423,7 +423,7 @@ public class CollectControl : MonoBehaviour
 
         }
 
-            
+
 
         if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
         {
@@ -447,12 +447,12 @@ public class CollectControl : MonoBehaviour
 
 
 
-               
-                    GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
-              
-              
-               
-             
+
+                GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+
+
+
+
                 otherObject.transform.parent.gameObject.tag = "empty";
                 otherObject.transform.parent = eggStackTransform[i].transform;
                 otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
@@ -462,7 +462,7 @@ public class CollectControl : MonoBehaviour
             }
         }
 
-       
+
     }
 
 
@@ -522,7 +522,7 @@ public class CollectControl : MonoBehaviour
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
                             eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero +Vector3.up*2,20,1,0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";
@@ -549,10 +549,10 @@ public class CollectControl : MonoBehaviour
 
             if (otherObject.transform.GetChild(i).tag == "empty")
             {
-              
+
                 if (delayTime > 0.05f)
                 {
-                      for (int a = eggList.Count-1; a >= 0; a--)
+                    for (int a = eggList.Count - 1; a >= 0; a--)
                     {
                         if (eggList[a].tag == "timsahEgg")
                         {
@@ -568,9 +568,9 @@ public class CollectControl : MonoBehaviour
                             delayTime = 0;
                             break;
                         }
-                       
+
                     }
-                                
+
                 }
 
             }
@@ -699,7 +699,7 @@ public class CollectControl : MonoBehaviour
 
 
 
-    void MoveEggToKümes(GameObject otherObject)
+    void MoveEggToKumes(GameObject otherObject)
     {
         if (otherObject.tag == "empty")
         {
@@ -720,20 +720,20 @@ public class CollectControl : MonoBehaviour
     void IsPlayerMove()
     {
 
-     
-            if (transform.position != lastPos)
-            {
-            isPlayerMove = true;
-        
-            }
-            else
-            {
-            isPlayerMove = false;
-    
-            }
 
-            lastPos = transform.position;
-      
+        if (transform.position != lastPos)
+        {
+            isPlayerMove = true;
+
+        }
+        else
+        {
+            isPlayerMove = false;
+
+        }
+
+        lastPos = transform.position;
+
     }
 
 }

@@ -8,10 +8,10 @@ public class CustomerSpawn : MonoBehaviour
     Vector3 randomPlaceToSpawn;
     float delayTime;
 
-    public GameObject ejderKümes;
-    public GameObject devekusuKümes;
-    public GameObject timsahKümes;
-    public GameObject tavukKümes;
+    public GameObject ejderKumes;
+    public GameObject devekusuKumes;
+    public GameObject timsahKumes;
+    public GameObject tavukKumes;
 
     bool canCustomerSpawn = false;
     void Start()
@@ -22,7 +22,7 @@ public class CustomerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ejderKümes.transform.GetChild(0).gameObject.activeSelf || devekusuKümes.transform.GetChild(0).gameObject.activeSelf || timsahKümes.transform.GetChild(0).gameObject.activeSelf || tavukKümes.transform.GetChild(0).gameObject.activeSelf)
+        if (ejderKumes.transform.GetChild(0).gameObject.activeSelf || devekusuKumes.transform.GetChild(0).gameObject.activeSelf || timsahKumes.transform.GetChild(0).gameObject.activeSelf || tavukKumes.transform.GetChild(0).gameObject.activeSelf)
         {
             canCustomerSpawn = true;
         }
@@ -31,15 +31,15 @@ public class CustomerSpawn : MonoBehaviour
         {
             SpawnCustomer();
         }
-     
+
     }
 
     void SpawnCustomer()
     {
-       
+
         delayTime += Time.deltaTime;
 
-        if (delayTime >= 100 )
+        if (delayTime >= 100)
         {
             //randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
             Instantiate(customer, transform.position, Quaternion.identity);
