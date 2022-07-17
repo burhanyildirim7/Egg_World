@@ -30,21 +30,20 @@ public class neededText : MonoBehaviour
             if (canDo)
             {
                 researchTable.GetComponent<ResearchTableController>().tavukNeededFull = false;
-                if (PlayerPrefs.GetInt("currentTavukEggArttýmý") != 1)
+                if (PlayerPrefs.GetInt("TavukEggNeededEggs") != 1)
                 {
                     PlayerPrefs.SetInt("neededTavukEgg", 2);
                     PlayerPrefs.SetInt("currentTavukEgg", 0);
-                }             
+                }
+
+                PlayerPrefs.SetInt("TavukEggNeededEggs", 1);
                 canDo = false;        
             }
             if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg"))
             {
                 gameObject.SetActive(false);
 
-                if (PlayerPrefs.GetInt("neededKazEgg") < 2)
-                {
-                    PlayerPrefs.SetInt("currentTavukEggArttýmý", 0);
-                }
+            
                 
             }
         }
@@ -54,13 +53,16 @@ public class neededText : MonoBehaviour
             if (canDo)
             {           
                 researchTable.GetComponent<ResearchTableController>().kazNeededFull = false;
-                if (PlayerPrefs.GetInt("currentKazEggArttýmý") != 1 && PlayerPrefs.GetInt("currentTavukEggArttýmý") != 1)
+                if (PlayerPrefs.GetInt("KazEggNeededEggs") != 1)
                 {
                     PlayerPrefs.SetInt("neededTavukEgg", 2);
                     PlayerPrefs.SetInt("currentTavukEgg", 0);
                     PlayerPrefs.SetInt("neededKazEgg", 2);
                     PlayerPrefs.SetInt("currentKazEgg", 0);
+
                 }
+                  
+                PlayerPrefs.SetInt("KazEggNeededEggs", 1);
                 canDo = false;          
             }           
             if (PlayerPrefs.GetInt("currentKazEgg") >= PlayerPrefs.GetInt("neededKazEgg"))
@@ -69,12 +71,7 @@ public class neededText : MonoBehaviour
             }       
             _neededText.text = " " + PlayerPrefs.GetInt("currentKazEgg") + " / " + PlayerPrefs.GetInt("neededKazEgg");
 
-            if (PlayerPrefs.GetInt("neededDevekusuEgg") < 2)
-            {
-                PlayerPrefs.SetInt("currentKazEggArttýmý", 0);
-                PlayerPrefs.SetInt("currentTavukEggArttýmý", 0);
-         
-            }
+        
         }
 
         if (gameObject.name == "DevekusuEggNeeded")
@@ -82,7 +79,7 @@ public class neededText : MonoBehaviour
             if (canDo)
             {
                 researchTable.GetComponent<ResearchTableController>().devekusuNeededFull = false;
-                if (PlayerPrefs.GetInt("currentKazEggArttýmý") != 1 && PlayerPrefs.GetInt("currentTavukEggArttýmý") != 1 && PlayerPrefs.GetInt("currentDevekusuEggArttýmý") != 1)
+                if (PlayerPrefs.GetInt("DevekusuEggNeededEggs") != 1)
                 {
                     PlayerPrefs.SetInt("neededTavukEgg", 2);
                     PlayerPrefs.SetInt("currentTavukEgg", 0);
@@ -91,6 +88,7 @@ public class neededText : MonoBehaviour
                     PlayerPrefs.SetInt("neededDevekusuEgg", 2);
                     PlayerPrefs.SetInt("currentDevekusuEgg", 0);
                 }
+                PlayerPrefs.SetInt("DevekusuEggNeededEggs", 1);
                 canDo = false;
             }
             if (PlayerPrefs.GetInt("currentDevekusuEgg") >= PlayerPrefs.GetInt("neededDevekusuEgg"))
@@ -105,17 +103,26 @@ public class neededText : MonoBehaviour
             if (canDo)
             {
                 researchTable.GetComponent<ResearchTableController>().timsahNeededFull = false;
-                researchTable.GetComponent<ResearchTableController>().neededTimsahEgg = 2;
-                researchTable.GetComponent<ResearchTableController>().currentTimsahEgg = 0;
+
+                if (PlayerPrefs.GetInt("TimsahEggNeededEggs") != 1)
+                {
+                    PlayerPrefs.SetInt("neededTavukEgg", 2);
+                    PlayerPrefs.SetInt("currentTavukEgg", 0);
+                    PlayerPrefs.SetInt("neededKazEgg", 2);
+                    PlayerPrefs.SetInt("currentKazEgg", 0);
+                    PlayerPrefs.SetInt("neededDevekusuEgg", 2);
+                    PlayerPrefs.SetInt("currentDevekusuEgg", 0);  
+                    PlayerPrefs.SetInt("neededTimsahEgg", 2);
+                    PlayerPrefs.SetInt("currentTimsahEgg", 0);
+                }
+                PlayerPrefs.SetInt("TimsahEggNeededEggs", 1);
                 canDo = false;
             }
-
-            if (researchTable.GetComponent<ResearchTableController>().currentTimsahEgg >= researchTable.GetComponent<ResearchTableController>().neededTimsahEgg)
+            if (PlayerPrefs.GetInt("currentTimsahEgg") >= PlayerPrefs.GetInt("neededTimsahEgg"))
             {
                 gameObject.SetActive(false);
             }
-
-            _neededText.text = " " + researchTable.GetComponent<ResearchTableController>().currentTimsahEgg + " / " + researchTable.GetComponent<ResearchTableController>().neededTimsahEgg;
+            _neededText.text = " " + PlayerPrefs.GetInt("currentTimsahEgg") + " / " + PlayerPrefs.GetInt("neededTimsahEgg");
         } 
         
         if (gameObject.name == "TavukEggNeededForKaz")

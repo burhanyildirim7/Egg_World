@@ -189,7 +189,7 @@ public class CollectControl : MonoBehaviour
                 MoveToResearchPlaceDevekusu(other.gameObject);
             }
 
-            if (other.GetComponent<ResearchTableController>().neededTimsahEgg > 0)
+            if (PlayerPrefs.GetInt("neededTimsahEgg") > 0)
             {
 
                 MoveToResearchPlaceTimsah(other.gameObject);
@@ -349,10 +349,10 @@ public class CollectControl : MonoBehaviour
     void MoveToResearchPlaceTimsah(GameObject otherObject)
     {
         delayTime += Time.deltaTime;
-        if (otherObject.GetComponent<ResearchTableController>().neededTimsahEgg > 0 && otherObject.GetComponent<ResearchTableController>().timsahNeededFull == false)
+        if (PlayerPrefs.GetInt("neededTimsahEgg") > 0 && otherObject.GetComponent<ResearchTableController>().timsahNeededFull == false)
         {
             //Buraya girdi
-            for (int i = 0; i < otherObject.GetComponent<ResearchTableController>().neededTimsahEgg; i++)
+            for (int i = 0; i < PlayerPrefs.GetInt("neededTimsahEgg"); i++)
             {
                 //Buraya girdi
 
@@ -375,7 +375,8 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                            otherObject.GetComponent<ResearchTableController>().currentTimsahEgg++;
+                            PlayerPrefs.SetInt("currentTimsahEgg", PlayerPrefs.GetInt("currentTimsahEgg") + 1);
+                            PlayerPrefs.SetInt("currentTimsahEggArttýmý", 1);
                             break;
                         }
 

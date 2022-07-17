@@ -165,7 +165,7 @@ public class ResearchTableController : MonoBehaviour
  
         
         
-        if (currentTimsahEgg >= neededTimsahEgg)
+        if (PlayerPrefs.GetInt("currentTimsahEgg") >= PlayerPrefs.GetInt("neededTimsahEgg"))
         {
             timsahNeededFull = true;
 
