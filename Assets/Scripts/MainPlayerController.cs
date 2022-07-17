@@ -9,7 +9,7 @@ public class MainPlayerController : MonoBehaviour
     PlayerInput playerInput;
     Animator playerAnim;
 
-    bool isMove = false;
+    public bool isMove = false;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -51,11 +51,11 @@ public class MainPlayerController : MonoBehaviour
 
         if (_rigidbody.velocity.x != 0 || _rigidbody.velocity.z != 0)
         {
-            Debug.Log("Hareket Ediyor");
+            isMove = true;
         }
         else
         {
-            Debug.Log("Hareket Etmiyor");
+            isMove = false;
         }
 
         /*

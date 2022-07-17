@@ -36,13 +36,18 @@ public class PlayerPrefsController : MonoBehaviour
                 Instantiate(_stackObjesi[0], _girisSirasi1[i].transform);
                 _GeciciObje.transform.localPosition = Vector3.zero;
 
-                if (_makineAdi == "deveLevel1Tezgah1")
+                if (_makineAdi == "deveLevel1Tezgah1" || _makineAdi == "ejderLevel1Tezgah1")
                 {
                     _GeciciObje.transform.localScale = new Vector3(33, 1000, 33);
                 }
                 else
                 {
                     _GeciciObje.transform.localScale = new Vector3(33, 33, 1000);
+                }
+
+                if (_makineAdi == "timsahLevel1Tezgah1")
+                {
+                    _GeciciObje.transform.localScale = new Vector3(66, 66, 2000);
                 }
              
                 _GeciciObje.transform.parent.gameObject.tag = "full";

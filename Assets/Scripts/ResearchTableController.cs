@@ -105,7 +105,12 @@ public class ResearchTableController : MonoBehaviour
         {
             tavukNeededFull = true;
 
-            delayTime += Time.deltaTime;
+            if (canTavukMoneyPaid)
+            {
+                delayTime += Time.deltaTime;
+
+            }
+            
 
             if (delayTime > ResearchTableBeklemeSuresi)
             {

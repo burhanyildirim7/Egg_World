@@ -5,8 +5,9 @@ using UnityEngine;
 public class EjderController : MonoBehaviour
 {
     Animator ejderAnim;
-    GameObject ejderEggSpawn;
+    public GameObject ejderEggSpawn;
     public GameObject ejderEggSpawn2;
+
     int randomNumbersForAnim;
     float delayTime;
     Vector3 target;
@@ -31,7 +32,7 @@ public class EjderController : MonoBehaviour
 
         ChooseRandomTarget();
 
-        ejderEggSpawn = GameObject.FindGameObjectWithTag("ejderEggSpawn");
+     
 
         target = new Vector3(Random.Range(-60, 60f), transform.localPosition.y, Random.Range(-30f, 70));
 
@@ -68,7 +69,7 @@ public class EjderController : MonoBehaviour
                 delayTime = 0;
                 canDo = false;
             } 
-            else if (IsKumesEmpty2.tag == "empty")
+            else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
             {
                 IsKumesEmpty2.tag = "full";
                 goToKumes = true;
@@ -207,16 +208,18 @@ public class EjderController : MonoBehaviour
 
             if (target == IsKumesEmpty.transform.localPosition)
             {
-                IsKumesEmpty.tag = "empty";
-                ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
-                ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+            
+                ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
+                ejderEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
+                
             }
 
             else if (target == IsKumesEmpty2.transform.localPosition)
             {
-                IsKumesEmpty2.tag = "empty";
-                ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
-                ejderEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+    
+                ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
+                ejderEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
+               
             }
           
 
@@ -229,12 +232,14 @@ public class EjderController : MonoBehaviour
                 {
                     ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                     ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+
                 }
 
                 else if (target == IsKumesEmpty2.transform.localPosition)
                 {
                     ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
-                    ejderEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+                    ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
+
                 }
                
                 target = new Vector3(0, transform.localPosition.y, 0);

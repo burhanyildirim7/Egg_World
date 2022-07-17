@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
            
 
 
-            if (GameObject.FindGameObjectWithTag("Player").GetComponent<CollectControl>().isPlayerMove == false)
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainPlayerController>().isMove == false)
             {
 
                 if (PlayerPrefs.GetInt("Money") > 0 && _kalanBedel > 0)

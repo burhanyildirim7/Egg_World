@@ -208,9 +208,12 @@ public class ManagementPlaces : MonoBehaviour
         
         if (PlayerPrefs.GetInt("devekusuTezgahOpen") == 1)
         {
+            devekusuTezgah.SetActive(true);
             devekusuTezgah.transform.GetChild(0).gameObject.SetActive(true);
             devekusuTezgahAlreadyOpen = true;
-           // devekusuTezgahCanvas.SetActive(false);
+
+         
+            // devekusuTezgahCanvas.SetActive(false);
 
         } 
         

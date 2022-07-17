@@ -10171,6 +10171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338810853}
   - component: {fileID: 1338810854}
+  - component: {fileID: 1338810855}
   m_Layer: 0
   m_Name: PutTimsahEggGameObject
   m_TagString: Untagged
@@ -10206,6 +10207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1338810855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338810852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b38f3ad74c374fa923822f39791bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tezgahEggList: {fileID: 3400731373605738263}
+  _makineAdi: timsahLevel1Tezgah1
+  _girisSirasi1:
+  - {fileID: 3400731373298246082}
+  - {fileID: 3400731373928923887}
+  - {fileID: 3400731373454107541}
+  - {fileID: 3400731373234972858}
+  - {fileID: 3400731373409149750}
+  - {fileID: 3400731375226775826}
+  - {fileID: 3400731374227324357}
+  - {fileID: 3400731373142555253}
+  - {fileID: 3400731374433787132}
+  _stackObjesi:
+  - {fileID: 3995067615780328008, guid: 9717855179f28c44aaf41900640771ab, type: 3}
 --- !u!1 &1349594536
 GameObject:
   m_ObjectHideFlags: 0
@@ -14505,6 +14532,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767089530}
+  - component: {fileID: 1767089532}
+  - component: {fileID: 1767089531}
   m_Layer: 0
   m_Name: PutEjderEggGameObject
   m_TagString: Untagged
@@ -14528,6 +14557,38 @@ Transform:
   m_Father: {fileID: 7274241568402004926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1767089531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767089529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b38f3ad74c374fa923822f39791bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tezgahEggList: {fileID: 7274241568481510022}
+  _makineAdi: ejderLevel1Tezgah1
+  _girisSirasi1:
+  - {fileID: 7274241568251622483}
+  - {fileID: 7274241567621912446}
+  - {fileID: 7274241568363607556}
+  _stackObjesi:
+  - {fileID: 8263946058859015539, guid: bacfbe08606e1794a8d8a0778ed50cd0, type: 3}
+--- !u!114 &1767089532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767089529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1791098320
 GameObject:
   m_ObjectHideFlags: 0
@@ -21047,7 +21108,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &458085334052068702
 BoxCollider:
@@ -40324,7 +40385,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &2939649026278018638
 BoxCollider:
@@ -41234,7 +41295,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3068996437676700766
 GameObject:
@@ -41833,7 +41894,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3172438076934571494
 Transform:
@@ -43576,7 +43637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3400731373298246082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21600342, y: 7.0302486, z: 0.16299988}
+  m_LocalPosition: {x: -0.21600342, y: 7.0302486, z: 0.203}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43678,7 +43739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3400731373454107541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18899658, y: 7.0302486, z: 0.18699989}
+  m_LocalPosition: {x: 0.18899658, y: 7.0302486, z: 0.22699954}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44091,7 +44152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3400731373928923887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.004, y: 7.03, z: 0.163}
+  m_LocalPosition: {x: 0.004, y: 7.03, z: 0.20299965}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46518,7 +46579,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3686105550949656194
 Transform:
@@ -51227,7 +51288,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4307498686022800664
 GameObject:
@@ -53979,7 +54040,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &4670334806944132880
 BoxCollider:
@@ -58432,7 +58493,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &5300268475429923638
 BoxCollider:
@@ -59384,7 +59445,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &5434033619628218500
 MeshCollider:
