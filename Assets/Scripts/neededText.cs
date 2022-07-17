@@ -40,7 +40,12 @@ public class neededText : MonoBehaviour
             if (PlayerPrefs.GetInt("currentTavukEgg") >= PlayerPrefs.GetInt("neededTavukEgg"))
             {
                 gameObject.SetActive(false);
-                PlayerPrefs.SetInt("currentTavukEggArttýmý", 0);
+
+                if (PlayerPrefs.GetInt("neededKazEgg") < 2)
+                {
+                    PlayerPrefs.SetInt("currentTavukEggArttýmý", 0);
+                }
+                
             }
         }
 
