@@ -35,6 +35,7 @@ public class PlayerPrefsController : MonoBehaviour
                 Debug.Log(PlayerPrefs.GetInt(_makineAdi + i));
                 GameObject _GeciciObje =
                 Instantiate(_stackObjesi[0], _girisSirasi1[i].transform);
+
                 _GeciciObje.transform.localPosition = Vector3.zero;
 
                 if (_makineAdi == "deveLevel1Tezgah1" || _makineAdi == "ejderLevel1Tezgah1")
@@ -63,7 +64,7 @@ public class PlayerPrefsController : MonoBehaviour
 
                 }
 
-                if (_makineAdi == "DevekusuEggSpawn1")
+                if (_makineAdi == "DevekusuEggSpawn1" || _makineAdi == "DevekusuEggSpawn2" || _makineAdi == "DevekusuEggSpawn3")
                 {
              
                     _GeciciObje.transform.localScale = new Vector3(5, 63, 5);
@@ -119,6 +120,8 @@ public class PlayerPrefsController : MonoBehaviour
     private void FixedUpdate()
     {
         ListeDuzenleme();
+
+    
 
 
     }
