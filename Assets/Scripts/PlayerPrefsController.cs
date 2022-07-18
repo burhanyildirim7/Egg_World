@@ -7,6 +7,7 @@ using DG.Tweening;
 public class PlayerPrefsController : MonoBehaviour
 {
     public GameObject tezgahEggList;
+    public GameObject kumesSpawnEggList;
 
     [SerializeField] string _makineAdi;
 
@@ -39,24 +40,65 @@ public class PlayerPrefsController : MonoBehaviour
                 if (_makineAdi == "deveLevel1Tezgah1" || _makineAdi == "ejderLevel1Tezgah1")
                 {
                     _GeciciObje.transform.localScale = new Vector3(33, 1000, 33);
+
+                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
                 }
-                else
+                if(_makineAdi == "tavukLevel1Tezgah1" || _makineAdi == "kazLevel1Tezgah1")
                 {
                     _GeciciObje.transform.localScale = new Vector3(33, 33, 1000);
+                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
                 }
 
                 if (_makineAdi == "timsahLevel1Tezgah1")
                 {
                     _GeciciObje.transform.localScale = new Vector3(66, 66, 2000);
+                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
+                }
+
+                if (_makineAdi == "TavukEggSpawn1" || _makineAdi == "TavukEggSpawn2" || _makineAdi == "TavukEggSpawn3" || _makineAdi == "KazEggSpawn1" || _makineAdi == "KazEggSpawn2" || _makineAdi == "KazEggSpawn3")
+                {
+                    _GeciciObje.transform.localScale = new Vector3(16, 16, 100);
+                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
+
+
+                }
+
+                if (_makineAdi == "DevekusuEggSpawn1")
+                {
+             
+                    _GeciciObje.transform.localScale = new Vector3(5, 63, 5);
+                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
+                 
+
+                }
+                
+                if (_makineAdi == "TimsahEggSpawn1" || _makineAdi == "TimsahEggSpawn2" || _makineAdi == "TimsahEggSpawn3")
+                {
+             
+                    _GeciciObje.transform.localScale = new Vector3(30, 30, 200);
+                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
+                 
+
+                }
+
+               if (_makineAdi == "EjderhaEggSpawn1" || _makineAdi == "EjderhaEggSpawn2")
+                {
+             
+                    _GeciciObje.transform.localScale = new Vector3(4, 4, 25);
+                    _GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
+                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
+                 
+
                 }
              
                 _GeciciObje.transform.parent.gameObject.tag = "full";
-                tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
+            
 
                 if (PlayerPrefs.GetInt(_makineAdi + i) > 7)
                 {
                     _GeciciObje.transform.GetChild(0).gameObject.SetActive(false);
                     _GeciciObje.transform.GetChild(1).gameObject.SetActive(true);
+
                 }
                 else
                 {
@@ -77,6 +119,8 @@ public class PlayerPrefsController : MonoBehaviour
     private void FixedUpdate()
     {
         ListeDuzenleme();
+
+
     }
 
     private void ListeDuzenleme()
