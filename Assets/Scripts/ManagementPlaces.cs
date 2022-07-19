@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManagementPlaces : MonoBehaviour
 {
     int deleteStartingMoney = 0;
-    
+
 
     public GameObject Startingmoney;
     public GameObject locationArrow;
@@ -64,7 +64,7 @@ public class ManagementPlaces : MonoBehaviour
     public GameObject timsahKumesLevel3Canvas;
     public GameObject timsahKumesLevel2;
     public GameObject timsahKumesLevel3;
-   
+
     public GameObject timsahTezgah;
 
 
@@ -101,7 +101,7 @@ public class ManagementPlaces : MonoBehaviour
     bool timsahKumesLevel3AlreadyOpen = false;
     bool devekusuKumesLevel3AlreadyOpen = false;
     bool ejderKumesLevel2AlreadyOpen = false;
- 
+
 
     bool lockCameraToResearchPlaceFirst = true;
     bool lockCameraToResearchPlaceSecond = true;
@@ -122,7 +122,7 @@ public class ManagementPlaces : MonoBehaviour
     void Start()
     {
 
-        if (PlayerPrefs.GetInt("gameStart")>0 && PlayerPrefs.GetInt("deleteStartingMoney") == 1)
+        if (PlayerPrefs.GetInt("gameStart") > 0 && PlayerPrefs.GetInt("deleteStartingMoney") == 1)
         {
             Startingmoney.SetActive(false);
         }
@@ -134,7 +134,7 @@ public class ManagementPlaces : MonoBehaviour
             GameObject.Find("OpenTavukKumes").SetActive(false);
             canOpenResearchPlace = true;
         }
-        
+
         if (PlayerPrefs.GetInt("tavukTezgahOpen") == 1)
         {
             tavukTezgah.SetActive(true);
@@ -142,8 +142,8 @@ public class ManagementPlaces : MonoBehaviour
             GameObject.Find("PutTavukEggsCanvas").SetActive(false);
             canOpenResearchPlace = true;
 
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("researchTableOpen") == 1)
         {
             researchPlace.SetActive(true);
@@ -152,31 +152,31 @@ public class ManagementPlaces : MonoBehaviour
             GameObject.Find("ResearchPlaceCanvas").SetActive(false);
 
         }
-        
+
         if (PlayerPrefs.GetInt("kazKumesCanvasOpen") == 1)
         {
             researchTable.GetComponent<ResearchTableController>().canOpenKazKumes = true;
             researchTableNeededTavukEgg.SetActive(false);
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("kazKumesOpen") == 1)
         {
             kazKumesObject.SetActive(true);
             kazKumesObject.transform.parent.gameObject.SetActive(true);
-        
+
             kazKumesAlreadyOpen = true;
             kazTezgah.SetActive(true);
             GameObject.Find("OpenKazKumes").SetActive(false);
         }
-        
+
         if (PlayerPrefs.GetInt("kazTezgahOpen") == 1)
         {
             kazTezgah.SetActive(true);
             kazTezgah.transform.GetChild(0).gameObject.SetActive(true);
             kazTezgahAlreadyOpen = true;
             GameObject.Find("OpenPutKazEgg").SetActive(false);
-        } 
-          
+        }
+
         if (PlayerPrefs.GetInt("tavukKumesModul2Open") == 1)
         {
             tavukKumesModul2.SetActive(true);
@@ -184,8 +184,8 @@ public class ManagementPlaces : MonoBehaviour
             tavukLevel2OrtaCitler.SetActive(false);
             tavukKumesLevel2.SetActive(false);
             tavukKumesModul2AlreadyOpen = true;
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("devekusuKumesOpen") == 1)
         {
             tavukKumesLevel2.SetActive(false);
@@ -194,8 +194,8 @@ public class ManagementPlaces : MonoBehaviour
             canOpenDevekusuKumes = true;
             researchTableNeededKazEgg.SetActive(false);
 
-        }   
-        
+        }
+
         if (PlayerPrefs.GetInt("devekusuKumesObjectOpen") == 1)
         {
             devekusuKumesObject.transform.parent.gameObject.SetActive(true);
@@ -204,19 +204,19 @@ public class ManagementPlaces : MonoBehaviour
             devekusuKumesObjectAlreadyOpen = true;
             devekusuKumesCanvas.SetActive(false);
 
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("devekusuTezgahOpen") == 1)
         {
             devekusuTezgah.SetActive(true);
             devekusuTezgah.transform.GetChild(0).gameObject.SetActive(true);
             devekusuTezgahAlreadyOpen = true;
 
-         
+
             // devekusuTezgahCanvas.SetActive(false);
 
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("kazKumesiModul2Open") == 1)
         {
             kazKumesModul2.SetActive(true);
@@ -224,8 +224,8 @@ public class ManagementPlaces : MonoBehaviour
             kazLevel2SilinecekCitler.SetActive(false);
             kazLevel2Citler.SetActive(true);
 
-        } 
-           
+        }
+
         if (PlayerPrefs.GetInt("timsahKumesCanvasOpen") == 1)
         {
             timsahKumes.SetActive(true);
@@ -233,8 +233,8 @@ public class ManagementPlaces : MonoBehaviour
             //researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes = true;
             timsahKumesCanvasAlreadyOpen = true;
             researchTableNeededDevekusuEgg.SetActive(false);
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("timsahKumesOpen") == 1)
         {
             timsahKumesObject.transform.parent.gameObject.SetActive(true);
@@ -242,7 +242,7 @@ public class ManagementPlaces : MonoBehaviour
             timsahKumesAlreadyOpen = true;
             timsahKumesCanvas.SetActive(false);
 
-        }  
+        }
 
         if (PlayerPrefs.GetInt("timsahTezgahOpen") == 1)
         {
@@ -250,13 +250,13 @@ public class ManagementPlaces : MonoBehaviour
             timsahTezgah.transform.GetChild(0).gameObject.SetActive(true);
             timsahTezgahAlreadyOpen = true;
 
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("devekusuLevel2Open") == 1)
         {
             devekusuKumesLevel2.SetActive(true);
             devekusuLevel2AlreadyOpen = true;
-        } 
+        }
 
         if (PlayerPrefs.GetInt("tavukKumesLevel3Open") == 1)
         {
@@ -264,73 +264,73 @@ public class ManagementPlaces : MonoBehaviour
             tavukLevel3SilinecekCitler.SetActive(false);
             tavukLevel3AcilacakCitler.SetActive(true);
             tavukKumesLevel3AlreadyOpen = true;
-        }   
-        
+        }
+
         if (PlayerPrefs.GetInt("kazKumesLevel3Open") == 1)
         {
             kazKumesModul3.SetActive(true);
             kazLevel3SilinecekCitler.SetActive(false);
             kazLevel3AcilacakCitler.SetActive(true);
             kazKumesLevel3AlreadyOpen = true;
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("timsahKumesLevel2Open") == 1)
         {
             timsahKumesLevel2.SetActive(true);
             timsahKumesLevel2AlreadyOpen = true;
             canOpenDevekusuKumesLevel2 = true;
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("ejderKumesCanvasOpen") == 1)
         {
             researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes = true;
             ejderKumesCanvasAlreadyOpen = true;
             researchTableNeededTimsahEgg.SetActive(false);
-     
-        } 
-        
+
+        }
+
         if (PlayerPrefs.GetInt("ejderKumesOpen") == 1)
         {
             ejderKumesObject.transform.parent.gameObject.SetActive(true);
             ejderKumesObject.SetActive(true);
             ejderKumesAlreadyOpen = true;
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("ejderTezgahOpen") == 1)
         {
             ejderTezgah.SetActive(true);
             ejderTezgah.transform.GetChild(0).gameObject.SetActive(true);
             ejderTezgahAlreadyOpen = true;
 
-        }  
-        
+        }
+
         if (PlayerPrefs.GetInt("timsahKumesLevel3Open") == 1)
         {
             timsahKumesLevel3.SetActive(true);
             timsahKumesLevel3AlreadyOpen = true;
 
-        } 
-        
+        }
+
         if (PlayerPrefs.GetInt("devekusuKumesLevel3Open") == 1)
         {
             devekusuKumesLevel3.SetActive(true);
             devekusuKumesLevel3AlreadyOpen = true;
 
-        } 
-            
+        }
+
         if (PlayerPrefs.GetInt("ejderKumesLevel2Open") == 1)
         {
             ejderKumesLevel2.SetActive(true);
             ejderKumesLevel2AlreadyOpen = true;
 
-        } 
-        
-        
+        }
 
-        
+
+
+
     }
 
- 
+
     void Update()
     {
 
@@ -348,8 +348,8 @@ public class ManagementPlaces : MonoBehaviour
         {
             canOpenResearchPlace = true;
             PlayerPrefs.SetInt("tavukKumesOpen", 1);
-         
-           
+
+
         }
 
         if (tavukTezgah.activeSelf && !tavukTezgahAlreadyOpen)
@@ -392,7 +392,7 @@ public class ManagementPlaces : MonoBehaviour
         {
             PlayerPrefs.SetInt("devekusuKumesObjectOpen", 1);
         }
-        
+
         if (devekusuTezgah.transform.GetChild(0).gameObject.activeSelf && !devekusuTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("devekusuTezgahOpen", 1);
@@ -406,69 +406,69 @@ public class ManagementPlaces : MonoBehaviour
         if (timsahKumes.activeSelf && !timsahKumesCanvasAlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahKumesCanvasOpen", 1);
-        } 
-        
+        }
+
         if (timsahKumesObject.activeSelf && !timsahKumesAlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahKumesOpen", 1);
         }
-        
+
         if (timsahTezgah.transform.GetChild(0).gameObject.activeSelf && !timsahTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahTezgahOpen", 1);
         }
-        
-        if (devekusuKumesLevel2.activeSelf&& !devekusuLevel2AlreadyOpen)
+
+        if (devekusuKumesLevel2.activeSelf && !devekusuLevel2AlreadyOpen)
         {
             PlayerPrefs.SetInt("devekusuLevel2Open", 1);
-        }  
+        }
 
         if (tavukKumesModul3.activeSelf && !tavukKumesLevel3AlreadyOpen)
         {
             PlayerPrefs.SetInt("tavukKumesLevel3Open", 1);
-        } 
-        
+        }
+
         if (kazKumesModul3.activeSelf && !kazKumesLevel3AlreadyOpen)
         {
             PlayerPrefs.SetInt("kazKumesLevel3Open", 1);
-        }  
+        }
 
         if (timsahKumesLevel2.activeSelf && !timsahKumesLevel2AlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahKumesLevel2Open", 1);
-        }  
-        
+        }
+
         if (ejderKumes.activeSelf && !ejderKumesCanvasAlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderKumesCanvasOpen", 1);
         }
-        
+
         if (ejderKumesObject.activeSelf && !ejderKumesAlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderKumesOpen", 1);
-        }  
-        
+        }
+
         if (ejderTezgah.transform.GetChild(0).gameObject.activeSelf && !ejderTezgahAlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderTezgahOpen", 1);
-        } 
-        
-         if (timsahKumesLevel3.activeSelf && !timsahKumesLevel3AlreadyOpen)
+        }
+
+        if (timsahKumesLevel3.activeSelf && !timsahKumesLevel3AlreadyOpen)
         {
             PlayerPrefs.SetInt("timsahKumesLevel3Open", 1);
-        } 
-        
+        }
+
         if (devekusuKumesLevel3.activeSelf && !devekusuKumesLevel3AlreadyOpen)
         {
             PlayerPrefs.SetInt("devekusuKumesLevel3Open", 1);
-        } 
-        
-        
+        }
+
+
         if (ejderKumesLevel2.activeSelf && !ejderKumesLevel2AlreadyOpen)
         {
             PlayerPrefs.SetInt("ejderKumesLevel2Open", 1);
-        }  
-       
+        }
+
 
 
 
@@ -476,7 +476,7 @@ public class ManagementPlaces : MonoBehaviour
 
 
         if (tavukKumes.activeSelf && canOpenResearchPlace && tavukTezgah.activeSelf && lockCameraToResearchPlaceFirst && !researchTableAlreadyOpen && gameStart)
-        {    
+        {
             researchPlace.SetActive(true);
 
             locationArrow.SetActive(true);
@@ -486,7 +486,7 @@ public class ManagementPlaces : MonoBehaviour
             lockCameraToResearchPlaceFirst = false;
         }
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes && !kazKumesAlreadyOpen && gameStart)
+        if (researchTable.GetComponent<ResearchTableController>().canOpenKazKumes && canOpenKazKumes && !kazKumesAlreadyOpen && gameStart)
         {
             kazKumes.SetActive(true);
             kazTezgah.SetActive(true);
@@ -496,9 +496,9 @@ public class ManagementPlaces : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(kazKumesCanvas);
             canOpenKazKumes = false;
         }
-        
-        
-         if(kazKumesObject.activeSelf && canOpenTavukTezgah2 && !devekusuKumesCanvasAlreadyOpen)
+
+
+        if (kazKumesObject.activeSelf && canOpenTavukTezgah2 && !devekusuKumesCanvasAlreadyOpen)
         {
             tavukKumesLevel2.SetActive(true);
             //tavukTezgah2.SetActive(true);
@@ -508,14 +508,14 @@ public class ManagementPlaces : MonoBehaviour
             canOpenTavukTezgah2 = false;
 
         }
-        
 
 
-         if(tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond &&!devekusuKumesCanvasAlreadyOpen && gameStart)
+
+        if (tavukKumesModul2.activeSelf && canOpenNeededKaz && lockCameraToResearchPlaceSecond && !devekusuKumesCanvasAlreadyOpen && gameStart)
         {
             tavukKumesLevel2.SetActive(false);
             researchTableNeededTavukEgg.SetActive(false);
-           researchTableNeededKazEgg.SetActive(true);
+            researchTableNeededKazEgg.SetActive(true);
 
             locationArrow.SetActive(true);
             locationArrow.transform.position = researchPlace.transform.position + (Vector3.up * 3);
@@ -525,7 +525,7 @@ public class ManagementPlaces : MonoBehaviour
         }
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesObjectAlreadyOpen && gameStart)
+        if (researchTable.GetComponent<ResearchTableController>().canOpenDevekusuKumes && canOpenDevekusuKumes && !devekusuKumesObjectAlreadyOpen && gameStart)
         {
             devekusuKumes.SetActive(true);
             devekusuTezgah.SetActive(true);
@@ -537,13 +537,13 @@ public class ManagementPlaces : MonoBehaviour
             canOpenDevekusuKumes = false;
         }
 
-         if (devekusuKumesObject.activeSelf)
+        if (devekusuKumesObject.activeSelf)
         {
 
             kazKumesLevel2.SetActive(true);
         }
 
-         if (kazKumesModul2.activeSelf && canOpenNeededDevekusu && !timsahKumesCanvasAlreadyOpen && gameStart)
+        if (kazKumesModul2.activeSelf && canOpenNeededDevekusu && !timsahKumesCanvasAlreadyOpen && gameStart)
         {
 
             researchTableNeededTavukEgg.SetActive(false);
@@ -560,13 +560,13 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-         if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen && gameStart)
+        if (researchTable.GetComponent<ResearchTableController>().canOpenTimsahKumes && canOpenTimsahKumes && !timsahKumesAlreadyOpen && gameStart)
         {
             timsahKumes.SetActive(true);
-          
-                timsahTezgah.SetActive(true);
-       
-          
+
+            timsahTezgah.SetActive(true);
+
+
 
             locationArrow.SetActive(true);
             locationArrow.transform.position = timsahKumesCanvas.transform.position + (Vector3.up * 3);
@@ -575,19 +575,19 @@ public class ManagementPlaces : MonoBehaviour
             canOpenTimsahKumes = false;
         }
 
-         if (timsahKumesObject.activeSelf)
+        if (timsahKumesObject.activeSelf)
         {
             devekusuKumesLevel2Canvas.SetActive(true);
         }
 
-       
-
-       
 
 
 
-      if (devekusuKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2)
-     {
+
+
+
+        if (devekusuKumesLevel2.activeSelf && canOpenDevekusuKumesLevel2)
+        {
             /*
          researchTableNeededTavukEgg.SetActive(false);
          researchTableNeededKazEgg.SetActive(false);
@@ -597,7 +597,7 @@ public class ManagementPlaces : MonoBehaviour
          canOpenDevekusuKumesLevel2 = false;
             */
             tavukKumesLevel3.SetActive(true);
-     }
+        }
 
         if (tavukKumesModul3.activeSelf)
         {
@@ -626,24 +626,24 @@ public class ManagementPlaces : MonoBehaviour
 
 
 
-      if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes && !ejderKumesAlreadyOpen && gameStart)
-     {
-       
-         ejderKumes.SetActive(true);
-         ejderTezgah.SetActive(true);
+        if (researchTable.GetComponent<ResearchTableController>().canOpenEjderKumes && canOpenEjderKumes && !ejderKumesAlreadyOpen && gameStart)
+        {
+
+            ejderKumes.SetActive(true);
+            ejderTezgah.SetActive(true);
 
             locationArrow.SetActive(true);
             locationArrow.transform.position = ejderKumesCanvas.transform.position + (Vector3.up * 3);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovement>().KamerayiYonlendir(ejderKumesCanvas);
 
-         canOpenEjderKumes = false;
-     }
-      
+            canOpenEjderKumes = false;
+        }
+
 
         if (ejderKumesObject.activeSelf)
         {
             timsahKumesLevel3Canvas.SetActive(true);
-            
+
         }
 
         if (timsahKumesLevel3.activeSelf)
@@ -655,6 +655,6 @@ public class ManagementPlaces : MonoBehaviour
         {
             ejderKumesLevel2Canvas.SetActive(true);
         }
-     
+
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.47884, g: 0.8001845, b: 0.90072787, a: 1}
+  m_IndirectSpecularColor: {r: 0.4770398, g: 0.79908794, b: 0.8987446, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7248,7 +7248,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -18076,7 +18076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977787094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18625,7 +18625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018247884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18787,7 +18787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2063141235
 Transform:
   m_ObjectHideFlags: 0
@@ -18810,7 +18810,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063141234}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22ef927dfdef049d9b438dff6ee8d5a1, type: 3}
   m_Name: 
@@ -29732,7 +29732,7 @@ PrefabInstance:
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: timsahEggSpawn3
       value: 
-      objectReference: {fileID: 1313260630}
+      objectReference: {fileID: 1167396478}
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: IsTimsahKumesEmpty
       value: 
@@ -40477,7 +40477,7 @@ PrefabInstance:
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: timsahEggSpawn3
       value: 
-      objectReference: {fileID: 1313260630}
+      objectReference: {fileID: 1167396478}
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: IsTimsahKumesEmpty
       value: 
@@ -57913,7 +57913,7 @@ PrefabInstance:
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: timsahEggSpawn3
       value: 
-      objectReference: {fileID: 1313260630}
+      objectReference: {fileID: 1167396478}
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: IsTimsahKumesEmpty
       value: 
@@ -84945,7 +84945,7 @@ PrefabInstance:
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: timsahEggSpawn3
       value: 
-      objectReference: {fileID: 1313260630}
+      objectReference: {fileID: 1167396478}
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: IsTimsahKumesEmpty
       value: 
@@ -85889,7 +85889,7 @@ PrefabInstance:
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: timsahEggSpawn3
       value: 
-      objectReference: {fileID: 1313260630}
+      objectReference: {fileID: 1167396478}
     - target: {fileID: 3835525881485459014, guid: aa69c2f9a9e293647b5db06b525acb73, type: 3}
       propertyPath: IsTimsahKumesEmpty
       value: 

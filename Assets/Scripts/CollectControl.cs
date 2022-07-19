@@ -206,8 +206,8 @@ public class CollectControl : MonoBehaviour
 
             MoveToTavukKuluckaMakine(other.gameObject);
 
-        }  
-        
+        }
+
         if (other.gameObject.name == "KazMaker" && other.gameObject.GetComponent<TavukMakerController>().kuluckaMakinesiFull == false)
         {
 
@@ -246,9 +246,9 @@ public class CollectControl : MonoBehaviour
 
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
-                           
+
                             PlayerPrefs.SetInt("currentTavukEgg", PlayerPrefs.GetInt("currentTavukEgg") + 1);
-                            PlayerPrefs.SetInt("currentTavukEggArttýmý", 1);
+                            PlayerPrefs.SetInt("currentTavukEggArttï¿½mï¿½", 1);
                             break;
                         }
 
@@ -292,7 +292,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentKazEgg", PlayerPrefs.GetInt("currentKazEgg") + 1);
-                            PlayerPrefs.SetInt("currentKazEggArttýmý", 1);
+                            PlayerPrefs.SetInt("currentKazEggArttï¿½mï¿½", 1);
                             break;
                         }
                     }
@@ -330,7 +330,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentDevekusuEgg", PlayerPrefs.GetInt("currentDevekusuEgg") + 1);
-                            PlayerPrefs.SetInt("currentDevekusuEggArttýmý", 1);
+                            PlayerPrefs.SetInt("currentDevekusuEggArttï¿½mï¿½", 1);
                             break;
                         }
 
@@ -376,7 +376,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentTimsahEgg", PlayerPrefs.GetInt("currentTimsahEgg") + 1);
-                            PlayerPrefs.SetInt("currentTimsahEggArttýmý", 1);
+                            PlayerPrefs.SetInt("currentTimsahEggArttï¿½mï¿½", 1);
                             break;
                         }
 
@@ -420,7 +420,7 @@ public class CollectControl : MonoBehaviour
         }
 
 
-        
+
         if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
         {
             canDo = false;
@@ -458,7 +458,7 @@ public class CollectControl : MonoBehaviour
 
         }
 
-
+        /*
         if (researchTable.gameObject.activeSelf)
         {
 
@@ -468,7 +468,7 @@ public class CollectControl : MonoBehaviour
             canDo = false;
         }
         }
-
+        */
 
     }
     public void MoveEggToSepet(GameObject otherObject)

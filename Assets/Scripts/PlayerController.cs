@@ -48,14 +48,14 @@ public class PlayerController : MonoBehaviour
         if (instance == null) instance = this;
         //else Destroy(this);
 
-      
+
     }
 
     void Start()
     {
         StartingEvents();
 
- 
+
 
     }
 
@@ -83,14 +83,14 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "DenizSiniri")
         {
             _denizeGirdi = true;
-     
-           
+
+
 
         }
         else if (other.gameObject.tag == "StackMoney")
         {
 
-          
+
 
         }
         else
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "buy")
         {
-           
+
 
 
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainPlayerController>().isMove == false)
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 {
                     _stayTimer += Time.deltaTime;
 
-                    if (_stayTimer > 0.1f )
+                    if (_stayTimer > 0.1f)
                     {
                         _paraUI.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f).OnComplete(() => _paraUI.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f));
                         GameObject para = Instantiate(_bedelOdemePara, _moneySpawnPoint.transform.position, Quaternion.identity);
@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "DenizSiniri")
         {
             _denizeGirdi = false;
-         
+
         }
         else
         {
@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
         UIController.instance.SetGamePlayScoreText();
 
 
-      
+
     }
 
 
@@ -234,14 +234,14 @@ public class PlayerController : MonoBehaviour
     {
         //PlayerPrefs.SetInt("Money", 0);
 
-        PlayerPrefs.SetInt("gameStart", PlayerPrefs.GetInt("gameStart")+1);
+        PlayerPrefs.SetInt("gameStart", PlayerPrefs.GetInt("gameStart") + 1);
         transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
-        transform.parent.transform.position = Vector3.zero;
+        //transform.parent.transform.position = Vector3.zero;
         GameController.instance.isContinue = false;
         GameController.instance.score = 0;
-        transform.position = new Vector3(0, transform.position.y, 0);
+        transform.localPosition = new Vector3(0, transform.localPosition.y, 0);
         GetComponent<Collider>().enabled = true;
-       
+
 
         _yuzuyorMu = false;
 
@@ -251,7 +251,7 @@ public class PlayerController : MonoBehaviour
 
         Elephant.LevelStarted(1);
 
-       PlayerPrefs.SetInt("Money", 99999);
+        PlayerPrefs.SetInt("Money", 99999);
         UIController.instance.SetGamePlayScoreText();
 
     }

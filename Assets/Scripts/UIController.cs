@@ -48,7 +48,7 @@ public class UIController : MonoBehaviour
         //PlayerController.instance.SetArmForGaming();
         TapToStartPanel.SetActive(false);
         GamePanel.SetActive(true);
-        SetLevelText(LevelController.instance.totalLevelNo);
+        //SetLevelText(LevelController.instance.totalLevelNo);
         SetGamePlayScoreText();
 
     }
@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour
         GamePanel.SetActive(false);
         LoosePanel.SetActive(false);
         TapToStartPanel.SetActive(true);
-        LevelController.instance.RestartLevelEvents();
+        //LevelController.instance.RestartLevelEvents();
         SetTapToStartScoreText();
     }
 
@@ -71,11 +71,11 @@ public class UIController : MonoBehaviour
         TapToStartPanel.SetActive(true);
         WinPanel.SetActive(false);
         GamePanel.SetActive(false);
-        LevelController.instance.NextLevelEvents();
-      
+        //LevelController.instance.NextLevelEvents();
+
     }
 
-    
+
 
     /// <summary>
     /// Bu fonksiyon gameplay ekranindaki score textini gunceller.
@@ -97,7 +97,7 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Bu fonksiyon winscreen de ge?erli level scoreunun yazildigi texti gunceller.
     /// </summary>
-   
+
 
     /// <summary>
     /// Bu fonksiyon totalElmas sayilarinin yazildigi textleri gunceller.
@@ -110,10 +110,10 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Bu fonksiyon winscreen ekranini acar.
     /// </summary>
- 
-   
 
-   
+
+
+
     IEnumerator StartScreenCoinsDissolve(GameObject obj)
     {
         Color tempColor = obj.GetComponent<Image>().color;
