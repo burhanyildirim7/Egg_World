@@ -3751,6 +3751,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 875784278845259108, guid: f7dae8dfb8334a54bb11a3532937f1ed, type: 3}
   m_PrefabInstance: {fileID: 1375347285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &450837276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450837277}
+  m_Layer: 0
+  m_Name: MusteriParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450837277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450837276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452024312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1498688341404462806, guid: 35808d7c28d42404783c2a1b90197321, type: 3}
@@ -88343,6 +88374,10 @@ PrefabInstance:
       propertyPath: devekusuKumes
       value: 
       objectReference: {fileID: 6033893921504287418}
+    - target: {fileID: 8705427499762665961, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
+      propertyPath: _musteriParent
+      value: 
+      objectReference: {fileID: 450837276}
     - target: {fileID: 8705427499762665961, guid: ee1b758f864b21748a321e7f3feb6609, type: 3}
       propertyPath: "devekusuK\xFCmes"
       value: 
