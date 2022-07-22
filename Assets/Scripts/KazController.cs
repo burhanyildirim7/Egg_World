@@ -30,14 +30,14 @@ public class KazController : MonoBehaviour
     {
         kazAnim = GetComponent<Animator>();
 
-         randomTime = Random.Range(5, 17);
-        
-         kazAnim.SetBool("canIdle", true);
-        
+        randomTime = Random.Range(5, 17);
+
+        kazAnim.SetBool("canIdle", true);
+
         ChooseRandomTarget();
 
         kazEggSpawn = GameObject.FindGameObjectWithTag("kazEggSpawn");
-       
+
 
         target = new Vector3(Random.Range(-4f, 9f), transform.localPosition.y, Random.Range(12, 22));
 
@@ -47,18 +47,19 @@ public class KazController : MonoBehaviour
     void Update()
     {
 
-        if (kazEggSpawn2 == null|| IsKumesEmpty2 == null || IsKumesEmpty3 == null || kazEggSpawn3 == null)
+        if (kazEggSpawn2 == null || IsKumesEmpty2 == null || IsKumesEmpty3 == null || kazEggSpawn3 == null)
         {
 
             kazEggSpawn2 = GameObject.FindGameObjectWithTag("kazEggSpawn2");
             kazEggSpawn3 = GameObject.FindGameObjectWithTag("kazEggSpawn3");
-            IsKumesEmpty2 = GameObject.Find("IsKazKumesEmpty2");
-            IsKumesEmpty3 = GameObject.Find("IsKazKumesEmpty3");
+            IsKumesEmpty = Listeler.instance._kazKumesleri[0];
+            IsKumesEmpty2 = Listeler.instance._kazKumesleri[1];
+            IsKumesEmpty3 = Listeler.instance._kazKumesleri[2];
 
         }
         if (!goToKumes)
         {
-            
+
             ChooseRandomAnimFunction();
             timeToKumes += Time.deltaTime;
         }
@@ -81,8 +82,9 @@ public class KazController : MonoBehaviour
                 canDo = false;
             }
 
-            else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
+            else if (IsKumesEmpty2.gameObject.transform.parent.gameObject.activeSelf && IsKumesEmpty2.tag == "empty")
             {
+
                 distanceForKumes = -15;
                 IsKumesEmpty2.tag = "full";
                 goToKumes = true;
@@ -90,10 +92,13 @@ public class KazController : MonoBehaviour
                 target = new Vector3(2.43f + distanceForKumes, -2.3f, 11.65f);
                 timeToKumes = 0;
                 canDo = false;
-            } 
-            
-            else if (IsKumesEmpty3.tag == "empty" && IsKumesEmpty3.activeSelf)
+
+
+            }
+
+            else if (IsKumesEmpty3.gameObject.transform.parent.gameObject.activeSelf && IsKumesEmpty3.tag == "empty")
             {
+
                 distanceForKumes = -32;
                 IsKumesEmpty3.tag = "full";
                 goToKumes = true;
@@ -101,6 +106,8 @@ public class KazController : MonoBehaviour
                 target = new Vector3(2.43f + distanceForKumes, -2.3f, 11.65f);
                 timeToKumes = 0;
                 canDo = false;
+
+
             }
             if (timeToKumes >= randomTime)
             {
@@ -109,7 +116,7 @@ public class KazController : MonoBehaviour
         }
 
 
-   
+
 
 
     }
@@ -134,8 +141,8 @@ public class KazController : MonoBehaviour
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
 
             //timsahAnim.SetBool("canWalk", true);
-             kazAnim.SetBool("canIdle", false);
-             kazAnim.SetBool("canWalk", true);
+            kazAnim.SetBool("canIdle", false);
+            kazAnim.SetBool("canWalk", true);
 
 
             TurnToTarget();
@@ -261,7 +268,7 @@ public class KazController : MonoBehaviour
             //target = new Vector3(-0.5f, 0.2f, 0.287f);
             target = new Vector3(2.43f + distanceForKumes, 0.6f, -2.49f);
 
-         
+
 
             if (distanceForKumes == 0)
             {
@@ -310,7 +317,7 @@ public class KazController : MonoBehaviour
 
             target = new Vector3(2.43f + distanceForKumes, -2.3f, 16.80f);
 
-           
+
         }
 
         else if (transform.localPosition == new Vector3(2.43f + distanceForKumes, -2.3f, 16.80f))
@@ -342,5 +349,5 @@ public class KazController : MonoBehaviour
             canDo = true;
         }
     }
-   
+
 }

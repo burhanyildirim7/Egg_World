@@ -32,7 +32,7 @@ public class EjderController : MonoBehaviour
 
         ChooseRandomTarget();
 
-     
+
 
         target = new Vector3(Random.Range(-60, 60f), transform.localPosition.y, Random.Range(-30f, 70));
 
@@ -41,6 +41,17 @@ public class EjderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (IsKumesEmpty == null || IsKumesEmpty2 == null)
+        {
+
+            IsKumesEmpty = Listeler.instance._ejderhaKumesleri[0];
+            IsKumesEmpty2 = Listeler.instance._ejderhaKumesleri[1];
+
+
+
+        }
+
         if (!goToKumes)
         {
             ChooseRandomAnimFunction();
@@ -68,7 +79,7 @@ public class EjderController : MonoBehaviour
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
-            } 
+            }
             else if (IsKumesEmpty2.tag == "empty" && IsKumesEmpty2.activeSelf)
             {
                 IsKumesEmpty2.tag = "full";
@@ -208,20 +219,20 @@ public class EjderController : MonoBehaviour
 
             if (target == IsKumesEmpty.transform.localPosition)
             {
-            
+
                 ejderEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
                 ejderEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
-                
+
             }
 
             else if (target == IsKumesEmpty2.transform.localPosition)
             {
-    
+
                 ejderEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
                 ejderEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
-               
+
             }
-          
+
 
 
             delayTime += Time.deltaTime;
@@ -241,7 +252,7 @@ public class EjderController : MonoBehaviour
                     ejderEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
 
                 }
-               
+
                 target = new Vector3(0, transform.localPosition.y, 0);
 
 
@@ -275,7 +286,7 @@ public class EjderController : MonoBehaviour
                 {
                     IsKumesEmpty2.tag = "empty";
                 }
-           
+
                 canDo = true;
                 goToKumes = false;
             }

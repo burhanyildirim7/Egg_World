@@ -32,13 +32,6 @@ public class DevekusuController : MonoBehaviour
 
         ChooseRandomTarget();
 
-        if (IsDevekusuKumesEmpty == null)
-        {
-            IsDevekusuKumesEmpty = GameObject.Find("IsDevekusuKumesEmpty");
-        }
-
-      
-
         devekusuEggSpawn = GameObject.FindGameObjectWithTag("devekusuEggSpawn");
         devekusuEggSpawn2 = GameObject.Find("DeveKusu2");
 
@@ -49,9 +42,15 @@ public class DevekusuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsDevekusuKumesEmpty2 == null)
+
+        if (IsDevekusuKumesEmpty == null || IsDevekusuKumesEmpty2 == null || IsDevekusuKumesEmpty3 == null)
         {
-            IsDevekusuKumesEmpty2 = GameObject.Find("IsDevekusuKumesEmpty2");
+
+            IsDevekusuKumesEmpty = Listeler.instance._deveKusuKumesleri[0];
+            IsDevekusuKumesEmpty2 = Listeler.instance._deveKusuKumesleri[1];
+            IsDevekusuKumesEmpty3 = Listeler.instance._deveKusuKumesleri[2];
+
+
         }
 
         if (!goToKumes)
@@ -65,11 +64,11 @@ public class DevekusuController : MonoBehaviour
             KumesCheck();
         }
 
-     
+
 
         if (canDo && timeToKumes >= randomTime)
         {
- 
+
             if (IsDevekusuKumesEmpty.tag == "empty")
             {
                 IsDevekusuKumesEmpty.tag = "full";
@@ -81,8 +80,9 @@ public class DevekusuController : MonoBehaviour
                 canDo = false;
             }
 
-            else if (IsDevekusuKumesEmpty2.tag == "empty" && IsDevekusuKumesEmpty2.activeSelf) 
+            else if (IsDevekusuKumesEmpty2.activeSelf && IsDevekusuKumesEmpty2.tag == "empty")
             {
+
                 IsDevekusuKumesEmpty2.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
@@ -90,9 +90,12 @@ public class DevekusuController : MonoBehaviour
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
-            } 
-            else if (IsDevekusuKumesEmpty3.tag == "empty" && IsDevekusuKumesEmpty3.activeSelf) 
+
+
+            }
+            else if (IsDevekusuKumesEmpty3.activeSelf && IsDevekusuKumesEmpty3.tag == "empty")
             {
+
                 IsDevekusuKumesEmpty3.tag = "full";
                 goToKumes = true;
                 //target = new Vector3(-0.5f, -0.6f, -2.3f);
@@ -100,6 +103,8 @@ public class DevekusuController : MonoBehaviour
                 timeToKumes = 0;
                 delayTime = 0;
                 canDo = false;
+
+
             }
             timeToKumes = 0;
         }
@@ -227,18 +232,18 @@ public class DevekusuController : MonoBehaviour
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = true;
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().canSpawn = true;
             }
-             else if (target == IsDevekusuKumesEmpty3.transform.localPosition)
+            else if (target == IsDevekusuKumesEmpty3.transform.localPosition)
             {
                 devekusuEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
                 devekusuEggSpawn3.GetComponent<CollectBoxControl>().canSpawn = true;
             }
-          
+
 
 
             delayTime += Time.deltaTime;
             if (delayTime >= 5.3f)
             {
-              
+
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                 devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
 
@@ -254,8 +259,8 @@ public class DevekusuController : MonoBehaviour
                     IsDevekusuKumesEmpty.tag = "empty";
                     devekusuEggSpawn.GetComponent<CollectBoxControl>().enabled = false;
                     devekusuEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
-                } 
-                
+                }
+
                 else if (target == IsDevekusuKumesEmpty3.transform.localPosition)
                 {
                     IsDevekusuKumesEmpty3.tag = "empty";
@@ -280,13 +285,13 @@ public class DevekusuController : MonoBehaviour
             if (transform.localPosition == target)
             {
                 randomNumbersForAnim = 0;
-                
-             
+
+
                 canDo = true;
                 goToKumes = false;
-              
+
             }
         }
-        
+
     }
 }

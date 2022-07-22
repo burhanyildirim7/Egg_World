@@ -11,15 +11,15 @@ public class CashierController : MonoBehaviour
     float time = 0;
     void Start()
     {
-    
+
     }
 
 
     void Update()
     {
-        if (transform.GetChild(transform.childCount-1).transform.tag == "box")
+        if (transform.GetChild(transform.childCount - 1).transform.tag == "box")
         {
-            Debug.Log("Kutu Childda Var");
+            //Debug.Log("Kutu Childda Var");
         }
         else
         {
@@ -33,11 +33,11 @@ public class CashierController : MonoBehaviour
                 spawnedBox.transform.localPosition = new Vector3(-1.4f, 0.66f, 0);
                 time = 0;
             }
-           
+
         }
 
 
 
-   
+
     }
 }

@@ -248,7 +248,7 @@ public class CollectControl : MonoBehaviour
                             delayTime = 0;
 
                             PlayerPrefs.SetInt("currentTavukEgg", PlayerPrefs.GetInt("currentTavukEgg") + 1);
-                            PlayerPrefs.SetInt("currentTavukEggArtt�m�", 1);
+                            PlayerPrefs.SetInt("currentTavukEggArttimi", 1);
                             break;
                         }
 
@@ -292,7 +292,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentKazEgg", PlayerPrefs.GetInt("currentKazEgg") + 1);
-                            PlayerPrefs.SetInt("currentKazEggArtt�m�", 1);
+                            PlayerPrefs.SetInt("currentKazEggArttimi", 1);
                             break;
                         }
                     }
@@ -330,7 +330,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentDevekusuEgg", PlayerPrefs.GetInt("currentDevekusuEgg") + 1);
-                            PlayerPrefs.SetInt("currentDevekusuEggArtt�m�", 1);
+                            PlayerPrefs.SetInt("currentDevekusuEggArttimi", 1);
                             break;
                         }
 
@@ -376,7 +376,7 @@ public class CollectControl : MonoBehaviour
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
                             PlayerPrefs.SetInt("currentTimsahEgg", PlayerPrefs.GetInt("currentTimsahEgg") + 1);
-                            PlayerPrefs.SetInt("currentTimsahEggArtt�m�", 1);
+                            PlayerPrefs.SetInt("currentTimsahEggArttimi", 1);
                             break;
                         }
 
@@ -419,13 +419,13 @@ public class CollectControl : MonoBehaviour
 
         }
 
-
+        /*
 
         if (otherObject.GetComponent<ResearchTableController>().researchTableFull == true)
         {
             canDo = false;
         }
-
+        */
 
 
     }
@@ -491,8 +491,10 @@ public class CollectControl : MonoBehaviour
 
 
                 otherObject.transform.parent.gameObject.tag = "empty";
+                otherObject.transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                 otherObject.transform.parent = eggStackTransform[i].transform;
-                otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
+
+                //otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
                 otherObject.transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, (Time.deltaTime / eggMoveToPlayerTime) * 100);
 
                 break;
@@ -556,10 +558,11 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "tavukEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";
@@ -594,10 +597,11 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "timsahEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";
@@ -633,10 +637,11 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "ejderEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             //eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";
@@ -672,10 +677,11 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "devekusuEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             // eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";
@@ -711,10 +717,11 @@ public class CollectControl : MonoBehaviour
                         if (eggList[a].tag == "kazEgg")
                         {
                             eggList[a].transform.parent.tag = "empty";
+                            eggList[a].transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
                             eggList[a].transform.parent = otherObject.transform.GetChild(i).transform;
-                            eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
+                            //eggList[a].transform.rotation = otherObject.transform.GetChild(i).transform.rotation;
                             // eggList[a].transform.DOLocalMove(Vector3.zero + Vector3.up * 2, 0.7f);
-                            eggList[a].transform.DOLocalJump(Vector3.zero + Vector3.up * 2, 20, 1, 0.7f);
+                            eggList[a].transform.DOLocalJump(Vector3.zero, 20, 1, 0.7f);
                             otherObject.gameObject.GetComponent<SpendBoxControl>().spendEggList.Add(eggList[a]);
                             eggList[a].transform.tag = "Untagged";
                             otherObject.transform.GetChild(i).transform.tag = "full";

@@ -23,7 +23,7 @@ public class CustomerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ejderTezgah.transform.GetChild(0).gameObject.activeSelf || devekusuTezgah.transform.GetChild(0).gameObject.activeSelf || timsahTezgah.transform.GetChild(0).gameObject.activeSelf || tavukTezgah.transform.GetChild(0).gameObject.activeSelf|| kazTezgah.transform.GetChild(0).gameObject.activeSelf)
+        if (ejderTezgah.transform.GetChild(0).gameObject.activeSelf || devekusuTezgah.transform.GetChild(0).gameObject.activeSelf || timsahTezgah.transform.GetChild(0).gameObject.activeSelf || tavukTezgah.transform.GetChild(0).gameObject.activeSelf || kazTezgah.transform.GetChild(0).gameObject.activeSelf)
         {
             canCustomerSpawn = true;
         }
@@ -40,7 +40,7 @@ public class CustomerSpawn : MonoBehaviour
 
         delayTime += Time.deltaTime;
 
-        if (delayTime >= 50)
+        if (delayTime >= 10)
         {
             //randomPlaceToSpawn = new Vector3(Random.Range(-5, 15), 1, Random.Range(17, 22));
             Instantiate(customer, transform.position, Quaternion.identity);

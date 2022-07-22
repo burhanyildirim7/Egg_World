@@ -100,11 +100,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        Debug.Log(PlayerPrefs.GetInt("gameStart"));
 
-    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "buy")

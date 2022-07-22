@@ -301,7 +301,15 @@ public class CustomerNavMesh : MonoBehaviour
     }
     void MoveTarget()
     {
-        navMeshAgent.destination = target.transform.position;
+        if (GetComponent<NavMeshAgent>().enabled == true)
+        {
+            navMeshAgent.destination = target.transform.position;
+        }
+        else
+        {
+
+        }
+
     }
 
     IEnumerator CustomerCollectEgg(GameObject otherObject)
@@ -309,7 +317,7 @@ public class CustomerNavMesh : MonoBehaviour
         canDo2 = true;
         yield return new WaitForSeconds(0.5f);
         delayTime += Time.deltaTime;
-     
+
         if (delayTime >= 1)
         {
             if (toplanmasiGerekenEgg < randonEggNumber)
@@ -332,11 +340,12 @@ public class CustomerNavMesh : MonoBehaviour
                         {
 
                             otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.parent = customerEggPosition[siraliEggPosition].transform;
-                            otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, 1).OnComplete(() => {
+                            otherObject.GetComponent<SpendBoxControl>().spendEggList[i].transform.DOLocalJump(new Vector3(0, 0, 0), 2, 1, 1).OnComplete(() =>
+                            {
 
                                 if (toplanmasiGerekenEgg == randonEggNumber && canDo2)
                                 {
-                        
+
 
                                     StartCoroutine(MoveAnotherEggCollectPlace());
                                     canDo2 = false;
@@ -355,7 +364,7 @@ public class CustomerNavMesh : MonoBehaviour
 
                             customerEggPosition[siraliEggPosition].tag = "full";
                             siraliEggPosition++;
-                          
+
                             break;
 
                         }
@@ -368,7 +377,7 @@ public class CustomerNavMesh : MonoBehaviour
 
                 }
 
-                
+
 
 
             }
@@ -378,22 +387,22 @@ public class CustomerNavMesh : MonoBehaviour
 
 
     }
-    
+
     IEnumerator MoveAnotherEggCollectPlace()
     {
         gezilecekTezgahSayisi--;
-       
+
         yield return new WaitForSeconds(0.5f);
         if (gezilecekTezgahSayisi == 0)
         {
-          
+
             MoveToCashier();
 
             navMeshAgent.speed = 5;
         }
         else
         {
-        
+
             yield return new WaitForSeconds(0.5f);
 
             //chooseRandomSpendEgg = Random.Range(0, spendEggList.Count);
@@ -406,16 +415,16 @@ public class CustomerNavMesh : MonoBehaviour
             {
                 chooseRandomSpendEgg = 1;
             }
-            
+
             else if (chooseRandomSpendEgg == 2)
             {
                 chooseRandomSpendEgg = 1;
-            } 
-            
+            }
+
             else if (chooseRandomSpendEgg == 3)
             {
                 chooseRandomSpendEgg = 2;
-            } 
+            }
             else if (chooseRandomSpendEgg == 4)
             {
                 chooseRandomSpendEgg = 3;
@@ -442,7 +451,7 @@ public class CustomerNavMesh : MonoBehaviour
             yield return new WaitForSeconds(2);
             toplanmasiGerekenEgg = 0;
             randonEggNumber = randonEggNumber2;
-    
+
 
         }
 
@@ -452,19 +461,27 @@ public class CustomerNavMesh : MonoBehaviour
 
     void SendEggToBox()
     {
-        if (!navMeshAgent.pathPending)
+        if (GetComponent<NavMeshAgent>().enabled == true)
         {
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            if (!navMeshAgent.pathPending)
             {
-                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                    {
 
 
-                    ShoppingStart();
+                        ShoppingStart();
 
+                    }
                 }
             }
         }
+        else
+        {
+
+        }
+
     }
 
 
@@ -485,7 +502,7 @@ public class CustomerNavMesh : MonoBehaviour
             {
                 //canTakeBox = true;
                 GetComponent<NavMeshAgent>().enabled = false;
-     
+
                 StartCoroutine(TakeBoxAndLeave());
 
                 /*
@@ -540,7 +557,8 @@ public class CustomerNavMesh : MonoBehaviour
         box.transform.parent = customerStackPosition.transform;
         box.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(2);
-        box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => {
+        box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() =>
+        {
 
 
 
@@ -584,7 +602,8 @@ public class CustomerNavMesh : MonoBehaviour
                 spawnedMoney.GetComponent<BoxCollider>().size = new Vector3(0.02f, 0.002f, 0.0008f);
                 spawnedMoney.transform.parent = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform;
                 spawnedMoney.transform.rotation = cashier.GetComponent<CashierController>().moneyPlaceList[i].transform.rotation;
-                spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(() => {
+                spawnedMoney.transform.DOLocalJump(new Vector3(0, 0, 0), 15, 1, 1).OnComplete(() =>
+                {
 
 
 

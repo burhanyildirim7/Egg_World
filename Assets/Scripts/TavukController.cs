@@ -10,7 +10,7 @@ public class TavukController : MonoBehaviour
     GameObject tavukEggSpawn3;
     int randomNumbersForAnim;
     float delayTime;
-     Vector3 target;
+    Vector3 target;
     bool canPickNumberForAnim;
     bool goToKumes = false;
     bool goToSecondKumes = false;
@@ -28,34 +28,35 @@ public class TavukController : MonoBehaviour
     {
         timsahAnim = GetComponent<Animator>();
 
-        randomTime = Random.Range(5,17);
+        randomTime = Random.Range(5, 17);
         walk = false;
         idle = true;
         ChooseRandomTarget();
 
         tavukEggSpawn = GameObject.FindGameObjectWithTag("tavukEggSpawn");
-   
 
-       target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
-    
+
+        target = new Vector3(Random.Range(-5, 5), transform.localPosition.y, Random.Range(11, 19));
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-       
-        if (tavukEggSpawn2 == null || IsKumesEmpty2 ==null || IsKumesEmpty3 == null || tavukEggSpawn3 == null)
+
+        if (tavukEggSpawn2 == null || IsKumesEmpty2 == null || IsKumesEmpty3 == null || tavukEggSpawn3 == null)
         {
 
             tavukEggSpawn2 = GameObject.FindGameObjectWithTag("tavukEggSpawn2");
             tavukEggSpawn3 = GameObject.FindGameObjectWithTag("tavukEggSpawn3");
 
-            IsKumesEmpty2 = GameObject.Find("IsKumesEmpty2");
-            IsKumesEmpty3 = GameObject.Find("IsKumesEmpty3");
+            IsKumesEmpty = Listeler.instance._tavukKumesleri[0];
+            IsKumesEmpty2 = Listeler.instance._tavukKumesleri[1];
+            IsKumesEmpty3 = Listeler.instance._tavukKumesleri[2];
 
         }
-     
+
 
         if (!goToKumes)
         {
@@ -68,7 +69,7 @@ public class TavukController : MonoBehaviour
             {
                 SecondKumesCheck();
             }
-       
+
             if (!goToSecondKumes && !goToThirdKumes)
             {
                 FirstKumesCheck();
@@ -78,13 +79,13 @@ public class TavukController : MonoBehaviour
             {
                 ThirdKumesCheck();
             }
-         
+
         }
 
         if (canDo && timeToKumes >= randomTime)
         {
-            
-            if (IsKumesEmpty.tag =="empty")
+
+            if (IsKumesEmpty.tag == "empty")
             {
                 IsKumesEmpty.tag = "full";
                 goToKumes = true;
@@ -94,44 +95,47 @@ public class TavukController : MonoBehaviour
                 canDo = false;
             }
 
-            else if (IsKumesEmpty2.activeSelf && IsKumesEmpty2.tag == "empty")
+            else if (IsKumesEmpty2.gameObject.transform.parent.gameObject.activeSelf && IsKumesEmpty2.tag == "empty")
             {
-         
 
-       
-                    level2Distance = 10;
-                    goToSecondKumes = true;
-                    IsKumesEmpty2.tag = "full";
-                    goToKumes = true;
-                    target = new Vector3(-9.3f, -2.8f, 10.5f);
-                    timeToKumes = 0;
-                    canDo = false;
-              
-              
+
+                level2Distance = 10;
+                goToSecondKumes = true;
+                IsKumesEmpty2.tag = "full";
+                goToKumes = true;
+                target = new Vector3(-9.3f, -2.8f, 10.5f);
+                timeToKumes = 0;
+                canDo = false;
+
+
+
+
             }
-            else if (IsKumesEmpty3.activeSelf && IsKumesEmpty3.tag == "empty")
+            else if (IsKumesEmpty3.gameObject.transform.parent.gameObject.activeSelf && IsKumesEmpty3.tag == "empty")
             {
-         
-               
-         
-                    level2Distance = 20;
-                    goToSecondKumes = false;
-                    goToThirdKumes = true;
-                    IsKumesEmpty3.tag = "full";
-                    goToKumes = true;
-                    target = new Vector3(-17.3f, -2.8f, 10.5f);
-                    timeToKumes = 0;
-                    canDo = false;
-                  
+
+
+                level2Distance = 20;
+                goToSecondKumes = false;
+                goToThirdKumes = true;
+                IsKumesEmpty3.tag = "full";
+                goToKumes = true;
+                target = new Vector3(-17.3f, -2.8f, 10.5f);
+                timeToKumes = 0;
+                canDo = false;
+
+
+
+
             }
-            if (timeToKumes>=randomTime)
+            if (timeToKumes >= randomTime)
             {
                 timeToKumes = 0;
             }
-        
+
         }
-      
-   
+
+
         if (idle)
         {
             transform.GetChild(0).gameObject.SetActive(true);
@@ -145,7 +149,7 @@ public class TavukController : MonoBehaviour
             walk = false;
         }
 
-       
+
     }
 
     void ChooseRandomAnimFunction()
@@ -153,19 +157,19 @@ public class TavukController : MonoBehaviour
         if (canPickNumberForAnim)
         {
 
-            randomNumbersForAnim = Random.Range(0,2);
+            randomNumbersForAnim = Random.Range(0, 2);
             canPickNumberForAnim = false;
         }
-      
+
 
         delayTime += Time.deltaTime;
         if (delayTime >= 4 && randomNumbersForAnim == 0)
         {
-          
-        
-     
-          
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target,5*Time.deltaTime);
+
+
+
+
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 5 * Time.deltaTime);
             //timsahAnim.SetBool("canWalk", true);
             walk = true;
             idle = false;
@@ -176,7 +180,7 @@ public class TavukController : MonoBehaviour
 
             if (delayTime >= 5)
             {
-            
+
                 walk = false;
                 idle = true;
 
@@ -191,21 +195,21 @@ public class TavukController : MonoBehaviour
         {
             walk = false;
             idle = true;
-   
-                if (delayTime >= 7)
-                {
-                   
 
-                    canPickNumberForAnim = true;
-                    delayTime = 0;
-                }
-            
-           
-          
-                
+            if (delayTime >= 7)
+            {
+
+
+                canPickNumberForAnim = true;
+                delayTime = 0;
+            }
+
+
+
+
         }
 
-       
+
     }
 
     public void ChooseRandomTarget()
@@ -223,11 +227,11 @@ public class TavukController : MonoBehaviour
 
         else if (gameObject.tag == "tavukPref")
         {
-            target = new Vector3(Random.Range((-5+level2Distance), 5), transform.localPosition.y, Random.Range(11, 19));
+            target = new Vector3(Random.Range((-5 + level2Distance), 5), transform.localPosition.y, Random.Range(11, 19));
         }
 
     }
-   
+
     public void TurnToTarget()
     {
 
@@ -259,7 +263,7 @@ public class TavukController : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up * 180);
 
             transform.localRotation = rotation;
-            
+
         }
 
     }
@@ -277,9 +281,9 @@ public class TavukController : MonoBehaviour
         if (transform.localPosition == new Vector3(0, -3f, 11))
         {
 
-            target = new Vector3(0,0.8f,3);
+            target = new Vector3(0, 0.8f, 3);
 
-            
+
         }
         else if (transform.localPosition == new Vector3(0, 0.8f, 3))
         {
@@ -289,12 +293,12 @@ public class TavukController : MonoBehaviour
             tavukEggSpawn.GetComponent<CollectBoxControl>().spawnEggTime = 0;
         }
 
-        else if (transform.localPosition == new Vector3(0,0.8f,-1f))
+        else if (transform.localPosition == new Vector3(0, 0.8f, -1f))
         {
-          
+
             delayTime += Time.deltaTime;
 
-            if ( delayTime >= 8)
+            if (delayTime >= 8)
             {
                 target = new Vector3(0, 0.8f, 3.2f);
 
@@ -306,7 +310,7 @@ public class TavukController : MonoBehaviour
         else if (transform.localPosition == new Vector3(0, 0.8f, 3.2f))
         {
             target = new Vector3(0, -3f, 11.2f);
-            
+
         }
 
         else if (transform.localPosition == new Vector3(0, -3f, 11.2f))
@@ -314,7 +318,7 @@ public class TavukController : MonoBehaviour
 
             target = new Vector3(0, -3f, 16);
 
-         
+
 
         }
 
@@ -348,13 +352,13 @@ public class TavukController : MonoBehaviour
         else if (transform.localPosition == new Vector3(-9.5f, 1f, 4f))
         {
             target = new Vector3(-9.5f, 1f, 0);
-            
+
             tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = true;
             tavukEggSpawn2.GetComponent<CollectBoxControl>().canSpawn = true;
             tavukEggSpawn2.GetComponent<CollectBoxControl>().spawnEggTime = 0;
-            
+
         }
-  
+
 
         else if (transform.localPosition == new Vector3(-9.5f, 1f, 0))
         {
@@ -378,21 +382,21 @@ public class TavukController : MonoBehaviour
 
 
             target = new Vector3(-9.63f, -2.8f, 16f);
-           
+
         }
 
         else if (transform.localPosition == new Vector3(-9.63f, -2.8f, 16f))
         {
-        tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
-        IsKumesEmpty2.tag = "empty";
-        goToSecondKumes = false;
-        goToKumes = false;
-        canDo = true;
+            tavukEggSpawn2.GetComponent<CollectBoxControl>().enabled = false;
+            IsKumesEmpty2.tag = "empty";
+            goToSecondKumes = false;
+            goToKumes = false;
+            canDo = true;
+
+        }
+
 
     }
-
-
-}
 
     public void ThirdKumesCheck()
     {
@@ -405,14 +409,14 @@ public class TavukController : MonoBehaviour
 
         if (transform.localPosition == new Vector3(-17.3f, -2.8f, 10.5f))
         {
-      
+
             target = new Vector3(-17.5f, 1f, 4f);
 
 
         }
         else if (transform.localPosition == new Vector3(-17.5f, 1f, 4f))
         {
-            Debug.Log("Vardý");
+            //Debug.Log("Vardï¿½");
             target = new Vector3(-17.5f, 1f, 0);
 
             tavukEggSpawn3.GetComponent<CollectBoxControl>().enabled = true;
@@ -439,7 +443,7 @@ public class TavukController : MonoBehaviour
         else if (transform.localPosition == new Vector3(-17.5f, 1f, 4.2f))
         {
             target = new Vector3(-17.63f, -2.8f, 10.7f);
-    
+
         }
 
         else if (transform.localPosition == new Vector3(-17.63f, -2.8f, 10.7f))

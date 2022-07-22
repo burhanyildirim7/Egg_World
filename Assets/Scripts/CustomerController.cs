@@ -17,7 +17,7 @@ public class CustomerController : MonoBehaviour
     public GameObject cashier;
     int numberOfEggs;
 
- 
+
     float delayTime = 0;
 
     bool canTakeBox = false;
@@ -26,13 +26,13 @@ public class CustomerController : MonoBehaviour
         customerAnim = GetComponent<Animator>();
         //target = GameObject.FindGameObjectWithTag("spend").transform;
         target = GameObject.FindGameObjectWithTag("spendEjderEgg").gameObject.transform;
-        numberOfEggs = Random.Range(0,3);
+        numberOfEggs = Random.Range(0, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Alýnmasý Gereken yumurta sayýsý = " + numberOfEggs);
+        //Debug.Log("Alï¿½nmasï¿½ Gereken yumurta sayï¿½sï¿½ = " + numberOfEggs);
 
         if (!canTakeBox)
         {
@@ -46,9 +46,9 @@ public class CustomerController : MonoBehaviour
                 MoveToBuyEgg();
             }
         }
-           
-        
-     
+
+
+
 
 
 
@@ -56,13 +56,13 @@ public class CustomerController : MonoBehaviour
 
     void MoveToBuyEgg()
     {
-        Debug.Log("MOVETOEGG ÇALIÞIYOR");
-        if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) &&canWalk)
+        //Debug.Log("MOVETOEGG ï¿½ALIï¿½IYOR");
+        if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) && canWalk)
         {
-            
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x,0, target.transform.position.z), 5 * Time.deltaTime);
+
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x, 0, target.transform.position.z), 5 * Time.deltaTime);
             customerAnim.SetBool("run", true);
-            transform.LookAt(target);       
+            transform.LookAt(target);
         }
         else
         {
@@ -74,7 +74,7 @@ public class CustomerController : MonoBehaviour
 
     void MoveToCashier()
     {
-        Debug.Log("MOVETOCASHIER ÇALIÞIYOR");
+        //Debug.Log("MOVETOCASHIER ï¿½ALIï¿½IYOR");
         if (transform.position != new Vector3(target.transform.position.x, 0, target.transform.position.z) && canWalk)
         {
 
@@ -91,7 +91,7 @@ public class CustomerController : MonoBehaviour
 
             box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, -90), 1);
             box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 90), 1).OnComplete(() => ShoppingStart());
-          
+
 
 
         }
@@ -102,7 +102,7 @@ public class CustomerController : MonoBehaviour
 
     void ShoppingStart()
     {
-        Debug.Log("SHOPPUNGSTART ÇALIÞIYOR");
+        //Debug.Log("SHOPPUNGSTART ï¿½ALIï¿½IYOR");
         delayTime += Time.deltaTime;
 
         if (delayTime >= 1)
@@ -113,7 +113,7 @@ public class CustomerController : MonoBehaviour
                 box.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), 1);
                 box.transform.GetChild(1).transform.DOLocalRotate(new Vector3(0, 0, 0), 1).OnComplete(() => TakeBoxAndLeave());
 
-             
+
             }
             else
             {
@@ -121,7 +121,7 @@ public class CustomerController : MonoBehaviour
 
 
                 {
-                    
+
 
 
 
@@ -133,29 +133,29 @@ public class CustomerController : MonoBehaviour
 
                 delayTime = 0;
             }
-          
+
         }
-     
+
     }
 
     void OnTriggerStay(Collider other)
     {
- 
-        if (other.gameObject.tag == "spendEjderEgg"|| other.gameObject.tag == "spendTimsahEgg"|| other.gameObject.tag == "spendTavukEgg" || other.gameObject.tag == "spendDevekusuEgg" )
+
+        if (other.gameObject.tag == "spendEjderEgg" || other.gameObject.tag == "spendTimsahEgg" || other.gameObject.tag == "spendTavukEgg" || other.gameObject.tag == "spendDevekusuEgg")
         {
             canWalk = false;
-          
+
             CustomerCollectEgg(other.gameObject);
-            Debug.Log("Temas var");
+            //Debug.Log("Temas var");
         }
     }
 
     void CustomerCollectEgg(GameObject otherObject)
     {
-        Debug.Log("CUSTOMERCOLLECTEGG ÇALIÞIYOR");
+        //Debug.Log("CUSTOMERCOLLECTEGG ï¿½ALIï¿½IYOR");
         time += Time.deltaTime;
 
-        if (time >=1 &&canWalk==false)
+        if (time >= 1 && canWalk == false)
         {
             GameObject SpendBoxControl = otherObject.gameObject;
 
@@ -164,28 +164,29 @@ public class CustomerController : MonoBehaviour
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1].transform.rotation = customerStackMaterialTransform.transform.rotation;
 
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1].transform.DOLocalJump
-                (new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() => {
+                (new Vector3(0, distanceY, 0), 2, 1, 1).OnComplete(() =>
+                {
 
                     if (customerEggList.Count == numberOfEggs)
                     {
-                        Debug.Log("Eþitlenme tamam");
+                        Debug.Log("Eï¿½itlenme tamam");
                         canWalk = true;
                         walkToCashier = true;
-                        
+
                     }
                     for (int i = 0; i < customerEggList.Count; i++)
                     {
                         if (GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].tag == "empty")
                         {
                             target = GameObject.FindGameObjectWithTag("cashier").GetComponent<CashierController>().lineList[i].transform;
-                            
+
                             break;
                         }
-                      
-                    }
-                    
 
-                  
+                    }
+
+
+
                 });
             customerEggList.Add(SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList[SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1]);
             SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.RemoveAt(SpendBoxControl.GetComponent<SpendBoxControl>().spendEggList.Count - 1);
@@ -194,21 +195,21 @@ public class CustomerController : MonoBehaviour
             time = 0;
         }
 
-       
-       
+
+
     }
 
     void TakeBoxAndLeave()
     {
         box.transform.parent = customerStackMaterialTransform.transform;
-        box.transform.DOLocalJump(new Vector3(0,0,0), 1, 1, 1).OnComplete(()=> PayMoneyForBox());
+        box.transform.DOLocalJump(new Vector3(0, 0, 0), 1, 1, 1).OnComplete(() => PayMoneyForBox());
     }
 
     void PayMoneyForBox()
     {
         for (int i = 0; i < numberOfEggs; i++)
         {
-        
+
 
             if (cashier.GetComponent<CashierController>().moneyPlaceList[i].tag == "empty")
             {
