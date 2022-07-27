@@ -31,26 +31,28 @@ public class CollectBoxControl : MonoBehaviour
             spawnEggTime = 0;
         }
 
-    
+
 
     }
 
     void SpawnEggs()
     {
-        var spawnedEgg = Instantiate(egg, eggSpawnPlace.transform.position, Quaternion.Euler(-90,0,0));
-        spawnedEgg.name = gameObject.name;
+        var spawnedEgg = Instantiate(egg, eggSpawnPlace.transform.position, Quaternion.Euler(-90, 0, 0));
+        //spawnedEgg.transform = new Vector3(16, 16, 100);
+        //spawnedEgg.name = gameObject.name;
         eggList2.Add(spawnedEgg);
         for (int i = 0; i < eggStackPlace.Count; i++)
         {
             if (eggStackPlace[i].tag == "empty")
             {
                 spawnedEgg.transform.parent = eggStackPlace[i].transform;
-                spawnedEgg.transform.DOLocalMove(new Vector3(0,0,0) / 2, 1);
-            
+                //spawnedEgg.transform.localScale = new Vector3(16, 16, 100);
+                spawnedEgg.transform.DOLocalMove(new Vector3(0, 0, 0) / 2, 1);
+
                 eggStackPlace[i].tag = "full";
                 break;
             }
         }
-   
+
     }
 }
