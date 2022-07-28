@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2915005993086350822}
   - component: {fileID: 2500108921470190599}
   - component: {fileID: 774507913869560397}
+  - component: {fileID: 1147112110256414448}
   m_Layer: 0
   m_Name: kaz_yumurtasi
   m_TagString: kazEgg
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3707820328289063987}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -31.369753, y: 0.411, z: -3.6692739}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -114,3 +115,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1147112110256414448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707820328289063987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1349fd03505f74e0ab44f289820cb2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -19,6 +19,7 @@ public class CollectControl : MonoBehaviour
     public List<GameObject> eggList = new List<GameObject>();
     public List<GameObject> eggStackTransform = new List<GameObject>();
     public List<GameObject> eggSpendTransform = new List<GameObject>();
+    public GameObject _eggBuyukStack;
 
     bool canDo = true;
 
@@ -76,45 +77,86 @@ public class CollectControl : MonoBehaviour
 
         if (other.gameObject.tag == "money")
         {
-
+            /*
             if (other.gameObject.transform.parent != null)
             {
                 other.gameObject.transform.parent.tag = "empty";
             }
+            */
 
-            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 100);
+            //PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 100);
             // UIController.instance.CoinEffect();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "tavukEgg")
         {
-            nameOfEggSpawnPlace = "tavukEggSpawn";
-            MoveEggToSepet(other.gameObject);
+            if (_eggBuyukStack.tag == "empty")
+            {
+                nameOfEggSpawnPlace = "tavukEggSpawn";
+                MoveEggToSepet(other.gameObject);
+            }
+            else
+            {
+
+            }
+
         }
 
         if (other.gameObject.tag == "timsahEgg")
         {
-            nameOfEggSpawnPlace = "timsahEggSpawn";
-            MoveEggToSepet(other.gameObject);
+            if (_eggBuyukStack.tag == "empty")
+            {
+                nameOfEggSpawnPlace = "timsahEggSpawn";
+                MoveEggToSepet(other.gameObject);
+            }
+            else
+            {
+
+            }
+
         }
 
         if (other.gameObject.tag == "devekusuEgg")
         {
-            nameOfEggSpawnPlace = "devekusuEggSpawn";
-            MoveEggToSepet(other.gameObject);
+            if (eggStackTransform[0].tag == "empty")
+            {
+                nameOfEggSpawnPlace = "devekusuEggSpawn";
+                MoveBuyukEggToSepet(other.gameObject);
+            }
+            else
+            {
+
+            }
+
         }
 
         if (other.gameObject.tag == "ejderEgg")
         {
-            nameOfEggSpawnPlace = "ejderEggSpawn";
-            MoveEggToSepet(other.gameObject);
+            if (eggStackTransform[0].tag == "empty")
+            {
+                nameOfEggSpawnPlace = "ejderEggSpawn";
+                MoveBuyukEggToSepet(other.gameObject);
+            }
+            else
+            {
+
+            }
+
         }
 
         if (other.gameObject.tag == "kazEgg")
         {
-            nameOfEggSpawnPlace = "kazEggSpawn";
-            MoveEggToSepet(other.gameObject);
+            if (_eggBuyukStack.tag == "empty")
+            {
+                nameOfEggSpawnPlace = "kazEggSpawn";
+                MoveEggToSepet(other.gameObject);
+            }
+            else
+            {
+
+            }
+
         }
 
         if (other.gameObject.tag == "customer")
@@ -495,11 +537,43 @@ public class CollectControl : MonoBehaviour
                 otherObject.transform.parent = eggStackTransform[i].transform;
 
                 //otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
-                otherObject.transform.DOLocalJump(Vector3.zero, 3, 1, 0.5f);
+                otherObject.transform.DOLocalJump(Vector3.zero, 1, 1, 0.5f);
 
                 break;
             }
         }
+
+
+    }
+
+    public void MoveBuyukEggToSepet(GameObject otherObject)
+    {
+
+
+
+        if (_eggBuyukStack.tag == "empty")
+        {
+            _eggBuyukStack.tag = "full";
+            eggList.Add(otherObject);
+
+
+
+
+            GameObject.FindGameObjectWithTag(nameOfEggSpawnPlace).GetComponent<CollectBoxControl>().eggList2.Remove(otherObject.gameObject);
+
+
+
+
+            otherObject.transform.parent.gameObject.tag = "empty";
+            otherObject.transform.DORotate(new Vector3(-90, 0, 0), 0.5f);
+            otherObject.transform.parent = _eggBuyukStack.transform;
+
+            //otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
+            otherObject.transform.DOLocalJump(Vector3.zero, 1, 1, 0.5f);
+
+
+        }
+
 
 
     }

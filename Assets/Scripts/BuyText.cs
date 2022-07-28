@@ -12,6 +12,9 @@ public class BuyText : MonoBehaviour
     public GameObject openNextLevelTezgah3;
     public GameObject openNextLevelTezgah4;
     public GameObject openNextLevelTezgah5;
+    public bool _siradaTezgahVarMi;
+    public GameObject _siradakiTezgah;
+    public string _objeName;
 
 
 
@@ -139,6 +142,10 @@ public class BuyText : MonoBehaviour
             buyPrice = PlayerPrefs.GetInt("TimsahEggNeededMoneyBuyPrice");
         }
 
+        if (gameObject.transform.parent.name == _objeName && PlayerPrefs.GetInt(_objeName + "MoneyAzaldi") == 1)
+        {
+            buyPrice = PlayerPrefs.GetInt(_objeName + "MoneyBuyPrice");
+        }
 
 
 
@@ -171,8 +178,8 @@ public class BuyText : MonoBehaviour
     {
 
         buyText.text = "$" + buyPrice;
-        if (gameObject.name == "ToLevel1"
-            || gameObject.name == "UpgradeKazLevel2"
+
+        if (gameObject.name == "UpgradeKazLevel2"
             || gameObject.name == "UpgradeDevekusuLevel2"
             || gameObject.name == "UpgradeLevel3"
             || gameObject.name == "UpgradeKazLevel3"
@@ -196,12 +203,34 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(false);
 
-                Destroy(gameObject);
 
-                if (openNextLevelTezgah1.gameObject.activeSelf)
+                if (_siradaTezgahVarMi)
                 {
-                    Destroy(gameObject);
+                    _siradakiTezgah.SetActive(true);
                 }
+                else
+                {
+
+                }
+
+                Destroy(gameObject);
+            }
+            else if (gameObject.transform.parent.name == _objeName)
+            {
+                openNextLevelTezgah1.SetActive(true);
+                openNextLevelTezgah2.SetActive(false);
+
+
+                if (_siradaTezgahVarMi)
+                {
+                    _siradakiTezgah.SetActive(true);
+                }
+                else
+                {
+
+                }
+
+                Destroy(gameObject);
             }
             else if (gameObject.name == "ToLevel2")
             {
@@ -235,8 +264,9 @@ public class BuyText : MonoBehaviour
             else if (gameObject.name == "UpgradeLevel2")
             {
                 openNextLevelTezgah1.SetActive(true);
-                openNextLevelTezgah2.SetActive(false);
+                openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
+                openNextLevelTezgah4.SetActive(false);
 
 
                 Destroy(gameObject);
@@ -276,6 +306,7 @@ public class BuyText : MonoBehaviour
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(true);
                 openNextLevelTezgah3.SetActive(false);
+                openNextLevelTezgah4.SetActive(false);
 
 
                 Destroy(gameObject);
@@ -359,6 +390,11 @@ public class BuyText : MonoBehaviour
 
             buyPrice -= 10;
 
+            if (gameObject.transform.parent.name == _objeName)
+            {
+                PlayerPrefs.SetInt(_objeName + "MoneyAzaldi", 1);
+                PlayerPrefs.SetInt(_objeName + "MoneyBuyPrice", buyPrice);
+            }
 
             if (gameObject.transform.parent.name == "OpenTavukKumes")
             {
@@ -509,5 +545,6 @@ public class BuyText : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
     }
 }

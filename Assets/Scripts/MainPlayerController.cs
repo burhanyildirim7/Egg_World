@@ -7,7 +7,7 @@ public class MainPlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 4f;
     PlayerInput playerInput;
-    Animator playerAnim;
+    public Animator playerAnim;
 
     public bool isMove = false;
 
@@ -27,15 +27,15 @@ public class MainPlayerController : MonoBehaviour
 
     void Start()
     {
- 
-        playerAnim = GetComponent<Animator>();
 
-       
+        //playerAnim = GetComponent<Animator>();
+
+
 
     }
 
     // Update is called once per frame
-    
+
     void FixedUpdate()
     {
         _velocityX = _rigidbody.velocity.x;
@@ -52,10 +52,12 @@ public class MainPlayerController : MonoBehaviour
         if (_rigidbody.velocity.x != 0 || _rigidbody.velocity.z != 0)
         {
             isMove = true;
+            playerAnim.SetBool("Walk", true);
         }
         else
         {
             isMove = false;
+            playerAnim.SetBool("Walk", false);
         }
 
         /*

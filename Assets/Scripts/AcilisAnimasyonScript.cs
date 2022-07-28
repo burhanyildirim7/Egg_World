@@ -13,7 +13,7 @@ public class AcilisAnimasyonScript : MonoBehaviour
     void Start()
     {
 
-        transform.localScale = Vector3.zero;
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).OnComplete(() => gameObject.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f));
 

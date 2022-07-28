@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3202526233890878365}
   - component: {fileID: 6509556600821377606}
   - component: {fileID: -3940117403080965910}
+  - component: {fileID: 8663715300127031364}
   m_Layer: 0
   m_Name: timsah_yumurtasi
   m_TagString: timsahEgg
@@ -28,12 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3995067615780328008}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
-  m_LocalPosition: {x: -3.1669903, y: -0.0000009536743, z: 11.55265}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &834678780428519255
 MeshFilter:
@@ -114,3 +115,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8663715300127031364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995067615780328008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1349fd03505f74e0ab44f289820cb2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7700826626020139795}
   - component: {fileID: 9015996059963260818}
   - component: {fileID: 9015996059963260817}
+  - component: {fileID: 3870069004411030406}
   m_Layer: 0
   m_Name: tavuk_yumurtasi
   m_TagString: tavukEgg
@@ -28,12 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8205041150221042374}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
-  m_LocalPosition: {x: -9.11668, y: 0.32545447, z: 1.2949591}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5564798007617787865
 MeshFilter:
@@ -114,3 +115,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3870069004411030406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205041150221042374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1349fd03505f74e0ab44f289820cb2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

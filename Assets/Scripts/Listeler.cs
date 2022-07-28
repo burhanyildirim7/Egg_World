@@ -12,6 +12,7 @@ public class Listeler : MonoBehaviour
     public List<GameObject> _deveKusuKumesleri = new List<GameObject>();
     public List<GameObject> _timsahKumesleri = new List<GameObject>();
     public List<GameObject> _ejderhaKumesleri = new List<GameObject>();
+    public List<GameObject> _tezgahlar = new List<GameObject>();
 
 
 

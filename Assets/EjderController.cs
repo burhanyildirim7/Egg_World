@@ -277,19 +277,19 @@ public class EjderController : MonoBehaviour
 
 
 
-                if (target == IsKumesEmpty.transform.localPosition)
-                {
-                    IsKumesEmpty.tag = "empty";
-                }
 
-                else if (target == IsKumesEmpty2.transform.localPosition)
-                {
-                    IsKumesEmpty2.tag = "empty";
-                }
+                IsKumesEmpty.tag = "empty";
+
+
+
+                IsKumesEmpty2.tag = "empty";
+
 
                 canDo = true;
                 goToKumes = false;
             }
         }
+
+
     }
 }

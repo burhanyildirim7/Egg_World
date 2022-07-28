@@ -7,6 +7,7 @@ public class CashierController : MonoBehaviour
     public List<GameObject> lineList = new List<GameObject>();
     public List<GameObject> moneyPlaceList = new List<GameObject>();
     public GameObject box;
+    public GameObject _paraGrubu;
 
     float time = 0;
     void Start()

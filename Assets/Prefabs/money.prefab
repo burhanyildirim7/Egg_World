@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5812524012059168245}
   - component: {fileID: 5823459426056593179}
   - component: {fileID: 6865863133483422206}
+  - component: {fileID: 1419519289870017788}
   m_Layer: 0
   m_Name: money
   m_TagString: money
@@ -35,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 4546118038627495371}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2998681325904262784
 MeshFilter:
@@ -118,8 +119,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1478597, y: 0.6695634, z: 0.093312554}
-  m_Center: {x: -0.0018080606, y: -0.22691648, z: -0.04709547}
+  m_Size: {x: 0.1478597, y: 1.5, z: 0.093312554}
+  m_Center: {x: -0.0018080606, y: 0, z: -0.04709547}
 --- !u!54 &6865863133483422206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,6 +137,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1419519289870017788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7105883756481167013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fa56a1a865dd346bdf2c7384aa910f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7769127434174259581
 PrefabInstance:
   m_ObjectHideFlags: 0

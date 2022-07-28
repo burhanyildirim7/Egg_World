@@ -9,15 +9,20 @@ public class PlayerPrefsController : MonoBehaviour
     public GameObject tezgahEggList;
     public GameObject kumesSpawnEggList;
 
+    public bool _tezgahMi;
+
     [SerializeField] string _makineAdi;
 
 
     [SerializeField] List<GameObject> _girisSirasi1 = new List<GameObject>(), _stackObjesi = new List<GameObject>();
 
+    private GameObject _GeciciObje;
+
+    private bool _ilkSefer;
 
     void Start()
     {
-
+        _ilkSefer = false;
 
         if (PlayerPrefs.GetInt(_makineAdi + "ilkseferstackkontrtolu") == 0)
         {
@@ -32,90 +37,31 @@ public class PlayerPrefsController : MonoBehaviour
 
             if (PlayerPrefs.GetInt(_makineAdi + i) >= 0)
             {
-                //Debug.Log(PlayerPrefs.GetInt(_makineAdi + i));
-                GameObject _GeciciObje =
-                Instantiate(_stackObjesi[0], _girisSirasi1[i].transform);
-                //_GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
+                _GeciciObje = Instantiate(_stackObjesi[0], _girisSirasi1[i].transform);
+
+                //_GeciciObje.transform.parent = _girisSirasi1[i].transform;
 
                 _GeciciObje.transform.localPosition = Vector3.zero;
-
-                if (_makineAdi == "deveLevel1Tezgah1" || _makineAdi == "ejderLevel1Tezgah1")
-                {
-                    // _GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    //_GeciciObje.transform.localScale = new Vector3(33, 1000, 33);
-
-                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
-                }
-                if (_makineAdi == "tavukLevel1Tezgah1" || _makineAdi == "kazLevel1Tezgah1")
-                {
-
-                    //_GeciciObje.transform.localScale = new Vector3(33, 33, 1000);
-                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
-                }
-
-                if (_makineAdi == "timsahLevel1Tezgah1")
-                {
-                    //_GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    //_GeciciObje.transform.localScale = new Vector3(66, 66, 2000);
-                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
-                }
-
-                if (_makineAdi == "TavukEggSpawn1" || _makineAdi == "TavukEggSpawn2" || _makineAdi == "TavukEggSpawn3" || _makineAdi == "KazEggSpawn1" || _makineAdi == "KazEggSpawn2" || _makineAdi == "KazEggSpawn3")
-                {
-                    //_GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    //_GeciciObje.transform.localScale = new Vector3(16, 16, 100);
-                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
-
-
-                }
-
-                if (_makineAdi == "DevekusuEggSpawn1" || _makineAdi == "DevekusuEggSpawn2" || _makineAdi == "DevekusuEggSpawn3")
-                {
-                    //_GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    //_GeciciObje.transform.localScale = new Vector3(5, 63, 5);
-                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
-
-
-                }
-
-                if (_makineAdi == "TimsahEggSpawn1" || _makineAdi == "TimsahEggSpawn2" || _makineAdi == "TimsahEggSpawn3")
-                {
-                    _GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    //_GeciciObje.transform.localScale = new Vector3(30, 30, 200);
-                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
-
-
-                }
-
-                if (_makineAdi == "EjderhaEggSpawn1" || _makineAdi == "EjderhaEggSpawn2")
-                {
-
-                    //_GeciciObje.transform.localScale = new Vector3(4, 4, 25);
-                    _GeciciObje.transform.eulerAngles = new Vector3(-90, 0, 0);
-                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
-
-
-                }
-
+                //Debug.Log(_makineAdi + " ---> " + _GeciciObje.transform.localPosition);
                 _GeciciObje.transform.parent.gameObject.tag = "full";
 
 
-                if (PlayerPrefs.GetInt(_makineAdi + i) > 7)
+                if (_tezgahMi)
                 {
-                    _GeciciObje.transform.GetChild(0).gameObject.SetActive(false);
-                    _GeciciObje.transform.GetChild(1).gameObject.SetActive(true);
-
+                    tezgahEggList.GetComponent<SpendBoxControl>().spendEggList.Add(_GeciciObje);
                 }
                 else
                 {
-
+                    kumesSpawnEggList.GetComponent<CollectBoxControl>().eggList2.Add(_GeciciObje);
                 }
 
-            }
 
+            }
             else
             {
             }
+
+            //_GeciciObje.transform.localPosition = Vector3.zero;
         }
     }
 
@@ -124,11 +70,10 @@ public class PlayerPrefsController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         ListeDuzenleme();
 
-
-
-
+        //Debug.Log(_GeciciObje.transform.parent + " ---> " + _GeciciObje.transform.localPosition);
     }
 
     private void ListeDuzenleme()
