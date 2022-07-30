@@ -539,6 +539,8 @@ public class CollectControl : MonoBehaviour
                 //otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
                 otherObject.transform.DOLocalJump(Vector3.zero, 1, 1, 0.5f);
 
+                MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                 break;
             }
         }
@@ -570,6 +572,8 @@ public class CollectControl : MonoBehaviour
 
             //otherObject.transform.rotation = eggStackTransform[i].transform.rotation;
             otherObject.transform.DOLocalJump(Vector3.zero, 1, 1, 0.5f);
+
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
 
 
         }
@@ -642,6 +646,8 @@ public class CollectControl : MonoBehaviour
                             otherObject.transform.GetChild(i).transform.tag = "full";
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
+
+                            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
                             break;
                         }
 
@@ -681,6 +687,8 @@ public class CollectControl : MonoBehaviour
                             otherObject.transform.GetChild(i).transform.tag = "full";
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
+
+                            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
                             break;
                         }
 
@@ -721,6 +729,8 @@ public class CollectControl : MonoBehaviour
                             otherObject.transform.GetChild(i).transform.tag = "full";
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
+
+                            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
                             break;
                         }
 
@@ -761,6 +771,8 @@ public class CollectControl : MonoBehaviour
                             otherObject.transform.GetChild(i).transform.tag = "full";
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
+
+                            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
                             break;
                         }
 
@@ -801,6 +813,8 @@ public class CollectControl : MonoBehaviour
                             otherObject.transform.GetChild(i).transform.tag = "full";
                             eggList.Remove(eggList[a]);
                             delayTime = 0;
+
+                            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
                             break;
                         }
 

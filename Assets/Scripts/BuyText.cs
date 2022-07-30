@@ -15,6 +15,8 @@ public class BuyText : MonoBehaviour
     public bool _siradaTezgahVarMi;
     public GameObject _siradakiTezgah;
     public string _objeName;
+    public bool _acilacakTezgahiVarMi;
+    public GameObject _acilacakTezgah;
 
 
 
@@ -202,6 +204,15 @@ public class BuyText : MonoBehaviour
             {
                 openNextLevelTezgah1.SetActive(true);
                 openNextLevelTezgah2.SetActive(false);
+
+                if (_acilacakTezgahiVarMi)
+                {
+                    _acilacakTezgah.SetActive(true);
+                }
+                else
+                {
+
+                }
 
 
                 if (_siradaTezgahVarMi)
